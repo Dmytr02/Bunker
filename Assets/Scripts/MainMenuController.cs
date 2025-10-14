@@ -23,7 +23,12 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings(); // Connect to Photon
+        if (PhotonNetwork.IsConnected)
+        {
+            MainMenu();
+            PhotonNetwork.JoinLobby(customLobby);
+        }
+        else PhotonNetwork.ConnectUsingSettings(); // Connect to Photon
     }
 
     public override void OnConnectedToMaster()

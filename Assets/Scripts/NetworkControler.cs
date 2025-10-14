@@ -1,11 +1,21 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NetworkControler : MonoBehaviour
+public class NetworkControler : MonoBehaviourPunCallbacks
 {
     [SerializeField] private string targetSceneName;
     public static string roomName;
+    
+    public static NetworkControler instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
+
     void Start()
     {
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -18,8 +28,16 @@ public class NetworkControler : MonoBehaviour
         Debug.Log("OnSceneLoaded - " + scene.name);
         if (scene.name == targetSceneName)
         {
+            if(PhotonNetwork.IsMasterClient) return;
             Debug.Log("OnSceneLoadedTarget - " + targetSceneName);
-            if(!string.IsNullOrEmpty(roomName)) PhotonNetwork.JoinRoom(roomName); 
+            if (!string.IsNullOrEmpty(roomName)) PhotonNetwork.JoinRoom(roomName);
+            else PhotonNetwork.JoinRandomRoom();
         }
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        AsyncOperation menuLoad = SceneManager.LoadSceneAsync(0);
+        base.OnJoinRoomFailed(returnCode, message);
     }
 }
