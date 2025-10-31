@@ -44,6 +44,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - getSpawnPoint
   - sendSpawnPoint
+  - RPC_kick
+  - SendMassage
+  - showMassage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
