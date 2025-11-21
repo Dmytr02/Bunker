@@ -47,6 +47,13 @@ MonoBehaviour:
   - RPC_kick
   - SendMassage
   - showMassage
+  - RPC_Stat
+  - StartGame
+  - AddVoteRound
+  - EndRound
+  - StartRound
+  - AddVote
+  - SetTriggerRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

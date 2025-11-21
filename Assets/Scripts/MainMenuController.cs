@@ -16,6 +16,9 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     [SerializeField] LobbyAsset prefabLobbyAsset;
     [SerializeField] Transform lobbyList;
+    
+    [SerializeField] TMP_InputField nameInput;
+    [SerializeField] GameObject namePanel;
 
     Dictionary<string, LobbyAsset> lobbys = new Dictionary<string, LobbyAsset>();
 
@@ -23,12 +26,23 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        if (!PlayerPrefs.HasKey("name"))
+        {
+            namePanel.SetActive(true);
+            nameInput.onSubmit.AddListener(SetName);
+        }
         if (PhotonNetwork.IsConnected)
         {
             MainMenu();
             PhotonNetwork.JoinLobby(customLobby);
         }
         else PhotonNetwork.ConnectUsingSettings(); // Connect to Photon
+    }
+
+    public void SetName(string name)
+    {
+        PlayerPrefs.SetString("name", name);
+        namePanel.SetActive(false);
     }
 
     public override void OnConnectedToMaster()

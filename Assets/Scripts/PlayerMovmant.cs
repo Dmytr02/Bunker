@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -11,13 +12,19 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 
     [SerializeField] private Massage massage;
     [SerializeField] private float sensivity = 1;
-    //public PlayerStats stats = new PlayerStats();
+    public PlayerStats stats;
+    
+    [ShowStaticField] public static List<PlayerMovmant> players = new List<PlayerMovmant>();
+    public static PlayerMovmant player;
     
     float yForce = 0;
     void Start()
     {
+        stats = new PlayerStats(this, photonView.IsMine);
+        players.Add(this);
         if (photonView.IsMine)
         {
+            player = this;
             CommandManager.Instance.AddInstance(this);
             
             Camera.main.transform.SetParent(transform);
@@ -65,6 +72,17 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     }
     */
 
+    public void SendStat(string stat)
+    {
+        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.stats[stat]);
+    }
+
+    [PunRPC]
+    private void RPC_Stat(string stat, object value)
+    {
+        stats.stats[stat] = value;
+    }
+
     public void sendMassage(string msg)
     {
         massage.photonView.RPC("showMassage", RpcTarget.All, msg);
@@ -72,20 +90,30 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 }
 
 
-/*public class PlayerStats
+public class PlayerStats
 {
-    public int Age = 5;
-    public string Name = "name";
-    public int Score = 1;
-
-    public PlayerStats()
+    public Dictionary<string, object> stats = new Dictionary<string, object>()
     {
-        Age = Random.Range(1, 100);
-        Score = Random.Range(1, 10);
+        { "Age", -1 },
+        { "Name", "" },
+        { "Score", -1 }
+    };
+
+    public PlayerStats(PlayerMovmant player, bool init = false)
+    {
+        if (init)
+        {
+            stats["Age"] = Random.Range(1, 100);
+            stats["Name"] = PlayerPrefs.GetString("name");
+            stats["Score"] = Random.Range(1, 10);
+        }
     }
 
     public override string ToString()
     {
-        return $"{Name}, {Age}, {Score}";
+        string Name = stats["Name"].ToString();
+        int Age = stats["Age"] is int ? (int)stats["Age"] : -1;
+        int Score = stats["Score"] is int ? (int)stats["Score"] : -1;
+        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") +  (Age==-1?"": $"Age - {Age}\n") + (Score==-1?"": $"Score - {Score}");
     }
-}*/
+}

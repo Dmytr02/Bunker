@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Photon.Pun;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class GameManager : MonoBehaviourPunCallbacks
+{
+    private DateTime NextRound = DateTime.MaxValue;
+    [SerializeField] Notepad notepad;
+    [SerializeField] Vote vote;
+
+    public static GameManager Instance;
+    
+    public UnityEvent OnStartRound;
+    public UnityEvent OnEndRound;
+    
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this);
+        CommandManager.Instance.AddInstance(this);
+    }
+
+    [CommandAtribute("/Start", "description")]
+    public void StartGameForAll()
+    {
+        Debug.Log("Starting game local");
+        photonView.RPC("StartGame", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void StartGame()
+    {
+        Debug.Log("Starting game");
+        NextRound = DateTime.Now.AddSeconds(30);
+        
+        PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.forward*1.5f, PlayerMovmant.player.transform.rotation, 0);
+        PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.forward, PlayerMovmant.player.transform.rotation, 0);
+        PlayerMovmant.player.SendStat("Name");
+        PlayerMovmant.player.SendStat("Age");
+
+        StartRound();
+        if(PhotonNetwork.IsMasterClient) PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
+    
+    
+    
+    [PunRPC]
+    public void StartRound()
+    {
+        OnStartRound.Invoke();
+    }
+    
+    [PunRPC]
+    public void EndRound()
+    {
+        OnEndRound.Invoke();
+        int chosenPlayer = Vote.votes.GroupBy(n => n) // Группируем числа по их значению
+            .OrderByDescending(g => g.Count()) // Сортируем группы по количеству элементов в них (по убыванию)
+            .Select(g => g.Key) // Выбираем ключ (само число) из первой группы
+            .First();
+        
+        PhotonView.Find(chosenPlayer).RPC("RPC_kick", PhotonView.Find(chosenPlayer).Owner);
+    }
+    void Update()
+    {
+        if(!PhotonNetwork.IsMasterClient) return;
+        if (NextRound < DateTime.Now)
+        {
+            photonView.RPC("EndRound", RpcTarget.All);
+            NextRound = DateTime.Now.AddSeconds(60);
+            photonView.RPC("StartRound", RpcTarget.All);
+        }   
+    }
+}
