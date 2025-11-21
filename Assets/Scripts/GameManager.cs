@@ -27,6 +27,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         CommandManager.Instance.AddInstance(this);
     }
 
+    [CommandAtribute("/TimeToEndRound", "description")]
+    public void TimeToEndRound(float seconds)
+    {
+        NextRound = DateTime.Now.AddSeconds(seconds);
+    }
+
     [CommandAtribute("/Start", "description")]
     public void StartGameForAll()
     {
@@ -61,19 +67,27 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void EndRound()
     {
         OnEndRound.Invoke();
-        int chosenPlayer = Vote.votes.GroupBy(n => n) // Группируем числа по их значению
-            .OrderByDescending(g => g.Count()) // Сортируем группы по количеству элементов в них (по убыванию)
-            .Select(g => g.Key) // Выбираем ключ (само число) из первой группы
-            .First();
-        
-        PhotonView.Find(chosenPlayer).RPC("RPC_kick", PhotonView.Find(chosenPlayer).Owner);
     }
     void Update()
     {
         if(!PhotonNetwork.IsMasterClient) return;
         if (NextRound < DateTime.Now)
         {
-            //photonView.RPC("EndRound", RpcTarget.All);
+            if (Vote.votes.Count > 0)
+            {
+                var groups = Vote.votes
+                    .GroupBy(n => n)
+                    .Select(g => new { Value = g.Key, Count = g.Count() })
+                    .OrderByDescending(g => g.Count)
+                    .ToList();
+
+                var chosenPlayer = groups.First();
+
+                if (groups.Count < 2 || chosenPlayer.Count != groups[1].Count)
+                    PhotonView.Find(chosenPlayer.Value).RPC("RPC_kick", PhotonView.Find(chosenPlayer.Value).Owner);
+            }
+
+            photonView.RPC("EndRound", RpcTarget.All);
             NextRound = DateTime.Now.AddSeconds(60);
             photonView.RPC("StartRound", RpcTarget.All);
         }   

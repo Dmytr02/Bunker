@@ -4,6 +4,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviourPunCallbacks
@@ -26,6 +27,8 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         if (!PlayerPrefs.HasKey("name"))
         {
             namePanel.SetActive(true);

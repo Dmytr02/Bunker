@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovmant : MonoBehaviourPunCallbacks
 {
@@ -58,6 +59,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public void RPC_kick(PhotonMessageInfo info)
     {
         PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
     }
     
     /*

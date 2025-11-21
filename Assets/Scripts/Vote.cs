@@ -36,6 +36,7 @@ public class Vote : MonoBehaviourPunCallbacks
                 voteButtons[i].gameObject.SetActive(false);
             }
         }
+        votes = new List<int>();
         animator.SetBool("isShowPanel", true);
     }
     
