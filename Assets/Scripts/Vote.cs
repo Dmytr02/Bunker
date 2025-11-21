@@ -10,13 +10,14 @@ public class Vote : MonoBehaviourPunCallbacks
     
     [SerializeField] Button[] voteButtons;
     [SerializeField] TMP_Text[] voteTextButtons;
+    [SerializeField] Animator animator;
     
     public static List<int> votes = new List<int>();
 
-    private void Start()
+
+    private void Awake()
     {
         GameManager.Instance.OnStartRound.AddListener(StartRound);
-        StartRound();
     }
 
     public void StartRound()
@@ -26,14 +27,16 @@ public class Vote : MonoBehaviourPunCallbacks
             if (PlayerMovmant.players.Count > i)
             {
                 voteButtons[i].gameObject.SetActive(true);
-                voteTextButtons[i].text = PlayerMovmant.players[i].stats.stats["Name"].ToString();
-                voteButtons[i].OnInteract.AddListener(() => { photonView.RPC("AddVoteRound", RpcTarget.All, PlayerMovmant.players[i].photonView.ViewID); gameObject.SetActive(false); });
+                voteTextButtons[i].text = PlayerMovmant.players[i].stats.list["Name"].ToString();
+                int i0 = i;
+                voteButtons[i].OnInteract.AddListener(() => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); });
             }
             else
             {   
                 voteButtons[i].gameObject.SetActive(false);
             }
         }
+        animator.SetBool("isShowPanel", true);
     }
     
     [PunRPC]

@@ -30,7 +30,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             Camera.main.transform.SetParent(transform);
             Camera.main.transform.localPosition = Vector3.zero;
             Camera.main.transform.localRotation = Quaternion.identity;
-            transform.LookAt(Vector3.zero);
+            //transform.LookAt(Vector3.zero);
             
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -74,13 +74,13 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 
     public void SendStat(string stat)
     {
-        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.stats[stat]);
+        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat]);
     }
 
     [PunRPC]
     private void RPC_Stat(string stat, object value)
     {
-        stats.stats[stat] = value;
+        stats.list[stat] = value;
     }
 
     public void sendMassage(string msg)
@@ -92,7 +92,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 
 public class PlayerStats
 {
-    public Dictionary<string, object> stats = new Dictionary<string, object>()
+    public Dictionary<string, object> list = new Dictionary<string, object>()
     {
         { "Age", -1 },
         { "Name", "" },
@@ -103,17 +103,17 @@ public class PlayerStats
     {
         if (init)
         {
-            stats["Age"] = Random.Range(1, 100);
-            stats["Name"] = PlayerPrefs.GetString("name");
-            stats["Score"] = Random.Range(1, 10);
+            list["Age"] = Random.Range(1, 100);
+            list["Name"] = PlayerPrefs.GetString("name");
+            list["Score"] = Random.Range(1, 10);
         }
     }
 
     public override string ToString()
     {
-        string Name = stats["Name"].ToString();
-        int Age = stats["Age"] is int ? (int)stats["Age"] : -1;
-        int Score = stats["Score"] is int ? (int)stats["Score"] : -1;
+        string Name = list["Name"].ToString();
+        int Age = list["Age"] is int ? (int)list["Age"] : -1;
+        int Score = list["Score"] is int ? (int)list["Score"] : -1;
         return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") +  (Age==-1?"": $"Age - {Age}\n") + (Score==-1?"": $"Score - {Score}");
     }
 }

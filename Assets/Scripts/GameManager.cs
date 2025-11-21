@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     private DateTime NextRound = DateTime.MaxValue;
     [SerializeField] Notepad notepad;
+    [SerializeField] Vector3 notepadPosition;
+    [SerializeField] Quaternion notepadRotation =  Quaternion.identity;
     [SerializeField] Vote vote;
+    [SerializeField] Vector3 votePosition;
+    [SerializeField] Quaternion voteRotation = Quaternion.identity;
 
     public static GameManager Instance;
     
@@ -34,14 +38,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         Debug.Log("Starting game");
-        NextRound = DateTime.Now.AddSeconds(30);
+        NextRound = DateTime.Now.AddSeconds(5);
         
-        PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.forward*1.5f, PlayerMovmant.player.transform.rotation, 0);
-        PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.forward, PlayerMovmant.player.transform.rotation, 0);
+        PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition, PlayerMovmant.player.transform.rotation * notepadRotation, 0);
+        PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * votePosition, PlayerMovmant.player.transform.rotation * voteRotation, 0);
         PlayerMovmant.player.SendStat("Name");
         PlayerMovmant.player.SendStat("Age");
 
-        StartRound();
+        //StartRound();
         if(PhotonNetwork.IsMasterClient) PhotonNetwork.CurrentRoom.IsOpen = false;
     }
     
@@ -69,7 +73,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(!PhotonNetwork.IsMasterClient) return;
         if (NextRound < DateTime.Now)
         {
-            photonView.RPC("EndRound", RpcTarget.All);
+            //photonView.RPC("EndRound", RpcTarget.All);
             NextRound = DateTime.Now.AddSeconds(60);
             photonView.RPC("StartRound", RpcTarget.All);
         }   

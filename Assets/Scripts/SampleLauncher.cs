@@ -40,7 +40,7 @@ public class SampleLauncher : MonoBehaviourPunCallbacks
     [PunRPC]
     private void sendSpawnPoint(int index)
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoints[index].position, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoints[index].position, spawnPoints[index].rotation, 0);
     }
 
     public void Start()
