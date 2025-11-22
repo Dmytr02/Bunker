@@ -12,16 +12,16 @@ public class Massage : MonoBehaviourPunCallbacks
     public void showMassage(string msg)
     {
         CancelInvoke(nameof(hideMassage));
-        gameObject.SetActive(true);
+        image.gameObject.SetActive(true);
         text.text = msg;
         text.ForceMeshUpdate();
         image.offsetMax = new Vector2(image.offsetMax.x, text.preferredHeight);
-        Invoke("hideMassage", msg.Length*0.2f);
+        Invoke("hideMassage", msg.Length*0.5f);
     }
 
     public void hideMassage()
     {
-        gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
     }
 
     private void Update()

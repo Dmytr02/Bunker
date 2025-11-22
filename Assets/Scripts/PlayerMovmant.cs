@@ -1,7 +1,12 @@
+using System;
+using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
+[DefaultExecutionOrder(-5)]
 public class PlayerMovmant : MonoBehaviourPunCallbacks
 {
     //[SerializeField] CharacterController characterController;
@@ -11,19 +16,24 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 
     [SerializeField] private Massage massage;
     [SerializeField] private float sensivity = 1;
-    //public PlayerStats stats = new PlayerStats();
+    public PlayerStats stats;
+    
+    [ShowStaticField] public static List<PlayerMovmant> players = new List<PlayerMovmant>();
+    public static PlayerMovmant player;
     
     float yForce = 0;
     void Start()
     {
+        stats = new PlayerStats(this, photonView.IsMine);
+        players.Add(this);
         if (photonView.IsMine)
         {
+            player = this;
             CommandManager.Instance.AddInstance(this);
             
             Camera.main.transform.SetParent(transform);
             Camera.main.transform.localPosition = Vector3.zero;
             Camera.main.transform.localRotation = Quaternion.identity;
-            transform.LookAt(Vector3.zero);
             
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -31,10 +41,16 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
         else enabled = false;
     }
 
+    private void OnDestroy()
+    {
+        players.Remove(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
+        if(UIController.instance.CurrentState is UIGameState)
+            Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
     }
     
     
@@ -51,6 +67,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public void RPC_kick(PhotonMessageInfo info)
     {
         PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
     }
     
     /*
@@ -65,6 +82,17 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     }
     */
 
+    public void SendStat(string stat)
+    {
+        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat]);
+    }
+
+    [PunRPC]
+    private void RPC_Stat(string stat, object value)
+    {
+        stats.list[stat] = value;
+    }
+
     public void sendMassage(string msg)
     {
         massage.photonView.RPC("showMassage", RpcTarget.All, msg);
@@ -72,20 +100,30 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 }
 
 
-/*public class PlayerStats
+public class PlayerStats
 {
-    public int Age = 5;
-    public string Name = "name";
-    public int Score = 1;
-
-    public PlayerStats()
+    public Dictionary<string, object> list = new Dictionary<string, object>()
     {
-        Age = Random.Range(1, 100);
-        Score = Random.Range(1, 10);
+        { "Age", -1 },
+        { "Name", "" },
+        { "Score", -1 }
+    };
+
+    public PlayerStats(PlayerMovmant player, bool init = false)
+    {
+        if (init)
+        {
+            list["Age"] = Random.Range(1, 100);
+            list["Name"] = PlayerPrefs.GetString("name");
+            list["Score"] = Random.Range(1, 10);
+        }
     }
 
     public override string ToString()
     {
-        return $"{Name}, {Age}, {Score}";
+        string Name = list["Name"].ToString();
+        int Age = list["Age"] is int ? (int)list["Age"] : -1;
+        int Score = list["Score"] is int ? (int)list["Score"] : -1;
+        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") +  (Age==-1?"": $"Age - {Age}\n") + (Score==-1?"": $"Score - {Score}");
     }
-}*/
+}

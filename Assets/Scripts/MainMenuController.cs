@@ -4,6 +4,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviourPunCallbacks
@@ -16,6 +17,9 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     [SerializeField] LobbyAsset prefabLobbyAsset;
     [SerializeField] Transform lobbyList;
+    
+    [SerializeField] TMP_InputField nameInput;
+    [SerializeField] GameObject namePanel;
 
     Dictionary<string, LobbyAsset> lobbys = new Dictionary<string, LobbyAsset>();
 
@@ -23,12 +27,25 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        if (!PlayerPrefs.HasKey("name"))
+        {
+            namePanel.SetActive(true);
+            nameInput.onSubmit.AddListener(SetName);
+        }
         if (PhotonNetwork.IsConnected)
         {
             MainMenu();
             PhotonNetwork.JoinLobby(customLobby);
         }
         else PhotonNetwork.ConnectUsingSettings(); // Connect to Photon
+    }
+
+    public void SetName(string name)
+    {
+        PlayerPrefs.SetString("name", name);
+        namePanel.SetActive(false);
     }
 
     public override void OnConnectedToMaster()
