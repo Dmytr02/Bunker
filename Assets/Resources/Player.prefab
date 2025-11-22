@@ -25,13 +25,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547181251703893508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2267787966667397136}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 15}
@@ -148,15 +148,13 @@ GameObject:
   - component: {fileID: 4904437595641330368}
   - component: {fileID: 9140180859158554225}
   - component: {fileID: 5200786673771075475}
-  - component: {fileID: 6604168856610010766}
-  - component: {fileID: 8264422690726819910}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8468324415025271155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -240,42 +238,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6604168856610010766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560583178615006276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Massage
-  image: {fileID: 2267787966667397136}
-  text: {fileID: 6689681768002364556}
---- !u!114 &8264422690726819910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560583178615006276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonView
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &9029092944813150332
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +259,7 @@ GameObject:
   - component: {fileID: 5268963455262111958}
   - component: {fileID: 8814160341181556128}
   - component: {fileID: -8589602696600337589}
+  - component: {fileID: 643397668043631206}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -348,6 +311,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -369,6 +334,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -462,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4d5424e1325024d9ff6bb85f06c63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  massage: {fileID: 6604168856610010766}
+  massage: {fileID: 643397668043631206}
   sensivity: 1
 --- !u!143 &-1449269225948917600
 CharacterController:
@@ -671,6 +637,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b248d9bebf4e0444952aefc8fc66a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
+--- !u!114 &643397668043631206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029092944813150332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
+  image: {fileID: 2267787966667397136}
+  text: {fileID: 6689681768002364556}
 --- !u!1 &9169457652508680016
 GameObject:
   m_ObjectHideFlags: 0

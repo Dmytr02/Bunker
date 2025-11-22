@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class UIPouseState : StateMachine.State
+public class UIChatState : StateMachine.State
 {
-    public UIPouseState(UIController stateMachine) : base(stateMachine) { }
+    public UIChatState(UIController stateMachine) : base(stateMachine) { }
 
     override public void Enter()
     {
-        (stateMachine as UIController).PousePanel.SetActive(true);
+        (stateMachine as UIController).commandManager.ShowChatPanel();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -18,7 +18,7 @@ public class UIPouseState : StateMachine.State
 
     override public void Exit()
     {
-        (stateMachine as UIController).PousePanel.SetActive(false);
+        (stateMachine as UIController).commandManager.HideChatPanel();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

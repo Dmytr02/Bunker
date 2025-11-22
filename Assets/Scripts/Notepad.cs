@@ -26,14 +26,12 @@ public class Notepad : MonoBehaviour
 
     public void SetIndex(int index)
     {
-        Debug.Log("Interact2");
         this.index = (index+playersStats.Count)%playersStats.Count;
         text.text = playersStats[this.index].ToString();
     }
 
     public void NextIndex()
     {
-        Debug.Log("Interact");
         SetIndex(index + 1);
     }
 

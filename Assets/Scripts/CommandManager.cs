@@ -12,6 +12,7 @@ public class CommandManager : MonoBehaviourPunCallbacks
     private Dictionary<string, MethodInfo> Commands = new Dictionary<string, MethodInfo>();
     [SerializeField] private TMP_InputField textInput;
 	[SerializeField] private TMP_Text textOutput;
+	[SerializeField] private RectTransform textOutputBG;
     [SerializeField] private GameObject chatPanel;
     
     public static CommandManager Instance { get; private set; }
@@ -46,15 +47,22 @@ public class CommandManager : MonoBehaviourPunCallbacks
         textInput.onSubmit.AddListener(OnSubmit);
     }
 
+    public void ShowChatPanel()
+    {
+        chatPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(textInput.gameObject, null);
+        _selectedIndex = -1;
+    }
+
+    public void HideChatPanel()
+    {
+        textInput.text = "";
+        EventSystem.current.SetSelectedGameObject(null);
+        chatPanel.SetActive(false);
+    }
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            chatPanel.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(textInput.gameObject, null);
-            _selectedIndex = -1;
-        }
-
         if (chatPanel.activeSelf && Input.GetKeyDown(KeyCode.UpArrow))
         {
             _selectedIndex = Mathf.Min(_selectedIndex + 1, _buffer.Count - 1);
@@ -67,21 +75,12 @@ public class CommandManager : MonoBehaviourPunCallbacks
             if(_selectedIndex != -1) textInput.text = _buffer[_selectedIndex];
             else textInput.text = "";
         }
-        
-        if (chatPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
-        {
-            textInput.text = "";
-            EventSystem.current.SetSelectedGameObject(null);
-            chatPanel.SetActive(false);
-        }
     }
 
     private void OnSubmit(string text)
     {
         ProcessCommand(textInput.text);
-        textInput.text = "";
-        EventSystem.current.SetSelectedGameObject(null);
-        chatPanel.SetActive(false);
+        UIController.instance.Dispose();
     }
     
     private void ProcessCommand(string command)
@@ -131,14 +130,22 @@ public class CommandManager : MonoBehaviourPunCallbacks
         
         _buffer.Insert(0, command);
 
-        if (args.Count != 0) photonView.RPC("SendMassage", RpcTarget.All, string.Join(" ", args)); 
+        args.Reverse();
+        if (args.Count != 0) photonView.RPC("SendMassage", RpcTarget.All, string.Join(" ", args), PlayerMovmant.player.stats.list["Name"]); 
         (_instances[typeof(PlayerMovmant)] as PlayerMovmant)?.sendMassage(string.Join(" ", args));
     }
 
-    [PunRPC]
-    private void SendMassage(string text)
+    public void FastMassage(string text)
     {
-        textOutput.text +=  "name - <indent=10%>" + text + "</indent>\n";
+        ProcessCommand(text);
+    }
+
+    [PunRPC]
+    private void SendMassage(string text, string name)
+    {
+        textOutput.text += name + " - <indent=10%>" + text + "</indent>\n";
+        Vector2 textSize = textOutput.GetPreferredValues();
+        textOutputBG.sizeDelta = textSize;
     }
 
     [CommandAtribute("/debug", "write text to chat visible only for you")]

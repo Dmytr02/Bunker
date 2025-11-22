@@ -85,11 +85,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 if (groups.Count < 2 || chosenPlayer.Count != groups[1].Count)
                     PhotonView.Find(chosenPlayer.Value).RPC("RPC_kick", PhotonView.Find(chosenPlayer.Value).Owner);
+                Vote.votes = new List<int>();
+                photonView.RPC("EndRound", RpcTarget.All);
+                NextRound = DateTime.Now.AddSeconds(5);
             }
-
-            photonView.RPC("EndRound", RpcTarget.All);
-            NextRound = DateTime.Now.AddSeconds(60);
-            photonView.RPC("StartRound", RpcTarget.All);
-        }   
+            else
+            {
+                NextRound = DateTime.Now.AddSeconds(60);
+                photonView.RPC("StartRound", RpcTarget.All);
+            }
+        }
     }
 }

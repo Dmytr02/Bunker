@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
+[DefaultExecutionOrder(-5)]
 public class PlayerMovmant : MonoBehaviourPunCallbacks
 {
     //[SerializeField] CharacterController characterController;
@@ -31,7 +34,6 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             Camera.main.transform.SetParent(transform);
             Camera.main.transform.localPosition = Vector3.zero;
             Camera.main.transform.localRotation = Quaternion.identity;
-            //transform.LookAt(Vector3.zero);
             
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -39,10 +41,16 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
         else enabled = false;
     }
 
+    private void OnDestroy()
+    {
+        players.Remove(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
+        if(UIController.instance.CurrentState is UIGameState)
+            Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
     }
     
     
