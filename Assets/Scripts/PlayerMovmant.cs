@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-[DefaultExecutionOrder(-5)]
 public class PlayerMovmant : MonoBehaviourPunCallbacks
 {
     //[SerializeField] CharacterController characterController;
@@ -28,6 +27,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
         players.Add(this);
         if (photonView.IsMine)
         {
+            GetComponent<Interactor>().enabled = true;
             player = this;
             CommandManager.Instance.AddInstance(this);
             
@@ -38,7 +38,11 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        else enabled = false;
+        else
+        {
+            GetComponent<Interactor>().enabled = false;
+            enabled = false;
+        }
     }
 
     private void OnDestroy()

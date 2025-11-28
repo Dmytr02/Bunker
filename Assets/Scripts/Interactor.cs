@@ -1,17 +1,8 @@
 using System;
 using UnityEngine;
 
-[DefaultExecutionOrder(0)]
 public class Interactor : MonoBehaviour
 {
-    private void Start()
-    {
-        if(PlayerMovmant.player.gameObject != gameObject)
-        {
-            enabled = false;
-        }
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
