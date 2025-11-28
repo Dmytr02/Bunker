@@ -44,7 +44,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     public void SetName(string name)
     {
-        PlayerPrefs.SetString("name", name);
+        MyPlayerPrefs.MySetString("name", name);
         namePanel.SetActive(false);
     }
 
