@@ -7,6 +7,7 @@ public class Massage : MonoBehaviourPunCallbacks
 {
     [SerializeField] private RectTransform image;
     [SerializeField] private TMP_Text text;
+    
 
     [PunRPC]
     public void showMassage(string msg)
