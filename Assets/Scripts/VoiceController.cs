@@ -6,6 +6,7 @@ public class VoiceController : MonoBehaviour
 {
     [SerializeField] Button muteButton;
     [SerializeField] Recorder recorder;
+    public AudioSource audioSource;
     private void Start()
     {
         muteButton.OnInteract.AddListener((() => recorder.TransmitEnabled = !recorder.TransmitEnabled));

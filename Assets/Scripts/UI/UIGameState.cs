@@ -17,4 +17,15 @@ public class UIGameState : StateMachine.State
             stateMachine.SetState(new UIChatState(stateMachine as UIController));
         }
     }
+    override public void Enter()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    override public void Exit()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }

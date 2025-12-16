@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class Notepad : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
-    [SerializeField] int index = 0;
+    [SerializeField] public TMP_Text text;
+    [SerializeField] public int index = 0;
 
     
     private List<PlayerStats> playersStats = new List<PlayerStats>();
+    
+    public PlayerStats SelectedPlayerStats => playersStats[index];
 
 
     private void Start()

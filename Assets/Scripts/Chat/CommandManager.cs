@@ -39,7 +39,7 @@ public class CommandManager : MonoBehaviourPunCallbacks
                 if (attribute == null) continue;
 
                 Commands.Add(attribute.CommandName, method);
-                Debug.Log(attribute.CommandName + " added");
+                //Debug.Log(attribute.CommandName + " added");
             }
         }
 
