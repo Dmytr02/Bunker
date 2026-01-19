@@ -5674,7 +5674,7 @@ MonoBehaviour:
   massage: {fileID: 643397668043631206}
   sensivity: 1
   lookAngelRangeX: {x: -60, y: 60}
-  lookAngelRangeY: {x: -60, y: 60}
+  lookAngelRangeY: {x: -30, y: 60}
   voiceController: {fileID: 3915335748235773336}
 --- !u!143 &-1449269225948917600
 CharacterController:

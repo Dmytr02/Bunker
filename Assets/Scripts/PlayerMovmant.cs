@@ -45,10 +45,11 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             Camera.main.transform.localPosition = Vector3.zero;
             Camera.main.transform.localRotation = Quaternion.identity;
             
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             
             SendStat("Name");
+            StatsController.Instance.Start_();
         }
         else
         {
@@ -114,6 +115,8 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public void SendStat(string stat)
     {
         photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat]);
+        stats.isShowed[stat] = true;
+        Debug.Log(stat + " - Sended");
     }
 
     [PunRPC]
@@ -133,26 +136,109 @@ public class PlayerStats
 {
     public Dictionary<string, object> list = new Dictionary<string, object>()
     {
-        { "Age", -1 },
         { "Name", "" },
-        { "Score", -1 }
+        { "profession", Professions.unknown },
+        { "experience", -1},
+        { "Age", -1 },
+        { "Healthe", Healthe.unknown},
+        { "phobias", Phobias.unknown},
+        {"hobby", Hobby.unknown}
     };
 
+    public Dictionary<string, bool> isShowed = new Dictionary<string, bool>();
+    public Dictionary<Professions, string> professionDescription = new Dictionary<Professions, string>()
+    {
+        {Professions.Doctor, "Maintaining health and preventing critical conditions"},
+        {Professions.enginee, ""}
+    };
+    
     public PlayerStats(PlayerMovmant player, bool init = false)
     {
         if (init)
         {
-            list["Age"] = Random.Range(1, 100);
             list["Name"] = PlayerPrefs.GetString("name");
-            list["Score"] = Random.Range(1, 10);
+            list["profession"] =  (Professions)Random.Range(1, 16);
+            list["experience"] =  Random.Range(1, 30);
+            list["Age"] = Random.Range(18, 100);
+            list["Healthe"] =  (Healthe)Random.Range(1, 5);
+            list["phobias"] =  (Phobias)Random.Range(1, 7);
+            list["hobby"] =  (Hobby)Random.Range(1, 10);
+            
         }
+
+        foreach (var i in list)
+        {
+            isShowed.Add(i.Key, false);
+        }
+
     }
 
     public override string ToString()
     {
         string Name = list["Name"].ToString();
         int Age = list["Age"] is int ? (int)list["Age"] : -1;
-        int Score = list["Score"] is int ? (int)list["Score"] : -1;
-        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") +  (Age==-1?"": $"Age - {Age}\n") + (Score==-1?"": $"Score - {Score}");
+        Professions Profession = (Professions)list["profession"];
+        int experience = list["experience"] is int ? (int)list["experience"] : -1;
+        Healthe Healthe = (Healthe)list["Healthe"];
+        Phobias Phobia = (Phobias)list["phobias"];
+        Hobby Hobby = (Hobby)list["hobby"];
+        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}") +
+               (experience==-1?"":$"experience - {experience} years") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}") +
+               (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}");
     }
+}
+
+
+public enum Professions
+{
+    unknown,
+    Doctor,
+    enginee,
+    scientist,
+    biologistChemist,
+    psychologist,
+    Farmer,
+    Soldier,
+    Electrician,
+    RescueWorker,
+    Journalist,
+    Teacher,
+    SocialWorker,
+    Actor,
+    Artist,
+    Student
+}
+
+public enum Healthe
+{
+    unknown,
+    excellent,
+    average,
+    poor,
+    critical
+}
+
+public enum Phobias
+{
+    unknown,
+    Claustrophobia,
+    FearOfBlood,
+    FearOfTheDark,
+    Anxiety,
+    FearOfPublicSpeaking,
+    NoPhobias
+}
+
+public enum Hobby
+{
+    unknown,
+    Fishing_Hunting,
+    Drawing,
+    Chemistry,
+    Writing,
+    Fitness,
+    Music,
+    Knitting,
+    ComputerGames,
+    NoHobbies
 }
