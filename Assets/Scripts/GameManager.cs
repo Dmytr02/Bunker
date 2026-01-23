@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] Vote vote;
     [SerializeField] Vector3 votePosition;
     [SerializeField] Quaternion voteRotation = Quaternion.identity;
+    [SerializeField] TMP_Text timerText;
 
     public static GameManager Instance;
     
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition, PlayerMovmant.player.transform.rotation * notepadRotation, 0);
         PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * votePosition, PlayerMovmant.player.transform.rotation * voteRotation, 0);
         PlayerMovmant.player.SendStat("Name");
-        PlayerMovmant.player.SendStat("Age");
+        //PlayerMovmant.player.SendStat("Age");
 
         //StartRound();
         if(PhotonNetwork.IsMasterClient) PhotonNetwork.CurrentRoom.IsOpen = false;
@@ -68,9 +70,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         OnEndRound.Invoke();
     }
+
+    [PunRPC]
+    public void UpdateTimer(string message)
+    {
+        timerText.text = message;
+    }
     void Update()
     {
         if(!PhotonNetwork.IsMasterClient) return;
+        photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { (NextRound-DateTime.Now).ToString(@"mm\:ss") + " to end of voting" });
         if (NextRound < DateTime.Now)
         {
             if (Vote.votes.Count > 0)
