@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    private DateTime NextRound = DateTime.MaxValue;
+    public static DateTime NextRound = DateTime.MaxValue;
     [SerializeField] Notepad notepad;
     [SerializeField] Vector3 notepadPosition;
     [SerializeField] Quaternion notepadRotation =  Quaternion.identity;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         NextRound = DateTime.Now.AddSeconds(5);
         
         PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition, PlayerMovmant.player.transform.rotation * notepadRotation, 0);
-        PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * votePosition, PlayerMovmant.player.transform.rotation * voteRotation, 0);
+        PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * votePosition, PlayerMovmant.player.transform.rotation * voteRotation, 0).GetComponent<Vote>().photonView.RPC("RPC_SetPlayer", RpcTarget.All, PlayerMovmant.player.photonView.ViewID);
         PlayerMovmant.player.SendStat("Name");
         //PlayerMovmant.player.SendStat("Age");
 
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 var chosenPlayer = groups.First();
 
                 if (groups.Count < 2 || chosenPlayer.Count != groups[1].Count)
-                    PhotonView.Find(chosenPlayer.Value).RPC("RPC_kick", PhotonView.Find(chosenPlayer.Value).Owner);
+                    PhotonView.Find(chosenPlayer.Value).RPC("RPC_expel", /*PhotonView.Find(chosenPlayer.Value).Owner*/ RpcTarget.All);
                 Vote.votes = new List<int>();
                 photonView.RPC("EndRound", RpcTarget.All);
                 NextRound = DateTime.Now.AddSeconds(5);

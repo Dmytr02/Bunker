@@ -30,6 +30,8 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public static UnityEvent onPlayersAdded =  new UnityEvent();
     public static UnityEvent onPlayersRemoved =  new UnityEvent();
     
+    public static UnityEvent<PlayerMovmant> onStatOpened =  new UnityEvent<PlayerMovmant>();
+    
     float yForce = 0;
     void Start()
     {
@@ -99,6 +101,15 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);
     }
+
+    [PunRPC]
+    public void RPC_expel(PhotonMessageInfo info)
+    {
+        players.Remove(this);
+        onPlayersRemoved?.Invoke();
+        
+        GetComponent<Renderer>().enabled = false;
+    }
     
     /*
     [CommandAtribute("-getStats", "take a gameObject if it`s player return stats")]
@@ -123,6 +134,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     private void RPC_Stat(string stat, object value)
     {
         stats.list[stat] = value;
+        onStatOpened?.Invoke(this);
     }
 
     public void sendMassage(string msg)
