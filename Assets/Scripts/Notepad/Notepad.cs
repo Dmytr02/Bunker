@@ -51,6 +51,12 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         object[] data = info.photonView.InstantiationData;
-        transform.SetParent(PhotonView.Find((int)data[0]).GetComponent<PlayerMovmant>().playerMash.transform);
+        PlayerMovmant.onPlayersRemoved.AddListener(() =>
+        {
+            if(!PlayerMovmant.players.Contains(PhotonView.Find((int)data[0]).GetComponent<PlayerMovmant>()))
+            {
+                Destroy(gameObject);
+            }
+        });
     }
 }
