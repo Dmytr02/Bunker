@@ -160,9 +160,9 @@ public class PlayerStats
     public Dictionary<string, object> list = new Dictionary<string, object>()
     {
         { "Name", "" },
+        { "Age", -1 },
         { "profession", Professions.unknown },
         { "experience", -1},
-        { "Age", -1 },
         { "Healthe", Healthe.unknown},
         { "phobias", Phobias.unknown},
         { "hobby", Hobby.unknown },

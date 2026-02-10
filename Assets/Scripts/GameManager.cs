@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] Vector3 votePosition;
     [SerializeField] Quaternion voteRotation = Quaternion.identity;
     [SerializeField] TMP_Text timerText;
+    [SerializeField] TMP_Text resultText;
 
     public static GameManager Instance;
     
@@ -150,6 +151,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(antiSinergies.Count > 0) points += antiSinergies[0];
         
         Debug.Log(points);
+        resultText.text = "you have " + points + " points.\n"
+            + (points > 15 ? "You Win!" : points > 10 ? "You survive" : "You lost :(");
     }
 
     void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, ref List<int> sinergies, ref List<int> antiSinergies)
