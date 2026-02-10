@@ -16,21 +16,29 @@ public class Vote : MonoBehaviourPunCallbacks
     
     public static List<int> votes = new List<int>();
 
+    public static Vote Instance;
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this);
+    }
+
     [PunRPC]
     public void RPC_SetPlayer(int player)
     {
         playerMovmant = PhotonView.Find(player).GetComponent<PlayerMovmant>();
     }
-    
-    private void Awake()
+
+    private void Start()
     {
         GameManager.Instance.OnStartRound.AddListener(StartRound);
-        playerMovmant = PlayerMovmant.player;
     }
 
     public void StartRound()
     {
+        Debug.Log("Starting round2");
         if(!PlayerMovmant.players.Contains(playerMovmant)) return;
+        Debug.Log("Starting round3");
         for (int i = 0; i < voteButtons.Length; i++)
         {
             if (PlayerMovmant.players.Count > i)
@@ -51,6 +59,7 @@ public class Vote : MonoBehaviourPunCallbacks
             }
         }
         animator.SetBool("isShowPanel", true);
+        Debug.Log("Starting round4");
     }
     
     [PunRPC]

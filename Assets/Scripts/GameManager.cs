@@ -114,12 +114,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartRound()
     {
-        if (PlayerMovmant.players.Count <= 2)
+        if (PlayerMovmant.players.Count <= 1)
         {
             PlayerMovmant.player.SendAllStats();
             Invoke("CalculatePoints", 5);
         }
-        else OnStartRound.Invoke();
+        else
+        {
+            Debug.Log("Starting round");
+            OnStartRound.Invoke();
+        }
     }
     
     void CalculatePoints()
