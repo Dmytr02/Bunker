@@ -19,6 +19,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 
     [SerializeField] private Massage massage;
     [SerializeField] private float sensivity = 1;
+    [SerializeField] private Outline playerMash;
     public Vector2 lookAngelRangeX;
     public Vector2 lookAngelRangeY;
     public PlayerStats stats;
@@ -32,6 +33,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public static UnityEvent onPlayersRemoved =  new UnityEvent();
     
     public static UnityEvent<PlayerMovmant> onStatOpened =  new UnityEvent<PlayerMovmant>();
+    
     
     float yForce = 0;
     void Start()
@@ -48,6 +50,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             Camera.main.transform.localPosition = Vector3.zero;
             Camera.main.transform.localRotation = Quaternion.identity;
             
+            playerMash.enabled = false;
             //Cursor.lockState = CursorLockMode.Locked;
             //Cursor.visible = false;
             
@@ -81,11 +84,19 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if(UIController.instance.CurrentState is UIGameState)
+        if (UIController.instance.CurrentState is UIGameState)
+        {
             //Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
-            Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Lerp(lookAngelRangeY.x, lookAngelRangeY.y,1-Mathf.Clamp01(Input.mousePosition.y / Screen.height)) , Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y,Mathf.Clamp01(Input.mousePosition.x / Screen.width)), 0));
+            Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Lerp(lookAngelRangeY.x, lookAngelRangeY.y, 1 - Mathf.Clamp01(Input.mousePosition.y / Screen.height)), Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), 0));
+            photonView.RPC("RPC_SendRotation", RpcTarget.All, Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)));
+        }
     }
-    
+
+    [PunRPC]
+    public void RPC_SendRotation(float rotationy)
+    {
+        playerMash.transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, rotationy, transform.localRotation.eulerAngles.z);
+    }
     
     [CommandAtribute("/kick", "take a gameObject if it`s player kick him")]
     public void kick(GameObject player)
@@ -161,12 +172,12 @@ public class PlayerStats
     {
         { "Name", "" },
         { "Age", -1 },
-        { "profession", Professions.unknown },
-        { "experience", -1},
+        { "Profession", Professions.unknown },
+        { "Experience", -1},
         { "Healthe", Healthe.unknown},
-        { "phobias", Phobias.unknown},
-        { "hobby", Hobby.unknown },
-        { "personality", Personality.unknown}
+        { "Phobias", Phobias.unknown},
+        { "Hobby", Hobby.unknown },
+        { "Personality", Personality.unknown}
     };
 
     public Dictionary<string, bool> isShowed = new Dictionary<string, bool>();
@@ -181,13 +192,13 @@ public class PlayerStats
         if (init)
         {
             list["Name"] = PlayerPrefs.GetString("name");
-            list["profession"] =  (Professions)Random.Range(1, 16);
-            list["experience"] =  Random.Range(1, 30);
+            list["Profession"] =  (Professions)Random.Range(1, 16);
+            list["Experience"] =  Random.Range(1, 30);
             list["Age"] = Random.Range(18, 100);
             list["Healthe"] =  (Healthe)Random.Range(1, 5);
-            list["phobias"] =  (Phobias)Random.Range(1, 7);
-            list["hobby"] =  (Hobby)Random.Range(1, 10);
-            list["personality"] =  (Personality)Random.Range(1, 14);
+            list["Phobias"] =  (Phobias)Random.Range(1, 7);
+            list["Hobby"] =  (Hobby)Random.Range(1, 10);
+            list["Personality"] =  (Personality)Random.Range(1, 14);
         }
 
         foreach (var i in list)
@@ -201,14 +212,14 @@ public class PlayerStats
     {
         string Name = list["Name"].ToString();
         int Age = list["Age"] is int ? (int)list["Age"] : -1;
-        Professions Profession = (Professions)list["profession"];
-        int experience = list["experience"] is int ? (int)list["experience"] : -1;
+        Professions Profession = (Professions)list["Profession"];
+        int experience = list["Experience"] is int ? (int)list["Experience"] : -1;
         Healthe Healthe = (Healthe)list["Healthe"];
-        Phobias Phobia = (Phobias)list["phobias"];
-        Hobby Hobby = (Hobby)list["hobby"];
-        Personality personality = (Personality)list["personality"];
+        Phobias Phobia = (Phobias)list["Phobias"];
+        Hobby Hobby = (Hobby)list["Hobby"];
+        Personality personality = (Personality)list["Personality"];
         return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}\n") +
-               (experience==-1?"":$"experience - {experience} years\n") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
+               (experience==-1?"":$"Experience - {experience} years\n") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
                (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}\n")+(personality==Personality.unknown?"":$"Personality - {personality}\n");
     }
 }

@@ -1811,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &489675149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3938,8 +3938,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   notepad: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
-  notepadPosition: {x: 0, y: -0.4, z: 0.7}
-  notepadRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+  notepadPosition: {x: 0, y: -0.2, z: 0.66}
+  notepadRotation: {x: 0.25881904, y: 0, z: 0, w: 0.9659258}
   vote: {fileID: 4556406821315803780, guid: 8fb824b8431f5434facb332153b61221, type: 3}
   votePosition: {x: 0, y: -0.65, z: 1}
   voteRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}

@@ -25,53 +25,53 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     private static readonly Dictionary<(string, object), int> costs = new Dictionary<(string, object), int>()
     {
-        {("profession", Professions.Doctor), 6},
-        {("profession", Professions.enginee), 6},
-        {("profession", Professions.Actor), 1},
-        {("profession", Professions.Artist), 1},
-        {("profession", Professions.biologistChemist), 5},
-        {("profession", Professions.Electrician), 3},
-        {("profession", Professions.Farmer), 4},
-        {("profession", Professions.Journalist), 2},
-        {("profession", Professions.psychologist), 4},
-        {("profession", Professions.RescueWorker), 3},
-        {("profession", Professions.scientist), 5},
-        {("profession", Professions.SocialWorker), 2},
-        {("profession", Professions.Soldier), 3},
-        {("profession", Professions.Student), 0},
-        {("profession", Professions.Teacher), 2},
+        {("Profession", Professions.Doctor), 6},
+        {("Profession", Professions.enginee), 6},
+        {("Profession", Professions.Actor), 1},
+        {("Profession", Professions.Artist), 1},
+        {("Profession", Professions.biologistChemist), 5},
+        {("Profession", Professions.Electrician), 3},
+        {("Profession", Professions.Farmer), 4},
+        {("Profession", Professions.Journalist), 2},
+        {("Profession", Professions.psychologist), 4},
+        {("Profession", Professions.RescueWorker), 3},
+        {("Profession", Professions.scientist), 5},
+        {("Profession", Professions.SocialWorker), 2},
+        {("Profession", Professions.Soldier), 3},
+        {("Profession", Professions.Student), 0},
+        {("Profession", Professions.Teacher), 2},
         {("Healthe", Healthe.excellent), 3},
         {("Healthe", Healthe.average), 1},
         {("Healthe", Healthe.poor), -2},
         {("Healthe", Healthe.critical), -3},
-        {("phobias", Phobias.Claustrophobia), -4},
-        {("phobias", Phobias.Anxiety), -1},
-        {("phobias", Phobias.FearOfBlood), -2},
-        {("phobias", Phobias.FearOfPublicSpeaking), 0},
-        {("phobias", Phobias.FearOfTheDark), -1},
-        {("phobias", Phobias.NoPhobias), 1},
-        {("hobby", Hobby.Drawing), 1},
-        {("hobby", Hobby.Fishing_Hunting), 1},
-        {("hobby", Hobby.Chemistry), 1},
-        {("hobby", Hobby.Writing), 1},
-        {("hobby", Hobby.Fitness), 1},
-        {("hobby", Hobby.Music), 0},
-        {("hobby", Hobby.Knitting), 0},
-        {("hobby", Hobby.ComputerGames), 0},
-        {("hobby", Hobby.NoHobbies), 0},
-        {("personality", Personality.Leader), 3},
-        {("personality", Personality.Logical), 2},
-        {("personality", Personality.Stress_resistant), 2},
-        {("personality", Personality.Communicator), 2},
-        {("personality", Personality.Rational), 1},
-        {("personality", Personality.Reliable), 1},
-        {("personality", Personality.Adaptable), 0},
-        {("personality", Personality.Observant), 0},
-        {("personality", Personality.Panicker), -3},
-        {("personality", Personality.Unstable), -2},
-        {("personality", Personality.Egoist), -2},
-        {("personality", Personality.Impulsive), -1},
-        {("personality", Personality.Withdrawn), -1},
+        {("Phobias", Phobias.Claustrophobia), -4},
+        {("Phobias", Phobias.Anxiety), -1},
+        {("Phobias", Phobias.FearOfBlood), -2},
+        {("Phobias", Phobias.FearOfPublicSpeaking), 0},
+        {("Phobias", Phobias.FearOfTheDark), -1},
+        {("Phobias", Phobias.NoPhobias), 1},
+        {("Hobby", Hobby.Drawing), 1},
+        {("Hobby", Hobby.Fishing_Hunting), 1},
+        {("Hobby", Hobby.Chemistry), 1},
+        {("Hobby", Hobby.Writing), 1},
+        {("Hobby", Hobby.Fitness), 1},
+        {("Hobby", Hobby.Music), 0},
+        {("Hobby", Hobby.Knitting), 0},
+        {("Hobby", Hobby.ComputerGames), 0},
+        {("Hobby", Hobby.NoHobbies), 0},
+        {("Personality", Personality.Leader), 3},
+        {("Personality", Personality.Logical), 2},
+        {("Personality", Personality.Stress_resistant), 2},
+        {("Personality", Personality.Communicator), 2},
+        {("Personality", Personality.Rational), 1},
+        {("Personality", Personality.Reliable), 1},
+        {("Personality", Personality.Adaptable), 0},
+        {("Personality", Personality.Observant), 0},
+        {("Personality", Personality.Panicker), -3},
+        {("Personality", Personality.Unstable), -2},
+        {("Personality", Personality.Egoist), -2},
+        {("Personality", Personality.Impulsive), -1},
+        {("Personality", Personality.Withdrawn), -1},
     };
     
     private void Awake()
@@ -127,13 +127,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         int points = 0;
         foreach (var player in PlayerMovmant.players)
         {
-            points += costs[("profession", (Professions)player.stats.list["profession"])];
-            points += (int)player.stats.list["experience"] > 15 ? 4 : (int)player.stats.list["experience"] > 8 ? 3 : (int)player.stats.list["experience"] > 3 ? 2 : 1;
+            points += costs[("Profession", (Professions)player.stats.list["Profession"])];
+            points += (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
             points += (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
             points += costs[("Healthe", (Healthe)player.stats.list["Healthe"])];
-            points += costs[("phobias", (Phobias)player.stats.list["phobias"])];
-            points += costs[("hobby", (Hobby)player.stats.list["hobby"])];
-            points += costs[("personality", (Personality)player.stats.list["personality"])];
+            points += costs[("Phobias", (Phobias)player.stats.list["Phobias"])];
+            points += costs[("Hobby", (Hobby)player.stats.list["Hobby"])];
+            points += costs[("Personality", (Personality)player.stats.list["Personality"])];
         }
         
         List<int> sinergies = new List<int>();
@@ -157,10 +157,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, ref List<int> sinergies, ref List<int> antiSinergies)
     {
-        switch (player1["profession"])
+        switch (player1["Profession"])
         {
             case Professions.Doctor:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.scientist:
                         sinergies.Add(2);
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         sinergies.Add(1);
                         break;
                 }
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Reliable:
                         sinergies.Add(1);
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.enginee:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.Electrician:
                         sinergies.Add(2);
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         sinergies.Add(1);
                         break;
                 }
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Logical:
                         sinergies.Add(1);
@@ -200,13 +200,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.scientist:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.biologistChemist:
                         sinergies.Add(2);
                         break;
                 }
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Logical:
                         sinergies.Add(1);
@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.psychologist:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.SocialWorker:
                         sinergies.Add(2);
@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         sinergies.Add(2);
                         break;
                 }
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Communicator:
                         sinergies.Add(1);
@@ -231,7 +231,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Farmer:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.RescueWorker:
                         sinergies.Add(1);
@@ -242,13 +242,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.RescueWorker:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.Soldier:
                         sinergies.Add(1);
                         break;
                 }
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Adaptable:
                         sinergies.Add(1);
@@ -256,13 +256,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Journalist:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.scientist:
                         sinergies.Add(1);
                         break;
                 }
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Observant:
                         sinergies.Add(1);
@@ -270,7 +270,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Teacher:
-                switch (player2["profession"])
+                switch (player2["Profession"])
                 {
                     case Professions.Student:
                         sinergies.Add(1);
@@ -278,7 +278,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.biologistChemist:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Rational:
                         sinergies.Add(1);
@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Soldier:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Stress_resistant:
                         sinergies.Add(1);
@@ -294,7 +294,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Actor:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Communicator:
                         sinergies.Add(1);
@@ -303,10 +303,10 @@ public class GameManager : MonoBehaviourPunCallbacks
                 break;
         }
 
-        switch (player1["personality"])
+        switch (player1["Personality"])
         {
             case Personality.Leader:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Reliable:
                         sinergies.Add(2);
@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Logical:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Rational:
                         sinergies.Add(1);
@@ -331,7 +331,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Stress_resistant:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Reliable:
                         sinergies.Add(1);
@@ -342,7 +342,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Communicator:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Observant:
                         sinergies.Add(1);
@@ -356,7 +356,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Rational:
-                switch (player2["personality"])
+                switch (player2["Personality"])
                 {
                     case Personality.Impulsive:
                         sinergies.Add(1);
@@ -383,21 +383,21 @@ public class GameManager : MonoBehaviourPunCallbacks
             (int)player2["Age"] >= 61)
         {
             antiSinergies.Add(-1);
-        }if ((int)player1["experience"] >= 1 &&
-            (int)player1["experience"] <= 3 &&
-            (int)player2["experience"] >= 9 &&
-            (int)player2["experience"] <= 15)
+        }if ((int)player1["Experience"] >= 1 &&
+            (int)player1["Experience"] <= 3 &&
+            (int)player2["Experience"] >= 9 &&
+            (int)player2["Experience"] <= 15)
         {
             sinergies.Add(1);
         }
-        if ((int)player1["experience"] >= 4 &&
-            (int)player1["experience"] <= 8 &&
-            (int)player2["experience"] >= 16)
+        if ((int)player1["Experience"] >= 4 &&
+            (int)player1["Experience"] <= 8 &&
+            (int)player2["Experience"] >= 16)
         {
             sinergies.Add(1);
         }
-        if ((int)player1["experience"] >= 16 &&
-            (int)player2["experience"] >= 16)
+        if ((int)player1["Experience"] >= 16 &&
+            (int)player2["Experience"] >= 16)
         {
             antiSinergies.Add(-1);
         }
