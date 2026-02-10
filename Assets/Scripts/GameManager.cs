@@ -385,10 +385,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         sinergies.Sort();
         antiSinergies.Sort();
 
-        points += sinergies[^1];
-        points += sinergies[^2];
+        if(sinergies.Count > 0) points += sinergies[^1];
+        if(sinergies.Count > 1) points += sinergies[^2];
         
-        points += antiSinergies[0];
+        if(antiSinergies.Count > 0) points += antiSinergies[0];
         
         Debug.Log(points);
     }
