@@ -22,6 +22,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     public UnityEvent OnStartRound;
     public UnityEvent OnEndRound;
     
+    private static readonly Dictionary<(string, object), int> costs = new Dictionary<(string, object), int>()
+    {
+        {("profession", Professions.Actor), 2},
+        {("profession", Professions.Artist), 1},
+        {("Healthe", Healthe.excellent), 4},
+        {("Healthe", Healthe.critical), 0},
+        {("phobias", Phobias.Claustrophobia), 1},
+        {("hobby", Hobby.Drawing), 1}
+    };
+    
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -62,7 +72,27 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartRound()
     {
-        OnStartRound.Invoke();
+        if (PlayerMovmant.players.Count <= 2)
+        {
+            PlayerMovmant.player.SendAllStats();
+            Invoke("CalculatePoints", 5);
+        }
+        else OnStartRound.Invoke();
+    }
+    
+    void CalculatePoints()
+    {
+        int points = 0;
+        foreach (var player in PlayerMovmant.players)
+        {
+            points += costs[("profession", player.stats.list["profession"])];
+            points += (int)player.stats.list["Experience"] > 20 ? 4 : (int)player.stats.list["Experience"] > 15 ? 3 : (int)player.stats.list["Experience"] > 10 ? 2 : (int)player.stats.list["Experience"] > 3 ? 1 : 0;
+            points += (int)player.stats.list["Age"] > 80 ? 0 : (int)player.stats.list["Age"] > 50 ? 1 : (int)player.stats.list["Age"] > 40 ? 2 : (int)player.stats.list["Age"] > 30 ? 3 : 4;
+            points += costs[("Healthe", player.stats.list["Healthe"])];
+            points += costs[("phobias", player.stats.list["phobias"])];
+            points += costs[("hobby", player.stats.list["hobby"])];
+        }
+        Debug.Log(points);
     }
     
     [PunRPC]
