@@ -58,6 +58,7 @@ MonoBehaviour:
   - RPC_expel
   - RPC_SetPlayer
   - RPC_SendRotation
+  - RPC_SendStartRotation
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
