@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Button : MonoBehaviour, IInteractable
 {
-    public UnityEvent OnInteract; 
+    public UnityEvent OnInteract =  new UnityEvent(); 
 
     public void StartInteract(Interactor interactor, RaycastHit hit,  bool isFirst)
     {
