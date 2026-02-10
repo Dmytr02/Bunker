@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Notepad : MonoBehaviour
+public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
 {
     [SerializeField] public TMP_Text text;
     [SerializeField] public int index = 0;
@@ -45,5 +46,11 @@ public class Notepad : MonoBehaviour
     public void PreviousIndex()
     {
         SetIndex(index - 1);
+    }
+
+    public void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        object[] data = info.photonView.InstantiationData;
+        transform.SetParent(PhotonView.Find((int)data[0]).GetComponent<PlayerMovmant>().playerMash.transform);
     }
 }

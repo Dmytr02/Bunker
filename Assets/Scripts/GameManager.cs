@@ -99,8 +99,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Starting game");
         NextRound = DateTime.Now.AddSeconds(5);
-        
-        PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition, PlayerMovmant.player.transform.rotation * notepadRotation, 0).GetComponent<PlayerMovmant>().playerMash.transform.SetParent(PlayerMovmant.player.transform);
+
+        PhotonNetwork.Instantiate(notepad.name,
+            PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition,
+            PlayerMovmant.player.transform.rotation * notepadRotation, 0,
+            new object[] { PlayerMovmant.player.photonView.ViewID });
         //Instantiate(vote);
         PlayerMovmant.player.SendStat("Name");
         //PlayerMovmant.player.SendStat("Age");
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartRound()
     {
-        if (PlayerMovmant.players.Count <= 2)
+        if (PlayerMovmant.players.Count <= 1)
         {
             PlayerMovmant.player.SendAllStats();
             Invoke("CalculatePoints", 5);
