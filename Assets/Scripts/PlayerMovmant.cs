@@ -63,7 +63,6 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             enabled = false;
         }
         
-        photonView.RPC("RPC_SendStartRotation", RpcTarget.All, transform.rotation.eulerAngles.y);
         StartCoroutine(onPlayersAddedInvoke());
     }
 
@@ -98,13 +97,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     {
         playerMash.transform.localRotation = Quaternion.Euler(playerMash.transform.localRotation.eulerAngles.x, rotationy, playerMash.transform.localRotation.eulerAngles.z);
     }
-    
-    [PunRPC]
-    public void RPC_SendStartRotation(float rotationy)
-    {
-        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, rotationy, transform.localRotation.eulerAngles.z);
-    }
-    
+
     [CommandAtribute("/kick", "take a gameObject if it`s player kick him")]
     public void kick(GameObject player)
     {
