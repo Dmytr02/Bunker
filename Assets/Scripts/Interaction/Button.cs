@@ -9,7 +9,7 @@ public class Button : MonoBehaviour, IInteractable
     {
         if(!isFirst) return;
         Debug.Log("Button Interacting...");
-        OnInteract.Invoke();
+        OnInteract?.Invoke();
     }
 
     public void Interact(Interactor interactor, RaycastHit hit) { }

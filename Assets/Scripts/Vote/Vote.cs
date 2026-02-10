@@ -12,7 +12,7 @@ public class Vote : MonoBehaviourPunCallbacks
     [SerializeField] EventTrigger[] voteButtons;
     [SerializeField] TMP_Text[] voteTextButtons;
     [SerializeField] Animator animator;
-    PlayerMovmant playerMovmant;
+    [SerializeField] PlayerMovmant playerMovmant;
     
     public static List<int> votes = new List<int>();
 
@@ -25,6 +25,7 @@ public class Vote : MonoBehaviourPunCallbacks
     private void Awake()
     {
         GameManager.Instance.OnStartRound.AddListener(StartRound);
+        playerMovmant = PlayerMovmant.player;
     }
 
     public void StartRound()
