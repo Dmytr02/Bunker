@@ -4,11 +4,12 @@ using System.Linq;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Vote : MonoBehaviourPunCallbacks
 {
     
-    [SerializeField] Button[] voteButtons;
+    [SerializeField] EventTrigger[] voteButtons;
     [SerializeField] TMP_Text[] voteTextButtons;
     [SerializeField] Animator animator;
     PlayerMovmant playerMovmant;
@@ -36,7 +37,12 @@ public class Vote : MonoBehaviourPunCallbacks
                 voteButtons[i].gameObject.SetActive(true);
                 voteTextButtons[i].text = PlayerMovmant.players[i].stats.list["Name"].ToString();
                 int i0 = i;
-                voteButtons[i].OnInteract.AddListener(() => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); });
+                
+                EventTrigger.Entry onPointerDown = new EventTrigger.Entry();
+                onPointerDown.eventID = EventTriggerType.PointerDown;
+                onPointerDown.callback.AddListener((e) => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); });
+      
+                voteButtons[i].triggers.Add(onPointerDown);
             }
             else
             {   
