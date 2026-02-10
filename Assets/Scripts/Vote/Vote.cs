@@ -11,10 +11,16 @@ public class Vote : MonoBehaviourPunCallbacks
     [SerializeField] Button[] voteButtons;
     [SerializeField] TMP_Text[] voteTextButtons;
     [SerializeField] Animator animator;
+    PlayerMovmant playerMovmant;
     
     public static List<int> votes = new List<int>();
 
-
+    [PunRPC]
+    public void RPC_SetPlayer(int player)
+    {
+        playerMovmant = PhotonView.Find(player).GetComponent<PlayerMovmant>();
+    }
+    
     private void Awake()
     {
         GameManager.Instance.OnStartRound.AddListener(StartRound);
@@ -22,6 +28,7 @@ public class Vote : MonoBehaviourPunCallbacks
 
     public void StartRound()
     {
+        if(!PlayerMovmant.players.Contains(playerMovmant)) return;
         for (int i = 0; i < voteButtons.Length; i++)
         {
             if (PlayerMovmant.players.Count > i)
@@ -42,6 +49,9 @@ public class Vote : MonoBehaviourPunCallbacks
     [PunRPC]
     public void AddVote(int player)
     {
+        animator.SetBool("isShowPanel", false);
         votes.Add(player);
+        Debug.Log(votes.Count + " | " + PlayerMovmant.players.Count);
+        if(votes.Count == PlayerMovmant.players.Count) GameManager.NextRound = DateTime.Now.AddSeconds(1);
     }
 }

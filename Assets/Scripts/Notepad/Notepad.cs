@@ -24,6 +24,11 @@ public class Notepad : MonoBehaviour
         }
         Debug.Log(playersStats.Count);
         SetIndex(0);
+        
+        PlayerMovmant.onStatOpened.AddListener((p) =>
+        {
+            if (p.stats == playersStats[index]) SetIndex(index);
+        });
     }
 
     public void SetIndex(int index)
