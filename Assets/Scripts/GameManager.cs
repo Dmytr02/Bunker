@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         foreach (var player in PlayerMovmant.players)
         {
             points += costs[("profession", player.stats.list["profession"])];
-            points += (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
+            points += (int)player.stats.list["experience"] > 15 ? 4 : (int)player.stats.list["experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
             points += (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
             points += costs[("Healthe", player.stats.list["Healthe"])];
             points += costs[("phobias", player.stats.list["phobias"])];

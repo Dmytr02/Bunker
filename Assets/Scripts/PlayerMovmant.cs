@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
@@ -139,12 +140,12 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     
     public void SendAllStats()
     {
-        foreach (var i in stats.list)
-        {
-            photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value);
-            stats.isShowed[i.Key] = true;
-            Debug.Log(i.Key + " - Sended");
-        }
+            foreach (var i in stats.list.ToDictionary(k => k.Key, v => v.Value))
+            {
+                photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value);
+                stats.isShowed[i.Key] = true;
+                Debug.Log(i.Key + " - Sended");
+            }
     }
 
     public void sendMassage(string msg)
