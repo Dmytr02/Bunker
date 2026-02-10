@@ -207,9 +207,9 @@ public class PlayerStats
         Phobias Phobia = (Phobias)list["phobias"];
         Hobby Hobby = (Hobby)list["hobby"];
         Personality personality = (Personality)list["personality"];
-        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}") +
-               (experience==-1?"":$"experience - {experience} years") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}") +
-               (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}")+(personality==Personality.unknown?"":$"Personality - {personality}");
+        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}\n") +
+               (experience==-1?"":$"experience - {experience} years\n") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
+               (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}\n")+(personality==Personality.unknown?"":$"Personality - {personality}\n");
     }
 }
 
