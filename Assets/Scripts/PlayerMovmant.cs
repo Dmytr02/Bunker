@@ -141,7 +141,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     {
         foreach (var i in stats.list)
         {
-            photonView.RPC("RPC_AllStats", RpcTarget.All, i.Key, i.Value);
+            photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value);
             stats.isShowed[i.Key] = true;
             Debug.Log(i.Key + " - Sended");
         }
