@@ -49,7 +49,7 @@ public class Vote : MonoBehaviourPunCallbacks
                 
                 EventTrigger.Entry onPointerDown = new EventTrigger.Entry();
                 onPointerDown.eventID = EventTriggerType.PointerDown;
-                onPointerDown.callback.AddListener((e) => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); });
+                onPointerDown.callback.AddListener((e) => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");});
       
                 voteButtons[i].triggers.Add(onPointerDown);
             }
@@ -65,7 +65,6 @@ public class Vote : MonoBehaviourPunCallbacks
     [PunRPC]
     public void AddVote(int player)
     {
-        animator.SetBool("isShowPanel", false);
         votes.Add(player);
         Debug.Log(votes.Count + " | " + PlayerMovmant.players.Count);
         if(votes.Count == PlayerMovmant.players.Count) GameManager.NextRound = DateTime.Now.AddSeconds(1);
