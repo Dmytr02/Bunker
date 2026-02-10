@@ -121,7 +121,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
         players.Remove(this);
         onPlayersRemoved?.Invoke();
         
-        gameObject.SetActive(false);
+        playerMash.gameObject.SetActive(false);
         //GetComponent<Renderer>().enabled = false;
     }
     
