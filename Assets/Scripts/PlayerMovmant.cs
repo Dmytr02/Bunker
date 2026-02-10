@@ -19,7 +19,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
 
     [SerializeField] private Massage massage;
     [SerializeField] private float sensivity = 1;
-    [SerializeField] private Outline playerMash;
+    public Outline playerMash;
     public Vector2 lookAngelRangeX;
     public Vector2 lookAngelRangeY;
     public PlayerStats stats;
