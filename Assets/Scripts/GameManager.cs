@@ -126,12 +126,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         int points = 0;
         foreach (var player in PlayerMovmant.players)
         {
-            points += costs[("profession", player.stats.list["profession"])];
+            points += costs[("profession", (Professions)player.stats.list["profession"])];
             points += (int)player.stats.list["experience"] > 15 ? 4 : (int)player.stats.list["experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
             points += (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
-            points += costs[("Healthe", player.stats.list["Healthe"])];
-            points += costs[("phobias", player.stats.list["phobias"])];
-            points += costs[("hobby", player.stats.list["hobby"])];
+            points += costs[("Healthe", (Healthe)player.stats.list["Healthe"])];
+            points += costs[("phobias", (Phobias)player.stats.list["phobias"])];
+            points += costs[("hobby", (Hobby)player.stats.list["hobby"])];
         }
         
         List<int> sinergies = new List<int>();
