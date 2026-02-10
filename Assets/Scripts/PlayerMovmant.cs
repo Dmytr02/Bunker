@@ -187,7 +187,7 @@ public class PlayerStats
             list["Healthe"] =  (Healthe)Random.Range(1, 5);
             list["phobias"] =  (Phobias)Random.Range(1, 7);
             list["hobby"] =  (Hobby)Random.Range(1, 10);
-            
+            list["personality"] =  (Personality)Random.Range(1, 14);
         }
 
         foreach (var i in list)
@@ -206,10 +206,10 @@ public class PlayerStats
         Healthe Healthe = (Healthe)list["Healthe"];
         Phobias Phobia = (Phobias)list["phobias"];
         Hobby Hobby = (Hobby)list["hobby"];
-        Personality Personality = (Personality)list["personality"];
+        Personality personality = (Personality)list["personality"];
         return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}") +
                (experience==-1?"":$"experience - {experience} years") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}") +
-               (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}")+(Personality==Personality.unknown?"":$"Personality - {Personality}");
+               (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}")+(personality==Personality.unknown?"":$"Personality - {personality}");
     }
 }
 
