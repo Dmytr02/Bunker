@@ -138,10 +138,26 @@ public class GameManager : MonoBehaviourPunCallbacks
         List<int> sinergies = new List<int>();
         List<int> antiSinergies = new List<int>();
 
-        switch (PlayerMovmant.players[0].stats.list["profession"])
+        checkSinergies(PlayerMovmant.players[0].stats.list, PlayerMovmant.players[1].stats.list, ref sinergies, ref antiSinergies);
+        checkSinergies(PlayerMovmant.players[1].stats.list, PlayerMovmant.players[0].stats.list, ref sinergies, ref antiSinergies);
+        
+        sinergies.Sort();
+        antiSinergies.Sort();
+
+        if(sinergies.Count > 0) points += sinergies[^1];
+        if(sinergies.Count > 1) points += sinergies[^2];
+        
+        if(antiSinergies.Count > 0) points += antiSinergies[0];
+        
+        Debug.Log(points);
+    }
+
+    void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, ref List<int> sinergies, ref List<int> antiSinergies)
+    {
+        switch (player1["profession"])
         {
             case Professions.Doctor:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.scientist:
                         sinergies.Add(2);
@@ -153,7 +169,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         sinergies.Add(1);
                         break;
                 }
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Reliable:
                         sinergies.Add(1);
@@ -164,7 +180,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.enginee:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.Electrician:
                         sinergies.Add(2);
@@ -173,7 +189,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         sinergies.Add(1);
                         break;
                 }
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Logical:
                         sinergies.Add(1);
@@ -181,13 +197,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.scientist:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.biologistChemist:
                         sinergies.Add(2);
                         break;
                 }
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Logical:
                         sinergies.Add(1);
@@ -195,7 +211,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.psychologist:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.SocialWorker:
                         sinergies.Add(2);
@@ -204,7 +220,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         sinergies.Add(2);
                         break;
                 }
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Communicator:
                         sinergies.Add(1);
@@ -212,7 +228,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Farmer:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.RescueWorker:
                         sinergies.Add(1);
@@ -223,13 +239,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.RescueWorker:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.Soldier:
                         sinergies.Add(1);
                         break;
                 }
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Adaptable:
                         sinergies.Add(1);
@@ -237,13 +253,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Journalist:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.scientist:
                         sinergies.Add(1);
                         break;
                 }
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Observant:
                         sinergies.Add(1);
@@ -251,7 +267,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Teacher:
-                switch (PlayerMovmant.players[1].stats.list["profession"])
+                switch (player2["profession"])
                 {
                     case Professions.Student:
                         sinergies.Add(1);
@@ -259,7 +275,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.biologistChemist:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Rational:
                         sinergies.Add(1);
@@ -267,7 +283,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Soldier:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Stress_resistant:
                         sinergies.Add(1);
@@ -275,7 +291,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Professions.Actor:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Communicator:
                         sinergies.Add(1);
@@ -284,10 +300,10 @@ public class GameManager : MonoBehaviourPunCallbacks
                 break;
         }
 
-        switch (PlayerMovmant.players[0].stats.list["personality"])
+        switch (player1["personality"])
         {
             case Personality.Leader:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Reliable:
                         sinergies.Add(2);
@@ -301,7 +317,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Logical:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Rational:
                         sinergies.Add(1);
@@ -312,7 +328,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Stress_resistant:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Reliable:
                         sinergies.Add(1);
@@ -323,7 +339,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Communicator:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Observant:
                         sinergies.Add(1);
@@ -337,7 +353,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 break;
             case Personality.Rational:
-                switch (PlayerMovmant.players[1].stats.list["personality"])
+                switch (player2["personality"])
                 {
                     case Personality.Impulsive:
                         sinergies.Add(1);
@@ -346,52 +362,42 @@ public class GameManager : MonoBehaviourPunCallbacks
                 break;
         }
 
-        if ((int)PlayerMovmant.players[0].stats.list["Age"] >= 41 &&
-            (int)PlayerMovmant.players[0].stats.list["Age"] <= 60 &&
-            (int)PlayerMovmant.players[1].stats.list["Age"] >= 18 &&
-            (int)PlayerMovmant.players[1].stats.list["Age"] <= 25)
+        if ((int)player1["Age"] >= 41 &&
+            (int)player1["Age"] <= 60 &&
+            (int)player2["Age"] >= 18 &&
+            (int)player2["Age"] <= 25)
         {
             sinergies.Add(1);
         }
-        if ((int)PlayerMovmant.players[0].stats.list["Age"] >= 26 &&
-            (int)PlayerMovmant.players[0].stats.list["Age"] <= 40 &&
-            (int)PlayerMovmant.players[1].stats.list["Age"] >= 26 &&
-            (int)PlayerMovmant.players[1].stats.list["Age"] <= 40)
+        if ((int)player1["Age"] >= 26 &&
+            (int)player1["Age"] <= 40 &&
+            (int)player2["Age"] >= 26 &&
+            (int)player2["Age"] <= 40)
         {
             sinergies.Add(1);
         }
-        if ((int)PlayerMovmant.players[0].stats.list["Age"] >= 61 &&
-            (int)PlayerMovmant.players[1].stats.list["Age"] >= 61)
+        if ((int)player1["Age"] >= 61 &&
+            (int)player2["Age"] >= 61)
         {
             antiSinergies.Add(-1);
-        }if ((int)PlayerMovmant.players[0].stats.list["experience"] >= 1 &&
-            (int)PlayerMovmant.players[0].stats.list["experience"] <= 3 &&
-            (int)PlayerMovmant.players[1].stats.list["experience"] >= 9 &&
-            (int)PlayerMovmant.players[1].stats.list["experience"] <= 15)
+        }if ((int)player1["experience"] >= 1 &&
+            (int)player1["experience"] <= 3 &&
+            (int)player2["experience"] >= 9 &&
+            (int)player2["experience"] <= 15)
         {
             sinergies.Add(1);
         }
-        if ((int)PlayerMovmant.players[0].stats.list["experience"] >= 4 &&
-            (int)PlayerMovmant.players[0].stats.list["experience"] <= 8 &&
-            (int)PlayerMovmant.players[1].stats.list["experience"] >= 16)
+        if ((int)player1["experience"] >= 4 &&
+            (int)player1["experience"] <= 8 &&
+            (int)player2["experience"] >= 16)
         {
             sinergies.Add(1);
         }
-        if ((int)PlayerMovmant.players[0].stats.list["experience"] >= 16 &&
-            (int)PlayerMovmant.players[1].stats.list["experience"] >= 16)
+        if ((int)player1["experience"] >= 16 &&
+            (int)player2["experience"] >= 16)
         {
             antiSinergies.Add(-1);
         }
-        
-        sinergies.Sort();
-        antiSinergies.Sort();
-
-        if(sinergies.Count > 0) points += sinergies[^1];
-        if(sinergies.Count > 1) points += sinergies[^2];
-        
-        if(antiSinergies.Count > 0) points += antiSinergies[0];
-        
-        Debug.Log(points);
     }
     
     [PunRPC]
