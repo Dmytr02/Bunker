@@ -24,12 +24,53 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     private static readonly Dictionary<(string, object), int> costs = new Dictionary<(string, object), int>()
     {
-        {("profession", Professions.Actor), 2},
+        {("profession", Professions.Doctor), 6},
+        {("profession", Professions.enginee), 6},
+        {("profession", Professions.Actor), 1},
         {("profession", Professions.Artist), 1},
-        {("Healthe", Healthe.excellent), 4},
-        {("Healthe", Healthe.critical), 0},
-        {("phobias", Phobias.Claustrophobia), 1},
-        {("hobby", Hobby.Drawing), 1}
+        {("profession", Professions.biologistChemist), 5},
+        {("profession", Professions.Electrician), 3},
+        {("profession", Professions.Farmer), 4},
+        {("profession", Professions.Journalist), 2},
+        {("profession", Professions.psychologist), 4},
+        {("profession", Professions.RescueWorker), 3},
+        {("profession", Professions.scientist), 5},
+        {("profession", Professions.SocialWorker), 2},
+        {("profession", Professions.Soldier), 3},
+        {("profession", Professions.Student), 0},
+        {("profession", Professions.Teacher), 2},
+        {("Healthe", Healthe.excellent), 3},
+        {("Healthe", Healthe.average), 1},
+        {("Healthe", Healthe.poor), -2},
+        {("Healthe", Healthe.critical), -3},
+        {("phobias", Phobias.Claustrophobia), -4},
+        {("phobias", Phobias.Anxiety), -1},
+        {("phobias", Phobias.FearOfBlood), -2},
+        {("phobias", Phobias.FearOfPublicSpeaking), 0},
+        {("phobias", Phobias.FearOfTheDark), -1},
+        {("phobias", Phobias.NoPhobias), 1},
+        {("hobby", Hobby.Drawing), 1},
+        {("hobby", Hobby.Fishing_Hunting), 1},
+        {("hobby", Hobby.Chemistry), 1},
+        {("hobby", Hobby.Writing), 1},
+        {("hobby", Hobby.Fitness), 1},
+        {("hobby", Hobby.Music), 0},
+        {("hobby", Hobby.Knitting), 0},
+        {("hobby", Hobby.ComputerGames), 0},
+        {("hobby", Hobby.NoHobbies), 0},
+        {("personality", Personality.Leader), 3},
+        {("personality", Personality.Logical), 2},
+        {("personality", Personality.Stress_resistant), 2},
+        {("personality", Personality.Communicator), 2},
+        {("personality", Personality.Rational), 1},
+        {("personality", Personality.Reliable), 1},
+        {("personality", Personality.Adaptable), 0},
+        {("personality", Personality.Observant), 0},
+        {("personality", Personality.Panicker), -3},
+        {("personality", Personality.Unstable), -2},
+        {("personality", Personality.Egoist), -2},
+        {("personality", Personality.Impulsive), -1},
+        {("personality", Personality.Withdrawn), -1},
     };
     
     private void Awake()
@@ -86,11 +127,230 @@ public class GameManager : MonoBehaviourPunCallbacks
         foreach (var player in PlayerMovmant.players)
         {
             points += costs[("profession", player.stats.list["profession"])];
-            points += (int)player.stats.list["Experience"] > 20 ? 4 : (int)player.stats.list["Experience"] > 15 ? 3 : (int)player.stats.list["Experience"] > 10 ? 2 : (int)player.stats.list["Experience"] > 3 ? 1 : 0;
-            points += (int)player.stats.list["Age"] > 80 ? 0 : (int)player.stats.list["Age"] > 50 ? 1 : (int)player.stats.list["Age"] > 40 ? 2 : (int)player.stats.list["Age"] > 30 ? 3 : 4;
+            points += (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
+            points += (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
             points += costs[("Healthe", player.stats.list["Healthe"])];
             points += costs[("phobias", player.stats.list["phobias"])];
             points += costs[("hobby", player.stats.list["hobby"])];
+        }
+        
+        List<int> sinergies = new List<int>();
+        List<int> antiSinergies = new List<int>();
+
+        switch (PlayerMovmant.players[0].stats.list["profession"])
+        {
+            case Professions.Doctor:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.scientist:
+                        sinergies.Add(2);
+                        break;
+                    case Professions.biologistChemist:
+                        sinergies.Add(2);
+                        break;
+                    case Professions.psychologist:
+                        sinergies.Add(1);
+                        break;
+                }
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Reliable:
+                        sinergies.Add(1);
+                        break;
+                    case Personality.Stress_resistant:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.enginee:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.Electrician:
+                        sinergies.Add(2);
+                        break;
+                    case Professions.scientist:
+                        sinergies.Add(1);
+                        break;
+                }
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Logical:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.scientist:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.biologistChemist:
+                        sinergies.Add(2);
+                        break;
+                }
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Logical:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.psychologist:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.SocialWorker:
+                        sinergies.Add(2);
+                        break;
+                    case Professions.Teacher:
+                        sinergies.Add(2);
+                        break;
+                }
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Communicator:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.Farmer:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.RescueWorker:
+                        sinergies.Add(1);
+                        break;
+                    case Professions.Soldier:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.RescueWorker:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.Soldier:
+                        sinergies.Add(1);
+                        break;
+                }
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Adaptable:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.Journalist:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.scientist:
+                        sinergies.Add(1);
+                        break;
+                }
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Observant:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.Teacher:
+                switch (PlayerMovmant.players[1].stats.list["profession"])
+                {
+                    case Professions.Student:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.biologistChemist:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Rational:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.Soldier:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Stress_resistant:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+            case Professions.Actor:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Communicator:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+        }
+
+        switch (PlayerMovmant.players[0].stats.list["personality"])
+        {
+            case Personality.Leader:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Reliable:
+                        sinergies.Add(2);
+                        break;
+                    case Personality.Communicator:
+                        sinergies.Add(1);
+                        break;
+                    case Personality.Panicker:
+                        antiSinergies.Add(-2);
+                        break;
+                }
+                break;
+            case Personality.Logical:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Rational:
+                        sinergies.Add(1);
+                        break;
+                    case Personality.Unstable:
+                        sinergies.Add(-1);
+                        break;
+                }
+                break;
+            case Personality.Stress_resistant:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Reliable:
+                        sinergies.Add(1);
+                        break;
+                    case Personality.Panicker:
+                        sinergies.Add(-1);
+                        break;
+                }
+                break;
+            case Personality.Communicator:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Observant:
+                        sinergies.Add(1);
+                        break;
+                    case Personality.Egoist:
+                        sinergies.Add(-1);
+                        break;
+                    case Personality.Withdrawn:
+                        sinergies.Add(-1);
+                        break;
+                }
+                break;
+            case Personality.Rational:
+                switch (PlayerMovmant.players[1].stats.list["personality"])
+                {
+                    case Personality.Impulsive:
+                        sinergies.Add(1);
+                        break;
+                }
+                break;
+        }
+
+        if ((int)PlayerMovmant.players[1].stats.list["Age"] < 60 &&
+            (int)PlayerMovmant.players[1].stats.list["Age"] > 41 &&
+            (int)PlayerMovmant.players[1].stats.list["experience"] > 18 &&
+            (int)PlayerMovmant.players[1].stats.list["experience"] < 25)
+        {
+            sinergies.Add(1);
         }
         Debug.Log(points);
     }

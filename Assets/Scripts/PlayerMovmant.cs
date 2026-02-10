@@ -164,7 +164,8 @@ public class PlayerStats
         { "Age", -1 },
         { "Healthe", Healthe.unknown},
         { "phobias", Phobias.unknown},
-        {"hobby", Hobby.unknown}
+        { "hobby", Hobby.unknown },
+        { "personality", 1 }
     };
 
     public Dictionary<string, bool> isShowed = new Dictionary<string, bool>();
@@ -263,4 +264,22 @@ public enum Hobby
     Knitting,
     ComputerGames,
     NoHobbies
+}
+
+public enum Personality
+{
+    unknown,
+    Leader,
+    Logical,
+    Stress_resistant,
+    Communicator,
+    Rational,
+    Reliable,
+    Adaptable,
+    Observant,
+    Panicker,
+    Unstable,
+    Egoist,
+    Impulsive,
+    Withdrawn
 }
