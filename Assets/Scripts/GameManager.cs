@@ -345,13 +345,51 @@ public class GameManager : MonoBehaviourPunCallbacks
                 break;
         }
 
-        if ((int)PlayerMovmant.players[1].stats.list["Age"] < 60 &&
-            (int)PlayerMovmant.players[1].stats.list["Age"] > 41 &&
-            (int)PlayerMovmant.players[1].stats.list["experience"] > 18 &&
-            (int)PlayerMovmant.players[1].stats.list["experience"] < 25)
+        if ((int)PlayerMovmant.players[0].stats.list["Age"] >= 41 &&
+            (int)PlayerMovmant.players[0].stats.list["Age"] <= 60 &&
+            (int)PlayerMovmant.players[1].stats.list["Age"] >= 18 &&
+            (int)PlayerMovmant.players[1].stats.list["Age"] <= 25)
         {
             sinergies.Add(1);
         }
+        if ((int)PlayerMovmant.players[0].stats.list["Age"] >= 26 &&
+            (int)PlayerMovmant.players[0].stats.list["Age"] <= 40 &&
+            (int)PlayerMovmant.players[1].stats.list["Age"] >= 26 &&
+            (int)PlayerMovmant.players[1].stats.list["Age"] <= 40)
+        {
+            sinergies.Add(1);
+        }
+        if ((int)PlayerMovmant.players[0].stats.list["Age"] >= 61 &&
+            (int)PlayerMovmant.players[1].stats.list["Age"] >= 61)
+        {
+            antiSinergies.Add(-1);
+        }if ((int)PlayerMovmant.players[0].stats.list["experience"] >= 1 &&
+            (int)PlayerMovmant.players[0].stats.list["experience"] <= 3 &&
+            (int)PlayerMovmant.players[1].stats.list["experience"] >= 9 &&
+            (int)PlayerMovmant.players[1].stats.list["experience"] <= 15)
+        {
+            sinergies.Add(1);
+        }
+        if ((int)PlayerMovmant.players[0].stats.list["experience"] >= 4 &&
+            (int)PlayerMovmant.players[0].stats.list["experience"] <= 8 &&
+            (int)PlayerMovmant.players[1].stats.list["experience"] >= 16)
+        {
+            sinergies.Add(1);
+        }
+        if ((int)PlayerMovmant.players[0].stats.list["experience"] >= 16 &&
+            (int)PlayerMovmant.players[1].stats.list["experience"] >= 16)
+        {
+            antiSinergies.Add(-1);
+        }
+        
+        sinergies.Sort();
+        antiSinergies.Sort();
+
+        points += sinergies[^1];
+        points += sinergies[^2];
+        
+        points += antiSinergies[0];
+        
         Debug.Log(points);
     }
     
