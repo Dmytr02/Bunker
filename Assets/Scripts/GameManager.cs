@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         NextRound = DateTime.Now.AddSeconds(5);
         
         PhotonNetwork.Instantiate(notepad.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition, PlayerMovmant.player.transform.rotation * notepadRotation, 0);
-        PhotonNetwork.Instantiate(vote.name, PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * votePosition, PlayerMovmant.player.transform.rotation * voteRotation, 0).GetComponent<Vote>().photonView.RPC("RPC_SetPlayer", RpcTarget.All, PlayerMovmant.player.photonView.ViewID);
+        Instantiate(vote).GetComponent<Vote>().photonView.RPC("RPC_SetPlayer", RpcTarget.All, PlayerMovmant.player.photonView.ViewID);
         PlayerMovmant.player.SendStat("Name");
         //PlayerMovmant.player.SendStat("Age");
 
