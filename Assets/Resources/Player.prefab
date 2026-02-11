@@ -2235,6 +2235,7 @@ GameObject:
   - component: {fileID: 4904437595641330368}
   - component: {fileID: 9140180859158554225}
   - component: {fileID: 5200786673771075475}
+  - component: {fileID: 7269831460483727541}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2325,6 +2326,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7269831460483727541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560583178615006276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
+  image: {fileID: 2267787966667397136}
+  text: {fileID: 6689681768002364556}
 --- !u!1 &3597899098317459096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5845,7 +5860,6 @@ GameObject:
   - component: {fileID: 3481988302985094286}
   - component: {fileID: 8952333514883227578}
   - component: {fileID: 1350683935665433954}
-  - component: {fileID: -6282450858250914310}
   - component: {fileID: 3563365510869358066}
   - component: {fileID: -1449269225948917600}
   - component: {fileID: -2014500735724945677}
@@ -5853,7 +5867,6 @@ GameObject:
   - component: {fileID: 5268963455262111958}
   - component: {fileID: 8814160341181556128}
   - component: {fileID: -8589602696600337589}
-  - component: {fileID: 643397668043631206}
   - component: {fileID: 3915335748235773336}
   m_Layer: 0
   m_Name: Player
@@ -5920,44 +5933,10 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: -6282450858250914310}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-6282450858250914310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029092944813150332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!114 &3563365510869358066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5970,7 +5949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4d5424e1325024d9ff6bb85f06c63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  massage: {fileID: 643397668043631206}
+  massage: {fileID: 0}
   sensivity: 1
   playerMash: {fileID: 2298539964577330572}
   lookAngelRangeX: {x: -60, y: 60}
@@ -6186,20 +6165,6 @@ MonoBehaviour:
   onEndInteraction:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &643397668043631206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029092944813150332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Massage
-  image: {fileID: 2267787966667397136}
-  text: {fileID: 6689681768002364556}
 --- !u!114 &3915335748235773336
 MonoBehaviour:
   m_ObjectHideFlags: 0

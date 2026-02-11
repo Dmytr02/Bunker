@@ -36,9 +36,14 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     
     
     float yForce = 0;
-    void Start()
+
+    private void Awake()
     {
         stats = new PlayerStats(this, photonView.IsMine);
+    }
+
+    void Start()
+    {
         players.Add(this);
         if (photonView.IsMine)
         {
@@ -63,6 +68,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             GetComponent<Interactor>().enabled = false;
             enabled = false;
         }
+        //transform.rotation = Quaternion.LookRotation(Vector3.zero - new Vector3(transform.position.x, 0, transform.position.z), Vector3.up);
         
         StartCoroutine(onPlayersAddedInvoke());
     }
@@ -85,7 +91,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (UIController.instance.CurrentState is UIGameState)
+        if (UIController.instance.CurrentState is UIGameState && photonView.IsMine)
         {
             //Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
             Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Lerp(lookAngelRangeY.x, lookAngelRangeY.y, 1 - Mathf.Clamp01(Input.mousePosition.y / Screen.height)), Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), 0));
@@ -164,6 +170,12 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public void sendMassage(string msg)
     {
         massage.photonView.RPC("showMassage", RpcTarget.All, msg);
+    }
+
+    public void OnPhotonInstantiate(PhotonMessageInfo info)
+    {
+        object[] data = info.photonView.InstantiationData;
+        transform.rotation = (Quaternion)data[0];
     }
 }
 

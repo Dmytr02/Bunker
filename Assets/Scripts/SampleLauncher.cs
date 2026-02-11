@@ -1,6 +1,7 @@
 using System;
 using Photon.Pun;
 using UnityEngine;
+using Object = System.Object;
 
 public class SampleLauncher : MonoBehaviourPunCallbacks
 {
@@ -40,7 +41,7 @@ public class SampleLauncher : MonoBehaviourPunCallbacks
     [PunRPC]
     private void sendSpawnPoint(int index)
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoints[index].position, spawnPoints[index].rotation, 0);
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoints[index].position, spawnPoints[index].rotation, 0, new object[]{spawnPoints[index].rotation});
     }
 
     public void Start()
