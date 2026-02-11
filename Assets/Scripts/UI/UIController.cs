@@ -1,5 +1,7 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : StateMachine.StateMachine
 {
@@ -17,5 +19,11 @@ public class UIController : StateMachine.StateMachine
     private void Start()
     {
         Begin(new UIGameState(this));
+    }
+    
+    public void MainMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene(0);
     }
 }
