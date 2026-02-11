@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log(points);
         resultText.text = "you have " + points + " points.\n"
             + (points > 15 ? "You Win!" : points > 10 ? "You survive" : "You lost :(");
+        resultText.gameObject.SetActive(true);
     }
 
     void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, ref List<int> sinergies, ref List<int> antiSinergies)
@@ -476,6 +477,5 @@ public class GameManager : MonoBehaviourPunCallbacks
         NextRound = DateTime.Now.AddSeconds(60);
         photonView.RPC(nameof(StartRound), RpcTarget.All);
         isVoting = true;
-
     }
 }
