@@ -47,6 +47,7 @@ public class Vote : MonoBehaviourPunCallbacks
                 voteTextButtons[i].text = PlayerMovmant.players[i].stats.list["Name"].ToString();
                 int i0 = i;
                 
+                voteButtons[i].triggers.Clear(); 
                 EventTrigger.Entry onPointerDown = new EventTrigger.Entry();
                 onPointerDown.eventID = EventTriggerType.PointerDown;
                 onPointerDown.callback.AddListener((e) => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");});
