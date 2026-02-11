@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         Debug.Log("Starting game");
-        NextRound = DateTime.Now.AddSeconds(5);
+        TimeToEndRound(5);
 
         PhotonNetwork.Instantiate(notepad.name,
             PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition,
@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartRound()
     {
+        Debug.Log("Starting round 1");
         if (PlayerMovmant.players.Count <= 2)
         {
             PlayerMovmant.player.SendAllStats();
@@ -429,12 +430,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     void Update()
     {
+        //Debug.Log("1");
         if(!PhotonNetwork.IsMasterClient) return;
+
+        Debug.Log("2");
+
         photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { (NextRound-DateTime.Now).ToString(@"mm\:ss") + (isVoting?" to end of voting":"") });
+
         if (NextRound < DateTime.Now)
         {
+            Debug.Log("3");
             if (Vote.votes.Count > 0)
             {
+                Debug.Log("4");
                 var groups = Vote.votes
                     .GroupBy(n => n)
                     .Select(g => new { Value = g.Key, Count = g.Count() })
@@ -445,6 +453,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 if (groups.Count < 2 || chosenPlayer.Count != groups[1].Count)
                     PhotonView.Find(chosenPlayer.Value).RPC("RPC_expel", /*PhotonView.Find(chosenPlayer.Value).Owner*/ RpcTarget.All);
+
+                Debug.Log("5");
                 Vote.votes = new List<int>();
                 photonView.RPC("EndRound", RpcTarget.All);
                 NextRound = DateTime.Now.AddSeconds(5);
@@ -452,10 +462,20 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                NextRound = DateTime.Now.AddSeconds(60);
-                photonView.RPC("StartRound", RpcTarget.All);
-                isVoting = true;
+              
+                StartNewRound();
             }
         }
+        Debug.Log("7");
+    }
+
+    private void StartNewRound()
+    {
+        Debug.Log("Start New Round");
+
+        NextRound = DateTime.Now.AddSeconds(60);
+        photonView.RPC(nameof(StartRound), RpcTarget.All);
+        isVoting = true;
+
     }
 }
