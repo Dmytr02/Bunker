@@ -63,7 +63,6 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
             
             SendStat("Name");
             StatsController.Instance.Start_();
-            Vote.Instance.photonView.RPC("RPC_SetPlayer", RpcTarget.All, photonView.ViewID);
         }
         else
         {
