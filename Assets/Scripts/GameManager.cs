@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public UnityEvent OnStartRound;
     public UnityEvent OnEndRound;
     
+    bool showTimer = false;
+    bool isVoting = false;
+    
     private static readonly Dictionary<(string, object), int> costs = new Dictionary<(string, object), int>()
     {
         {("Profession", Professions.Doctor), 6},
@@ -110,6 +113,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         //StartRound();
         if(PhotonNetwork.IsMasterClient) PhotonNetwork.CurrentRoom.IsOpen = false;
+        showTimer =  true;
     }
     
     
@@ -121,6 +125,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             PlayerMovmant.player.SendAllStats();
             Invoke("CalculatePoints", 5);
+            showTimer = false;
         }
         else
         {
@@ -419,12 +424,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void UpdateTimer(string message)
     {
-        timerText.text = message;
+        if (showTimer) timerText.text = message;
+        else timerText.text = "";
     }
     void Update()
     {
         if(!PhotonNetwork.IsMasterClient) return;
-        photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { (NextRound-DateTime.Now).ToString(@"mm\:ss") + " to end of voting" });
+        photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { (NextRound-DateTime.Now).ToString(@"mm\:ss") + (isVoting?" to end of voting":"") });
         if (NextRound < DateTime.Now)
         {
             if (Vote.votes.Count > 0)
@@ -442,11 +448,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 Vote.votes = new List<int>();
                 photonView.RPC("EndRound", RpcTarget.All);
                 NextRound = DateTime.Now.AddSeconds(5);
+                isVoting = false;
             }
             else
             {
                 NextRound = DateTime.Now.AddSeconds(60);
                 photonView.RPC("StartRound", RpcTarget.All);
+                isVoting = true;
             }
         }
     }
