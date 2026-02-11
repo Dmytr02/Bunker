@@ -48,15 +48,24 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
         SetIndex(index - 1);
     }
 
+    private object[] data;
+
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
-        object[] data = info.photonView.InstantiationData;
-        PlayerMovmant.onPlayersRemoved.AddListener(() =>
+        data = info.photonView.InstantiationData;
+        PlayerMovmant.onPlayersRemoved.AddListener(tryDestroy);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerMovmant.onPlayersRemoved.RemoveListener(tryDestroy);
+    }
+
+    void tryDestroy()
+    {
+        if(!PlayerMovmant.players.Contains(PhotonView.Find((int)data[0]).GetComponent<PlayerMovmant>()))
         {
-            if(!PlayerMovmant.players.Contains(PhotonView.Find((int)data[0]).GetComponent<PlayerMovmant>()))
-            {
-                Destroy(gameObject);
-            }
-        });
+            Destroy(gameObject);
+        }
     }
 }
