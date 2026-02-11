@@ -32,6 +32,8 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public static UnityEvent onPlayersAdded =  new UnityEvent();
     public static UnityEvent onPlayersRemoved =  new UnityEvent();
     
+    public static UnityEvent onPlayersSelected =  new UnityEvent();
+    
     public static UnityEvent<PlayerMovmant> onStatOpened =  new UnityEvent<PlayerMovmant>();
     
     
@@ -125,6 +127,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public void RPC_expel(PhotonMessageInfo info)
     {
         players.Remove(this);
+        onPlayersSelected?.Invoke();
         onPlayersRemoved?.Invoke();
         
         playerMash.gameObject.SetActive(false);

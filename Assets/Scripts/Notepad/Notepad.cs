@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -53,12 +54,12 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         data = info.photonView.InstantiationData;
-        PlayerMovmant.onPlayersRemoved.AddListener(tryDestroy);
+        PlayerMovmant.onPlayersSelected.AddListener(tryDestroy);
     }
 
     private void OnDestroy()
     {
-        PlayerMovmant.onPlayersRemoved.RemoveListener(tryDestroy);
+        PlayerMovmant.onPlayersSelected.RemoveListener(tryDestroy);
     }
 
     void tryDestroy()
@@ -68,4 +69,5 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
             Destroy(gameObject);
         }
     }
+    
 }
