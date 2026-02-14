@@ -10,7 +10,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class PlayerMovmant : MonoBehaviourPunCallbacks
+public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
 {
     //[SerializeField] CharacterController characterController;
     //[SerializeField] float speed = 2.0f;
@@ -23,6 +23,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public Vector2 lookAngelRangeX;
     public Vector2 lookAngelRangeY;
     public PlayerStats stats;
+    public int index;
     
     public VoiceController voiceController;
     
@@ -86,6 +87,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     private void OnDestroy()
     {
         players.Remove(this);
+        SampleLauncher.Instance.spawnPoints[index].gameObject.SetActive(true);
         onPlayersRemoved?.Invoke();
     }
 
@@ -177,7 +179,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
         object[] data = info.photonView.InstantiationData;
-        transform.rotation = (Quaternion)data[0];
+        index = (int)data[0];
     }
 }
 

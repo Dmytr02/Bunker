@@ -59,6 +59,7 @@ MonoBehaviour:
   - RPC_SetPlayer
   - RPC_SendRotation
   - RPC_SendStartRotation
+  - RPC_UodateColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

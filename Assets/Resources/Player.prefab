@@ -5868,6 +5868,7 @@ GameObject:
   - component: {fileID: 8814160341181556128}
   - component: {fileID: -8589602696600337589}
   - component: {fileID: 3915335748235773336}
+  - component: {fileID: 5667084533819937715}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5954,6 +5955,7 @@ MonoBehaviour:
   playerMash: {fileID: 2298539964577330572}
   lookAngelRangeX: {x: -60, y: 60}
   lookAngelRangeY: {x: -30, y: 60}
+  index: 0
   voiceController: {fileID: 3915335748235773336}
 --- !u!143 &-1449269225948917600
 CharacterController:
@@ -6183,6 +6185,19 @@ MonoBehaviour:
   microphoneOn: {fileID: 21300000, guid: 892918cd654c16541841df2748b9fd13, type: 3}
   microphoneOff: {fileID: 21300000, guid: f4f092e390f601c4fb163b34ee442ebb, type: 3}
   audioSource: {fileID: 5268963455262111958}
+--- !u!114 &5667084533819937715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029092944813150332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67324c3c273744542b8b97058aa9c490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorRandoizer
+  outline: {fileID: 2298539964577330572}
 --- !u!1 &9035112119574331463
 GameObject:
   m_ObjectHideFlags: 0

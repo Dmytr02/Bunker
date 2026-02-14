@@ -6,7 +6,14 @@ using Object = System.Object;
 public class SampleLauncher : MonoBehaviourPunCallbacks
 {
     public PhotonView playerPrefab;
-	[SerializeField] private Transform[] spawnPoints;
+	public Transform[] spawnPoints;
+    public static SampleLauncher Instance;
+
+    private void Awake()
+    {
+        if(Instance ==  null) Instance = this;
+        else Destroy(this);
+    }
     /*void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -41,7 +48,7 @@ public class SampleLauncher : MonoBehaviourPunCallbacks
     [PunRPC]
     private void sendSpawnPoint(int index)
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoints[index].position, spawnPoints[index].rotation, 0, new object[]{spawnPoints[index].rotation});
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoints[index].position, spawnPoints[index].rotation, 0, new object[]{index});
     }
 
     public void Start()
