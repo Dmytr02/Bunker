@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -11,7 +12,17 @@ public class Tutorial : MonoBehaviour
     [SerializeField] Animator animator;
     
     public bool inProgress = false;
-    
+
+    #if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            endTutorial();
+        }
+    }
+    #endif
+
     private int index = 0;
     void Start()
     {

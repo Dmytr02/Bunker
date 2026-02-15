@@ -1,11 +1,14 @@
 using System;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class UIController : StateMachine.StateMachine
 {
     public GameObject PousePanel;
+    public Settings SettingsPanel;
+    public EventTrigger SettingsButton;
     public CommandManager commandManager;
     
     public static UIController instance;

@@ -7,6 +7,7 @@ public class Button : MonoBehaviour, IInteractable
 
     public void StartInteract(Interactor interactor, RaycastHit hit,  bool isFirst)
     {
+        if(!enabled) return;
         if(!isFirst) return;
         Debug.Log("Button Interacting...");
         OnInteract?.Invoke();

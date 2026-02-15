@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     [SerializeField] List<Slider> Sliders = new List<Slider>();
+    public List<TMP_Text> playerVolumeSliderNames = new();
     [SerializeField] AudioMixer AudioMixer;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] Toggle fullscreenToggle;
