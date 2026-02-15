@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 200903704}
   - component: {fileID: 200903703}
   - component: {fileID: 200903702}
+  - component: {fileID: 200903705}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -187,6 +188,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 200903705}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#6ECB40'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 200903705}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#8FC077'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &200903703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200903700}
   m_CullTransparentMesh: 1
+--- !u!114 &200903705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200903700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 200903703}
 --- !u!1 &230722132
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +283,7 @@ GameObject:
   - component: {fileID: 230722136}
   - component: {fileID: 230722135}
   - component: {fileID: 230722134}
+  - component: {fileID: 230722137}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -293,6 +340,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 230722137}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#6ECB40'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 230722137}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#8FC077'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &230722135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +410,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230722132}
   m_CullTransparentMesh: 1
+--- !u!114 &230722137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230722132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 230722135}
 --- !u!1 &321740342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1180,7 @@ GameObject:
   - component: {fileID: 554507224}
   - component: {fileID: 554507223}
   - component: {fileID: 554507222}
+  - component: {fileID: 554507225}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -1144,6 +1237,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 975445418}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#23A600'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 975445418}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#448034'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &554507223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,6 +1307,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554507220}
   m_CullTransparentMesh: 1
+--- !u!114 &554507225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554507220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 554507223}
 --- !u!1 &626843894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,6 +2169,7 @@ GameObject:
   - component: {fileID: 975445417}
   - component: {fileID: 975445416}
   - component: {fileID: 975445415}
+  - component: {fileID: 975445418}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -2087,6 +2226,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 975445418}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#59824E'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 975445418}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#23A600'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &975445416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2125,6 +2296,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975445413}
   m_CullTransparentMesh: 1
+--- !u!114 &975445418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975445413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 975445416}
 --- !u!1 &1001467871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,6 +2321,7 @@ GameObject:
   - component: {fileID: 1001467875}
   - component: {fileID: 1001467874}
   - component: {fileID: 1001467873}
+  - component: {fileID: 1001467876}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -2193,6 +2378,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1001467876}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#23A600'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1001467876}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#448034'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1001467874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2231,6 +2448,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001467871}
   m_CullTransparentMesh: 1
+--- !u!114 &1001467876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001467871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 1001467874}
 --- !u!1 &1036253509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,6 +2845,7 @@ GameObject:
   - component: {fileID: 1084199442}
   - component: {fileID: 1084199441}
   - component: {fileID: 1084199443}
+  - component: {fileID: 1084199444}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -2655,7 +2886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.47286075, g: 0.7169812, b: 0.3551086, a: 1}
+  m_Color: {r: 0.56078434, g: 0.7529412, b: 0.46666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2709,6 +2940,63 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1084199444}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#FFFFFF'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1084199444}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#6ECB40'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1084199444}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#8FC077'
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1084199444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084199439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 1084199441}
 --- !u!1 &1109354062
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,6 +4242,7 @@ GameObject:
   - component: {fileID: 1537094243}
   - component: {fileID: 1537094242}
   - component: {fileID: 1537094241}
+  - component: {fileID: 1537094244}
   m_Layer: 5
   m_Name: Join
   m_TagString: Untagged
@@ -4010,6 +4299,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1537094244}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#23A600'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1537094244}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#448034'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1537094242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,7 +4344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2650408, g: 0.5, b: 0.20518869, a: 1}
+  m_Color: {r: 0.34818068, g: 0.509434, b: 0.3051798, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4048,6 +4369,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537094239}
   m_CullTransparentMesh: 1
+--- !u!114 &1537094244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537094239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 1537094242}
 --- !u!1 &1621454427 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5053174684748895977, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
@@ -4778,6 +5112,7 @@ GameObject:
   - component: {fileID: 2117877514}
   - component: {fileID: 2117877513}
   - component: {fileID: 2117877512}
+  - component: {fileID: 2117877515}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -4834,6 +5169,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2117877515}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#59824E'
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2117877515}
+          m_TargetAssemblyTypeName: ImageColorChanger, Assembly-CSharp
+          m_MethodName: changeColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: '#23A600'
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2117877513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4847,7 +5214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2650408, g: 0.5, b: 0.20518869, a: 1}
+  m_Color: {r: 0.34901962, g: 0.50980395, b: 0.30588236, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4872,6 +5239,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117877510}
   m_CullTransparentMesh: 1
+--- !u!114 &2117877515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117877510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294d49b46e556a54d9ba2cec93efa51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageColorChanger
+  image: {fileID: 2117877513}
 --- !u!1001 &1853491732853485132
 PrefabInstance:
   m_ObjectHideFlags: 0

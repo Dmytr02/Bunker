@@ -27,7 +27,7 @@ public class UIPouseState : StateMachine.State
     override public void Exit()
     {
         (stateMachine as UIController).PousePanel.SetActive(false);
-        (stateMachine as UIController).SettingsButton.triggers.Clear();
+        (stateMachine as UIController).SettingsButton.triggers.RemoveAll(entry => entry.eventID == EventTriggerType.PointerClick);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
