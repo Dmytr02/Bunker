@@ -2235,7 +2235,6 @@ GameObject:
   - component: {fileID: 4904437595641330368}
   - component: {fileID: 9140180859158554225}
   - component: {fileID: 5200786673771075475}
-  - component: {fileID: 7269831460483727541}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2326,20 +2325,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7269831460483727541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3560583178615006276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Massage
-  image: {fileID: 2267787966667397136}
-  text: {fileID: 6689681768002364556}
 --- !u!1 &3597899098317459096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5869,6 +5854,7 @@ GameObject:
   - component: {fileID: -8589602696600337589}
   - component: {fileID: 3915335748235773336}
   - component: {fileID: 5667084533819937715}
+  - component: {fileID: 2591903214867792064}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5950,7 +5936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4d5424e1325024d9ff6bb85f06c63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  massage: {fileID: 0}
+  massage: {fileID: 2591903214867792064}
   sensivity: 1
   playerMash: {fileID: 2298539964577330572}
   lookAngelRangeX: {x: -60, y: 60}
@@ -6198,6 +6184,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColorRandoizer
   outline: {fileID: 2298539964577330572}
+--- !u!114 &2591903214867792064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029092944813150332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
+  image: {fileID: 2267787966667397136}
+  text: {fileID: 6689681768002364556}
+  canvas: {fileID: 8468324415025271155}
 --- !u!1 &9035112119574331463
 GameObject:
   m_ObjectHideFlags: 0

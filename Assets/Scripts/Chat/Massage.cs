@@ -7,6 +7,7 @@ public class Massage : MonoBehaviourPunCallbacks
 {
     [SerializeField] private RectTransform image;
     [SerializeField] private TMP_Text text;
+    [SerializeField] private Transform canvas;
     
 
     [PunRPC]
@@ -27,6 +28,6 @@ public class Massage : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        transform.LookAt(Camera.main.transform);
+        canvas.transform.LookAt(Camera.main.transform);
     }
 }

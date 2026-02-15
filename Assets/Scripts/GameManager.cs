@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         playerCountText.text = $"Connected {count}/6";
         if (count >= 6)
         {
-            startButton.enabled = true;
+            if(PhotonNetwork.IsMasterClient) startButton.enabled = true;
             startButton.GetComponent<Renderer>().material = activeMaterial;
         }
         else
