@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField joinRoomName;
     [SerializeField] GameObject newGamePanel;
     [SerializeField] GameObject joinGamePanel;
+    [SerializeField] GameObject settingsGamePanel;
     [SerializeField] GameObject mainMenuPanel;
 
     [SerializeField] LobbyAsset prefabLobbyAsset;
@@ -20,6 +21,8 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     
     [SerializeField] TMP_InputField nameInput;
     [SerializeField] GameObject namePanel;
+    [SerializeField] int maxCharsName;
+    [SerializeField] int minCharsName;
 
     Dictionary<string, LobbyAsset> lobbys = new Dictionary<string, LobbyAsset>();
 
@@ -33,6 +36,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
         {
             namePanel.SetActive(true);
             nameInput.onSubmit.AddListener(SetName);
+            nameInput.onValidateInput += ValidateChar;
         }
         if (PhotonNetwork.IsConnected)
         {
@@ -41,11 +45,37 @@ public class MainMenuController : MonoBehaviourPunCallbacks
         }
         else PhotonNetwork.ConnectUsingSettings(); // Connect to Photon
     }
+    private char ValidateChar(string text, int charIndex, char addedChar)
+    {
+        if (text.Length > maxCharsName) return '\0';
+        // 1. Проверка на первый символ (нельзя цифру)
+        if (charIndex == 0 && char.IsDigit(addedChar))
+        {
+            return '\0';
+        }
 
+        // 2. Разрешаем: a-z, A-Z, 0-9 и _
+        if (char.IsLetterOrDigit(addedChar) || addedChar == '_')
+        {
+            /*if (char.IsLetter(addedChar) && (addedChar < 'A' || addedChar > 'z'))
+            {
+                return '\0';
+            }*/
+            return addedChar;
+        }
+
+        return '\0'; 
+    }
     public void SetName(string name)
     {
+        if(name.Length < 3) return;
         PlayerPrefs.SetString("name", name);
         namePanel.SetActive(false);
+    }
+
+    public void copyNameToInputField()
+    {
+        nameInput.text = PlayerPrefs.GetString("name");
     }
 
     public override void OnConnectedToMaster()
@@ -66,12 +96,18 @@ public class MainMenuController : MonoBehaviourPunCallbacks
         mainMenuPanel.SetActive(false);
         joinGamePanel.SetActive(true);
     }
+    public void SettingsGame()
+    {
+        mainMenuPanel.SetActive(false);
+        settingsGamePanel.SetActive(true);
+    }
 
     public void MainMenu()
     {
         mainMenuPanel.SetActive(true);
         newGamePanel.SetActive(false);
         joinGamePanel.SetActive(false);
+        settingsGamePanel.SetActive(false);
     }
 
 
@@ -116,5 +152,10 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     {
         base.OnCreatedRoom();
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
