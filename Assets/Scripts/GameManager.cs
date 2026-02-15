@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ExitGames.Client.Photon;
 using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,6 +20,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text resultText;
 
+    [SerializeField] TMP_Text playerCountText;
+    [SerializeField] Button startButton;
+    [SerializeField] Material activeMaterial;
+    [SerializeField] Material inactiveMaterial;
+    
     public static GameManager Instance;
     
     public UnityEvent OnStartRound;
@@ -76,6 +83,38 @@ public class GameManager : MonoBehaviourPunCallbacks
         {("Personality", Personality.Impulsive), -1},
         {("Personality", Personality.Withdrawn), -1},
     };
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        onPlayersCountChanged();
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+        onPlayersCountChanged();
+    }
+
+    void onPlayersCountChanged()
+    {
+        int count = 0;
+        foreach (var i in PlayerMovmant.players)
+        {
+            if((bool)i.photonView.Owner.CustomProperties["EndTutorial"]) count++;
+        }
+        playerCountText.text = $"Connected {count}/6";
+        if (count >= 6)
+        {
+            startButton.enabled = true;
+            startButton.GetComponent<Renderer>().material = activeMaterial;
+        }
+        else
+        {
+            startButton.enabled = false;
+            startButton.GetComponent<Renderer>().material = inactiveMaterial;
+        }
+    }
     
     private void Awake()
     {
@@ -101,6 +140,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void StartGame()
     {
         Debug.Log("Starting game");
+        playerCountText.gameObject.SetActive(false);
+        
         TimeToEndRound(5);
 
         PhotonNetwork.Instantiate(notepad.name,

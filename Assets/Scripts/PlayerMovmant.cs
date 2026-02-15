@@ -87,7 +87,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     private void OnDestroy()
     {
         players.Remove(this);
-        SampleLauncher.Instance.spawnPoints[index].gameObject.SetActive(true);
+        if (!photonView.IsMine) SampleLauncher.Instance.spawnPoints[index].gameObject.SetActive(true);
         onPlayersRemoved?.Invoke();
     }
 
