@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         int count = 0;
         foreach (var i in PlayerMovmant.players)
         {
-            if((bool)i.photonView.Owner.CustomProperties["EndTutorial"]) count++;
+            if(i.photonView.Owner.CustomProperties.ContainsKey("EndTutorial") && (bool)i.photonView.Owner.CustomProperties["EndTutorial"]) count++;
+        
         }
         playerCountText.text = $"Connected {count}/6";
         if (count >= 3)
