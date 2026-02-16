@@ -17,6 +17,6 @@ public class LoadScene : MonoBehaviour
 
     private void Update()
     {
-        if (text != null && async != null) text.text = ((async.progress/0.9f) * 99).ToString("F0") + "%";
+        if (text != null && async != null) text.text = "Loading " + ((async.progress/0.9f) * 99).ToString("F0") + "%";
     }
 }
