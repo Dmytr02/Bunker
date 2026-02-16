@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] Quaternion voteRotation = Quaternion.identity;
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text resultText;
+    [SerializeField] TMP_Text resultNameText;
 
     [SerializeField] TMP_Text playerCountText;
     [SerializeField] Button startButton;
@@ -205,8 +206,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(antiSinergies.Count > 0) points += antiSinergies[0];
         
         Debug.Log(points);
-        resultText.text = "you have " + points + " points.\n"
-            + (points > 15 ? "You Win!" : points > 10 ? "You survive" : "You lost :(");
+        resultNameText.text = "Remaining players:  " + PlayerMovmant.players[0].name + ", " + PlayerMovmant.players[1].name;
+        resultText.text = "you have " + points + " points.\n" + (points > 15 ? "You Win!" : points > 10 ? "You survive" : "You lost :(");
         resultText.transform.parent.gameObject.SetActive(true);
     }
 
