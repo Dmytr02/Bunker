@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(antiSinergies.Count > 0) points += antiSinergies[0];
         
         Debug.Log(points);
-        resultNameText.text = "Remaining players:  " + PlayerMovmant.players[0].stats.list["Name"] + ", " + PlayerMovmant.players[1].stats.list["Name"];
+        resultNameText.text = "Remaining players:\n" + PlayerMovmant.players[0].stats.list["Name"] + ", " + PlayerMovmant.players[1].stats.list["Name"];
         resultText.text = "you have " + points + " points.\n" + (points > 15 ? "You Win!" : points > 10 ? "You survive" : "You lost :(");
         resultText.transform.parent.gameObject.SetActive(true);
     }
