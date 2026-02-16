@@ -1,4 +1,6 @@
 using System;
+using System.Threading.Tasks;
+using Photon.Pun;
 using Photon.Voice.Unity;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,7 +25,6 @@ public class VoiceController : MonoBehaviour
             recorder.TransmitEnabled = !recorder.TransmitEnabled; 
             microphoneImg.sprite = recorder.TransmitEnabled ? microphoneOn : microphoneOff;
         }));
-        if(PlayerMovmant.player.gameObject != gameObject) enabled = false;
     }
 
     private void OnDestroy()
@@ -33,6 +34,7 @@ public class VoiceController : MonoBehaviour
 
     private void Update()
     {
+        if(!GetComponent<PhotonView>().IsMine) return;
         if (Input.GetKeyDown(KeyCode.M))
         {
             recorder.TransmitEnabled = !recorder.TransmitEnabled;
@@ -40,9 +42,13 @@ public class VoiceController : MonoBehaviour
         }
     }
 
-    void setVolume()
+    async void setVolume()
     {
-        if(PlayerPrefs.HasKey($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index<=GetComponent<PlayerMovmant>().index?0:-1)}"))
-            audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index<=GetComponent<PlayerMovmant>().index?0:-1)}", 1f);
+        while (PlayerMovmant.player == null) await Task.Delay(500);
+        Debug.Log(PlayerMovmant.player);
+        if (PlayerPrefs.HasKey($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}"))
+        {
+            audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}", 1f);
+        }
     }
 }
