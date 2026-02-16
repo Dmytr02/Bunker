@@ -6649,7 +6649,7 @@ MonoBehaviour:
   voteRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
   timerText: {fileID: 333125184}
   resultText: {fileID: 1807550177}
-  resultNameText: {fileID: 0}
+  resultNameText: {fileID: 1700297612}
   playerCountText: {fileID: 1379261305}
   startButton: {fileID: 6385852743541322017}
   activeMaterial: {fileID: 2100000, guid: 0d519208f930347a6b113c0fa5d2194a, type: 2}
