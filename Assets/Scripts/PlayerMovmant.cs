@@ -39,6 +39,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     
     
     float yForce = 0;
+    [SerializeField] private Animator loadingScreenAnimator;
 
     private void Awake()
     {
@@ -121,7 +122,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public void RPC_kick(PhotonMessageInfo info)
     {
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);
+        loadingScreenAnimator.SetTrigger("loadScene"); 
     }
 
     [PunRPC]

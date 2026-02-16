@@ -5943,6 +5943,7 @@ MonoBehaviour:
   lookAngelRangeY: {x: -30, y: 60}
   index: 0
   voiceController: {fileID: 3915335748235773336}
+  loadingScreenAnimator: {fileID: 0}
 --- !u!143 &-1449269225948917600
 CharacterController:
   m_ObjectHideFlags: 0

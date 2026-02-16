@@ -27,6 +27,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     Dictionary<string, LobbyAsset> lobbys = new Dictionary<string, LobbyAsset>();
 
     private TypedLobby customLobby = new TypedLobby("customLobby", LobbyType.Default);
+    [SerializeField] private Animator loadingScreenAnimator;
 
     void Start()
     {
@@ -119,7 +120,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     public void OnJoinRoom()
     {
         NetworkControler.roomName = joinRoomName.text;
-        SceneManager.LoadScene("GameScene");
+        loadingScreenAnimator.SetTrigger("loadScene"); 
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -141,9 +142,9 @@ public class MainMenuController : MonoBehaviourPunCallbacks
                 entry.callback.AddListener((eventData) =>
                 {
                     NetworkControler.roomName = info.Name; 
-                    SceneManager.LoadScene("GameScene");
+                    loadingScreenAnimator.SetTrigger("loadScene"); 
                 } );
-                    lobbys[info.Name].eventTrigger.triggers.Add(entry);
+                lobbys[info.Name].eventTrigger.triggers.Add(entry);
             }
         }
     }
@@ -151,7 +152,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         base.OnCreatedRoom();
-        SceneManager.LoadScene("GameScene");
+        loadingScreenAnimator.SetTrigger("loadScene"); 
     }
 
     public void ExitGame()

@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             if((bool)i.photonView.Owner.CustomProperties["EndTutorial"]) count++;
         }
         playerCountText.text = $"Connected {count}/6";
-        if (count >= 6)
+        if (count >= 3)
         {
             if(PhotonNetwork.IsMasterClient) startButton.enabled = true;
             startButton.GetComponent<Renderer>().material = activeMaterial;

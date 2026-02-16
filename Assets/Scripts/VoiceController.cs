@@ -23,6 +23,7 @@ public class VoiceController : MonoBehaviour
             recorder.TransmitEnabled = !recorder.TransmitEnabled; 
             microphoneImg.sprite = recorder.TransmitEnabled ? microphoneOn : microphoneOff;
         }));
+        if(PlayerMovmant.player.gameObject == gameObject) enabled = false;
     }
 
     private void OnDestroy()
@@ -41,6 +42,7 @@ public class VoiceController : MonoBehaviour
 
     void setVolume()
     {
-        audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index<=GetComponent<PlayerMovmant>().index?0:-1)}", 1f);
+        if(PlayerPrefs.HasKey($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index<=GetComponent<PlayerMovmant>().index?0:-1)}"))
+            audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index<=GetComponent<PlayerMovmant>().index?0:-1)}", 1f);
     }
 }

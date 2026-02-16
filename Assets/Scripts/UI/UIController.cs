@@ -10,6 +10,7 @@ public class UIController : StateMachine.StateMachine
     public Settings SettingsPanel;
     public EventTrigger SettingsButton;
     public CommandManager commandManager;
+    public Animator loadingScreenAnimator;
     
     public static UIController instance;
 
@@ -27,6 +28,6 @@ public class UIController : StateMachine.StateMachine
     public void MainMenu()
     {
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);
+        loadingScreenAnimator.SetTrigger("loadScene"); 
     }
 }
