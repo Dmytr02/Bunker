@@ -23,7 +23,7 @@ public class VoiceController : MonoBehaviour
             recorder.TransmitEnabled = !recorder.TransmitEnabled; 
             microphoneImg.sprite = recorder.TransmitEnabled ? microphoneOn : microphoneOff;
         }));
-        if(PlayerMovmant.player.gameObject == gameObject) enabled = false;
+        if(PlayerMovmant.player.gameObject != gameObject) enabled = false;
     }
 
     private void OnDestroy()
