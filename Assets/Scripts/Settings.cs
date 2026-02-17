@@ -15,7 +15,7 @@ public class Settings : MonoBehaviour
     [SerializeField] Toggle fullscreenToggle;
 
     private List<Resolution> filteredResolutions;
-    private void Start()
+    private void Awake()
     {
         GenerateResolutionDropDown();
         LoadSettings();
@@ -23,6 +23,7 @@ public class Settings : MonoBehaviour
         AudioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume", 1)) * 20);
         AudioMixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume", 1)) * 20);
         AudioMixer.SetFloat("GlobalVolume", Mathf.Log10(PlayerPrefs.GetFloat("GlobalVolume", 1)) * 20);
+        gameObject.SetActive(false);
     }
 
     private void LoadSettings()

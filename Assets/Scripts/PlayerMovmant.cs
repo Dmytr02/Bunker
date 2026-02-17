@@ -41,7 +41,6 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     
     
     float yForce = 0;
-    [SerializeField] private Animator loadingScreenAnimator;
 
     private void Awake()
     {
@@ -128,7 +127,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public void RPC_kick(PhotonMessageInfo info)
     {
         PhotonNetwork.LeaveRoom();
-        loadingScreenAnimator.SetTrigger("loadScene"); 
+        UIController.instance.loadingScreenAnimator.SetTrigger("loadScene"); 
     }
 
     [PunRPC]
@@ -139,6 +138,12 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         onPlayersRemoved?.Invoke();
         
         playerMashOutline.gameObject.SetActive(false);
+        foreach (var i in playerMashAnimator.GetComponentsInChildren<Renderer>())
+        {
+            i.enabled = false;
+        }
+
+        
         //GetComponent<Renderer>().enabled = false;
     }
     

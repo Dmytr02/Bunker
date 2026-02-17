@@ -9,7 +9,13 @@ using UnityEngine;
 public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
 {
     [SerializeField] public TMP_Text text;
+    [SerializeField] public ManualCameraRender cameraRender;
+    [SerializeField] public TMP_Text text2;
+    [SerializeField] public ManualCameraRender cameraRender2;
     [SerializeField] public int index = 0;
+    [SerializeField] public Animator animator;
+    [SerializeField] public AudioSource audioSource;
+    [SerializeField] public AudioClip audioClip;
 
     
     private List<PlayerStats> playersStats = new List<PlayerStats>();
@@ -19,6 +25,10 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
 
     private void Start()
     {
+        cameraRender = GameObject.Find("LeftSideRender").GetComponent<ManualCameraRender>();
+        text = cameraRender.GetComponentInChildren<TMP_Text>();
+        cameraRender2 = GameObject.Find("RightSideRender").GetComponent<ManualCameraRender>();
+        text2 = cameraRender2.GetComponentInChildren<TMP_Text>();
         foreach (var i in PlayerMovmant.players)
         {
             playersStats.Add(i.stats);
@@ -37,16 +47,32 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
     {
         this.index = (index+playersStats.Count)%playersStats.Count;
         text.text = playersStats[this.index].ToString();
+        cameraRender.RenderCameraNow();
+
+        if (playersStats.Count > this.index+1)
+        {
+            text2.text = playersStats[this.index + 1].ToString();
+            cameraRender2.RenderCameraNow();
+        }
+        else
+        {
+            text2.text = "";
+            cameraRender2.RenderCameraNow();
+        }
     }
 
     public void NextIndex()
     {
-        SetIndex(index + 1);
+        SetIndex(index + 2);
+        animator.SetTrigger("next");
+        audioSource.PlayOneShot(audioClip);
     }
 
     public void PreviousIndex()
     {
-        SetIndex(index - 1);
+        SetIndex(index - 2);
+        animator.SetTrigger("previus");
+        audioSource.PlayOneShot(audioClip);
     }
 
     private object[] data;
