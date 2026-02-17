@@ -8,6 +8,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
@@ -19,7 +20,8 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
 
     [SerializeField] private Massage massage;
     [SerializeField] private float sensivity = 1;
-    public Outline playerMash;
+    [SerializeField] Animator playerMashAnimator;
+    [FormerlySerializedAs("playerMash")] public Outline playerMashOutline;
     public Vector2 lookAngelRangeX;
     public Vector2 lookAngelRangeY;
     public PlayerStats stats;
@@ -59,7 +61,9 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
             Camera.main.transform.localPosition = Vector3.zero;
             Camera.main.transform.localRotation = Quaternion.identity;
             
-            playerMash.enabled = false;
+            playerMashOutline.enabled = false;
+            foreach (var renderer in playerMashAnimator.GetComponentsInChildren<Renderer>()) renderer.enabled = false;
+
             //Cursor.lockState = CursorLockMode.Locked;
             //Cursor.visible = false;
             
@@ -99,14 +103,16 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         {
             //Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
             Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Lerp(lookAngelRangeY.x, lookAngelRangeY.y, 1 - Mathf.Clamp01(Input.mousePosition.y / Screen.height)), Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), 0));
-            photonView.RPC("RPC_SendRotation", RpcTarget.All, Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)));
+            photonView.RPC("RPC_SendRotation", RpcTarget.All, Mathf.Lerp(1, -1, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), Mathf.Lerp(-1, 1, Mathf.Clamp01(Input.mousePosition.y / Screen.height)));
         }
     }
 
     [PunRPC]
-    public void RPC_SendRotation(float rotationy)
+    public void RPC_SendRotation(float rotationy, float rotationx)
     {
-        playerMash.transform.localRotation = Quaternion.Euler(playerMash.transform.localRotation.eulerAngles.x, rotationy, playerMash.transform.localRotation.eulerAngles.z);
+        //playerMash.transform.localRotation = Quaternion.Euler(playerMash.transform.localRotation.eulerAngles.x, rotationy, playerMash.transform.localRotation.eulerAngles.z);
+        playerMashAnimator.SetFloat("horyzontal", rotationy);
+        playerMashAnimator.SetFloat("vertycal", rotationx);
     }
 
     [CommandAtribute("/kick", "take a gameObject if it`s player kick him")]
@@ -132,7 +138,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         onPlayersSelected?.Invoke();
         onPlayersRemoved?.Invoke();
         
-        playerMash.gameObject.SetActive(false);
+        playerMashOutline.gameObject.SetActive(false);
         //GetComponent<Renderer>().enabled = false;
     }
     

@@ -7,6 +7,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -20,7 +21,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text resultText;
     [SerializeField] TMP_Text resultNameText;
-
+    [SerializeField] Image resultImage;
+    [SerializeField] Sprite[] resultSprites;
+    
     [SerializeField] TMP_Text playerCountText;
     [SerializeField] Button startButton;
     [SerializeField] Material activeMaterial;
@@ -122,6 +125,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (Instance == null) Instance = this;
         else Destroy(this);
+    }
+
+    private void Start()
+    {
         CommandManager.Instance.AddInstance(this);
     }
 
@@ -208,7 +215,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         Debug.Log(points);
         resultNameText.text = "Remaining players:\n" + PlayerMovmant.players[0].stats.list["Name"] + ", " + PlayerMovmant.players[1].stats.list["Name"];
-        resultText.text = "you have " + points + " points.\n" + (points > 15 ? "You Win!" : points > 10 ? "You survive" : "You lost :(");
+        resultText.text = "you have <b>" + points + "</b> points.\n\n" + (points > 15 ? "All survived together, hope still remains." : points > 10 ? "Left alone, only danger ahead." : "No one survived, hope is gone.");
+        resultImage.sprite = points > 15 ? resultSprites[0] : points > 10 ? resultSprites[1] : resultSprites[2];
         resultText.transform.parent.gameObject.SetActive(true);
     }
 
