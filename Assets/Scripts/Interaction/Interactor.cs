@@ -8,7 +8,7 @@ public class Interactor : MonoBehaviour
     public UnityEvent<Interactor, RaycastHit, bool> onEndInteraction;
     void Update()
     {
-        if(!(UIController.instance.CurrentState is UIGameState)) return;
+        if(!(TutorialUIController.instance.CurrentState is TutorialUIGameState)) return;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
         {
             if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))

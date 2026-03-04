@@ -2259,7 +2259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -0.049, y: 0.533}
   m_SizeDelta: {x: 400, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4904437595641330368
@@ -5843,10 +5843,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3481988302985094286}
-  - component: {fileID: 8952333514883227578}
   - component: {fileID: 1350683935665433954}
   - component: {fileID: 3563365510869358066}
-  - component: {fileID: -1449269225948917600}
   - component: {fileID: -2014500735724945677}
   - component: {fileID: 3360129076554386870}
   - component: {fileID: 5268963455262111958}
@@ -5882,27 +5880,6 @@ Transform:
   - {fileID: 2869393785008228319}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8952333514883227578
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029092944813150332}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1350683935665433954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5945,31 +5922,6 @@ MonoBehaviour:
   lookAngelRangeY: {x: -30, y: 60}
   index: 0
   voiceController: {fileID: 3915335748235773336}
---- !u!143 &-1449269225948917600
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029092944813150332}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2014500735724945677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6384,8 +6336,8 @@ RectTransform:
   - {fileID: 762678244877214056}
   m_Father: {fileID: 8468324415025271155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6437,15 +6389,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6453,11 +6405,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1
+      value: -1.012
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3
+      value: 0.041
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6866f13367d11dd4ba622d493de9ad90, type: 3}
       propertyPath: m_LocalRotation.w

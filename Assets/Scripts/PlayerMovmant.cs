@@ -223,8 +223,8 @@ public class PlayerStats
         {
             list["Name"] = PlayerPrefs.GetString("name");
             list["Profession"] =  (Professions)Random.Range(1, 16);
-            list["Experience"] =  Random.Range(1, 30);
             list["Age"] = Random.Range(18, 100);
+            list["Experience"] =  Random.Range(1, Mathf.Min((int)list["Age"]-18, 30));
             list["Healthe"] =  (Healthe)Random.Range(1, 5);
             list["Phobias"] =  (Phobias)Random.Range(1, 7);
             list["Hobby"] =  (Hobby)Random.Range(1, 10);

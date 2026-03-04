@@ -91,6 +91,11 @@ public class MainMenuController : MonoBehaviourPunCallbacks
         mainMenuPanel.SetActive(false);
         newGamePanel.SetActive(true);
     }
+    
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 
     public void JoinGame()
     {
