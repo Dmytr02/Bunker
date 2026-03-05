@@ -654,6 +654,13 @@ MonoBehaviour:
   animator: {fileID: 891823048}
   audioSource: {fileID: 177047511}
   audioClip: {fileID: 8300000, guid: 5b9017bba2138124292b081cd52b55f9, type: 3}
+  playersStats:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
 --- !u!82 &177047511 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3682636868661790011, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
@@ -1175,37 +1182,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306807625}
   m_CullTransparentMesh: 1
---- !u!1 &319561793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 319561795}
-  m_Layer: 0
-  m_Name: VoiceLogger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &319561795
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319561793}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &330270893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3199,7 +3175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 913c07820248d5b4283eabfa330722cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1116278404035095089, guid: 913c07820248d5b4283eabfa330722cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6216,6 +6192,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3481988302985094286, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
   m_PrefabInstance: {fileID: 1157348615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1157348617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2591903214867792064, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
+  m_PrefabInstance: {fileID: 1157348615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
 --- !u!1 &1164234942
 GameObject:
   m_ObjectHideFlags: 0
@@ -7245,6 +7232,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3481988302985094286, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
   m_PrefabInstance: {fileID: 1281214711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1281214713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2591903214867792064, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
+  m_PrefabInstance: {fileID: 1281214711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
 --- !u!1 &1312828329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7556,6 +7554,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3481988302985094286, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
   m_PrefabInstance: {fileID: 1369522216}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369522218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2591903214867792064, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
+  m_PrefabInstance: {fileID: 1369522216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
 --- !u!1 &1379261303
 GameObject:
   m_ObjectHideFlags: 0
@@ -7692,6 +7701,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379261303}
   m_CullTransparentMesh: 1
+--- !u!1 &1397251446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397251448}
+  - component: {fileID: 1397251447}
+  m_Layer: 0
+  m_Name: TutorialGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1397251447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397251446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698a4c8226dd96d47b2d3475b901d45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialGameManager
+  massages:
+  - {fileID: 1157348617}
+  - {fileID: 1369522218}
+  - {fileID: 1281214713}
+  - {fileID: 1881958138}
+  - {fileID: 1691230245}
+  notepad: {fileID: 177047510}
+--- !u!4 &1397251448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397251446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.39983, y: 0.03398, z: -0.8203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440972718
 GameObject:
   m_ObjectHideFlags: 0
@@ -9164,6 +9224,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3481988302985094286, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
   m_PrefabInstance: {fileID: 1691230243}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1691230245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2591903214867792064, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
+  m_PrefabInstance: {fileID: 1691230243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
 --- !u!1 &1700297610
 GameObject:
   m_ObjectHideFlags: 0
@@ -9710,7 +9781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 913c07820248d5b4283eabfa330722cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10442,6 +10513,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3481988302985094286, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
   m_PrefabInstance: {fileID: 1881958136}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881958138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2591903214867792064, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
+  m_PrefabInstance: {fileID: 1881958136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720333b9cfed825458d543c33a9924f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Massage
 --- !u!1 &1892037237
 GameObject:
   m_ObjectHideFlags: 0
@@ -13103,6 +13185,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 43616682126272821}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &103504738475760354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13336,6 +13442,30 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1369466101, guid: 501ee91c4f6390a4b97a0747b0203305, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 529703649570202710}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -13969,6 +14099,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2413434123466718166}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &2426272379947339199
 Transform:
   m_ObjectHideFlags: 0
@@ -14362,6 +14516,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 3313178422949617489}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &3360209678834970130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14696,6 +14874,30 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1369466101, guid: 501ee91c4f6390a4b97a0747b0203305, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3880622356202709645}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -15355,6 +15557,30 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1369466101, guid: 501ee91c4f6390a4b97a0747b0203305, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4324380946575010329}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -16021,6 +16247,30 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 1369466101, guid: 501ee91c4f6390a4b97a0747b0203305, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5423393276777567164}
+          m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventTrigger, UnityEngine.UI
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1397251447}
+          m_TargetAssemblyTypeName: TutorialGameManager, Assembly-CSharp
+          m_MethodName: OpenStat
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -17435,7 +17685,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1496007576}
-  - {fileID: 319561795}
   - {fileID: 1524486095}
   - {fileID: 414910136}
   - {fileID: 705056594}
@@ -17447,3 +17696,4 @@ SceneRoots:
   - {fileID: 958562173}
   - {fileID: 5648565252707283006}
   - {fileID: 1847178976}
+  - {fileID: 1397251448}

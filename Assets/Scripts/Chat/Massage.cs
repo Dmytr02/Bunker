@@ -18,7 +18,7 @@ public class Massage : MonoBehaviourPunCallbacks
         text.text = msg;
         text.ForceMeshUpdate();
         image.offsetMax = new Vector2(image.offsetMax.x, text.preferredHeight);
-        Invoke("hideMassage", msg.Length*0.5f);
+        Invoke("hideMassage", 1 + msg.Length*0.1f);
     }
 
     public void hideMassage()
