@@ -21,6 +21,13 @@ public class TutorialGameManager : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.P)) Time.timeScale = 10;
+        else Time.timeScale = 1;
+    }
+
+
     IEnumerator GameLoop()
     {
         yield return new WaitUntil(() => opened || openedCount == 7);
@@ -45,7 +52,25 @@ public class TutorialGameManager : MonoBehaviour
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(4);
         
+        TutorialVote.Instance.StartRound();
+        yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {(TutorialVote.votes.Contains(0) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[1].text = $"Bob\nvotes: {5 + (TutorialVote.votes.Contains(1) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[2].text = $"Mike\nvotes: {(TutorialVote.votes.Contains(2) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[3].text = $"Chad\nvotes: {(TutorialVote.votes.Contains(3) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave\nvotes: {(TutorialVote.votes.Contains(4) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin\nvotes: {(TutorialVote.votes.Contains(5) ? 1 : 0)}";
+
+        yield return new WaitForSeconds(7);
+        TutorialVote.Instance.EndVoting();
+        TutorialVote.Instance.voteButtons[1].gameObject.SetActive(false);
         massages[0].gameObject.SetActive(false);
+        
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}"; 
+        TutorialVote.Instance.voteTextButtons[2].text = $"Mike";
+        TutorialVote.Instance.voteTextButtons[3].text = $"Chad";
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin";
         
         opened = false;
         yield return new WaitUntil(() => opened || openedCount == 7);
@@ -66,7 +91,23 @@ public class TutorialGameManager : MonoBehaviour
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(6.4f);
         
+        TutorialVote.Instance.StartRound();
+        yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {(TutorialVote.votes.Contains(0) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[2].text = $"Mike\nvotes: {(TutorialVote.votes.Contains(2) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[3].text = $"Chad\nvotes: {4 + (TutorialVote.votes.Contains(3) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave\nvotes: {(TutorialVote.votes.Contains(4) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin\nvotes: {(TutorialVote.votes.Contains(5) ? 1 : 0)}";
+        
+        yield return new WaitForSeconds(7);
+        TutorialVote.Instance.EndVoting();
+        TutorialVote.Instance.voteButtons[3].gameObject.SetActive(false);
         massages[2].gameObject.SetActive(false);
+        
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}"; 
+        TutorialVote.Instance.voteTextButtons[2].text = $"Mike";
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin";
         
         opened = false;
         yield return new WaitUntil(() => opened || openedCount == 7);
@@ -83,7 +124,21 @@ public class TutorialGameManager : MonoBehaviour
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(5.8f);
         
+        TutorialVote.Instance.StartRound();
+        yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {(TutorialVote.votes.Contains(0) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[2].text = $"Mike\nvotes: {3 + (TutorialVote.votes.Contains(2) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave\nvotes: {(TutorialVote.votes.Contains(4) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin\nvotes: {(TutorialVote.votes.Contains(5) ? 1 : 0)}";
+        
+        yield return new WaitForSeconds(7);
+        TutorialVote.Instance.EndVoting();
+        TutorialVote.Instance.voteButtons[2].gameObject.SetActive(false);
         massages[1].gameObject.SetActive(false);
+        
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}"; 
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin";
         
         opened = false;
         yield return new WaitUntil(() => opened || openedCount == 7);
@@ -95,6 +150,20 @@ public class TutorialGameManager : MonoBehaviour
         notepad.playersStats[4] = "Name: Kevin\nAge: 25\nProfession: Engineer\nHealth: Excellent\nPersonality: Logical";
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(6.1f);
+        
+        TutorialVote.Instance.StartRound();
+        yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
+        TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {2 + (TutorialVote.votes.Contains(0) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave\nvotes: {(TutorialVote.votes.Contains(4) ? 1 : 0)}";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin\nvotes: {(TutorialVote.votes.Contains(5) ? 1 : 0)}";
+        
+        yield return new WaitForSeconds(7);
+        TutorialVote.Instance.EndVoting();
+        TutorialVote.Instance.voteButtons[1].gameObject.SetActive(false);
+        //massages[1].gameObject.SetActive(false);
+        
+        TutorialVote.Instance.voteTextButtons[4].text = $"Dave";
+        TutorialVote.Instance.voteTextButtons[5].text = $"Kevin";
         
         opened = false;
     }
