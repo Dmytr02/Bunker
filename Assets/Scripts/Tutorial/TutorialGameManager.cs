@@ -6,6 +6,7 @@ public class TutorialGameManager : MonoBehaviour
 {
     [SerializeField] Massage[] massages = new Massage[5];
     [SerializeField] TutorialNotepad notepad;
+    [SerializeField] private GameObject EndPanel;
     
     private int openedCount = 0;
     private bool opened = false;
@@ -161,6 +162,8 @@ public class TutorialGameManager : MonoBehaviour
         TutorialVote.Instance.EndVoting();
         TutorialVote.Instance.voteButtons[1].gameObject.SetActive(false);
         //massages[1].gameObject.SetActive(false);
+        //игрока выгнали, конец
+        EndPanel.SetActive(true);
         
         TutorialVote.Instance.voteTextButtons[4].text = $"Dave";
         TutorialVote.Instance.voteTextButtons[5].text = $"Kevin";

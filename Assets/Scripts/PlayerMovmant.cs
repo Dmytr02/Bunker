@@ -46,6 +46,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     {
         stats = new PlayerStats(this, photonView.IsMine);
     }
+    
 
     void Start()
     {

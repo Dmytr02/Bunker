@@ -1,8 +1,19 @@
+using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RandomizeCard : Card
 {
+    [SerializeField] TMP_Text cardName;
+    public string Stat = "";
+    private static readonly string[] ststsList = {"Profession", "Age", "Experience", "Healthe", "Phobias", "Hobby", "Personality"};
+    private void Start()
+    {
+        Stat = ststsList[Random.Range(0, ststsList.Length)];
+        cardName.text = $"Randomize {Stat}, for selected player";
+    }
+
     protected override void OnUse(RaycastHit hit)
     {
         if (hit.collider.TryGetComponent(out Notepad notepad))

@@ -32,7 +32,7 @@ public class RadialLayautGroup : MonoBehaviour
             if (weighted != null) actualWeighted += weighted.Weight*0.5f;
             else actualWeighted += 0.5f;
             
-            child.anchoredPosition = new Vector2(Mathf.Sin(angel), Mathf.Cos(angel))*distance;
+            child.anchoredPosition = Vector2.Lerp(child.anchoredPosition, new Vector2(Mathf.Sin(angel), Mathf.Cos(angel))*distance, 0.05f);
             child.rotation = Quaternion.LookRotation(rectTransform.position - child.position, -transform.forward) * Quaternion.Euler(90, 0, 0);
         }
     }
