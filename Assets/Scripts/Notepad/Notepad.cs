@@ -18,9 +18,8 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
     [SerializeField] public AudioClip audioClip;
 
     
-    private List<PlayerStats> playersStats = new List<PlayerStats>();
+    public List<PlayerStats> playersStats = new List<PlayerStats>();
     
-    public PlayerStats SelectedPlayerStats => playersStats[index];
 
 
     private void Start()
@@ -45,7 +44,7 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
 
     public void SetIndex(int index)
     {
-        this.index = (index+playersStats.Count)%playersStats.Count;
+        this.index = (index+playersStats.Count)/2%(playersStats.Count/2)*2;
         text.text = playersStats[this.index].ToString();
         cameraRender.RenderCameraNow();
 

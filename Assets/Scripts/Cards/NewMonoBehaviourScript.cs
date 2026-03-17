@@ -33,7 +33,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
         POINT p;
         if (GetCursorPos(out p))
         {
-            pos = new Vector2(p.X+pos.x+Mathf.Sin(dir)*speed, p.Y+pos.y+Mathf.Cos(dir)*speed);
+            pos = new Vector2(
+                (p.X+pos.x+Mathf.Sin(dir)*speed+Screen.currentResolution.width)%(float)Screen.currentResolution.width
+                ,(p.Y+pos.y+Mathf.Cos(dir)*speed+Screen.currentResolution.height)%(float)Screen.currentResolution.height);
+            
+            
             
             SetCursorPos((int)pos.x, (int)pos.y);
                 

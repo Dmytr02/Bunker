@@ -44,7 +44,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
 
     private void Awake()
     {
-        stats = new PlayerStats(this, photonView.IsMine);
+        stats = new PlayerStats(this, photonView.IsMine, photonView.ViewID);
     }
     
 
@@ -217,19 +217,84 @@ public class PlayerStats
         {Professions.Doctor, "Maintaining health and preventing critical conditions"},
         {Professions.enginee, ""}
     };
-    
-    public PlayerStats(PlayerMovmant player, bool init = false)
+
+    private int playerID = -1;
+
+    public static object RandomizeStat(string stat)
+    {
+        switch (stat)
+        {
+            case "Profession":
+                return (Professions)Random.Range(0, 16);
+            case "Age":
+                return Random.Range(18, 100);
+            case "Experience":
+                return Random.Range(1, 30);
+            case "Healthe":
+                return (Healthe)Random.Range(1, 5);
+            case "Phobias":
+                return (Phobias)Random.Range(1, 7);
+            case "Hobby":
+                return (Hobby)Random.Range(1, 10);
+            case "Personality":
+                return (Personality)Random.Range(1, 14);
+        }
+        return null;
+    }
+
+    public bool SetStat(string stat, object value)
+    {
+        if(stat == "Experience" && (int)value > (int)list["Age"]-18) return false;
+        if(stat == "Age" && (int)value-18 < (int)list["Experience"]) return false;
+        
+        list[stat] = value;
+        return true;
+    }
+
+    public void SetRandomStat(string stat)
+    {
+        switch (stat)
+        {
+            case "Profession":
+                list["Profession"] =  (Professions)Random.Range(1, 16);
+                break;
+            case "Age":
+                list["Age"] = Random.Range(18, 100);
+                break;
+            case "Experience":
+                list["Experience"] =  Random.Range(1, Mathf.Min((int)list["Age"]-18, 30));
+                break;
+            case "Healthe":
+                list["Healthe"] =  (Healthe)Random.Range(1, 5);
+                break;
+            case "Phobias":
+                list["Phobias"] =  (Phobias)Random.Range(1, 7);
+                break;
+            case "Hobby":
+                list["Hobby"] =  (Hobby)Random.Range(1, 10);
+                break;
+            case "Personality":
+                list["Personality"] =  (Personality)Random.Range(1, 14);
+                break;
+        }
+    }
+    public PlayerStats(PlayerMovmant player, bool init = false, int playerID = -1)
     {
         if (init)
         {
             list["Name"] = PlayerPrefs.GetString("name");
-            list["Profession"] =  (Professions)Random.Range(1, 16);
-            list["Age"] = Random.Range(18, 100);
-            list["Experience"] =  Random.Range(1, Mathf.Min((int)list["Age"]-18, 30));
-            list["Healthe"] =  (Healthe)Random.Range(1, 5);
-            list["Phobias"] =  (Phobias)Random.Range(1, 7);
-            list["Hobby"] =  (Hobby)Random.Range(1, 10);
-            list["Personality"] =  (Personality)Random.Range(1, 14);
+            SetRandomStat("Profession");
+            SetRandomStat("Age");
+            SetRandomStat("Experience");
+            SetRandomStat("Healthe");
+            SetRandomStat("Phobias");
+            SetRandomStat("Hobby");
+            SetRandomStat("Personality");
+        }
+
+        if (playerID != -1)
+        {
+            this.playerID = playerID;
         }
 
         foreach (var i in list)

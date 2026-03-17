@@ -7,6 +7,7 @@ public class TutorialGameManager : MonoBehaviour
     [SerializeField] Massage[] massages = new Massage[5];
     [SerializeField] TutorialNotepad notepad;
     [SerializeField] private GameObject EndPanel;
+    [SerializeField] private TutorialHints tutorialHints;
     
     private int openedCount = 0;
     private bool opened = false;
@@ -22,13 +23,14 @@ public class TutorialGameManager : MonoBehaviour
     }
 
 
+    #if UNITY_EDITOR
     private void Update()
     {
         if(Input.GetKey(KeyCode.P)) Time.timeScale = 10;
         else Time.timeScale = 1;
     }
-
-
+    #endif
+    
     IEnumerator GameLoop()
     {
         yield return new WaitUntil(() => opened || openedCount == 7);
@@ -54,7 +56,9 @@ public class TutorialGameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         
         TutorialVote.Instance.StartRound();
+        tutorialHints.triger2 = true;
         yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
+        tutorialHints.triger2 = true;
         TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {(TutorialVote.votes.Contains(0) ? 1 : 0)}";
         TutorialVote.Instance.voteTextButtons[1].text = $"Bob\nvotes: {5 + (TutorialVote.votes.Contains(1) ? 1 : 0)}";
         TutorialVote.Instance.voteTextButtons[2].text = $"Mike\nvotes: {(TutorialVote.votes.Contains(2) ? 1 : 0)}";

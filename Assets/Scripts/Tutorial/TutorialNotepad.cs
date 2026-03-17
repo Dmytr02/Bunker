@@ -18,7 +18,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
     [SerializeField] public AudioClip audioClip;
 
     
-    public List<string> playersStats = new List<string>(5){"Name: Bob", "Name: Mike", "Name: Chad", "Name: Dave", "Name: Kevin"};
+        public List<string> playersStats = new List<string>(5){"Name: Bob", "Name: Mike", "Name: Chad", "Name: Dave", "Name: Kevin"};
     
     //public PlayerStats SelectedPlayerStats => playersStats[index];
 

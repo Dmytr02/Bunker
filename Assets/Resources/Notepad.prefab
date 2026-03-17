@@ -132,9 +132,10 @@ GameObject:
   - component: {fileID: 8205802796431890994}
   - component: {fileID: 350320857846003518}
   - component: {fileID: 5464102225942606045}
+  - component: {fileID: 2767482114325126248}
   m_Layer: 0
   m_Name: lower_right
-  m_TagString: Untagged
+  m_TagString: bookRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,6 +213,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2767482114325126248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032940681340797267}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4738112, y: 0.053246673, z: 0.68675977}
+  m_Center: {x: -0.000000011175871, y: 0, z: -0.000000007450581}
 --- !u!1 &2203755365237960069
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,9 +370,10 @@ GameObject:
   - component: {fileID: 9174136723077999079}
   - component: {fileID: 262978597448755626}
   - component: {fileID: 438376148518301733}
+  - component: {fileID: 5557381266386645878}
   m_Layer: 0
   m_Name: lower_left
-  m_TagString: Untagged
+  m_TagString: bookLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,6 +451,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5557381266386645878
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314759279755748415}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4738112, y: 0.05324669, z: 0.68675977}
+  m_Center: {x: 0, y: 0, z: -0.000000007450581}
 --- !u!1 &3219739205683885587
 GameObject:
   m_ObjectHideFlags: 0

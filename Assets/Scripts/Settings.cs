@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -19,11 +20,17 @@ public class Settings : MonoBehaviour
     {
         GenerateResolutionDropDown();
         LoadSettings();
+        LateAwake();
+        gameObject.SetActive(false);
+    }
+
+    async private void LateAwake()
+    {
+        await Task.Delay(10);
         AudioMixer.SetFloat("VoiceVolume", Mathf.Log10(PlayerPrefs.GetFloat("VoiceVolume", 1)) * 20);
         AudioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume", 1)) * 20);
         AudioMixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume", 1)) * 20);
         AudioMixer.SetFloat("GlobalVolume", Mathf.Log10(PlayerPrefs.GetFloat("GlobalVolume", 1)) * 20);
-        gameObject.SetActive(false);
     }
 
     private void LoadSettings()
