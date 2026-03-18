@@ -162,16 +162,19 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
 
     public void SendStat(string stat)
     {
+        if(stats.isShowed[stat]) return;
         photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat]);
         stats.isShowed[stat] = true;
         Debug.Log(stat + " - Sended");
     }
 
+
     [PunRPC]
-    private void RPC_Stat(string stat, object value)
+    private void RPC_Stat(string stat, object value, bool isShowed = true)
     {
         stats.list[stat] = value;
-        onStatOpened?.Invoke(this);
+        if(isShowed) onStatOpened?.Invoke(this);
+        if(stats.isShowed[stat]) photonView.RPC("RPC_Stat", RpcTarget.Others, stat, stats.list[stat]);
     }
     
     public void SendAllStats()
@@ -248,6 +251,7 @@ public class PlayerStats
         if(stat == "Age" && (int)value-18 < (int)list["Experience"]) return false;
         
         list[stat] = value;
+        PhotonView.Find(playerID).RPC("RPC_Stat", PhotonView.Find(playerID).Owner, stat, value, false);
         return true;
     }
 
@@ -277,6 +281,7 @@ public class PlayerStats
                 list["Personality"] =  (Personality)Random.Range(1, 14);
                 break;
         }
+        PhotonView.Find(playerID).RPC("RPC_Stat", PhotonView.Find(playerID).Owner, stat, list[stat], false);
     }
     public PlayerStats(PlayerMovmant player, bool init = false, int playerID = -1)
     {

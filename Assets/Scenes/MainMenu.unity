@@ -1975,8 +1975,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 67c2d4d53c9d0ba46aa3115fcec8e25a, type: 2}
-  m_sharedMaterial: {fileID: 8852212494771450178, guid: 67c2d4d53c9d0ba46aa3115fcec8e25a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bc0e59c9940568c46857f402ff8397f6, type: 2}
+  m_sharedMaterial: {fileID: -3044149115132323728, guid: bc0e59c9940568c46857f402ff8397f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
