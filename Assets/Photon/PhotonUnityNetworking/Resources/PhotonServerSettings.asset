@@ -60,6 +60,9 @@ MonoBehaviour:
   - RPC_SendRotation
   - RPC_SendStartRotation
   - RPC_UodateColor
+  - PlaySound
+  - RPC_ChangeColorsEffect
+  - RPC_CursoreEffect
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

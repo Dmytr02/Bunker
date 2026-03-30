@@ -18,13 +18,18 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
     [SerializeField] public AudioClip audioClip;
 
     
-        public List<string> playersStats = new List<string>(5){"Name: Bob", "Name: Mike", "Name: Chad", "Name: Dave", "Name: Kevin"};
+    public List<TutorialPlayerStats> playersStats = new List<TutorialPlayerStats>(5) { new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats() };
     
     //public PlayerStats SelectedPlayerStats => playersStats[index];
 
 
     private void Start()
     {
+        playersStats[0].list["Name"] = "Bob";
+        playersStats[1].list["Name"] = "Mike";
+        playersStats[2].list["Name"] = "Chad";
+        playersStats[3].list["Name"] = "Dave";
+        playersStats[4].list["Name"] = "Kevin";
         cameraRender = GameObject.Find("LeftSideRender").GetComponent<ManualCameraRender>();
         text = cameraRender.GetComponentInChildren<TMP_Text>();
         cameraRender2 = GameObject.Find("RightSideRender").GetComponent<ManualCameraRender>();
@@ -94,5 +99,34 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             Destroy(gameObject);
         }
     }
+}
+
+public class TutorialPlayerStats
+{
+    public Dictionary<string, object> list = new Dictionary<string, object>()
+    {
+        { "Name", "" },
+        { "Age", -1 },
+        { "Profession", Professions.unknown },
+        { "Experience", -1},
+        { "Healthe", Healthe.unknown},
+        { "Phobias", Phobias.unknown},
+        { "Hobby", Hobby.unknown },
+        { "Personality", Personality.unknown}
+    };
     
+    public override string ToString()
+    {
+        string Name = list["Name"].ToString();
+        int Age = list["Age"] is int ? (int)list["Age"] : -1;
+        Professions Profession = (Professions)list["Profession"];
+        int experience = list["Experience"] is int ? (int)list["Experience"] : -1;
+        Healthe Healthe = (Healthe)list["Healthe"];
+        Phobias Phobia = (Phobias)list["Phobias"];
+        Hobby Hobby = (Hobby)list["Hobby"];
+        Personality personality = (Personality)list["Personality"];
+        return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}\n") +
+               (experience==-1?"":$"Experience - {experience} years\n") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
+               (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}\n")+(personality==Personality.unknown?"":$"Personality - {personality}\n");
+    }
 }

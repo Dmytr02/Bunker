@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class CursoreMuves : MonoBehaviour
 {
     
     [DllImport("user32.dll")]

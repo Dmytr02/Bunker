@@ -1,24 +1,46 @@
+using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TutorialHints : MonoBehaviour
 {
     [SerializeField] Material material;
     [SerializeField] Animator animator;
+    [SerializeField] Animator notepadAnimator;
     [SerializeField] GameObject startButton;
     [SerializeField] GameObject book;
-    [SerializeField] GameObject Notepad;
+    [SerializeField] GameObject book2;
+    [SerializeField] GameObject card;
+    [SerializeField] GameObject inventoryIcon;
     [SerializeField] CanvasGroup video;
     
     public bool triger = false;
-    public bool triger2 = false;
+    public bool _triger2 = false;
 
     public bool _triger
     {
         get => triger; 
         set=>triger=value;
     }
+    public bool triger2
+    {
+        get => _triger2; 
+        set => _triger2=value;
+    }
+
+    private void OnEnable()
+    {
+        material.SetFloat("_alpha", 1);
+    }
+
+    private void OnDisable()
+    {
+        material.SetFloat("_alpha", 1);
+    }
+
     void Start()
     {
         StartCoroutine(Corutine());
@@ -26,6 +48,7 @@ public class TutorialHints : MonoBehaviour
 
     IEnumerator Corutine()
     {
+        // кнопка
         video.alpha = 0;
         video.ignoreParentGroups = true;
         startButton.gameObject.SetActive(true);
@@ -43,6 +66,9 @@ public class TutorialHints : MonoBehaviour
         yield return new WaitUntil(() => triger);
         triger = false;
         
+        // блокнот
+        
+        
         t = 0;
         while (t < 0.5f)
         {
@@ -58,7 +84,13 @@ public class TutorialHints : MonoBehaviour
         
         material.SetFloat("_alpha", 1);
         
-        Notepad.SetActive(true);
+        animator.SetTrigger("triger");
+        
+        Debug.Log("Trigger finished");
+        yield return new WaitUntil(() => triger);
+        triger = false;
+        Debug.Log("Trigger finished1");
+        
         animator.SetTrigger("triger");
         
         yield return new WaitUntil(() => triger);
@@ -66,7 +98,11 @@ public class TutorialHints : MonoBehaviour
         
         animator.SetTrigger("triger2");
         
+        notepadAnimator.SetTrigger("trigger");
+        
         yield return new WaitForSeconds(1);
+        
+        // книга
         
         book.gameObject.SetActive(true);
         video.alpha = 0;
@@ -83,8 +119,9 @@ public class TutorialHints : MonoBehaviour
         material.SetFloat("_alpha", 0.03f);
         
         yield return new WaitUntil(() => triger);
-        
         triger = false;
+        
+        
         
         t = 0;
         while (t < 0.5f)
@@ -98,12 +135,64 @@ public class TutorialHints : MonoBehaviour
         video.alpha = 1;
         book.gameObject.SetActive(false);
         
-        yield return new WaitUntil(() => triger2);
+        // инвентарь
+        
+        yield return new WaitUntil(() => _triger2);
+        _triger2 = false;
+        
+        inventoryIcon.SetActive(true);
+        animator.SetTrigger("triger");
+        
+        yield return new WaitUntil(() => _triger2);
         triger2 = false;
+        
+        animator.SetTrigger("triger");
+        
+            // 2 этап(подсвет карты и книги) 
+        
+        book2.gameObject.SetActive(true);
+        card.gameObject.SetActive(true);
+        video.alpha = 0;
+        video.ignoreParentGroups = true;
+        t = 0;
+        while (t < 0.5f)
+        {
+            t+=Time.deltaTime;
+            material.SetFloat("_alpha", Mathf.Lerp(1, 0.03f, t/0.5f));
+            video.alpha = Mathf.Lerp(0, 1, t/0.5f);
+            yield return null;
+        }
+
+        
+        yield return new WaitUntil(() => _triger2);
+        triger2 = false;
+        
+        t = 0;
+        while (t < 0.5f)
+        {
+            t+=Time.deltaTime;
+            material.SetFloat("_alpha", Mathf.Lerp(0.03f, 1, t/0.5f));
+            video.alpha = Mathf.Lerp(1, 0, t/0.5f);
+            yield return null;
+        }
+        video.ignoreParentGroups = false;
+        video.alpha = 1;
+        book2.gameObject.SetActive(false);
+        //card.gameObject.SetActive(false);
+        
+        
+        triger = true;
+        
+        // голосование
+        
+        /*
+        yield return new WaitUntil(() => _triger2);
+        _triger2 = false;
+        */
         
         animator.SetTrigger("triger3");
         
-        yield return new WaitUntil(() => triger2);
+        yield return new WaitUntil(() => _triger2);
         
         animator.SetTrigger("triger4");
     }

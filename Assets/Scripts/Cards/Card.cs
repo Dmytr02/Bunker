@@ -1,20 +1,36 @@
+using System;
 using UnityEngine;
 
 [RequireComponent (typeof (RectTransform))]
 public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWeighted
 {
-    protected virtual void OnUse(RaycastHit hit){Debug.Log("Use Card to: "+hit.collider.name);}
+    bool isSelected = false;
+    Vector2 offset = Vector2.zero; 
+    Transform parentTransform;
+    protected virtual bool OnUse(RaycastHit hit){Debug.Log("Use Card to: "+hit.collider.name); return true;}
+
+    protected virtual void Start()
+    {
+        parentTransform= transform.parent;
+    }
+
     void Update()
     {
-        int cameraAngel = ((int)Camera.main.transform.rotation.eulerAngles.x + 180) % 360 - 180;
-        //(transform as RectTransform).anchoredPosition = new Vector2(0, cameraAngel*7);
+        if (isSelected)
+        {
+            ((RectTransform)transform).anchoredPosition = (Vector2)Input.mousePosition + offset;
+        }
     }
 
     public void StartInteract(Interactor interactor, RaycastHit hit, bool isFirst)
     {
         if(!isFirst) return;
         Debug.Log(hit.transform.name);
+        transform.SetParent(GetComponentInParent<Canvas>().transform);
+        isSelected = true;
+        offset = ((RectTransform)transform).anchoredPosition - (Vector2)Input.mousePosition;
         interactor.onEndInteraction.AddListener(EndInteract);
+        interactor.mask |= LayerMask.GetMask("UI");
     }
 
     public void Interact(Interactor interactor, RaycastHit hit)
@@ -26,7 +42,10 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
         if (isEnd)
         {
             interactor.onEndInteraction.RemoveListener(EndInteract);
-            OnUse(hit);
+            if(OnUse(hit)) Destroy(gameObject);
+            else transform.SetParent(parentTransform);
+            isSelected = false;
+            interactor.mask &= ~LayerMask.GetMask("UI");
         }
     }
 
@@ -37,7 +56,7 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
 
     public void OnPointerEnter(Interactor interactor, RaycastHit hit)
     {
-        weighted = 1;
+        weighted = 5;
     }
 
     public void OnPointerExit(Interactor interactor, RaycastHit hit)

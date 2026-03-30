@@ -16,7 +16,7 @@ public class StatsController : MonoBehaviour
     Dictionary<object, string> stats = new()
     {
         {Professions.Doctor, "Doctor"},
-        {Professions.enginee, "Enginee"},
+        {Professions.engineer, "Enginee"},
         {Professions.scientist, "Scientist"},
         {Professions.biologistChemist, "Biologist Chemist"},
         {Professions.psychologist, "Psychologist"},
@@ -74,6 +74,7 @@ public class StatsController : MonoBehaviour
     {
         foreach (var i in PlayerMovmant.player.stats.list)
         {
+            if(i.Key == "Name") continue;
             EventTrigger trigger = Instantiate(statPrefab, transform);
             TMP_Text text = trigger.GetComponent<TMP_Text>();
             text.text = $"{i.Key}: {(stats.ContainsKey(i.Value) ? stats[i.Value] : i.Value)}";

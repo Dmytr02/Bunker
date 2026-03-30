@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-[CustomEditor(typeof(MonoBehaviour), true)]
+[CustomEditor(typeof(Card), true)]
 public class StaticFieldEditor : Editor
 {
     private List<FieldInfo> staticFields;

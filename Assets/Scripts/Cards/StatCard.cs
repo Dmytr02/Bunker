@@ -9,15 +9,19 @@ public class StatCard : Card
     public string Stat = "";
     public object value = null;
     private static readonly string[] ststsList = {"Profession", "Age", "Experience", "Healthe", "Phobias", "Hobby", "Personality"};
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         Stat = ststsList[Random.Range(0, ststsList.Length)];
         value = PlayerStats.RandomizeStat(Stat);
         cardName.text = $"Set {Stat}, for selected player, to {value}";
     }
 
-    protected override void OnUse(RaycastHit hit)
+    protected override bool OnUse(RaycastHit hit)
     {
+        if (hit.collider.transform.parent == null) return false;
+        if (hit.collider.transform.parent.parent == null) return false;
+        if (hit.collider.transform.parent.parent.parent == null) return false;
         if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
         {
             if (hit.collider.tag == "bookLeft")
@@ -26,7 +30,7 @@ public class StatCard : Card
                 {
                     if (notepad.playersStats[notepad.index].SetStat(Stat, value))
                     {
-                        Destroy(gameObject);
+                        return true;
                     }
                     notepad.SetIndex(notepad.index);
                 }
@@ -37,12 +41,13 @@ public class StatCard : Card
                 {
                     if(notepad.playersStats[notepad.index+1].SetStat(Stat, value))
                     {
-                        Destroy(gameObject);
+                        return true;
                     }
                     notepad.SetIndex(notepad.index);
                 }
             }
         }
+        return false;
     }
 }
 

@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NaughtyAttributes;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -25,11 +28,14 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public Vector2 lookAngelRangeX;
     public Vector2 lookAngelRangeY;
     public PlayerStats stats;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] audioClip;
     public int index;
+    [SerializeField] CursoreMuves cursoreMuves;
     
     public VoiceController voiceController;
     
-    [ShowStaticField] public static List<PlayerMovmant> players = new List<PlayerMovmant>();
+    public static List<PlayerMovmant> players = new List<PlayerMovmant>();
     public static PlayerMovmant player;
     
     public static UnityEvent onPlayersAdded =  new UnityEvent();
@@ -42,15 +48,53 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     
     float yForce = 0;
 
+    [PunRPC]
+    public void PlaySound(int index)
+    {
+        audioSource.PlayOneShot(audioClip[index]);
+    }
+    
     private void Awake()
     {
         stats = new PlayerStats(this, photonView.IsMine, photonView.ViewID);
     }
+
+    [PunRPC]
+    public void RPC_ChangeColorsEffect()
+    {
+        ChangeColors();
+        Invoke("ChangeColors", 300);
+        stats.SetStat("Healthe", Healthe.colorBlindness);
+    }
     
+    [PunRPC]
+    public void RPC_CursoreEffect()
+    {
+        CursoreMuves();
+        Invoke("CursoreMuves", 300);
+        stats.SetStat("Healthe", Healthe.withdrawal);
+    }
+    
+    [Button]
+    public void ChangeColors()
+    {
+        Volume volume = FindAnyObjectByType<Volume>();
+        if (volume.profile.TryGet(out ChannelMixer channelMixer))
+        {
+            channelMixer.active = !channelMixer.active;
+        }   
+    }
+    
+    [Button]
+    public void CursoreMuves()
+    {
+        cursoreMuves.enabled = !cursoreMuves.enabled;
+    }
 
     void Start()
     {
         players.Add(this);
+        Debug.Log("Starting round 2");
         if (photonView.IsMine)
         {
             GetComponent<Interactor>().enabled = true;
@@ -163,7 +207,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public void SendStat(string stat)
     {
         if(stats.isShowed[stat]) return;
-        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat]);
+        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat], true);
         stats.isShowed[stat] = true;
         Debug.Log(stat + " - Sended");
     }
@@ -174,14 +218,14 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     {
         stats.list[stat] = value;
         if(isShowed) onStatOpened?.Invoke(this);
-        if(stats.isShowed[stat]) photonView.RPC("RPC_Stat", RpcTarget.Others, stat, stats.list[stat]);
+        if(stats.isShowed[stat]) photonView.RPC("RPC_Stat", RpcTarget.Others, stat, stats.list[stat], true);
     }
     
     public void SendAllStats()
     {
             foreach (var i in stats.list.ToDictionary(k => k.Key, v => v.Value))
             {
-                photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value);
+                photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value, true);
                 stats.isShowed[i.Key] = true;
                 Debug.Log(i.Key + " - Sended");
             }
@@ -218,10 +262,10 @@ public class PlayerStats
     public Dictionary<Professions, string> professionDescription = new Dictionary<Professions, string>()
     {
         {Professions.Doctor, "Maintaining health and preventing critical conditions"},
-        {Professions.enginee, ""}
+        {Professions.engineer, ""}
     };
 
-    private int playerID = -1;
+    public int playerID = -1;
 
     public static object RandomizeStat(string stat)
     {
@@ -255,7 +299,7 @@ public class PlayerStats
         return true;
     }
 
-    public void SetRandomStat(string stat)
+    public void SetRandomStat(string stat, bool init = false)
     {
         switch (stat)
         {
@@ -281,20 +325,20 @@ public class PlayerStats
                 list["Personality"] =  (Personality)Random.Range(1, 14);
                 break;
         }
-        PhotonView.Find(playerID).RPC("RPC_Stat", PhotonView.Find(playerID).Owner, stat, list[stat], false);
+        if(!init) PhotonView.Find(playerID).RPC("RPC_Stat", PhotonView.Find(playerID).Owner, stat, list[stat], false);
     }
     public PlayerStats(PlayerMovmant player, bool init = false, int playerID = -1)
     {
         if (init)
         {
             list["Name"] = PlayerPrefs.GetString("name");
-            SetRandomStat("Profession");
-            SetRandomStat("Age");
-            SetRandomStat("Experience");
-            SetRandomStat("Healthe");
-            SetRandomStat("Phobias");
-            SetRandomStat("Hobby");
-            SetRandomStat("Personality");
+            SetRandomStat("Profession", true);
+            SetRandomStat("Age", true);
+            SetRandomStat("Experience", true);
+            SetRandomStat("Healthe", true);
+            SetRandomStat("Phobias", true);
+            SetRandomStat("Hobby", true);
+            SetRandomStat("Personality", true);
         }
 
         if (playerID != -1)
@@ -329,7 +373,7 @@ public enum Professions
 {
     unknown,
     Doctor,
-    enginee,
+    engineer,
     scientist,
     biologistChemist,
     psychologist,
@@ -351,7 +395,10 @@ public enum Healthe
     excellent,
     average,
     poor,
-    critical
+    critical,
+    colorBlindness,
+    psychosis,
+    withdrawal
 }
 
 public enum Phobias

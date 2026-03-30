@@ -288,7 +288,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2203755365237960069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1181,7 +1181,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.642, y: -0.029, z: -0.115}
-  m_LocalScale: {x: 0.4, y: 0.5, z: 0.1}
+  m_LocalScale: {x: 0.4, y: 0.35, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8727434549253970706}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8434114228302938653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1523,7 +1523,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 511972354582767449139b060753f8c3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 81643b6aa760737499b04a196136c3dd, type: 2}
+      objectReference: {fileID: 2100000, guid: 1c478ecd7f220374b87b939df0711e64, type: 2}
     - target: {fileID: -7511558181221131132, guid: 511972354582767449139b060753f8c3, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 

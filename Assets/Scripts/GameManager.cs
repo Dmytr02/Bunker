@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private static readonly Dictionary<(string, object), int> costs = new Dictionary<(string, object), int>()
     {
         {("Profession", Professions.Doctor), 6},
-        {("Profession", Professions.enginee), 6},
+        {("Profession", Professions.engineer), 6},
         {("Profession", Professions.Actor), 1},
         {("Profession", Professions.Artist), 1},
         {("Profession", Professions.biologistChemist), 5},
@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         {("Healthe", Healthe.average), 1},
         {("Healthe", Healthe.poor), -2},
         {("Healthe", Healthe.critical), -3},
+        {("Healthe", Healthe.colorBlindness), -2},
+        {("Healthe", Healthe.psychosis), -4},
+        {("Healthe", Healthe.withdrawal), -3},
         {("Phobias", Phobias.Claustrophobia), -4},
         {("Phobias", Phobias.Anxiety), -1},
         {("Phobias", Phobias.FearOfBlood), -2},
@@ -188,6 +191,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     void CalculatePoints()
     {
         int points = 0;
+        
+        points += BunkerStats.Instance.Size < 20 ? 0 : BunkerStats.Instance.Size < 50 ? 1 : BunkerStats.Instance.Size < 100 ? 2 : BunkerStats.Instance.Size < 150 ? 0 : -1;
+        points += BunkerStats.Instance.TimeInside < 5 ? 4 : BunkerStats.Instance.TimeInside < 15 ? 2 : BunkerStats.Instance.TimeInside < 30 ? 0 : -1;
+        points += BunkerStats.Instance.Supplies == Supplies.Critical ? -4 : BunkerStats.Instance.Supplies == Supplies.Low ? -2 : BunkerStats.Instance.Supplies == Supplies.Stable ? 2 : 4;
+        
         foreach (var player in PlayerMovmant.players)
         {
             points += costs[("Profession", (Professions)player.stats.list["Profession"])];
@@ -247,7 +255,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         break;
                 }
                 break;
-            case Professions.enginee:
+            case Professions.engineer:
                 switch (player2["Profession"])
                 {
                     case Professions.Electrician:

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -7,13 +8,20 @@ public class Interactor : MonoBehaviour
 {
     IInteractable interactable;
     public UnityEvent<Interactor, RaycastHit, bool> onEndInteraction;
+    public int mask = 0;
     void Update()
     {
         if(TutorialUIController.instance && !(TutorialUIController.instance.CurrentState is TutorialUIGameState)) return;
         if(UIController.instance && !(UIController.instance.CurrentState is UIGameState)) return;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, ~mask))
         {
-            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
+            IInteractable[] interactables = hit.collider.gameObject.GetComponents<IInteractable>().Where(n =>
+            {
+                if (n is MonoBehaviour monoBehaviour) return monoBehaviour.enabled;
+                return false;
+            }).ToArray();
+            Debug.Log(hit.collider.gameObject.name);
+            foreach(var interactable in interactables)
             {
                 interactable.OnPointer(this, hit);
                 if (interactable != this.interactable)
@@ -42,11 +50,9 @@ public class Interactor : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                    onEndInteraction?.Invoke(this, hit, true);
+                onEndInteraction?.Invoke(this, hit, true);
                 this.interactable = null;
             }
-
-            
         }
     }
 }
