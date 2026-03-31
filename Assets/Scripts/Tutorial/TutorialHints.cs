@@ -16,6 +16,9 @@ public class TutorialHints : MonoBehaviour
     [SerializeField] GameObject card;
     [SerializeField] GameObject inventoryIcon;
     [SerializeField] CanvasGroup video;
+    [SerializeField] TMP_Text hintText;
+    
+    [SerializeField, TextArea(3, 100)] string[] hints;
     
     public bool triger = false;
     public bool _triger2 = false;
@@ -49,6 +52,7 @@ public class TutorialHints : MonoBehaviour
     IEnumerator Corutine()
     {
         // кнопка
+        hintText.text = hints[0];
         video.alpha = 0;
         video.ignoreParentGroups = true;
         startButton.gameObject.SetActive(true);
@@ -69,6 +73,7 @@ public class TutorialHints : MonoBehaviour
         // блокнот
         
         
+        hintText.text = hints[1];
         t = 0;
         while (t < 0.5f)
         {
@@ -90,6 +95,7 @@ public class TutorialHints : MonoBehaviour
         yield return new WaitUntil(() => triger);
         triger = false;
         Debug.Log("Trigger finished1");
+        hintText.text = hints[2];
         
         animator.SetTrigger("triger");
         
@@ -107,6 +113,7 @@ public class TutorialHints : MonoBehaviour
         book.gameObject.SetActive(true);
         video.alpha = 0;
         video.ignoreParentGroups = true;
+        hintText.text = hints[3];
         t = 0;
         while (t < 0.5f)
         {
@@ -120,7 +127,7 @@ public class TutorialHints : MonoBehaviour
         
         yield return new WaitUntil(() => triger);
         triger = false;
-        
+        triger2 = true;
         
         
         t = 0;
@@ -135,10 +142,13 @@ public class TutorialHints : MonoBehaviour
         video.alpha = 1;
         book.gameObject.SetActive(false);
         
+        yield return new WaitForSeconds(3);
+        
         // инвентарь
         
         yield return new WaitUntil(() => _triger2);
         _triger2 = false;
+        hintText.text = hints[4];
         
         inventoryIcon.SetActive(true);
         animator.SetTrigger("triger");
@@ -149,6 +159,7 @@ public class TutorialHints : MonoBehaviour
         animator.SetTrigger("triger");
         
             // 2 этап(подсвет карты и книги) 
+            hintText.text = hints[5];
         
         book2.gameObject.SetActive(true);
         card.gameObject.SetActive(true);
@@ -185,10 +196,7 @@ public class TutorialHints : MonoBehaviour
         
         // голосование
         
-        /*
-        yield return new WaitUntil(() => _triger2);
-        _triger2 = false;
-        */
+        hintText.text = hints[6];
         
         animator.SetTrigger("triger3");
         

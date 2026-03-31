@@ -33,6 +33,8 @@ public class TutorialGameManager : MonoBehaviour
     
     IEnumerator GameLoop()
     {
+        yield return new WaitUntil(() => tutorialHints.triger2);
+        tutorialHints.triger2 = false;
         yield return new WaitUntil(() => opened || openedCount == 7);
         massages[0].showMassage("I’m 86… well, at least I’ve survived a lot of stuff already.");
         notepad.playersStats[0].list["Age"] = 86;

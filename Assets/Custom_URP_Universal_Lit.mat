@@ -32,8 +32,8 @@ Material:
     - _Max: 1
     - _Metallic: 0
     - _Min: 0.28
-    - _PosterizeSteps: 5
-    - _Shades: 7.57
+    - _PosterizeSteps: 13.08
+    - _Shades: 12.9
     - _Smoothness: 1
     m_Colors:
     - _BaseColor: {r: 0.5283019, g: 0.30153078, b: 0.30153078, a: 1}
