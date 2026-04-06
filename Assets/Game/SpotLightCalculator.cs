@@ -8,7 +8,7 @@ public class SpotLightCalculator : MonoBehaviour
     private static readonly int ShadowColor = Shader.PropertyToID("_Shadow_Color");
 
     [SerializeField]
-   private MeshRenderer meshRenderer;
+   private Renderer meshRenderer;
 
    [SerializeField]
    private Transform lightPoint;
