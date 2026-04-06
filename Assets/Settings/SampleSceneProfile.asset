@@ -101,17 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   color:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.071
+    m_Value: 0.259
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.544
+    m_Value: 0.93
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -189,10 +189,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.028324906}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.04184092}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.30976975}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.6276151}
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 1}
