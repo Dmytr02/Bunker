@@ -14,6 +14,7 @@ public class Settings : MonoBehaviour
     [SerializeField] AudioMixer AudioMixer;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] Toggle fullscreenToggle;
+    [SerializeField] bool ActiveOnStart = false;
 
     private List<Resolution> filteredResolutions;
     private void Awake()
@@ -21,7 +22,7 @@ public class Settings : MonoBehaviour
         GenerateResolutionDropDown();
         LoadSettings();
         LateAwake();
-        gameObject.SetActive(false);
+        gameObject.SetActive(ActiveOnStart);
     }
 
     async private void LateAwake()

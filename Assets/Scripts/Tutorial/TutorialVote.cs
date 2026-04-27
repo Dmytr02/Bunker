@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
@@ -14,6 +15,7 @@ public class TutorialVote : MonoBehaviour
     public TMP_Text[] voteTextButtons;
     public Image[] voteImageButtons;
     public Animator animator;
+    public Animator animator2;
     
     public static List<int> votes = new List<int>();
 
@@ -39,6 +41,7 @@ public class TutorialVote : MonoBehaviour
 
     public void StartRound()
     {
+        StartCoroutine(ShowPanel());
         this.count = 1;
         selectedIndex = -1;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
@@ -56,6 +59,13 @@ public class TutorialVote : MonoBehaviour
         animator.SetBool("isShowPanel", true);
     }
 
+    IEnumerator ShowPanel()
+    {
+        animator2.SetBool("isShowed", true);
+        yield return new WaitForSeconds(1.5f);
+        animator2.SetBool("isShowed", false);
+    }
+    
     public void Submit()
     {
         if(votes.Count == count) return;
@@ -74,6 +84,7 @@ public class TutorialVote : MonoBehaviour
     {
         votes.Clear();
         count = 0;
+        StartCoroutine(ShowPanel());
         animator.SetBool("isShowPanel", false);
     }
 }

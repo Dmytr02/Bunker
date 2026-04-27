@@ -1,9 +1,15 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LobbyAsset : MonoBehaviour
+public class LobbyAsset : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text roomName;
-    public EventTrigger eventTrigger;
+    public Action<PointerEventData> eventTrigger;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        eventTrigger?.Invoke(eventData);
+    }
 }

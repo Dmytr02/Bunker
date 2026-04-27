@@ -14,8 +14,8 @@ public class TutorialCard1 : Card
             {
                 if (notepad.playersStats.Count - 1 > notepad.index)
                 {
-                    hints._triger2 = true;
-                    notepad.playersStats[notepad.index].list["Age"] = 1;
+                    hints.triger = true;
+                    notepad.playersStats[notepad.index].list["Age"] = 18;
                     notepad.SetIndex(notepad.index);
                     return true;
                 }
@@ -24,8 +24,8 @@ public class TutorialCard1 : Card
             {
                 if (notepad.playersStats.Count - 1 > notepad.index + 1)
                 {
-                    hints._triger2 = true;
-                    notepad.playersStats[notepad.index+1].list["Age"] = 1;
+                    hints.triger = true;
+                    notepad.playersStats[notepad.index+1].list["Age"] = 18;
                     notepad.SetIndex(notepad.index);
                     return true;
                 }

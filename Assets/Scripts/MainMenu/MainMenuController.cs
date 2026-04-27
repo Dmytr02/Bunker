@@ -10,11 +10,11 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviourPunCallbacks
 {
     [SerializeField] TMP_InputField createRoomName;
-    [SerializeField] TMP_InputField joinRoomName;
+    [SerializeField] TMP_InputField joinRoomName;/*
     [SerializeField] GameObject newGamePanel;
     [SerializeField] GameObject joinGamePanel;
     [SerializeField] GameObject settingsGamePanel;
-    [SerializeField] GameObject mainMenuPanel;
+    [SerializeField] GameObject mainMenuPanel;*/
 
     [SerializeField] LobbyAsset prefabLobbyAsset;
     [SerializeField] Transform lobbyList;
@@ -41,7 +41,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
         }
         if (PhotonNetwork.IsConnected)
         {
-            MainMenu();
+            //MainMenu();
             PhotonNetwork.JoinLobby(customLobby);
         }
         else PhotonNetwork.ConnectUsingSettings(); // Connect to Photon
@@ -82,22 +82,22 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        MainMenu();
+        //MainMenu();
         PhotonNetwork.JoinLobby(customLobby);
     }
 
-    public void NewGame()
+    /*public void NewGame()
     {
         mainMenuPanel.SetActive(false);
         newGamePanel.SetActive(true);
-    }
+    }*/
     
     public void Tutorial()
     {
         SceneManager.LoadScene("Tutorial");
     }
 
-    public void JoinGame()
+    /*public void JoinGame()
     {
         mainMenuPanel.SetActive(false);
         joinGamePanel.SetActive(true);
@@ -114,7 +114,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
         newGamePanel.SetActive(false);
         joinGamePanel.SetActive(false);
         settingsGamePanel.SetActive(false);
-    }
+    }*/
 
 
     public void OnCreateRoom()
@@ -141,15 +141,12 @@ public class MainMenuController : MonoBehaviourPunCallbacks
             {
                 lobbys[info.Name] = Instantiate(prefabLobbyAsset, lobbyList);
                 lobbys[info.Name].roomName.text = info.Name;
-
-                EventTrigger.Entry entry = new EventTrigger.Entry();
-                entry.eventID = EventTriggerType.PointerClick;
-                entry.callback.AddListener((eventData) =>
+                
+                lobbys[info.Name].eventTrigger += (eventData) =>
                 {
                     NetworkControler.roomName = info.Name; 
                     loadingScreenAnimator.SetTrigger("loadScene"); 
-                } );
-                lobbys[info.Name].eventTrigger.triggers.Add(entry);
+                };
             }
         }
     }

@@ -25,7 +25,6 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
     public void StartInteract(Interactor interactor, RaycastHit hit, bool isFirst)
     {
         if(!isFirst) return;
-        Debug.Log(hit.transform.name);
         transform.SetParent(GetComponentInParent<Canvas>().transform);
         isSelected = true;
         offset = ((RectTransform)transform).anchoredPosition - (Vector2)Input.mousePosition;

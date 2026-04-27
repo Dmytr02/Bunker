@@ -4,12 +4,12 @@ using UnityEngine.EventSystems;
 public class UIPouseState : StateMachine.State
 {
     public UIPouseState(UIController stateMachine) : base(stateMachine) { }
-
+    private EventTrigger.Entry entry;
     override public void Enter()
     {
         (stateMachine as UIController).PousePanel.SetActive(true);
         
-        EventTrigger.Entry  entry = new EventTrigger.Entry();
+        entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((arg0) => {stateMachine.SetState(new UISettingsState(stateMachine as UIController)); });
         
@@ -27,7 +27,7 @@ public class UIPouseState : StateMachine.State
     override public void Exit()
     {
         (stateMachine as UIController).PousePanel.SetActive(false);
-        (stateMachine as UIController).SettingsButton.triggers.RemoveAll(entry => entry.eventID == EventTriggerType.PointerClick);
+        (stateMachine as UIController).SettingsButton.triggers.Remove(entry); //RemoveAll(entry => entry.eventID == EventTriggerType.PointerClick);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

@@ -56,7 +56,7 @@ public class Tutorial : MonoBehaviour
         inProgress = true;
     }
     
-    void endTutorial()
+    public void endTutorial()
     {
         animator.SetBool("end", true);
         ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable();

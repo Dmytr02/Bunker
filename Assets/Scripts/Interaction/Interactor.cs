@@ -9,10 +9,12 @@ public class Interactor : MonoBehaviour
     IInteractable interactable;
     public UnityEvent<Interactor, RaycastHit, bool> onEndInteraction;
     public int mask = 0;
+    public AsyncRTFilter  asyncRTFilter;
     void Update()
     {
         if(TutorialUIController.instance && !(TutorialUIController.instance.CurrentState is TutorialUIGameState)) return;
         if(UIController.instance && !(UIController.instance.CurrentState is UIGameState)) return;
+        if(asyncRTFilter != null && asyncRTFilter.IsRaycastLocationValid(Input.mousePosition, Camera.main)) return;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, ~mask))
         {
             IInteractable[] interactables = hit.collider.gameObject.GetComponents<IInteractable>().Where(n =>
@@ -20,7 +22,6 @@ public class Interactor : MonoBehaviour
                 if (n is MonoBehaviour monoBehaviour) return monoBehaviour.enabled;
                 return false;
             }).ToArray();
-            Debug.Log(hit.collider.gameObject.name);
             foreach(var interactable in interactables)
             {
                 interactable.OnPointer(this, hit);

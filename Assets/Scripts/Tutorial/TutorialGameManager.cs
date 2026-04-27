@@ -33,8 +33,11 @@ public class TutorialGameManager : MonoBehaviour
     
     IEnumerator GameLoop()
     {
+        Debug.Log("triger20");
         yield return new WaitUntil(() => tutorialHints.triger2);
+        Debug.Log("triger21");
         tutorialHints.triger2 = false;
+        
         yield return new WaitUntil(() => opened || openedCount == 7);
         massages[0].showMassage("I’m 86… well, at least I’ve survived a lot of stuff already.");
         notepad.playersStats[0].list["Age"] = 86;
@@ -59,12 +62,13 @@ public class TutorialGameManager : MonoBehaviour
         
         
         
-        tutorialHints._triger2 = true;
-        yield return new WaitUntil(() => tutorialHints.triger);
-        tutorialHints.triger = false;
+        tutorialHints._triger = true;
+        yield return new WaitUntil(() => tutorialHints.triger2);
+        Debug.Log("triger22");
+        tutorialHints.triger2 = false;
         TutorialVote.Instance.StartRound();
         yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
-        tutorialHints._triger2 = true;
+        tutorialHints._triger = true;
         TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {(TutorialVote.votes.Contains(0) ? 1 : 0)}";
         TutorialVote.Instance.voteTextButtons[1].text = $"Bob\nvotes: {5 + (TutorialVote.votes.Contains(1) ? 1 : 0)}";
         TutorialVote.Instance.voteTextButtons[2].text = $"Mike\nvotes: {(TutorialVote.votes.Contains(2) ? 1 : 0)}";
