@@ -9,7 +9,7 @@ public class TutorialUIController : StateMachine.StateMachine
     public GameObject PousePanel;
     public Settings SettingsPanel;
     public EventTrigger SettingsButton;
-    public CommandManager commandManager;
+    public TutorialCommandManager commandManager;
     public Animator loadingScreenAnimator;
     
     public static TutorialUIController instance;

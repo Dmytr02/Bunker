@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2656,7 +2656,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 347949443}
+      - m_Target: {fileID: 328852931}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: set_enabled
         m_Mode: 6
@@ -2668,7 +2668,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 328852931}
+      - m_Target: {fileID: 347949443}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: set_enabled
         m_Mode: 6
@@ -4271,7 +4271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -893.87964, y: 65.315}
+  m_AnchoredPosition: {x: -893.8797, y: 65.315}
   m_SizeDelta: {x: -1787.75, y: -1029.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &559867591
@@ -5690,7 +5690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  m_Color: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6978,7 +6978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7400,7 +7400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9093,8 +9093,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293059298
-  m_fontColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
+    rgba: 4287993237
+  m_fontColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11484,6 +11484,7 @@ MonoBehaviour:
   notepad: {fileID: 177047510}
   EndPanel: {fileID: 387067636}
   tutorialHints: {fileID: 1397251449}
+  tutorialCommandManager: {fileID: 1524486097}
 --- !u!4 &1397251448
 Transform:
   m_ObjectHideFlags: 0
@@ -12517,6 +12518,7 @@ GameObject:
   - component: {fileID: 1524486093}
   - component: {fileID: 1524486092}
   - component: {fileID: 1524486096}
+  - component: {fileID: 1524486097}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12617,10 +12619,10 @@ RectTransform:
   - {fileID: 1988678267}
   - {fileID: 1082393082}
   - {fileID: 529202792}
-  - {fileID: 625797056}
   - {fileID: 843591466}
   - {fileID: 387067637}
   - {fileID: 903006271}
+  - {fileID: 625797056}
   - {fileID: 2030129929}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12646,8 +12648,24 @@ MonoBehaviour:
   PousePanel: {fileID: 1082393081}
   SettingsPanel: {fileID: 1988678268}
   SettingsButton: {fileID: 2059396968}
-  commandManager: {fileID: 0}
+  commandManager: {fileID: 1524486097}
   loadingScreenAnimator: {fileID: 2030129931}
+--- !u!114 &1524486097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524486091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5de6d680f93c44b8363a211cfb7e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialCommandManager
+  textInput: {fileID: 386987693}
+  textOutput: {fileID: 1127750759}
+  textOutputBG: {fileID: 231502651}
+  chatPanel: {fileID: 2072317684}
 --- !u!1 &1535558145
 GameObject:
   m_ObjectHideFlags: 0
@@ -13521,7 +13539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14824,7 +14842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17393,7 +17411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1736652596095798915, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1972308778292567130, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.x
@@ -19428,8 +19446,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287993237
-  m_fontColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+    rgba: 4286282619
+  m_fontColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
