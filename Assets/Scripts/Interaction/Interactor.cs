@@ -14,7 +14,7 @@ public class Interactor : MonoBehaviour
     {
         if(TutorialUIController.instance && !(TutorialUIController.instance.CurrentState is TutorialUIGameState)) return;
         if(UIController.instance && !(UIController.instance.CurrentState is UIGameState)) return;
-        if(asyncRTFilter != null && asyncRTFilter.IsRaycastLocationValid(Input.mousePosition, Camera.main)) return;
+        //if(asyncRTFilter != null && asyncRTFilter.IsRaycastLocationValid(Input.mousePosition, Camera.main)) return;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, ~mask))
         {
             IInteractable[] interactables = hit.collider.gameObject.GetComponents<IInteractable>().Where(n =>

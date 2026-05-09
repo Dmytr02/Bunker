@@ -209,6 +209,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         if(stats.isShowed[stat]) return;
         photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat], true);
         stats.isShowed[stat] = true;
+        
         Debug.Log(stat + " - Sended");
     }
 

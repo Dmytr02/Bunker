@@ -14,9 +14,20 @@ public class TutorialCard1 : Card
             {
                 if (notepad.playersStats.Count - 1 > notepad.index)
                 {
-                    hints.triger = true;
-                    notepad.playersStats[notepad.index].list["Age"] = 18;
-                    notepad.SetIndex(notepad.index);
+                    TutorialGameManager.Instance.Trigger = true;
+                    if (notepad.index == 0)
+                    {
+                        notepad.playerStats.list[EStats.Experience] = 3;
+                        notepad.SetIndex(notepad.index);
+                        TutorialGameManager.assistentLast = 0;
+                    }
+                    else
+                    {
+                        notepad.playersStats[notepad.index + 1].list[EStats.Experience] = 3;
+                        notepad.SetIndex(notepad.index);
+                        TutorialGameManager.assistentLast = 1;
+                    }
+                    
                     return true;
                 }
             }
@@ -24,9 +35,10 @@ public class TutorialCard1 : Card
             {
                 if (notepad.playersStats.Count - 1 > notepad.index + 1)
                 {
-                    hints.triger = true;
-                    notepad.playersStats[notepad.index+1].list["Age"] = 18;
+                    TutorialGameManager.Instance.Trigger = true;
+                    notepad.playersStats[notepad.index+2].list[EStats.Experience] = 3;
                     notepad.SetIndex(notepad.index);
+                    TutorialGameManager.assistentLast = 1;
                     return true;
                 }
             }

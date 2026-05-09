@@ -16,7 +16,6 @@ public class TutorialHints : MonoBehaviour
     [SerializeField] TutorialHintData[] hintObjects;
     [SerializeField] CanvasGroup darkImage;
     
-    [SerializeField, TextArea(3, 100)] string[] hints;
     
     public bool triger = false;
     public bool _triger2 = false;
@@ -34,7 +33,7 @@ public class TutorialHints : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Corutine());
+        //StartCoroutine(Corutine());
         darkImage.GetComponent<Image>().alphaHitTestMinimumThreshold = 0.5f;
     }
 
@@ -107,5 +106,5 @@ public class TutorialHints : MonoBehaviour
 public class TutorialHintData
 {
     [SerializeField] public GameObject[] go;
-    [SerializeField] public string text;
+    [SerializeField, TextArea(4, 100)] public string text;
 }

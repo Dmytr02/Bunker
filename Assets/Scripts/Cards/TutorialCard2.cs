@@ -12,6 +12,8 @@ public class TutorialCard2 : Card
         if (hit.collider.transform.parent.parent.parent.TryGetComponent(out TutorialNotepad notepad))
         {
             audioSource.PlayOneShot(audioClip);
+            TutorialGameManager.assistentLast = 2;
+            TutorialGameManager.Instance.Trigger = true;
             return true;
         }
         return false;

@@ -11,14 +11,14 @@ public class Massage : MonoBehaviourPunCallbacks
     
 
     [PunRPC]
-    public void showMassage(string msg)
+    public void showMassage(string msg, float time = -1)
     {
         CancelInvoke(nameof(hideMassage));
         image.gameObject.SetActive(true);
         text.text = msg;
         text.ForceMeshUpdate();
         image.offsetMax = new Vector2(image.offsetMax.x, text.preferredHeight);
-        Invoke("hideMassage", 1 + msg.Length*0.1f);
+        Invoke("hideMassage", time==-1 ? 1 + msg.Length*0.1f : time);
     }
 
     public void hideMassage()
