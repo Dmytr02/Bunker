@@ -6,7 +6,7 @@ using UnityEngine;
 public class Helper : MonoBehaviour
 {
     [SerializeField] private TMP_Text text;
-    [SerializeField] private Animator animator;
+    public Animator animator;
 
     private List<string> _phrases;
     private int _currentPhase;
@@ -41,7 +41,6 @@ public class Helper : MonoBehaviour
 
     public void Hide()
     {
-        //gameObject.SetActive(false);
         animator.SetBool("isShowen", false);
     }
 }

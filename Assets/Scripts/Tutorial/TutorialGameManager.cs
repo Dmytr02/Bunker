@@ -148,34 +148,33 @@ public class TutorialGameManager : MonoBehaviour
             {
                 if (i <= votes.Count)
                 {
-                    TutorialVote.Instance.voteTextButtons[i].gameObject.SetActive(true);
+                    TutorialVote.Instance.voteButtons[i].gameObject.SetActive(true);
                     TutorialVote.Instance.voteTextButtons[i].text = votes[i-1].name;
                 }
                 else
                 {
-                    TutorialVote.Instance.voteTextButtons[i].gameObject.SetActive(false);
+                    TutorialVote.Instance.voteButtons[i].gameObject.SetActive(false);
                 }
             }
             
-            TutorialVote.Instance.StartRound();
+            manager.StartCoroutine(TutorialVote.Instance.StartRound());
             yield return new WaitUntil(() => TutorialVote.votes.Count == 1);
             TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}\nvotes: {playersVotes + (TutorialVote.votes.Contains(0) ? 1 : 0)}";
             for (int i = 1; i < TutorialVote.Instance.voteTextButtons.Length; i++)
             {
                 if (i <= votes.Count)
                 {
-                    TutorialVote.Instance.voteTextButtons[i].gameObject.SetActive(true);
-                    TutorialVote.Instance.voteTextButtons[1].text = $"{votes[i-1].name}\nvotes: {(TutorialVote.votes.Contains(1) ? 1 : 0) + votes[i-1].votes}";
+                    TutorialVote.Instance.voteButtons[i].gameObject.SetActive(true);
+                    TutorialVote.Instance.voteTextButtons[i].text = $"{votes[i-1].name}\nvotes: {(TutorialVote.votes.Contains(i) ? 1 : 0) + votes[i-1].votes}";
                 }
                 else
                 {
-                    TutorialVote.Instance.voteTextButtons[i].gameObject.SetActive(false);
+                    TutorialVote.Instance.voteButtons[i].gameObject.SetActive(false);
                 }
             }
             
             yield return new WaitForSeconds(7);
-            TutorialVote.Instance.EndVoting();
-            TutorialVote.Instance.voteButtons[1].gameObject.SetActive(false);
+            manager.StartCoroutine(TutorialVote.Instance.EndVoting());
             manager.massages[botToDestroy].gameObject.SetActive(false);
         }
     }
@@ -183,7 +182,7 @@ public class TutorialGameManager : MonoBehaviour
     {
         public override IEnumerator Action(TutorialGameManager manager)
         {
-            yield return new WaitUntil(() => !manager.assistant.gameObject.activeInHierarchy);
+            yield return new WaitUntil(() => !manager.assistant.animator.GetBool("isShowen"));
         }
     }
     [Serializable] class WaitForAny : SomeAction
@@ -215,7 +214,26 @@ public class TutorialGameManager : MonoBehaviour
             flag = true; 
         }
     }
-    
+
+    [Serializable]
+    class DoActionDelayed : SomeAction
+    {
+        [SerializeReference, SelectSubclass] SomeAction action;
+        [SerializeField] float delay;
+
+        public override IEnumerator Action(TutorialGameManager manager)
+        {
+            manager.StartCoroutine(Routine(manager));
+            yield break;
+        }
+
+        IEnumerator Routine(TutorialGameManager manager)
+        {
+            
+            yield return new WaitForSeconds(delay);
+            manager.StartCoroutine(action.Action(manager));
+        }
+    }
     
     [SerializeReference, SelectSubclass] List<SomeAction> CardLists;
     

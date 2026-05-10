@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -50,6 +51,7 @@ public class TutorialCommandManager : MonoBehaviour
     public void ShowChatPanel()
     {
         chatPanel.SetActive(true);
+        textOutput.text = "<alpha=#FF>" + textOutput.text.Substring(11);
         EventSystem.current.SetSelectedGameObject(textInput.gameObject, null);
         _selectedIndex = -1;
     }
@@ -58,6 +60,7 @@ public class TutorialCommandManager : MonoBehaviour
     {
         textInput.text = "";
         EventSystem.current.SetSelectedGameObject(null);
+        textOutput.text = "<alpha=#00>" + textOutput.text.Substring(11);
         chatPanel.SetActive(false);
     }
     
@@ -143,8 +146,41 @@ public class TutorialCommandManager : MonoBehaviour
 
     public void SendMassage(string text, string name)
     {
-        textOutput.text += name + " - <indent=10%>" + text + "</indent>\n";
-        Vector2 textSize = textOutput.GetPreferredValues();
-        textOutputBG.sizeDelta = textSize;
+        int index = textOutput.text.Length-1;
+        
+        StartCoroutine(MessageControl(text, name, index, 10));
+    }
+
+    Action<int, int> ChangeLenght;
+
+    IEnumerator MessageControl(string text, string name, int index, float time)
+    {
+        string fullMessage;
+        ChangeLenght += (i, count) =>
+        {
+            if (i < index)
+            {
+                index-=count;
+            }
+        };
+        float timer = 0;
+        fullMessage = ($"<alpha=#{255.ToString("X2")}><mark=#00000099>{name}: {text}</mark>\n");
+        textOutput.text += fullMessage;
+        int lastLenght = fullMessage.Length;
+        
+        while (timer < time)
+        {
+            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099>{name}: {text}</mark>\n");
+            textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
+            
+            
+            lastLenght = fullMessage.Length;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        fullMessage = ($"<mark=#00000099>{name}: {text}</mark>\n");
+        textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
+        ChangeLenght.Invoke(index, lastLenght-fullMessage.Length);
     }
 }

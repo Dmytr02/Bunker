@@ -39,9 +39,9 @@ public class TutorialVote : MonoBehaviour
         selectedIndex = index;
     }
 
-    public void StartRound()
+    public IEnumerator StartRound()
     {
-        StartCoroutine(ShowPanel());
+        yield return StartCoroutine(ShowPanel());
         this.count = 1;
         selectedIndex = -1;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
@@ -57,6 +57,7 @@ public class TutorialVote : MonoBehaviour
             voteButtons[i].triggers.Add(onPointerDown);
         }
         animator.SetBool("isShowPanel", true);
+        yield return new WaitForSeconds(0.5f);
     }
 
     IEnumerator ShowPanel()
@@ -80,11 +81,12 @@ public class TutorialVote : MonoBehaviour
         votes.Add(player);
     }
 
-    public void EndVoting()
+    public IEnumerator EndVoting()
     {
         votes.Clear();
         count = 0;
-        StartCoroutine(ShowPanel());
         animator.SetBool("isShowPanel", false);
+        yield return new WaitForSeconds(0.5f);
+        yield return StartCoroutine(ShowPanel());
     }
 }
