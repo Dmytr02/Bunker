@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.8352941}
+  m_Color: {r: 0.7735849, g: 0.04743683, b: 0.04743683, a: 0.8352941}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11428,7 +11428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Voting
+  m_text: It"s time to vote!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc0e59c9940568c46857f402ff8397f6, type: 2}
   m_sharedMaterial: {fileID: -3044149115132323728, guid: bc0e59c9940568c46857f402ff8397f6, type: 2}
@@ -11437,7 +11437,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 1879048191
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -12873,8 +12873,10 @@ MonoBehaviour:
       type: {class: TutorialGameManager/assistentSay, ns: , asm: Assembly-CSharp}
       data:
         text:
-        - "notepad 1\t"
-        - notepad 2
+        - "In front of you is the Notebook. Right now, only hidden traits are visible
+          \u2014 they still need to be revealed."
+        - "Try revealing one of the traits. This will help you understand how you\u2019re
+          perceived in the game."
     - rid: 6684008362008641684
       type: {class: TutorialGameManager/WaitTrigger, ns: , asm: Assembly-CSharp}
       data: 
@@ -13029,7 +13031,8 @@ MonoBehaviour:
       type: {class: TutorialGameManager/assistentSay, ns: , asm: Assembly-CSharp}
       data:
         text:
-        - book
+        - "Study the participants more carefully \u2014 try to figure out which of
+          them could influence the outcome of the game."
     - rid: 6684008362008641693
       type: {class: TutorialGameManager/WaitForAny, ns: , asm: Assembly-CSharp}
       data:
@@ -13095,8 +13098,10 @@ MonoBehaviour:
       type: {class: TutorialGameManager/assistentSay, ns: , asm: Assembly-CSharp}
       data:
         text:
-        - voting
-        - voting 2
+        - "It\u2019s time to vote.\nChoose the player you want to vote for and confirm
+          your decision."
+        - Your choice right now determines who stays in the bunker and who leaves
+          it.
     - rid: 6684008362008641701
       type: {class: TutorialGameManager/assistentHide, ns: , asm: Assembly-CSharp}
       data: 
@@ -13112,7 +13117,8 @@ MonoBehaviour:
       type: {class: TutorialGameManager/assistentSay, ns: , asm: Assembly-CSharp}
       data:
         text:
-        - inventary
+        - "Try using a card through the Book \u2014 choose a player and see how it
+          affects their traits."
     - rid: 6684008362008641704
       type: {class: TutorialGameManager/WaitTrigger, ns: , asm: Assembly-CSharp}
       data: 
@@ -13133,7 +13139,8 @@ MonoBehaviour:
       type: {class: TutorialGameManager/assistentSay, ns: , asm: Assembly-CSharp}
       data:
         text:
-        - round continue
+        - "The round continues \u2014 try revealing another one of your traits so
+          the other players can continue the discussion."
     - rid: 6684008362008641708
       type: {class: TutorialGameManager/DoAction, ns: , asm: Assembly-CSharp}
       data:
@@ -13197,8 +13204,11 @@ MonoBehaviour:
       type: {class: TutorialGameManager/assistentSay, ns: , asm: Assembly-CSharp}
       data:
         text:
-        - bunker params
-        - now starting free round
+        - "The bunker\u2019s parameters also affect the outcome of the game \u2014
+          sometimes even more than the players themselves. Take a look at its current
+          condition."
+        - "Now the free-play round begins. You already know the rules \u2014 from
+          here on, everything depends on your decisions."
     - rid: 6684008362008641712
       type: {class: TutorialGameManager/Voting, ns: , asm: Assembly-CSharp}
       data:
