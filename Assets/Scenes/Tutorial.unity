@@ -9933,7 +9933,7 @@ PrefabInstance:
     - target: {fileID: 6675492704940169471, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 87cfb2850e9bcc746b5e1738bd2f59bf, type: 2}
+      objectReference: {fileID: 2100000, guid: ebcb55af1c3f7a14c9c9fff23885e2a3, type: 2}
     - target: {fileID: 7698129278242051505, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: m_Materials.Array.size
       value: 3
@@ -11675,7 +11675,7 @@ PrefabInstance:
     - target: {fileID: 6675492704940169471, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ebcb55af1c3f7a14c9c9fff23885e2a3, type: 2}
+      objectReference: {fileID: 2100000, guid: fda55380c75d56d4991eb64a6a1c13b9, type: 2}
     - target: {fileID: 7698129278242051505, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -12228,7 +12228,7 @@ PrefabInstance:
     - target: {fileID: 6675492704940169471, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: fda55380c75d56d4991eb64a6a1c13b9, type: 2}
+      objectReference: {fileID: 2100000, guid: 87cfb2850e9bcc746b5e1738bd2f59bf, type: 2}
     - target: {fileID: 7698129278242051505, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -12584,7 +12584,11 @@ MonoBehaviour:
   - rid: 6684008362008641684
   - rid: 6684008362008641687
   - rid: 6684008388946559048
+  - rid: 6684008413661233233
+  - rid: 6684008413661233235
   - rid: 6684008362008641688
+  - rid: 6684008413661233236
+  - rid: 6684008413661233234
   - rid: 6684008362008641689
   - rid: 6684008388946559049
   - rid: 6684008362008641690
@@ -12595,6 +12599,20 @@ MonoBehaviour:
   - rid: 6684008362008641693
   - rid: 6684008362008641697
   - rid: 6684008362008641698
+  - rid: 6684008413661233152
+  - rid: 6684008413661233153
+  - rid: 6684008413661233221
+  - rid: 6684008413661233222
+  - rid: 6684008413661233223
+  - rid: 6684008413661233224
+  - rid: 6684008413661233225
+  - rid: 6684008413661233226
+  - rid: 6684008413661233227
+  - rid: 6684008413661233228
+  - rid: 6684008413661233229
+  - rid: 6684008413661233230
+  - rid: 6684008413661233231
+  - rid: 6684008413661233232
   - rid: 6684008388946559050
   - rid: 6684008362008641696
   - rid: 6684008362008641701
@@ -12609,10 +12627,37 @@ MonoBehaviour:
   - rid: 6684008362008641708
   - rid: 6684008362008641709
   - rid: 2808812633631228024
+  - rid: 6684008413661233238
+  - rid: 6684008413661233239
+  - rid: 6684008413661233240
+  - rid: 6684008413661233237
+  - rid: 6684008413661233241
+  - rid: 6684008413661233242
+  - rid: 6684008413661233243
+  - rid: 6684008413661233244
+  - rid: 6684008413661233245
+  - rid: 6684008413661233246
+  - rid: 6684008413661233247
+  - rid: 6684008413661233248
+  - rid: 6684008413661233249
+  - rid: 6684008413661233250
+  - rid: 6684008413661233251
   - rid: 6684008362008641710
   - rid: 6684008362008641715
   - rid: 6684008362008641711
+  - rid: 6684008413661233252
+  - rid: 6684008413661233254
+  - rid: 6684008413661233253
+  - rid: 6684008413661233255
+  - rid: 6684008413661233256
+  - rid: 6684008413661233257
+  - rid: 6684008413661233259
+  - rid: 6684008413661233258
+  - rid: 6684008413661233260
+  - rid: 6684008413661233261
   - rid: 2808812633631228024
+  - rid: 6684008413661233262
+  - rid: 6684008413661233263
   - rid: 6684008362008641712
   lastStats: 1
   references:
@@ -12625,7 +12670,7 @@ MonoBehaviour:
     - rid: 2808812633631228024
       type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
       data:
-        time: 1
+        time: 4
     - rid: 2808812633631228025
       type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
       data:
@@ -12867,11 +12912,13 @@ MonoBehaviour:
         showTime: 10
         bot: 0
         texts:
-        - text: Opened Age
+        - text: "\u041D\u0435 \u0441\u0430\u043C\u044B\u0439 \u043F\u043B\u043E\u0445\u043E\u0439
+            \u0432\u043E\u0437\u0440\u0430\u0441\u0442"
           stat: 1
-        - text: Opened Profesion
+        - text: "\u041D\u0443, \u043E\u0431\u044A\u044F\u0441\u043D\u044F\u0442\u044C
+            \u043E\u043D \u0442\u043E\u0447\u043D\u043E \u0443\u043C\u0435\u0435\u0442"
           stat: 2
-        - text: Opened Expirienc
+        - text: "\u041A\u0430\u043A-\u0442\u043E \u043C\u0430\u043B\u043E\u0432\u0430\u0442\u043E"
           stat: 3
     - rid: 6684008362008641689
       type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
@@ -13256,6 +13303,366 @@ MonoBehaviour:
           your decision."
         - Your choice right now determines who stays in the bunker and who leaves
           it.
+    - rid: 6684008413661233152
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u042F \u043F\u0441\u0438\u0445\u043E\u043B\u043E\u0433 \u0438 \u0441\u043C\u043E\u0433\u0443
+          \u043F\u043E\u043C\u043E\u0447\u044C \u043F\u0440\u0438 \u043F\u0430\u043D\u0438\u043A\u0435
+          \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, \u044F \u043E\u0447\u0435\u043D\u044C
+          \u0432\u0430\u0436\u0435\u043D"
+        showTime: -1
+        bot: 1
+    - rid: 6684008413661233153
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 2
+        bot: 1
+    - rid: 6684008413661233221
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233222
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u042F \u0441\u043E\u043B\u0434\u0430\u0442 \u0438 \u0443 \u043C\u0435\u043D\u044F
+          \u0435\u0441\u0442\u044C \u0432\u0441\u0435 \u043D\u0430\u0432\u044B\u043A\u0438
+          \u0434\u043B\u044F \u0432\u044B\u0436\u0438\u0432\u0430\u043D\u0438\u044F"
+        showTime: -1
+        bot: 3
+    - rid: 6684008413661233223
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 2
+        bot: 3
+    - rid: 6684008413661233224
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233225
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u0414\u0430, \u044F \u0441\u0442\u0430\u0440\u044B\u0439, \u043D\u043E
+          \u0432\u044B \u043D\u0435 \u0432\u0438\u0434\u0435\u043B\u0438 \u0447\u0442\u043E
+          \u0443 \u043C\u0435\u043D\u044F \u0435\u0449\u0435 \u0435\u0441\u0442\u044C
+          \u0432 \u0431\u043B\u043E\u043A\u043D\u043E\u0442\u0435"
+        showTime: -1
+        bot: 0
+    - rid: 6684008413661233226
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 1
+        bot: 0
+    - rid: 6684008413661233227
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233228
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "45 \u043B\u0435\u0442-\u0441\u0430\u043C\u044B\u0439 \u0440\u0430\u0441\u0446\u0432\u0435\u0442
+          \u0441\u0438\u043B"
+        showTime: -1
+        bot: 2
+    - rid: 6684008413661233229
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 1
+        bot: 2
+    - rid: 6684008413661233230
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233231
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u043E\u0447\u0435\u0432\u0438\u0434\u043D\u043E,
+          \u043A\u043E\u0433\u043E \u043D\u0430\u043C \u043D\u0430\u0434\u043E \u0432\u044B\u0433\u043D\u0430\u0442\u044C"
+        showTime: -1
+        bot: 3
+    - rid: 6684008413661233232
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233233
+      type: {class: TutorialGameManager/BotReactOnStat, ns: , asm: Assembly-CSharp}
+      data:
+        showTime: -1
+        bot: 1
+        texts:
+        - text: "31? \u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E \u0442\u0430\u043A"
+          stat: 1
+        - text: "\u042D\u0442\u043E \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C
+            \u043F\u043E\u043B\u0435\u0437\u043D\u044B\u043C"
+          stat: 2
+        - text: "\u0412\u0441\u0435\u0433\u043E 2 \u0433\u043E\u0434\u0430?"
+          stat: 3
+    - rid: 6684008413661233234
+      type: {class: TutorialGameManager/BotReactOnStat, ns: , asm: Assembly-CSharp}
+      data:
+        showTime: -1
+        bot: 2
+        texts:
+        - text: "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043E\u043F\u044B\u0442\u043D\u044B\u0439"
+          stat: 1
+        - text: "\u0418\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E \u0447\u0435\u043C\u0443
+            \u0443\u0447\u0438\u0442"
+          stat: 2
+        - text: "\u0425\u043E\u0442\u044C \u043A\u0430\u043A\u043E\u0439 \u0442\u043E
+            \u043E\u043F\u044B\u0442 \u0435\u0441\u0442\u044C"
+          stat: 3
+    - rid: 6684008413661233235
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233236
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233237
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 5
+    - rid: 6684008413661233238
+      type: {class: TutorialGameManager/BotReactOnStat, ns: , asm: Assembly-CSharp}
+      data:
+        showTime: -1
+        bot: 1
+        texts:
+        - text: "31? \u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E \u0442\u0430\u043A"
+          stat: 1
+        - text: "\u042D\u0442\u043E \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C
+            \u043F\u043E\u043B\u0435\u0437\u043D\u044B\u043C"
+          stat: 2
+        - text: "\u0412\u0441\u0435\u0433\u043E 2 \u0433\u043E\u0434\u0430?"
+          stat: 3
+    - rid: 6684008413661233239
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233240
+      type: {class: TutorialGameManager/BotReactOnStat, ns: , asm: Assembly-CSharp}
+      data:
+        showTime: -1
+        bot: 3
+        texts:
+        - text: "\u041D\u0435 \u0441\u0430\u043C\u044B\u0439 \u043F\u043B\u043E\u0445\u043E\u0439"
+          stat: 1
+        - text: "\u041D\u0443, \u043E\u0431\u044A\u044F\u0441\u043D\u044F\u0442\u044C
+            \u043E\u043D \u0442\u043E\u0447\u043D\u043E \u0443\u043C\u0435\u0435\u0442"
+          stat: 2
+        - text: "\u041A\u0430\u043A-\u0442\u043E \u043C\u0430\u043B\u043E\u0432\u0430\u0442\u043E"
+          stat: 3
+    - rid: 6684008413661233241
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u041C\u043D\u0435 36, \u044F \u043D\u0435 \u043C\u043E\u043B\u043E\u0434
+          \u043D\u043E \u0438 \u043D\u0435 \u0441\u0442\u0430\u0440- \u0438\u0434\u0435\u0430\u043B\u0435\u043D"
+        showTime: -1
+        bot: 1
+    - rid: 6684008413661233242
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 1
+        bot: 1
+    - rid: 6684008413661233243
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233244
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u0410 \u044F \u043C\u043E\u043B\u043E\u0434\u043E\u0439 , \u0435\u0449\u0451
+          \u0434\u043E\u043B\u0433\u043E \u0441\u043C\u043E\u0433\u0443 \u0432\u044B\u0436\u0438\u0432\u0430\u0442\u044C"
+        showTime: -1
+        bot: 3
+    - rid: 6684008413661233245
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 1
+        bot: 3
+    - rid: 6684008413661233246
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233247
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u0410 \u0442\u0435\u043F\u0435\u0440\u044C \u0441\u0430\u043C\u043E\u0435
+          \u0441\u043C\u0435\u0448\u043D\u043E\u0435-\u044F \u0441\u0442\u0443\u0434\u0435\u043D\u0442
+          \u043245!"
+        showTime: -1
+        bot: 2
+    - rid: 6684008413661233248
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 2
+        bot: 2
+    - rid: 6684008413661233249
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 3
+    - rid: 6684008413661233250
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u041A\u0430\u043A \u0431\u0443\u0434\u0442\u043E \u043D\u0430\u0434\u043E
+          \u0432\u044B\u0433\u043E\u043D\u044F\u0442\u044C \u0427\u0430\u0434\u0430.
+          \u0427\u0442\u043E \u0437\u0430 \u0441\u0442\u0443\u0434\u0435\u043D\u0442
+          \u0432 45"
+        showTime: -1
+        bot: 3
+    - rid: 6684008413661233251
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233252
+      type: {class: TutorialGameManager/DoAction, ns: , asm: Assembly-CSharp}
+      data:
+        Event:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 882198388}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 1
+              m_CallState: 2
+            - m_Target: {fileID: 678932811}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 1
+              m_CallState: 2
+            - m_Target: {fileID: 1219796876}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 1
+              m_CallState: 2
+    - rid: 6684008413661233253
+      type: {class: TutorialGameManager/DoAction, ns: , asm: Assembly-CSharp}
+      data:
+        Event:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 882198388}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 678932811}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 1219796876}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+    - rid: 6684008413661233254
+      type: {class: TutorialGameManager/WaitTrigger, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 6684008413661233255
+      type: {class: TutorialGameManager/BotReactOnStat, ns: , asm: Assembly-CSharp}
+      data:
+        showTime: -1
+        bot: 3
+        texts:
+        - text: "\u041D\u0435 \u0441\u0430\u043C\u044B\u0439 \u043F\u043B\u043E\u0445\u043E\u0439"
+          stat: 1
+        - text: "\u041D\u0443, \u043E\u0431\u044A\u044F\u0441\u043D\u044F\u0442\u044C
+            \u043E\u043D \u0442\u043E\u0447\u043D\u043E \u0443\u043C\u0435\u0435\u0442"
+          stat: 2
+        - text: "\u041A\u0430\u043A-\u0442\u043E \u043C\u0430\u043B\u043E\u0432\u0430\u0442\u043E"
+          stat: 3
+    - rid: 6684008413661233256
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233257
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u043E\u043F\u044B\u0442 \u0440\u0430\u0431\u043E\u0442\u044B \u043F\u0441\u0438\u0445\u043E\u043B\u043E\u0433\u043E\u043C
+          \u0443 \u043C\u0435\u043D\u044F \u0438\u043C\u0435\u0435\u0442\u0441\u044F-\u044F
+          \u0441\u043C\u043E\u0433\u0443 \u043F\u043E\u043C\u043E\u0447\u044C \u043F\u0440\u0438
+          \u043F\u0430\u043D\u0438\u043A\u0435"
+        showTime: -1
+        bot: 1
+    - rid: 6684008413661233258
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 4
+    - rid: 6684008413661233259
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 3
+        bot: 1
+    - rid: 6684008413661233260
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u0410 \u0443 \u043C\u0435\u043D\u044F \u043E\u043F\u044B\u0442 \u0440\u0430\u0431\u043E\u0442\u044B
+          \u0432\u0441\u0451-\u0442\u0430\u043A\u0438 \u0435\u0441\u0442\u044C, \u0442\u0430\u043A
+          \u0447\u0442\u043E \u0441\u043E\u043B\u0434\u0430\u0442 \u0441 \u0442\u0430\u043A\u0438\u043C\u0438
+          \u0437\u043D\u0430\u043D\u0438\u044F\u043C\u0438 \u0442\u043E\u0447\u043D\u043E
+          \u043F\u043E\u043B\u0435\u0437\u0435\u043D"
+        showTime: -1
+        bot: 3
+    - rid: 6684008413661233261
+      type: {class: TutorialGameManager/BotShowStat, ns: , asm: Assembly-CSharp}
+      data:
+        stat: 3
+        bot: 3
+    - rid: 6684008413661233262
+      type: {class: TutorialGameManager/BotSay, ns: , asm: Assembly-CSharp}
+      data:
+        text: "\u041C\u043D\u0435 \u043A\u0430\u0436\u0435\u0442\u0441\u044F \u0442\u0443\u0442
+          \u043E\u0447\u0435\u0432\u0438\u0434\u043D\u043E \u043A\u0442\u043E \u043D\u0435
+          \u043F\u043E\u043C\u043E\u0436\u0435\u0442 \u0432\u044B\u0436\u0438\u0442\u044C"
+        showTime: -1
+        bot: 1
+    - rid: 6684008413661233263
+      type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
+      data:
+        time: 3
 --- !u!4 &1397251448
 Transform:
   m_ObjectHideFlags: 0
@@ -18223,7 +18630,7 @@ PrefabInstance:
     - target: {fileID: 6675492704940169471, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 58a1174937bd1d8498b3df9eee4d7ca7, type: 2}
+      objectReference: {fileID: 2100000, guid: 7dae69a15f02a844496924c348c0ab37, type: 2}
     - target: {fileID: 7698129278242051505, guid: 585e29204869a854bb628331a1ecaa44, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

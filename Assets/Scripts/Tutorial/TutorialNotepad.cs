@@ -40,7 +40,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         playersStats[0].list = new Dictionary<EStats, object>()
         {
             { EStats.Name, "Bob" },
-            { EStats.Age, -1 },
+            { EStats.Age, 98 },
             { EStats.Profession, Professions.unknown },
             { EStats.Experience, -1},
             { EStats.Healthe, Healthe.unknown},
@@ -51,9 +51,9 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         playersStats[1].list = new Dictionary<EStats, object>()
         {
             { EStats.Name, "Mike" },
-            { EStats.Age, -1 },
-            { EStats.Profession, Professions.unknown },
-            { EStats.Experience, -1},
+            { EStats.Age, 36 },
+            { EStats.Profession, Professions.psychologist },
+            { EStats.Experience, 10},
             { EStats.Healthe, Healthe.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
@@ -62,8 +62,8 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         playersStats[2].list = new Dictionary<EStats, object>()
         {
             { EStats.Name, "Chad" },
-            { EStats.Age, -1 },
-            { EStats.Profession, Professions.unknown },
+            { EStats.Age, 45 },
+            { EStats.Profession, Professions.Student },
             { EStats.Experience, -1},
             { EStats.Healthe, Healthe.unknown},
             { EStats.Phobias, Phobias.unknown},
@@ -73,20 +73,9 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         playersStats[3].list = new Dictionary<EStats, object>()
         {
             { EStats.Name, "Dave" },
-            { EStats.Age, -1 },
-            { EStats.Profession, Professions.unknown },
-            { EStats.Experience, -1},
-            { EStats.Healthe, Healthe.unknown},
-            { EStats.Phobias, Phobias.unknown},
-            { EStats.Hobby, Hobby.unknown },
-            { EStats.Personality, Personality.unknown}
-        };
-        playersStats[4].list = new Dictionary<EStats, object>()
-        {
-            { EStats.Name, "Kevin" },
-            { EStats.Age, -1 },
-            { EStats.Profession, Professions.unknown },
-            { EStats.Experience, -1},
+            { EStats.Age, 28 },
+            { EStats.Profession, Professions.Soldier },
+            { EStats.Experience, 5},
             { EStats.Healthe, Healthe.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },

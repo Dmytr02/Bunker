@@ -74,10 +74,11 @@ public class TutorialGameManager : MonoBehaviour
     [Serializable] class BotShowStat : SomeAction
     {
         public EStats stat;
+        public int bot;
         
         public override IEnumerator Action(TutorialGameManager manager)
         {
-            manager.notepad.playersStats[0].showed[stat] = true;
+            manager.notepad.playersStats[bot].showed[stat] = true;
             manager.notepad.SetIndex(manager.notepad.index);
             yield break;
         }
