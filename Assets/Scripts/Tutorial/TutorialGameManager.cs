@@ -12,7 +12,7 @@ public class TutorialGameManager : MonoBehaviour
     [SerializeField] TutorialNotepad notepad;
     [SerializeField] private GameObject EndPanel;
     //[SerializeField] private TutorialHints tutorialHints;
-    [SerializeField] private TutorialCommandManager tutorialCommandManager;
+    [SerializeField] public TutorialCommandManager tutorialCommandManager;
     [SerializeField] private Tutorial tutorialCards;
     [SerializeField] private Helper assistant;
     public bool Trigger{get; set;}
