@@ -87,6 +87,6 @@ public class TutorialVote : MonoBehaviour
         count = 0;
         animator.SetBool("isShowPanel", false);
         yield return new WaitForSeconds(0.5f);
-        yield return StartCoroutine(ShowPanel());
+        //yield return StartCoroutine(ShowPanel());
     }
 }
