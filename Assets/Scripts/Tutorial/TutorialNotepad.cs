@@ -16,6 +16,15 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
     [SerializeField] public Animator animator;
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioClip audioClip;
+    
+    public Color[] botColors = new Color[5]
+    {
+        Color.red,
+        Color.orange,
+        Color.green,
+        Color.yellow,
+        Color.blue
+    };
 
     public TutorialPlayerStats playerStats;
     public List<TutorialPlayerStats> playersStats = new List<TutorialPlayerStats>(5) { new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats() };

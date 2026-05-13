@@ -135,7 +135,7 @@ public class TutorialCommandManager : MonoBehaviour
         _buffer.Insert(0, command);
 
         args.Reverse();
-        if (args.Count != 0) SendMassage(string.Join(" ", args), PlayerPrefs.GetString("name")); 
+        if (args.Count != 0) SendMassage(string.Join(" ", args),  PlayerPrefs.GetString("name"), Color.red); 
         //(_instances[typeof(PlayerMovmant)] as PlayerMovmant)?.sendMassage(string.Join(" ", args));
     }
 
@@ -144,16 +144,16 @@ public class TutorialCommandManager : MonoBehaviour
         ProcessCommand(text);
     }
 
-    public void SendMassage(string text, string name)
+    public void SendMassage(string text, string name, Color color)
     {
         int index = textOutput.text.Length-1;
         
-        StartCoroutine(MessageControl(text, name, index, 10));
+        StartCoroutine(MessageControl(text, name, color, index, 10));
     }
 
     Action<int, int> ChangeLenght;
 
-    IEnumerator MessageControl(string text, string name, int index, float time)
+    IEnumerator MessageControl(string text, string name, Color color, int index, float time)
     {
         string fullMessage;
         ChangeLenght += (i, count) =>
@@ -172,7 +172,7 @@ public class TutorialCommandManager : MonoBehaviour
         {
             fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099>{name}: {text}</mark>\n");
             textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
-            
+            //$"<color=#{ColorUtility.ToHtmlStringRGB(color)}{}>
             
             lastLenght = fullMessage.Length;
             timer += Time.deltaTime;

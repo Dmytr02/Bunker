@@ -14,6 +14,12 @@ public class Tutorial : MonoBehaviour
 
     public List<Sprite> Images;
     
+    [SerializeField] private Sprite nextSprite;
+    [SerializeField] private Sprite exitSprite;
+
+    [SerializeField] private Image next;
+    [SerializeField] private Image previous;
+    
     public bool inProgress = false;
     public bool isOpened = true;
 
@@ -50,15 +56,25 @@ public class Tutorial : MonoBehaviour
         {
             image1.sprite = Images[index - 1];
             image1.color = Color.white;
+            previous.gameObject.SetActive(true);
         }
-        else image1.color = Color.clear;
+        else
+        {
+            image1.color = Color.clear;
+            previous.gameObject.SetActive(false);
+        }
         image2.sprite = Images[index];
         if (index + 1 < Images.Count)
         {
             image3.sprite = Images[index+1];
             image3.color = Color.white;
+            next.sprite = nextSprite;
         }
-        else image3.color = Color.clear;
+        else
+        {
+            image3.color = Color.clear;
+            next.sprite = exitSprite;
+        }
     }
     
     public void NextImage()

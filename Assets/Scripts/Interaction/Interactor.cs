@@ -55,6 +55,11 @@ public class Interactor : MonoBehaviour
                 this.interactable = null;
             }
         }
+        else
+        {
+            interactable?.OnPointerExit(this, hit);
+            interactable = null;
+        }
     }
 }
 

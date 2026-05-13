@@ -4,6 +4,7 @@ public class TutorialCard2 : Card
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip audioClip;
+    public bool isTirigger {get; set;}
     protected override bool OnUse(RaycastHit hit)
     {
         if (hit.collider.transform.parent == null) return false;
@@ -13,7 +14,7 @@ public class TutorialCard2 : Card
         {
             audioSource.PlayOneShot(audioClip);
             TutorialGameManager.assistentLast = 2;
-            TutorialGameManager.Instance.Trigger = true;
+            if(isTirigger) TutorialGameManager.Instance.Trigger = true;
             return true;
         }
         return false;

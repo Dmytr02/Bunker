@@ -19,9 +19,16 @@ Shader "Custom/URP_Universal_Lit"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "RenderPipeline"="UniversalPipeline" }
+        Tags { "Queue" = "Transparent" "RenderType"="Transparent" "RenderPipeline"="UniversalPipeline" }
+        
+
+    
         Pass
         {
+            // Внутри Pass перед кодом HLSL:
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
+            //  Cull Off // Опционально: чтобы видеть объект изнутри
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -65,11 +72,13 @@ Shader "Custom/URP_Universal_Lit"
             half4 frag (Varyings input) : SV_Target {
                 float3 normal = normalize(input.normalWS);
                 float3 viewDir = normalize(GetWorldSpaceViewDir(input.positionWS));
-                
-                BRDFData brdfData;
-                InitializeBRDFData(float3(1, 1, 1), _Metallic, 0, _Smoothness, _BaseColor.a, brdfData);
+                float4 texColor = tex2D(_MainTex, input.uv);
 
-                // 1. Считаем свет
+                float4 color;
+                color.a = texColor.a * _BaseColor.a;
+                BRDFData brdfData;
+                InitializeBRDFData(float3(1, 1, 1), _Metallic, 0, _Smoothness, color.a, brdfData);
+
                 Light mainLight = GetMainLight();
                 half3 finalColor = 0;//GlobalIllumination(brdfData, SampleSH(normal), 1.0, normal, viewDir);
                 // finalColor += LightingPhysicallyBased(brdfData, mainLight, normal, viewDir);
@@ -85,11 +94,11 @@ Shader "Custom/URP_Universal_Lit"
                 LIGHT_LOOP_END
 
                 // Получаем цвет из текстуры
-                float4 texColor = tex2D(_MainTex, input.uv);
                 float toonStep = step(_PosterizeSteps, finalColor);
                 toonStep = Remap(0, 1, _Min, _Max, toonStep);
                 // Домножаем накопленный свет на текстуру и на _BaseColor
-                float4 color = toonStep * texColor * _BaseColor;
+                color.rgb = toonStep * texColor.rgb * _BaseColor.rgb;
+
                 
                 return color;
             }

@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class Button : MonoBehaviour, IInteractable
 {
     public UnityEvent OnInteract =  new UnityEvent(); 
+    public UnityEvent OnPointerEnterEvent =  new UnityEvent(); 
+    public UnityEvent OnPointerExitEvent =  new UnityEvent(); 
 
     public void StartInteract(Interactor interactor, RaycastHit hit,  bool isFirst)
     {
@@ -16,6 +18,7 @@ public class Button : MonoBehaviour, IInteractable
     public void Interact(Interactor interactor, RaycastHit hit) { }
 
     public void EndInteract(Interactor interactor, RaycastHit hit) { }
+    
     public void OnPointer(Interactor interactor, RaycastHit hit)
     {
         
@@ -23,11 +26,15 @@ public class Button : MonoBehaviour, IInteractable
 
     public void OnPointerEnter(Interactor interactor, RaycastHit hit)
     {
-        
+        if(!enabled) return;
+        OnPointerEnterEvent?.Invoke();
+        Debug.Log("Button Pointer Enter");
     }
 
     public void OnPointerExit(Interactor interactor, RaycastHit hit)
     {
-        
+        if(!enabled) return;
+        OnPointerExitEvent?.Invoke();
+        Debug.Log("Button Pointer Exit");
     }
 }

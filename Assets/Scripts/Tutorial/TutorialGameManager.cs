@@ -40,7 +40,7 @@ public class TutorialGameManager : MonoBehaviour
         public override IEnumerator Action(TutorialGameManager manager)
         {
             manager.massages[bot].showMassage(text);
-            manager.tutorialCommandManager.SendMassage(text, manager.notepad.playersStats[bot].list[EStats.Name].ToString());
+            manager.tutorialCommandManager.SendMassage(text,  manager.notepad.playersStats[bot].list[EStats.Name].ToString(), manager.notepad.botColors[bot+1]);
             yield break;
         }
     }
