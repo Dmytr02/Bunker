@@ -7,6 +7,8 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TutorialCommandManager : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class TutorialCommandManager : MonoBehaviour
 	[SerializeField] private TMP_Text textOutput;
 	[SerializeField] private RectTransform textOutputBG;
     [SerializeField] private GameObject chatPanel;
+    [SerializeField] private ScrollRect scrollView;
     
     public static TutorialCommandManager Instance { get; private set; }
     
@@ -51,7 +54,7 @@ public class TutorialCommandManager : MonoBehaviour
     public void ShowChatPanel()
     {
         chatPanel.SetActive(true);
-        textOutput.text = "<alpha=#FF>" + textOutput.text.Substring(11);
+        textOutput.text = "<alpha=#FF>\n" + textOutput.text.Substring(12);
         EventSystem.current.SetSelectedGameObject(textInput.gameObject, null);
         _selectedIndex = -1;
     }
@@ -59,8 +62,9 @@ public class TutorialCommandManager : MonoBehaviour
     public void HideChatPanel()
     {
         textInput.text = "";
+        scrollView.verticalNormalizedPosition = 0;
         EventSystem.current.SetSelectedGameObject(null);
-        textOutput.text = "<alpha=#00>" + textOutput.text.Substring(11);
+        textOutput.text = "<alpha=#00>\n" + textOutput.text.Substring(12);
         chatPanel.SetActive(false);
     }
     
@@ -170,16 +174,16 @@ public class TutorialCommandManager : MonoBehaviour
         
         while (timer < time)
         {
-            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099>{name}: {text}</mark>\n");
+            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>: {text}</mark>\n");
             textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
-            //$"<color=#{ColorUtility.ToHtmlStringRGB(color)}{}>
+            
             
             lastLenght = fullMessage.Length;
             timer += Time.deltaTime;
             yield return null;
         }
-
-        fullMessage = ($"<mark=#00000099>{name}: {text}</mark>\n");
+        // 
+        fullMessage = ($"<mark=#00000099><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>: {text}</mark>\n");
         textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
         ChangeLenght.Invoke(index, lastLenght-fullMessage.Length);
     }

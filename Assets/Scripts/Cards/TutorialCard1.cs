@@ -31,9 +31,9 @@ public class TutorialCard1 : Card
                         notepad.playersStats[notepad.index + 1].list[EStats.Experience] = 3;
                         notepad.SetIndex(notepad.index);
                         TutorialGameManager.assistentLast = 1;
-                        if(notepad.index == 1) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Hey, less experience now, but the knowledge is still there.", notepad.playersStats[notepad.index].list[EStats.Name].ToString());
-                        if(notepad.index == 2) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Didn’t really change much.", notepad.playersStats[notepad.index].list[EStats.Name].ToString());
-                        if(notepad.index == 3) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Well… that’s fine.", notepad.playersStats[notepad.index].list[EStats.Name].ToString());
+                        if(notepad.index == 1) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Hey, less experience now, but the knowledge is still there.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[2]);
+                        if(notepad.index == 2) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Didn’t really change much.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[3]);
+                        if(notepad.index == 3) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Well… that’s fine.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[4]);
                     }
                     
                     return true;
@@ -47,9 +47,9 @@ public class TutorialCard1 : Card
                     notepad.playersStats[notepad.index+2].list[EStats.Experience] = 3;
                     notepad.SetIndex(notepad.index);
                     TutorialGameManager.assistentLast = 1;
-                    if(notepad.index+1 == 1) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Hey, less experience now, but the knowledge is still there.", notepad.playersStats[notepad.index].list[EStats.Name].ToString());
-                    if(notepad.index+1 == 2) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Didn’t really change much.", notepad.playersStats[notepad.index].list[EStats.Name].ToString());
-                    if(notepad.index+1 == 3) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Well… that’s fine.", notepad.playersStats[notepad.index].list[EStats.Name].ToString());
+                    if(notepad.index+1 == 1) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Hey, less experience now, but the knowledge is still there.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[2]);
+                    if(notepad.index+1 == 2) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Didn’t really change much.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[3]);
+                    if(notepad.index+1 == 3) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Well… that’s fine.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[4]);
                     return true;
                     
                 }

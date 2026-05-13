@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class TutorialGameManager : MonoBehaviour
 {
     [SerializeField] Massage[] massages = new Massage[5];
-    [SerializeField] TutorialNotepad notepad;
+    [SerializeField] public TutorialNotepad notepad;
     [SerializeField] private GameObject EndPanel;
     //[SerializeField] private TutorialHints tutorialHints;
     [SerializeField] public TutorialCommandManager tutorialCommandManager;
@@ -59,7 +59,7 @@ public class TutorialGameManager : MonoBehaviour
         {
             Debug.Log("last " + manager.lastStats + ", list");
             manager.massages[bot].showMassage(texts.FirstOrDefault(n => n.stat == manager.lastStats).text);
-            manager.tutorialCommandManager.SendMassage(texts.FirstOrDefault(n => n.stat == manager.lastStats).text, manager.notepad.playersStats[bot].list[EStats.Name].ToString());
+            manager.tutorialCommandManager.SendMassage(texts.FirstOrDefault(n => n.stat == manager.lastStats).text, manager.notepad.playersStats[bot].list[EStats.Name].ToString(), manager.notepad.botColors[bot+1]);
             yield break;
         }
     }
