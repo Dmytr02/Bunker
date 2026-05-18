@@ -32,7 +32,10 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     [SerializeField] AudioClip[] audioClip;
     public int index;
     [SerializeField] CursoreMuves cursoreMuves;
-    
+    [SerializeField] private Renderer bini;
+    [SerializeField] private Material[] biniMaterials;
+    [SerializeField] public Color[] colors;
+
     public VoiceController voiceController;
     
     public static List<PlayerMovmant> players = new List<PlayerMovmant>();
@@ -147,7 +150,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         {
             //Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
             Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Lerp(lookAngelRangeY.x, lookAngelRangeY.y, 1 - Mathf.Clamp01(Input.mousePosition.y / Screen.height)), Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), 0));
-            photonView.RPC("RPC_SendRotation", RpcTarget.All, Mathf.Lerp(1, -1, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), Mathf.Lerp(-1, 1, Mathf.Clamp01(Input.mousePosition.y / Screen.height)));
+            photonView.RPC("RPC_SendRotation", RpcTarget.All, Mathf.Lerp(-1, 1, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), Mathf.Lerp(-1, 1, Mathf.Clamp01(Input.mousePosition.y / Screen.height)));
         }
     }
 
@@ -224,12 +227,12 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     
     public void SendAllStats()
     {
-            foreach (var i in stats.list.ToDictionary(k => k.Key, v => v.Value))
-            {
-                photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value, true);
-                stats.isShowed[i.Key] = true;
-                Debug.Log(i.Key + " - Sended");
-            }
+        foreach (var i in stats.list.ToDictionary(k => k.Key, v => v.Value))
+        {
+            photonView.RPC("RPC_Stat", RpcTarget.All, i.Key, i.Value, true);
+            stats.isShowed[i.Key] = true;
+            Debug.Log(i.Key + " - Sended");
+        }
     }
 
     public void sendMassage(string msg)
@@ -241,6 +244,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     {
         object[] data = info.photonView.InstantiationData;
         index = (int)data[0];
+        bini.material = biniMaterials[index];
     }
 }
 

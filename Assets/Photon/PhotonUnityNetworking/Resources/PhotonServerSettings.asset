@@ -63,6 +63,7 @@ MonoBehaviour:
   - PlaySound
   - RPC_ChangeColorsEffect
   - RPC_CursoreEffect
+  - RPC_CutScene
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

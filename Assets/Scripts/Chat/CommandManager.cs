@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -6,6 +7,7 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CommandManager : MonoBehaviourPunCallbacks
 {
@@ -14,7 +16,7 @@ public class CommandManager : MonoBehaviourPunCallbacks
 	[SerializeField] private TMP_Text textOutput;
 	[SerializeField] private RectTransform textOutputBG;
     [SerializeField] private GameObject chatPanel;
-    
+    [SerializeField] private ScrollRect scrollView;
     public static CommandManager Instance { get; private set; }
     
     private Dictionary<Type, object> _instances = new Dictionary<Type, object>();
@@ -50,6 +52,7 @@ public class CommandManager : MonoBehaviourPunCallbacks
     public void ShowChatPanel()
     {
         chatPanel.SetActive(true);
+        textOutput.text = "<alpha=#FF>\n" + textOutput.text.Substring(12);
         EventSystem.current.SetSelectedGameObject(textInput.gameObject, null);
         _selectedIndex = -1;
     }
@@ -57,7 +60,9 @@ public class CommandManager : MonoBehaviourPunCallbacks
     public void HideChatPanel()
     {
         textInput.text = "";
+        scrollView.verticalNormalizedPosition = 0;
         EventSystem.current.SetSelectedGameObject(null);
+        textOutput.text = "<alpha=#00>\n" + textOutput.text.Substring(12);
         chatPanel.SetActive(false);
     }
     
@@ -131,8 +136,8 @@ public class CommandManager : MonoBehaviourPunCallbacks
         _buffer.Insert(0, command);
 
         args.Reverse();
-        if (args.Count != 0) photonView.RPC("SendMassage", RpcTarget.All, string.Join(" ", args), PlayerMovmant.player.stats.list["Name"]); 
-        (_instances[typeof(PlayerMovmant)] as PlayerMovmant)?.sendMassage(string.Join(" ", args));
+        if (args.Count != 0) photonView.RPC("SendMassage", RpcTarget.All, string.Join(" ", args), PlayerMovmant.player.stats.list["Name"], PlayerMovmant.player.index); 
+        //(_instances[typeof(PlayerMovmant)] as PlayerMovmant)?.sendMassage(string.Join(" ", args));
     }
 
     public void FastMassage(string text)
@@ -141,13 +146,43 @@ public class CommandManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void SendMassage(string text, string name)
+    private void SendMassage(string text, string name, int color)
     {
-        textOutput.text += name + " - <indent=10%>" + text + "</indent>\n";
-        Vector2 textSize = textOutput.GetPreferredValues();
-        textOutputBG.sizeDelta = textSize;
+        int index = textOutput.text.Length-1;
+        StartCoroutine(MessageControl(text, name, PlayerMovmant.player.colors[color], index, 10));
     }
 
+    Action<int, int> ChangeLenght;
+    IEnumerator MessageControl(string text, string name, Color color, int index, float time)
+    {
+        string fullMessage;
+        ChangeLenght += (i, count) =>
+        {
+            if (i < index)
+            {
+                index-=count;
+            }
+        };
+        float timer = 0;
+        fullMessage = ($"<alpha=#{255.ToString("X2")}><mark=#00000099>{name}: {text}</mark>\n");
+        textOutput.text += fullMessage;
+        int lastLenght = fullMessage.Length;
+        
+        while (timer < time)
+        {
+            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> {text}</mark>\n");
+            textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
+            
+            
+            lastLenght = fullMessage.Length;
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        fullMessage = ($"<mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> {text}</mark>\n");
+        textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
+        ChangeLenght.Invoke(index, lastLenght-fullMessage.Length);
+    }
+    
     [CommandAtribute("/debug", "write text to chat visible only for you")]
     public void _Debug(string text)
     {

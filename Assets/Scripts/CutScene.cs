@@ -4,6 +4,6 @@ public class CutScene : MonoBehaviour
 {
     public void Trigger()
     {
-        TutorialGameManager.Instance.Trigger = true;
+        if(TutorialGameManager.Instance) TutorialGameManager.Instance.Trigger = true;
     }
 }

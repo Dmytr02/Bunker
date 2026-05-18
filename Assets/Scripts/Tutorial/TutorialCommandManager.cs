@@ -151,7 +151,6 @@ public class TutorialCommandManager : MonoBehaviour
     public void SendMassage(string text, string name, Color color)
     {
         int index = textOutput.text.Length-1;
-        
         StartCoroutine(MessageControl(text, name, color, index, 10));
     }
 
@@ -174,7 +173,7 @@ public class TutorialCommandManager : MonoBehaviour
         
         while (timer < time)
         {
-            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>: {text}</mark>\n");
+            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> {text}</mark>\n");
             textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
             
             
@@ -182,8 +181,7 @@ public class TutorialCommandManager : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        // 
-        fullMessage = ($"<mark=#00000099><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>: {text}</mark>\n");
+        fullMessage = ($"<mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> {text}</mark>\n");
         textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
         ChangeLenght.Invoke(index, lastLenght-fullMessage.Length);
     }
