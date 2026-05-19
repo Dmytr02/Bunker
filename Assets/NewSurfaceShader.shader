@@ -27,7 +27,7 @@ Shader "Custom/URP_Universal_Lit"
         {
             // Внутри Pass перед кодом HLSL:
             Blend SrcAlpha OneMinusSrcAlpha
-            ZWrite Off
+            ZWrite On
             //  Cull Off // Опционально: чтобы видеть объект изнутри
             HLSLPROGRAM
             #pragma vertex vert

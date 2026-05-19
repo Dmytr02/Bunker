@@ -1,13 +1,15 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -29,6 +31,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] Material activeMaterial;
     [SerializeField] Material inactiveMaterial;
     
+    [SerializeField] EventTrigger triggerStartVoting;
+    [SerializeField] TMP_Text textStartVoting;
+    [SerializeField] int timeBeforeVoting = 20;
+    
+    [SerializeField] Helper helper;
+    
     public static GameManager Instance;
     
     public UnityEvent OnStartRound;
@@ -36,6 +44,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     bool showTimer = false;
     bool isVoting = false;
+    public static int roundNumber = 1; 
     
     private static readonly Dictionary<(string, object), int> costs = new Dictionary<(string, object), int>()
     {
@@ -154,7 +163,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("Starting game");
         playerCountText.gameObject.SetActive(false);
         
-        TimeToEndRound(5);
+        //TimeToEndRound(5);
+        StartCoroutine(ShowStartVoting());
 
         PhotonNetwork.Instantiate(notepad.name,
             PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition,
@@ -174,7 +184,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartRound()
     {
-        Debug.Log("Starting round 1");
         if (PlayerMovmant.players.Count <= 2)
         {
             PlayerMovmant.player.SendAllStats();
@@ -183,7 +192,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.Log("Starting round");
             OnStartRound.Invoke();
         }
     }
@@ -479,8 +487,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void EndRound()
     {
+        triggerStartVoting.gameObject.SetActive(true);
         OnEndRound.Invoke();
+        StartCoroutine(ShowStartVoting());
     }
+
 
     [PunRPC]
     public void UpdateTimer(string message)
@@ -490,19 +501,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        //Debug.Log("1");
-        if(!PhotonNetwork.IsMasterClient) return;
-
-        Debug.Log("2");
-
+        if(!isVoting || !PhotonNetwork.IsMasterClient) return;
+        
         photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { (NextRound-DateTime.Now).ToString(@"mm\:ss") + (isVoting?" to end of voting":"") });
 
         if (NextRound < DateTime.Now)
         {
-            Debug.Log("3");
             if (Vote.votes.Count > 0)
             {
-                Debug.Log("4");
                 var groups = Vote.votes
                     .GroupBy(n => n)
                     .Select(g => new { Value = g.Key, Count = g.Count() })
@@ -514,24 +520,55 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (groups.Count < 2 || chosenPlayer.Count != groups[1].Count)
                     PhotonView.Find(chosenPlayer.Value).RPC("RPC_expel", /*PhotonView.Find(chosenPlayer.Value).Owner*/ RpcTarget.All);
 
-                Debug.Log("5");
                 Vote.votes = new List<int>();
                 photonView.RPC("EndRound", RpcTarget.All);
-                NextRound = DateTime.Now.AddSeconds(5);
+                //NextRound = DateTime.Now.AddSeconds(5);
                 isVoting = false;
-            }
+                photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { "" });
+            }/*
             else
             {
-              
                 StartNewRound();
-            }
+            }*/
         }
-        Debug.Log("7");
     }
 
-    private void StartNewRound()
+    private IEnumerator ShowStartVoting()
+    {
+        roundNumber++;
+        StartCoroutine(ShowAssistentToShowStat());
+        triggerStartVoting.gameObject.SetActive(true);
+        triggerStartVoting.enabled = false;
+        for (int i = timeBeforeVoting; i > 0; i--)
+        {
+            yield return new WaitForSeconds(1); 
+            textStartVoting.text = i.ToString();
+        }
+
+        textStartVoting.text = "Everyone must reveal one stat before voting";
+        yield return new WaitUntil(() =>
+        {
+            foreach (PlayerMovmant i in PlayerMovmant.players)
+                if (i.stats.isShowed.Count(pair => pair.Value) < roundNumber)
+                    return false;
+            return true;
+        });
+        
+        triggerStartVoting.enabled = true;
+        textStartVoting.text = "Click to start voting";
+    }
+
+    IEnumerator ShowAssistentToShowStat()
+    {
+        yield return new WaitForSeconds(20);
+        helper.SetPhrases(new List<string> { "Open one of your stats in notepad" });
+    }
+
+
+    public void StartNewRound()
     {
         Debug.Log("Start New Round");
+        triggerStartVoting.gameObject.SetActive(false);
 
         NextRound = DateTime.Now.AddSeconds(60);
         photonView.RPC(nameof(StartRound), RpcTarget.All);

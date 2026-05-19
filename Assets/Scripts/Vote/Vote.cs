@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
@@ -59,6 +60,7 @@ public class Vote : MonoBehaviourPunCallbacks
         animator.SetBool("isShowPanel", true);
         Debug.Log("Starting round4");
     }
+
     
     [PunRPC]
     public void AddVote(int player)
