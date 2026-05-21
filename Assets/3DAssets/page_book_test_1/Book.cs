@@ -3,20 +3,32 @@ using UnityEngine;
 
 public class Book : MonoBehaviour
 {
-    Animator animator;
-    public int selectedPage = 0;
+    [SerializeField] Animator animator;
+    public Observed<int> selectedPage =  new();
+    [SerializeField] private int pages;
+
     public int speed = 10;
-    public int speed2 = 10;
-    private float _speed;
+    private float last = 0; 
+    private float lastUpdate = 0; 
     private void Start()
     {
+        selectedPage.Bind((n) => { return n; },(n) => {
+            last = animator.GetFloat("Blend");
+            lastUpdate = Time.time;
+            return (n+pages)%pages;
+        });
         if(animator == null) animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _speed = Mathf.Lerp(_speed, selectedPage, speed * Time.deltaTime);
-        animator.SetFloat("Blend", Mathf.Lerp(animator.GetFloat("Blend"), _speed, speed2 * Time.deltaTime));
+        animator.SetFloat("Blend", f(last, selectedPage.Value, Mathf.Clamp01((Time.time-lastUpdate)*speed)));
     }
+
+    float f(float a, float b, float t)
+    {
+        return Mathf.Lerp(a, b, t.easeOutQuint());
+    }
+    
+    
 }
