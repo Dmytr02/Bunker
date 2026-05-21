@@ -6446,8 +6446,8 @@ MonoBehaviour:
   muteButton: {fileID: 6009829026190067669}
   recorder: {fileID: 3360129076554386870}
   microphoneImg: {fileID: 0}
-  microphoneOn: {fileID: 21300000, guid: 892918cd654c16541841df2748b9fd13, type: 3}
-  microphoneOff: {fileID: 21300000, guid: f4f092e390f601c4fb163b34ee442ebb, type: 3}
+  microphoneOn: {fileID: 21300000, guid: f8f61c585471f4f86b5527ff47e0cd2c, type: 3}
+  microphoneOff: {fileID: 21300000, guid: 5add277e3f242407abfaa229d6ba41df, type: 3}
   audioSource: {fileID: 5268963455262111958}
 --- !u!114 &5667084533819937715
 MonoBehaviour:

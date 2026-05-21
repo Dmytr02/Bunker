@@ -170,7 +170,7 @@ public class CommandManager : MonoBehaviourPunCallbacks
         
         while (timer < time)
         {
-            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> {text}</mark>\n");
+            fullMessage=($"<alpha=#{((int)(Mathf.Clamp01(chatPanel.activeSelf ? 255 : (time - timer)*0.5f) * 255)).ToString("X2")}><mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> <font=\"ComicSans\">{text}</font></mark>\n");
             textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
             
             
@@ -178,7 +178,7 @@ public class CommandManager : MonoBehaviourPunCallbacks
             timer += Time.deltaTime;
             yield return null;
         }
-        fullMessage = ($"<mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> {text}</mark>\n");
+        fullMessage = ($"<mark=#00000099><font=\"MarkerFelt\"><rgb=#{ColorUtility.ToHtmlStringRGB(color)}>{name}</rgb>:</font> <font=\"ComicSans\">{text}</font></mark>\n");
         textOutput.text = textOutput.text.Remove(index, lastLenght).Insert(index, fullMessage);
         ChangeLenght.Invoke(index, lastLenght-fullMessage.Length);
     }
