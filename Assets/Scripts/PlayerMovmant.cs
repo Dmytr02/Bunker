@@ -97,7 +97,6 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     void Start()
     {
         players.Add(this);
-        Debug.Log("Starting round 2");
         if (photonView.IsMine)
         {
             GetComponent<Interactor>().enabled = true;
@@ -209,7 +208,9 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
 
     public void SendStat(string stat)
     {
-        if(stats.isShowed[stat] || stats.isShowed.Count(pair => pair.Value) < GameManager.roundNumber) return;
+        Debug.Log(stat + " - TrySend");
+        Debug.Log(stats.isShowed[stat] + " || " + (stats.isShowed.Count(pair => pair.Value) < GameManager.roundNumber+2));
+        if(stats.isShowed[stat] || stats.isShowed.Count(pair => pair.Value) > GameManager.roundNumber+2) return;
         GameManager.Instance.StopCoroutine("ShowAssistentToShowStat");
         photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat], true);
         stats.isShowed[stat] = true;

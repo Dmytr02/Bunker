@@ -8,43 +8,44 @@ using UnityEngine;
 
 public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
 {
-    [SerializeField] public TMP_Text text;
+    /*[SerializeField] public TMP_Text text;
     [SerializeField] public ManualCameraRender cameraRender;
     [SerializeField] public TMP_Text text2;
     [SerializeField] public ManualCameraRender cameraRender2;
     [SerializeField] public int index = 0;
-    [SerializeField] public Animator animator;
+    [SerializeField] public Animator animator;*/
+    //[SerializeField] private StatsDrawer[] cameras;
+    [SerializeField] private Book book;
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioClip audioClip;
 
+    //public List<PlayerStats> playersStats = new List<PlayerStats>();
     
-    public List<PlayerStats> playersStats = new List<PlayerStats>();
-    
-
-
     private void Start()
     {
-        cameraRender = GameObject.Find("LeftSideRender").GetComponent<ManualCameraRender>();
+        /*cameraRender = GameObject.Find("LeftSideRender").GetComponent<ManualCameraRender>();
         text = cameraRender.GetComponentInChildren<TMP_Text>();
         cameraRender2 = GameObject.Find("RightSideRender").GetComponent<ManualCameraRender>();
-        text2 = cameraRender2.GetComponentInChildren<TMP_Text>();
+        text2 = cameraRender2.GetComponentInChildren<TMP_Text>();*/
         foreach (var i in PlayerMovmant.players)
         {
-            playersStats.Add(i.stats);
-            Debug.Log(i.stats);
+            //playersStats.Add(i.stats);
+            StatsDrawer.pages[i.index].Draw(i.stats);
         }
-        Debug.Log(playersStats.Count);
         SetIndex(0);
-        
+        print("Start");
         PlayerMovmant.onStatOpened.AddListener((p) =>
         {
-            if (p.stats == playersStats[index]) SetIndex(index);
+            print("Draw for " + p.index);
+            StatsDrawer.pages[p.index].Draw(p.stats);
+            //if (p.stats == playersStats[index]) SetIndex(index);
         });
     }
 
     public void SetIndex(int index)
     {
-        this.index = (index+playersStats.Count)/2%(playersStats.Count/2)*2;
+        book.selectedPage.Value = index;
+        /*this.index = (index+playersStats.Count)/2%(playersStats.Count/2)*2;
         text.text = playersStats[this.index].ToString();
         cameraRender.RenderCameraNow();
 
@@ -57,21 +58,23 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
         {
             text2.text = "";
             cameraRender2.RenderCameraNow();
-        }
+        }*/
     }
 
     public void NextIndex()
     {
-        SetIndex(index + 2);
+        book.selectedPage.Value += 1;
+        /*SetIndex(index + 2);
         animator.SetTrigger("next");
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip);*/
     }
 
     public void PreviousIndex()
     {
-        SetIndex(index - 2);
+        book.selectedPage.Value -= 1;
+        /*SetIndex(index - 2);
         animator.SetTrigger("previus");
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip);*/
     }
 
     private object[] data;
@@ -94,5 +97,4 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
             Destroy(gameObject);
         }
     }
-    
 }

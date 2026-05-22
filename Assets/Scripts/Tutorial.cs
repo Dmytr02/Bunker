@@ -104,9 +104,5 @@ public class Tutorial : MonoBehaviour
     {
         animator.SetBool("end", true);
         isOpened = false;
-        ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable();
-        props.Add("EndTutorial", true);
-
-        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
     }
 }

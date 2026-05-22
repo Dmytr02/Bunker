@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6825752f617b4254d9c98091f77961ce
+guid: 7984abe6462d0ef4ea1516c1c5694cba
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8,8 +8,8 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f53f5fc499d31e44b9deee84d28a9ee8, type: 3}
-  rootGameObjectId: 
-  rootGameObjectName: 
+  rootGameObjectId: rigged_book_optimized_very_fkng_nice (5)
+  rootGameObjectName: rigged_book_optimized_very_fkng_nice (5)
   importerVersion: 1
   streamSettings:
     normals: 1
@@ -31,8 +31,8 @@ ScriptedImporter:
     createCurveRenderers: 0
   abcStartTime: 0.041666666666666664
   abcEndTime: 25
-  startTime: 0.0416666679084301
-  endTime: 10.5
+  startTime: 0.041666666666666664
+  endTime: 25
   importWarning: 
   firstImport: 0
   isHDF5: 0

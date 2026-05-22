@@ -9,6 +9,7 @@ public class ManualCameraRender : MonoBehaviour
     private void Start()
     {
         if (targetCamera == null) targetCamera = GetComponent<Camera>();
+        RenderCameraNow();
     }
 
     [Button]

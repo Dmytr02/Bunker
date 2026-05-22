@@ -8,7 +8,7 @@ public class ChangeColorCard : Card
         if (hit.collider.transform.parent == null) return false;
         if (hit.collider.transform.parent.parent == null) return false;
         if (hit.collider.transform.parent.parent.parent == null) return false;
-        if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
+        /*if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
         {
             if (hit.collider.tag == "bookLeft")
             {
@@ -30,7 +30,7 @@ public class ChangeColorCard : Card
                     return true;
                 }
             }
-        }
+        }*/
         return false;
     }
 }

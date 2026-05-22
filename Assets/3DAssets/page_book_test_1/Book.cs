@@ -20,6 +20,9 @@ public class Book : MonoBehaviour
         if(animator == null) animator = GetComponent<Animator>();
     }
 
+    
+
+
     void Update()
     {
         animator.SetFloat("Blend", f(last, selectedPage.Value, Mathf.Clamp01((Time.time-lastUpdate)*speed)));

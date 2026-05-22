@@ -22,7 +22,7 @@ public class RandomizeStatCard : Card
         if (hit.collider.transform.parent.parent.parent == null) return false;
         if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
         {
-            if (hit.collider.tag == "bookLeft")
+            /*if (hit.collider.tag == "bookLeft")
             {
                 if (notepad.playersStats.Count - 1 > notepad.index)
                 {
@@ -39,7 +39,7 @@ public class RandomizeStatCard : Card
                     notepad.SetIndex(notepad.index);
                     return true;
                 }
-            }
+            }*/
         }
         return false;
     }
