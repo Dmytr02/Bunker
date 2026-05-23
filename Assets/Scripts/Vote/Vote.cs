@@ -6,17 +6,22 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Vote : MonoBehaviourPunCallbacks
 {
     
     [SerializeField] EventTrigger[] voteButtons;
     [SerializeField] TMP_Text[] voteTextButtons;
+    public Image[] voteImageButtons;
     [SerializeField] Animator animator;
     
     public static List<int> votes = new List<int>();
 
     public static Vote Instance;
+    
+    private int selectedIndex = -1;
+    private int count = 0;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -27,16 +32,25 @@ public class Vote : MonoBehaviourPunCallbacks
     {
         GameManager.Instance.OnStartRound.AddListener(StartRound);
     }
+    
+    private void SetSelected(int index)
+    {
+        if(votes.Count >= count) return;
+        foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
+        voteImageButtons[index].gameObject.SetActive(true);
+        selectedIndex = index;
+    }
 
     public void StartRound()
     {
-        Debug.Log("Starting round2");
         if (!PlayerMovmant.players.Contains(PlayerMovmant.player))
         {
-            Debug.Log(PlayerMovmant.players.Count + " players");
             return;
         }
-        Debug.Log("Starting round3");
+        
+        this.count = 1;
+        selectedIndex = -1;
+        foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
         for (int i = 0; i < voteButtons.Length; i++)
         {
             if (PlayerMovmant.players.Count > i)
@@ -48,7 +62,7 @@ public class Vote : MonoBehaviourPunCallbacks
                 voteButtons[i].triggers.Clear(); 
                 EventTrigger.Entry onPointerDown = new EventTrigger.Entry();
                 onPointerDown.eventID = EventTriggerType.PointerDown;
-                onPointerDown.callback.AddListener((e) => { photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[i0].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");});
+                onPointerDown.callback.AddListener((e) => { SetSelected(i0); });
       
                 voteButtons[i].triggers.Add(onPointerDown);
             }
@@ -58,15 +72,21 @@ public class Vote : MonoBehaviourPunCallbacks
             }
         }
         animator.SetBool("isShowPanel", true);
-        Debug.Log("Starting round4");
     }
 
+    public void Submit()
+    {
+        if(votes.Count == count) return;
+        if (selectedIndex != -1)
+        {
+            photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[selectedIndex].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");
+        }
+    }
     
     [PunRPC]
     public void AddVote(int player)
     {
         votes.Add(player);
-        Debug.Log(votes.Count + " | " + PlayerMovmant.players.Count);
         if(votes.Count == PlayerMovmant.players.Count) GameManager.NextRound = DateTime.Now.AddSeconds(1);
     }
 }

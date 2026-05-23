@@ -12,7 +12,7 @@ public class Bookmark : MonoBehaviour, IInteractable
 
     public void StartInteract(Interactor interactor, RaycastHit hit, bool isFirst)
     {
-        notepad.SetIndex(index);
+        notepad.SetIndex(index/2);
     }
 
     public void Interact(Interactor interactor, RaycastHit hit)
