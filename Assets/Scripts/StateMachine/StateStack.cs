@@ -5,20 +5,20 @@ using UnityEngine;
 namespace StateMachine
 {
     [Serializable]
-    public class StateStack
+    public class StateStack<T> where T : StateMachine<T>
     {
-        [SerializeField] private List<State> _stack = new();
+        [SerializeField] private List<State<T>> _stack = new();
 
-        public void Push(State state) => _stack.Add(state);
+        public void Push(State<T> state) => _stack.Add(state);
 
-        public State Pop()
+        public State<T> Pop()
         {
-            State lastState = Peek();
+            State<T> lastState = Peek();
             _stack.RemoveAt(_stack.Count - 1);
             return lastState;
         }
         
-        public State Peek()
+        public State<T> Peek()
         {
             if (_stack.Count == 0)
                 return null;
@@ -27,6 +27,6 @@ namespace StateMachine
         }
 
         public int Count() => _stack.Count;
-        public List<State> GetStack() => _stack;
+        public List<State<T>> GetStack() => _stack;
     }
 }

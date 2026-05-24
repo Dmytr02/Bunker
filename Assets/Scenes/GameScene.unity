@@ -673,7 +673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_AnchorMin.x
@@ -681,11 +681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 325
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_SizeDelta.y
@@ -721,11 +721,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 337.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -105
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8774105454320933328, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5453,7 +5453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1000.00006}
+  m_AnchoredPosition: {x: 0, y: -1000}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489675150
@@ -7809,6 +7809,7 @@ GameObject:
   - component: {fileID: 708713263}
   - component: {fileID: 708713262}
   - component: {fileID: 708713261}
+  - component: {fileID: 708713266}
   - component: {fileID: 708713265}
   m_Layer: 5
   m_Name: Inventory icon
@@ -7927,10 +7928,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 708713259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f2ba16db9a8f0428cf06d45d3f62cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 44153daabc6d89d4a8ccf3de33328983, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KeyBind
-  key: 105
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBindText
+  actionName: inventory
+  text: {fileID: 1082432917}
+--- !u!114 &708713266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708713259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62876da02405a141a38bcd2245b0979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBind
+  key:
+    key: 0
+    actionName: inventory
 --- !u!1 &710726272
 GameObject:
   m_ObjectHideFlags: 0
@@ -8095,6 +8112,7 @@ GameObject:
   - component: {fileID: 711910891}
   - component: {fileID: 711910890}
   - component: {fileID: 711910889}
+  - component: {fileID: 711910894}
   - component: {fileID: 711910893}
   m_Layer: 5
   m_Name: Stats icon
@@ -8213,10 +8231,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 711910887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f2ba16db9a8f0428cf06d45d3f62cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 44153daabc6d89d4a8ccf3de33328983, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KeyBind
-  key: 98
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBindText
+  actionName: stats
+  text: {fileID: 1611965026}
+--- !u!114 &711910894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711910887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62876da02405a141a38bcd2245b0979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBind
+  key:
+    key: 0
+    actionName: stats
 --- !u!1 &721782873
 GameObject:
   m_ObjectHideFlags: 0
@@ -11462,10 +11496,10 @@ RectTransform:
   - {fileID: 1566505043}
   m_Father: {fileID: 2127596045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 214, y: -73}
-  m_SizeDelta: {x: 390, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066685097
 MonoBehaviour:
@@ -12390,7 +12424,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.01}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1127750759
 MonoBehaviour:
@@ -13590,10 +13624,10 @@ RectTransform:
   - {fileID: 2118722595}
   m_Father: {fileID: 2127596045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 214, y: -273}
-  m_SizeDelta: {x: 390, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186005168
 MonoBehaviour:
@@ -14778,6 +14812,7 @@ GameObject:
   - component: {fileID: 1230388918}
   - component: {fileID: 1230388920}
   - component: {fileID: 1230388919}
+  - component: {fileID: 1230388921}
   m_Layer: 5
   m_Name: MicroImg
   m_TagString: Untagged
@@ -14843,6 +14878,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230388917}
   m_CullTransparentMesh: 1
+--- !u!114 &1230388921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230388917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44153daabc6d89d4a8ccf3de33328983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBindText
+  actionName: microphone
+  text: {fileID: 978930403}
 --- !u!1 &1231687830
 GameObject:
   m_ObjectHideFlags: 0
@@ -18048,10 +18097,10 @@ RectTransform:
   - {fileID: 1727365006}
   m_Father: {fileID: 2127596045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 214, y: -173}
-  m_SizeDelta: {x: 390, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459182701
 MonoBehaviour:
@@ -18757,10 +18806,10 @@ RectTransform:
   - {fileID: 1361820278}
   m_Father: {fileID: 2127596045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 578.25, y: -273}
-  m_SizeDelta: {x: 390, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1516061807
 MonoBehaviour:
@@ -19118,7 +19167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1524486092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19280,6 +19329,9 @@ MonoBehaviour:
   SettingsButton: {fileID: 2059396968}
   commandManager: {fileID: 1524486096}
   loadingScreenAnimator: {fileID: 2030129931}
+  chatKey:
+    key: 0
+    actionName: chat
 --- !u!1 &1536243956
 GameObject:
   m_ObjectHideFlags: 0
@@ -20081,10 +20133,10 @@ RectTransform:
   - {fileID: 1786886407}
   m_Father: {fileID: 2127596045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 578.25, y: -73}
-  m_SizeDelta: {x: 390, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1619207396
 MonoBehaviour:
@@ -21314,8 +21366,9 @@ GameObject:
   - component: {fileID: 1735013272}
   - component: {fileID: 1735013274}
   - component: {fileID: 1735013273}
+  - component: {fileID: 1735013275}
   m_Layer: 5
-  m_Name: MicroImg (1)
+  m_Name: textChatImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21379,6 +21432,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735013271}
   m_CullTransparentMesh: 1
+--- !u!114 &1735013275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735013271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44153daabc6d89d4a8ccf3de33328983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBindText
+  actionName: chat
+  text: {fileID: 654120781}
 --- !u!1 &1737795031
 GameObject:
   m_ObjectHideFlags: 0
@@ -22009,7 +22076,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.24072266, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -26180,7 +26247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5053174684748895977, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5179790286560393120, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.y
@@ -26264,23 +26331,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5814001175090592502, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5814001175090592502, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5814001175090592502, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 768
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5814001175090592502, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5814001175090592502, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -628
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5910428882943532577, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_fontSize
@@ -26368,23 +26435,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6025187408483834635, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6025187408483834635, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6025187408483834635, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 768
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6025187408483834635, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6025187408483834635, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -328
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6084130991359511420, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_fontAsset
@@ -26408,23 +26475,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6439571710882226105, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439571710882226105, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439571710882226105, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 768
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439571710882226105, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439571710882226105, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -428
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6503413849901455160, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.x
@@ -26740,23 +26807,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8481480622799094995, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481480622799094995, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481480622799094995, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 768
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481480622799094995, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 384
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8481480622799094995, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8512031791060317495, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}
       propertyPath: m_AnchorMax.y
@@ -29120,10 +29187,10 @@ RectTransform:
   - {fileID: 473570693}
   m_Father: {fileID: 2127596045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 578.25, y: -173}
-  m_SizeDelta: {x: 390, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104117844
 MonoBehaviour:
@@ -29482,6 +29549,7 @@ GameObject:
   - component: {fileID: 2140622824}
   - component: {fileID: 2140622823}
   - component: {fileID: 2140622822}
+  - component: {fileID: 2140622827}
   - component: {fileID: 2140622826}
   m_Layer: 5
   m_Name: Notepad icon
@@ -29600,10 +29668,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2140622820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f2ba16db9a8f0428cf06d45d3f62cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 44153daabc6d89d4a8ccf3de33328983, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KeyBind
-  key: 110
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBindText
+  actionName: notepad
+  text: {fileID: 1790644025}
+--- !u!114 &2140622827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140622820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62876da02405a141a38bcd2245b0979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavedKeyBind
+  key:
+    key: 0
+    actionName: notepad
 --- !u!224 &2142480537 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1114783509992219649, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}

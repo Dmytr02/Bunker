@@ -6449,6 +6449,9 @@ MonoBehaviour:
   microphoneOn: {fileID: 21300000, guid: f8f61c585471f4f86b5527ff47e0cd2c, type: 3}
   microphoneOff: {fileID: 21300000, guid: 5add277e3f242407abfaa229d6ba41df, type: 3}
   audioSource: {fileID: 5268963455262111958}
+  key:
+    key: 0
+    actionName: microphone
 --- !u!114 &5667084533819937715
 MonoBehaviour:
   m_ObjectHideFlags: 0

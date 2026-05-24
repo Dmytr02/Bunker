@@ -1,19 +1,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIPouseState : StateMachine.State
+public class UIPouseState : StateMachine.State<UIController>
 {
     public UIPouseState(UIController stateMachine) : base(stateMachine) { }
     private EventTrigger.Entry entry;
     override public void Enter()
     {
-        (stateMachine as UIController).PousePanel.SetActive(true);
+        stateMachine.PousePanel.SetActive(true);
         
         entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener((arg0) => {stateMachine.SetState(new UISettingsState(stateMachine as UIController)); });
+        entry.callback.AddListener((arg0) => {stateMachine.SetState(new UISettingsState(stateMachine)); });
         
-        (stateMachine as UIController).SettingsButton.triggers.Add(entry);
+        stateMachine.SettingsButton.triggers.Add(entry);
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -26,8 +26,8 @@ public class UIPouseState : StateMachine.State
 
     override public void Exit()
     {
-        (stateMachine as UIController).PousePanel.SetActive(false);
-        (stateMachine as UIController).SettingsButton.triggers.Remove(entry); //RemoveAll(entry => entry.eventID == EventTriggerType.PointerClick);
+        stateMachine.PousePanel.SetActive(false);
+        stateMachine.SettingsButton.triggers.Remove(entry); //RemoveAll(entry => entry.eventID == EventTriggerType.PointerClick);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

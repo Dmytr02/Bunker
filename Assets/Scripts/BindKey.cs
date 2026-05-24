@@ -27,8 +27,8 @@ public class BindKey : MonoBehaviour, IPointerClickHandler
     
     void Start()
     {
-        currentKey = (KeyCode)PlayerPrefs.GetInt(actionName, (int)currentKey);
-
+        if(PlayerPrefs.HasKey(actionName)) currentKey = (KeyCode)PlayerPrefs.GetInt(actionName, (int)currentKey);
+        else PlayerPrefs.SetInt(actionName, (int)currentKey);
         UpdateButtonText(currentKey.ToString());
     }
 

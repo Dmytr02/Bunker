@@ -4,11 +4,11 @@ using UnityEngine;
 namespace StateMachine
 {
     [Serializable]
-    public  class State
+    public  class State<T> where T : StateMachine<T>
     {
-        protected StateMachine stateMachine;
+        protected T stateMachine;
 
-        public State(StateMachine stateMachine)
+        public State(T stateMachine)
         {
             this.stateMachine = stateMachine;
         }

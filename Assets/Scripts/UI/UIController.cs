@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class UIController : StateMachine.StateMachine
+public class UIController : StateMachine.StateMachine<UIController>
 {
     public GameObject PousePanel;
     public Settings SettingsPanel;
     public EventTrigger SettingsButton;
     public CommandManager commandManager;
     public Animator loadingScreenAnimator;
+    public SavedKey chatKey;
+    public bool isFollowCursore = true;
     
     public static UIController instance;
 
@@ -22,6 +24,7 @@ public class UIController : StateMachine.StateMachine
 
     private void Start()
     {
+        chatKey.Init();
         Begin(new UIGameState(this));
     }
     

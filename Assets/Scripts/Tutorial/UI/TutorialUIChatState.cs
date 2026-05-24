@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class TutorialUIChatState : StateMachine.State
+public class TutorialUIChatState : StateMachine.State<TutorialUIController>
 {
     public TutorialUIChatState(TutorialUIController stateMachine) : base(stateMachine) { }
 
     override public void Enter()
     {
-        (stateMachine as TutorialUIController).commandManager.ShowChatPanel();
+        stateMachine.commandManager.ShowChatPanel();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -18,7 +18,7 @@ public class TutorialUIChatState : StateMachine.State
 
     override public void Exit()
     {
-        (stateMachine as TutorialUIController).commandManager.HideChatPanel();
+        stateMachine.commandManager.HideChatPanel();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

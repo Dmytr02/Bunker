@@ -3898,7 +3898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1000.00006}
+  m_AnchoredPosition: {x: 0, y: -1000}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489675150
@@ -4816,7 +4816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -893.8797, y: 65.315}
+  m_AnchoredPosition: {x: -893.87964, y: 65.315}
   m_SizeDelta: {x: -1787.75, y: -1029.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &559867591
@@ -12537,7 +12537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -959.9998, y: 0}
+  m_AnchoredPosition: {x: -959.99976, y: 0}
   m_SizeDelta: {x: -1920, y: -729.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1259537950
@@ -16658,9 +16658,6 @@ MonoBehaviour:
   SettingsButton: {fileID: 2059396968}
   commandManager: {fileID: 1524486097}
   loadingScreenAnimator: {fileID: 2030129931}
-  chatKey:
-    key: 0
-    actionName: chat
 --- !u!114 &1524486097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29000,11 +28997,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 603230395035020093, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.045
+      value: 0.043
       objectReference: {fileID: 0}
     - target: {fileID: 603230395035020093, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.346
+      value: -1.431
       objectReference: {fileID: 0}
     - target: {fileID: 903120675400346238, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_IsActive
@@ -29036,11 +29033,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1363225086858774946, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.099
+      value: 1.116
       objectReference: {fileID: 0}
     - target: {fileID: 1363225086858774946, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.507
+      value: 0.498
       objectReference: {fileID: 0}
     - target: {fileID: 1478949272530638633, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_Materials.Array.size
@@ -29104,11 +29101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740833913124031986, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.071
+      value: 1.079
       objectReference: {fileID: 0}
     - target: {fileID: 2740833913124031986, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.76
+      value: -0.769
       objectReference: {fileID: 0}
     - target: {fileID: 4140376071860320926, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_IsActive
@@ -29512,11 +29509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6727821515688658539, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.997
+      value: -1.023
       objectReference: {fileID: 0}
     - target: {fileID: 6727821515688658539, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.529
+      value: 0.521
       objectReference: {fileID: 0}
     - target: {fileID: 6864123076668988586, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_StaticEditorFlags

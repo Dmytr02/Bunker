@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class UIChatState : StateMachine.State
+public class UIChatState : StateMachine.State<UIController>
 {
     public UIChatState(UIController stateMachine) : base(stateMachine) { }
 
     override public void Enter()
     {
-        (stateMachine as UIController).commandManager.ShowChatPanel();
+        stateMachine.commandManager.ShowChatPanel();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

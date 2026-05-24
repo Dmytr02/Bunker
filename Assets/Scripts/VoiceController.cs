@@ -15,8 +15,10 @@ public class VoiceController : MonoBehaviour
     [SerializeField] Sprite microphoneOff;
     public AudioSource audioSource;
     public static UnityEvent onVolumeChange = new();
+    [SerializeField] SavedKey key;
     private void Start()
     {
+        key.Init();
         setVolume();
         onVolumeChange.AddListener(setVolume);
         microphoneImg = GameObject.Find("MicroImg").GetComponent<Image>();
@@ -35,7 +37,7 @@ public class VoiceController : MonoBehaviour
     private void Update()
     {
         if(!GetComponent<PhotonView>().IsMine) return;
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(key.key))
         {
             recorder.TransmitEnabled = !recorder.TransmitEnabled;
             microphoneImg.sprite = recorder.TransmitEnabled ? microphoneOn : microphoneOff;

@@ -4,21 +4,21 @@ using UnityEngine;
 namespace StateMachine
 {
     [Serializable]
-    public class StateMachine : MonoBehaviour
+    public class StateMachine<T> : MonoBehaviour where T : StateMachine<T>
     {
-        [SerializeField] private StateStack _stack;
-        public State CurrentState { get; private set; }
-        private State _previousState;
+        [SerializeField] private StateStack<T> _stack;
+        public State<T> CurrentState { get; private set; }
+        private State<T> _previousState;
         
-        public void Begin(State state)
+        public void Begin(State<T> state)
         {
-            _stack = new StateStack();
+            _stack = new StateStack<T>();
             _stack.Push(state);
             CurrentState = state;
             CurrentState.Enter();
         }
 
-        public void SetState(State state)
+        public void SetState(State<T> state) 
         {
             if (CurrentState != null) 
                 CurrentState.Exit();

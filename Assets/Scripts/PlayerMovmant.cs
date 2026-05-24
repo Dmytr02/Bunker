@@ -145,7 +145,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     // Update is called once per frame
     void Update()
     {
-        if (UIController.instance.CurrentState is UIGameState && photonView.IsMine)
+        if (UIController.instance.isFollowCursore && UIController.instance.CurrentState is UIGameState && photonView.IsMine)
         {
             //Camera.main.transform.localRotation = Quaternion.Euler(Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.x - Input.mousePositionDelta.y+180)%360-180, -60, 60), Mathf.Clamp((Camera.main.transform.localRotation.eulerAngles.y + Input.mousePositionDelta.x+180)%360-180, -90, 90), 0);
             Camera.main.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Lerp(lookAngelRangeY.x, lookAngelRangeY.y, 1 - Mathf.Clamp01(Input.mousePosition.y / Screen.height)), Mathf.Lerp(lookAngelRangeX.x, lookAngelRangeX.y, Mathf.Clamp01(Input.mousePosition.x / Screen.width)), 0));

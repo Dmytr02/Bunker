@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TutorialUIGameState : StateMachine.State
+public class TutorialUIGameState : StateMachine.State<TutorialUIController>
 {
     public TutorialUIGameState(TutorialUIController stateMachine) : base(stateMachine) { }
 
@@ -9,12 +9,12 @@ public class TutorialUIGameState : StateMachine.State
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            stateMachine.SetState(new TutorialUIPouseState(stateMachine as TutorialUIController));
+            stateMachine.SetState(new TutorialUIPouseState(stateMachine));
         }
         
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(stateMachine.chatKey.key))
         {
-            stateMachine.SetState(new TutorialUIChatState(stateMachine as TutorialUIController));
+            stateMachine.SetState(new TutorialUIChatState(stateMachine));
         }
     }
     override public void Enter()

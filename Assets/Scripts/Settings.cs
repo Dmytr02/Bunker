@@ -50,6 +50,7 @@ public class Settings : MonoBehaviour
         PlayerPrefs.SetInt("isFullScreen", isFullscreen ? 1 : 0);
     }
 
+
     void GenerateResolutionDropDown()
     {
         Resolution[] allResolutions = Screen.resolutions;

@@ -4,11 +4,31 @@ using UnityEngine.EventSystems;
 
 public class SavedKeyBind : MonoBehaviour
 {
-    private KeyCode key;
-    [SerializeField]  private string actionName;
+    [SerializeField] private SavedKey key;
 
     private void Start()
     {
+        key.Init();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(key.key))
+        {
+            ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+        }
+    }
+}
+
+[Serializable]
+public class SavedKey
+{
+    [HideInInspector] public KeyCode key;
+    [SerializeField] private string actionName;
+
+    public void Init()
+    {
+        Debug.Log(actionName);
         key = (KeyCode)PlayerPrefs.GetInt(actionName);
         BindKey.OnChanged += OnChanged;
     }
@@ -21,13 +41,5 @@ public class SavedKeyBind : MonoBehaviour
     private void OnChanged(string s, KeyCode code)
     {
         if(actionName == s) key = code;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(key))
-        {
-            ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
-        }
     }
 }

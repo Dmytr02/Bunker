@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIGameState : StateMachine.State
+public class UIGameState : StateMachine.State<UIController>
 {
     public UIGameState(UIController stateMachine) : base(stateMachine) { }
 
@@ -9,12 +9,17 @@ public class UIGameState : StateMachine.State
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            stateMachine.SetState(new UIPouseState(stateMachine as UIController));
+            stateMachine.SetState(new UIPouseState(stateMachine));
         }
         
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(stateMachine.chatKey.key))
         {
-            stateMachine.SetState(new UIChatState(stateMachine as UIController));
+            stateMachine.SetState(new UIChatState(stateMachine));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.isFollowCursore = !stateMachine.isFollowCursore;
         }
     }
     override public void Enter()

@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class TutorialUIController : StateMachine.StateMachine
+public class TutorialUIController : StateMachine.StateMachine<TutorialUIController>
 {
     public GameObject PousePanel;
     public Settings SettingsPanel;
     public EventTrigger SettingsButton;
     public TutorialCommandManager commandManager;
     public Animator loadingScreenAnimator;
+    public SavedKey chatKey;
     
     public static TutorialUIController instance;
 
@@ -22,6 +23,7 @@ public class TutorialUIController : StateMachine.StateMachine
 
     private void Start()
     {
+        chatKey.Init();
         Begin(new TutorialUIGameState(this));
     }
     
