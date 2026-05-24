@@ -5,7 +5,7 @@ public class Book : MonoBehaviour
 {
     [SerializeField] Animator animator;
     public Observed<int> selectedPage =  new();
-    [SerializeField] private int pages;
+    [SerializeField] public int pages;
 
     public int speed = 10;
     private float last = 0; 

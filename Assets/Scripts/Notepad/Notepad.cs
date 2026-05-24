@@ -32,6 +32,8 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
             //playersStats.Add(i.stats);
             StatsDrawer.pages[i.index].Draw(i.stats);
         }
+
+        book.pages = Mathf.CeilToInt(PlayerMovmant.players.Count/2.0f);
         SetIndex(0);
         print("Start");
         PlayerMovmant.onStatOpened.AddListener((p) =>

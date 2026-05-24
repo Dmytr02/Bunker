@@ -374,6 +374,25 @@ public class PlayerStats
                (experience==-1?"":$"Experience - {experience} years\n") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
                (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}\n")+(personality==Personality.unknown?"":$"Personality - {personality}\n");
     }
+    public string ToString(HashSet<string> stats)
+    {
+        string Name = list["Name"].ToString();
+        int Age = list["Age"] is int ? (int)list["Age"] : -1;
+        Professions Profession = (Professions)list["Profession"];
+        int experience = list["Experience"] is int ? (int)list["Experience"] : -1;
+        Healthe Healthe = (Healthe)list["Healthe"];
+        Phobias Phobia = (Phobias)list["Phobias"];
+        Hobby Hobby =  (Hobby)list["Hobby"] ;
+        Personality personality = (Personality)list["Personality"];
+        return (stats.Contains("Name") ? (string.IsNullOrEmpty(Name)? "Name: - \n" : $"Name: {Name}\n"):"") + 
+               (stats.Contains("Age") ? (Age==-1?"Age: - \n": $"Age: {Age}\n"):"") + 
+               (stats.Contains("Profession") ? (Profession==Professions.unknown?"Profession: - \n": $"Profession: {Profession}\n"): "") +
+               (stats.Contains("Experience") ? (experience==-1?"Experience: - \n":$"Experience: {experience} years\n"): "") + 
+               (stats.Contains("Healthe") ? (Healthe==Healthe.unknown?"Health: - \n":$"Health: {Healthe}\n"):"") + 
+               (stats.Contains("Phobias") ? (Phobia==Phobias.unknown?"Phobia: - \n":$"Phobia: {Phobia}\n"):"") +
+               (stats.Contains("Hobby") ?Hobby==Hobby.unknown?"Hobby: - \n":$"Hobby: {Hobby}\n":"")+
+               (stats.Contains("Personality") ? personality==Personality.unknown?"Personality: - \n":$"Personality: {personality}\n":"");
+    }
 }
 
 public enum Professions
