@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         Debug.Log(points);
         resultNameText.text = "Remaining players:\n<b>" + PlayerMovmant.players[0].stats.list["Name"] + "</b>, <b>" + PlayerMovmant.players[1].stats.list["Name"]+"</b>";
-        resultText.text = "you have <b>" + points + "</b> points.\n\n" + (points > 15 ? "All survived together, hope still remains." : points > 10 ? "Left alone, only danger ahead." : "No one survived, hope is gone.");
+        resultText.text = "You have <b>" + points + "</b> points.";
         resultImage.sprite = points > 15 ? resultSprites[0] : points > 10 ? resultSprites[1] : resultSprites[2];
         resultText.transform.parent.gameObject.SetActive(true);
     }

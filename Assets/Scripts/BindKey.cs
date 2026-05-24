@@ -71,7 +71,7 @@ public class BindKey : MonoBehaviour, IPointerClickHandler
         isListening = false;
 
         PlayerPrefs.SetInt(actionName, (int)newKey);
-        OnChanged.Invoke(actionName, newKey);
+        OnChanged?.Invoke(actionName, newKey);
         PlayerPrefs.Save();
 
         UpdateButtonText(currentKey.ToString());
