@@ -209,10 +209,9 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public bool SendStat(string stat)
     {
         Debug.Log(stat + " - TrySend");
-        Debug.Log(stats.isShowed[stat] + " || " + (stats.isShowed.Count(pair => pair.Value) < GameManager.roundNumber+2));
-        if(stats.isShowed[stat] || stats.isShowed.Count(pair => pair.Value) > GameManager.roundNumber) return false;
+        if(stats.isShowed[stat] || stats.isShowed.Count(pair => pair.Value) >= GameManager.roundNumber) return false;
         GameManager.Instance.StopCoroutine("ShowAssistentToShowStat");
-        photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat], true);
+        photonView.RPC("RPC_Stat", RpcTarget.AllBuffered, stat, stats.list[stat], true);
         stats.isShowed[stat] = true;
         
         Debug.Log(stat + " - Sended");
