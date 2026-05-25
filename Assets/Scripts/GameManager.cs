@@ -602,7 +602,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private IEnumerator ShowStartVoting()
     {
         roundNumber++;
-        StartCoroutine(ShowAssistentToShowStat());
+        //StartCoroutine(ShowAssistentToShowStat());
         triggerStartVoting.gameObject.SetActive(true);
         triggerStartVoting.enabled = false;
         for (int i = timeBeforeVoting; i > 0; i--)
