@@ -615,7 +615,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         yield return new WaitUntil(() =>
         {
             foreach (PlayerMovmant i in PlayerMovmant.players)
-                if (i.stats.isShowed.Count(pair => pair.Value) <= roundNumber)
+                if (i.stats.isShowed.Count(pair => pair.Value) < roundNumber)
                 {
                     print($"player {i.index} have {i.stats.isShowed.Count(pair => pair.Value)}, need {roundNumber}");
                     return false;
