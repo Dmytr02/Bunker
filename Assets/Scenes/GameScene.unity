@@ -5453,7 +5453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1000}
+  m_AnchoredPosition: {x: 0, y: -1000.00006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489675150
@@ -19332,6 +19332,7 @@ MonoBehaviour:
   chatKey:
     key: 0
     actionName: chat
+  isFollowCursore: 1
 --- !u!1 &1536243956
 GameObject:
   m_ObjectHideFlags: 0
@@ -22695,6 +22696,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f6be164814c6bee45ad73d3ab62c5449, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f6be164814c6bee45ad73d3ab62c5449, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4a3c272debe48f14395c4d03bfa0986c, type: 2}
@@ -22702,6 +22707,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 53f4dd90e1cd92d4caf8c81351c4211d, type: 2}
+    - target: {fileID: -7511558181221131132, guid: f6be164814c6bee45ad73d3ab62c5449, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b4528b3d7f4638a4a84cf3dfb206a3a3, type: 2}
     - target: {fileID: 919132149155446097, guid: f6be164814c6bee45ad73d3ab62c5449, type: 3}
       propertyPath: m_Name
       value: radiostation
