@@ -7,10 +7,9 @@ public class TutorialCard2 : Card
     public bool isTirigger {get; set;}
     protected override bool OnUse(RaycastHit hit)
     {
+        if (hit.collider == null) return false;
         if (hit.collider.transform.parent == null) return false;
-        if (hit.collider.transform.parent.parent == null) return false;
-        if (hit.collider.transform.parent.parent.parent == null) return false;
-        if (hit.collider.transform.parent.parent.parent.TryGetComponent(out TutorialNotepad notepad))
+        if (hit.collider.transform.parent.TryGetComponent(out TutorialNotepad notepad))
         {
             audioSource.PlayOneShot(audioClip);
             TutorialGameManager.assistentLast = 2;

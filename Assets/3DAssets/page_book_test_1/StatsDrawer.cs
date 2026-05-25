@@ -43,4 +43,16 @@ public class StatsDrawer : MonoBehaviour
         Text.text = stats.ToString(new HashSet<string>{"Profession", "Experience", "Healthe", "Phobias", "Hobby", "Personality"});   
         cameraRender.RenderCameraNow();
     }
+    public void Draw(TutorialPlayerStats stats)
+    {
+        Text.gameObject.SetActive(true);
+        TextName.gameObject.SetActive(true);
+        TextAge.gameObject.SetActive(true);
+        IconImage.gameObject.SetActive(true);
+        print("Draw");
+        TextName.text = stats.list[EStats.Name].ToString();
+        TextAge.text = "Age: " + (stats.list[EStats.Age] is int && stats.showed[EStats.Age] ? ((int)stats.list[EStats.Age]==-1?"-":stats.list[EStats.Age]) : "-");
+        Text.text = stats.ToString(new HashSet<EStats>{EStats.Profession, EStats.Experience, EStats.Healthe, EStats.Phobias, EStats.Hobby, EStats.Personality});   
+        cameraRender.RenderCameraNow();
+    }
 }

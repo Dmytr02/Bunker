@@ -18,7 +18,7 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
     {
         if (isSelected)
         {
-            ((RectTransform)transform).anchoredPosition = (Vector2)Input.mousePosition + offset;
+            ((RectTransform)transform).anchoredPosition = (Vector2)Input.mousePosition/2 + offset;
         }
     }
 
@@ -27,7 +27,7 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
         if(!isFirst) return;
         transform.SetParent(GetComponentInParent<Canvas>().transform);
         isSelected = true;
-        offset = ((RectTransform)transform).anchoredPosition - (Vector2)Input.mousePosition;
+        offset = ((RectTransform)transform).anchoredPosition - (Vector2)Input.mousePosition/2;
         interactor.onEndInteraction.AddListener(EndInteract);
         interactor.mask |= LayerMask.GetMask("UI");
     }

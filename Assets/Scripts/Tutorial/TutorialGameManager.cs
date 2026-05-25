@@ -79,7 +79,7 @@ public class TutorialGameManager : MonoBehaviour
         public override IEnumerator Action(TutorialGameManager manager)
         {
             manager.notepad.playersStats[bot].showed[stat] = true;
-            manager.notepad.SetIndex(manager.notepad.index);
+            manager.notepad.DrawAll();
             yield break;
         }
     }
@@ -246,7 +246,7 @@ public class TutorialGameManager : MonoBehaviour
     {
         notepad.playerStats.showed[(EStats)stat] = true;
         lastStats = (EStats)stat;
-        notepad.SetIndex(notepad.index);
+        notepad.DrawAll();
     }
     void Start()
     {

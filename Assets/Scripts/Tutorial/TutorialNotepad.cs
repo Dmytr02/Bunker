@@ -8,12 +8,14 @@ using UnityEngine;
 
 public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
 {
-    [SerializeField] public TMP_Text text;
-    [SerializeField] public ManualCameraRender cameraRender;
-    [SerializeField] public TMP_Text text2;
-    [SerializeField] public ManualCameraRender cameraRender2;
-    [SerializeField] public int index = 0;
-    [SerializeField] public Animator animator;
+    //[SerializeField] public TMP_Text text;
+    //[SerializeField] public ManualCameraRender cameraRender;
+    //[SerializeField] public TMP_Text text2;
+    //[SerializeField] public ManualCameraRender cameraRender2;
+    [SerializeField] public int index => book.selectedPage.Value*2;
+    //[SerializeField] public Animator animator;
+    
+    [SerializeField] private Book book;
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioClip audioClip;
     
@@ -27,7 +29,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
     };
 
     public TutorialPlayerStats playerStats;
-    public List<TutorialPlayerStats> playersStats = new List<TutorialPlayerStats>(5) { new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats() };
+    public List<TutorialPlayerStats> playersStats = new List<TutorialPlayerStats>(4) { new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats(), new TutorialPlayerStats()};
     
     //public PlayerStats SelectedPlayerStats => playersStats[index];
 
@@ -90,10 +92,10 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             { EStats.Hobby, Hobby.unknown },
             { EStats.Personality, Personality.unknown}
         };
-        cameraRender = GameObject.Find("LeftSideRender").GetComponent<ManualCameraRender>();
+        /*cameraRender = GameObject.Find("LeftSideRender").GetComponent<ManualCameraRender>();
         text = cameraRender.GetComponentInChildren<TMP_Text>();
         cameraRender2 = GameObject.Find("RightSideRender").GetComponent<ManualCameraRender>();
-        text2 = cameraRender2.GetComponentInChildren<TMP_Text>();
+        text2 = cameraRender2.GetComponentInChildren<TMP_Text>();*/
         /*foreach (var i in PlayerMovmant.players)
         {
             playersStats.Add(i.stats);
@@ -101,21 +103,30 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         }*/
         SetIndex(0);
         gameObject.SetActive(false);
-        
+        DrawAll();
         /*PlayerMovmant.onStatOpened.AddListener((p) =>
         {
             if (p.stats == playersStats[index]) SetIndex(index);
         });*/
     }
 
+    public void DrawAll()
+    {
+        StatsDrawer.pages[0].Draw(playerStats);
+        for (int i = 1; i < StatsDrawer.pages.Count && i-1 < playersStats.Count; i++)
+        {
+            StatsDrawer.pages[i].Draw(playersStats[i-1]);
+        }
+    }
     public void SetIndex(int index)
     {
-        this.index = (index+playersStats.Count)%playersStats.Count;
+        book.selectedPage.Value = index;
+        /*this.index = (index+playersStats.Count)%playersStats.Count;
         if (this.index == 0) text.text = playerStats.ToString(); 
         else text.text = playersStats[this.index-1].ToString();
-        cameraRender.RenderCameraNow();
+        cameraRender.RenderCameraNow();*/
 
-        if (playersStats.Count > this.index+1)
+        /*if (playersStats.Count > this.index+1)
         {
             text2.text = playersStats[this.index + 1].ToString();
             cameraRender2.RenderCameraNow();
@@ -124,21 +135,23 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         {
             text2.text = "";
             cameraRender2.RenderCameraNow();
-        }
+        }*/
     }
 
     public void NextIndex()
     {
-        SetIndex(index + 2);
+        book.selectedPage.Value++;
+        /*SetIndex(index + 2);
         animator.SetTrigger("next");
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip);*/
     }
 
     public void PreviousIndex()
     {
-        SetIndex(index - 2);
+        book.selectedPage.Value--;
+        /*SetIndex(index - 2);
         animator.SetTrigger("previus");
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip);*/
     }
 
     private object[] data;
@@ -208,6 +221,26 @@ public class TutorialPlayerStats
                (Phobia==Phobias.unknown|| !showed[EStats.Phobias]?"":$"Phobia - {Phobia}\n") +
                (Hobby==Hobby.unknown|| !showed[EStats.Hobby]?"":$"Hobby - {Hobby}\n")+
                (personality==Personality.unknown|| !showed[EStats.Personality]?"":$"Personality - {personality}\n");
+    }
+    
+    public string ToString(HashSet<EStats> stats)
+    {
+        string Name = list[EStats.Name].ToString();
+        int Age = list[EStats.Age] is int ? (int)list[EStats.Age] : -1;
+        Professions Profession = (Professions)list[EStats.Profession];
+        int experience = list[EStats.Experience] is int ? (int)list[EStats.Experience] : -1;
+        Healthe Healthe = (Healthe)list[EStats.Healthe];
+        Phobias Phobia = (Phobias)list[EStats.Phobias];
+        Hobby Hobby = (Hobby)list[EStats.Hobby];
+        Personality personality = (Personality)list[EStats.Personality];
+        return (stats.Contains(EStats.Name) ? string.IsNullOrEmpty(Name)||!showed[EStats.Name]? "Name: -\n" : $"Name: {Name}\n\n":"") + 
+               (stats.Contains(EStats.Age) ?Age==-1||!showed[EStats.Age]?"Age: -\n": $"Age: {Age}\n":"") + 
+               (stats.Contains(EStats.Profession) ?Profession==Professions.unknown|| !showed[EStats.Profession] ?"Profession: -\n": $"Profession: {Profession}\n":"") +
+               (stats.Contains(EStats.Experience) ?experience==-1 || !showed[EStats.Experience]?"Experience: -\n":$"Experience: {experience} years\n":"") + 
+               (stats.Contains(EStats.Healthe) ?Healthe==Healthe.unknown|| !showed[EStats.Healthe]?"Health: -\n":$"Health: {Healthe}\n":"") + 
+               (stats.Contains(EStats.Phobias) ?Phobia==Phobias.unknown|| !showed[EStats.Phobias]?"Phobia: -\n":$"Phobia: {Phobia}\n":"") +
+               (stats.Contains(EStats.Hobby) ?Hobby==Hobby.unknown|| !showed[EStats.Hobby]?"Hobby: -\n":$"Hobby: {Hobby}\n":"")+
+               (stats.Contains(EStats.Personality) ?personality==Personality.unknown|| !showed[EStats.Personality]?"Personality: -\n":$"Personality: {personality}\n":"");
     }
 }
 
