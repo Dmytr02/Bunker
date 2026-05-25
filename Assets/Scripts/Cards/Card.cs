@@ -41,7 +41,7 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
         if (isEnd)
         {
             interactor.onEndInteraction.RemoveListener(EndInteract);
-            if(OnUse(hit)) Destroy(gameObject);
+            if(hit.collider && OnUse(hit)) Destroy(gameObject);
             else transform.SetParent(parentTransform);
             isSelected = false;
             interactor.mask &= ~LayerMask.GetMask("UI");
