@@ -29,9 +29,9 @@ public class BindKey : MonoBehaviour, IPointerClickHandler
     {
         if(PlayerPrefs.HasKey(actionName)) currentKey = (KeyCode)PlayerPrefs.GetInt(actionName, (int)currentKey);
         else PlayerPrefs.SetInt(actionName, (int)currentKey);
-        UpdateButtonText(currentKey.ToString());
+        UpdateButtonText(currentKey.KeyCodeString());
     }
-
+    
     void StartListening()
     {
         isListening = true;
@@ -49,7 +49,7 @@ public class BindKey : MonoBehaviour, IPointerClickHandler
             if (currentEvent.keyCode != KeyCode.None)
             {
                 // ПРОВЕРКА: Если клавиша в черном списке, игнорируем её
-                if (forbiddenKeys.Contains(currentEvent.keyCode))
+                if (forbiddenKeys.Contains(currentEvent.keyCode) || currentEvent.keyCode.KeyCodeString().Length > 1)
                 {
                     Debug.LogWarning($"Клавишу {currentEvent.keyCode} нельзя назначить!");
                     return; 
@@ -58,11 +58,11 @@ public class BindKey : MonoBehaviour, IPointerClickHandler
                 SaveNewKey(currentEvent.keyCode);
             }
         }
-        else if (currentEvent.isMouse && currentEvent.type == EventType.MouseDown)
+        /*else if (currentEvent.isMouse && currentEvent.type == EventType.MouseDown)
         {
             KeyCode mouseKey = KeyCode.Mouse0 + currentEvent.button;
             SaveNewKey(mouseKey);
-        }
+        }*/
     }
 
     void SaveNewKey(KeyCode newKey)
@@ -74,7 +74,7 @@ public class BindKey : MonoBehaviour, IPointerClickHandler
         OnChanged?.Invoke(actionName, newKey);
         PlayerPrefs.Save();
 
-        UpdateButtonText(currentKey.ToString());
+        UpdateButtonText(currentKey.KeyCodeString());
     }
 
     void UpdateButtonText(string text)

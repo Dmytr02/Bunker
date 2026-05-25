@@ -1365,7 +1365,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.00064171536}
-  m_SizeDelta: {x: 0, y: 418.07}
+  m_SizeDelta: {x: 0, y: 1337.82}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &123436361
 MonoBehaviour:
@@ -1576,8 +1576,8 @@ RectTransform:
   - {fileID: 1087125018}
   m_Father: {fileID: 1937043457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.57692313}
+  m_AnchorMax: {x: 1, y: 0.99999946}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1594,14 +1594,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7960785, g: 0.6666667, b: 0.4901961, a: 1}
+  m_Color: {r: 0.3679245, g: 0.30845052, b: 0.22734958, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: c6469c34aafae4a1cbe5584740f579ec, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 3
 --- !u!222 &162033698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5453,7 +5453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1000.00006}
+  m_AnchoredPosition: {x: 0, y: -1000}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489675150
@@ -22525,8 +22525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 392, y: -209.035}
-  m_SizeDelta: {x: 784, y: 418.07}
+  m_AnchoredPosition: {x: 392, y: -668.91}
+  m_SizeDelta: {x: 784, y: 1337.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807550177
 MonoBehaviour:
@@ -22548,13 +22548,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You have <b>20</b> points.
-
-
-    Remaining players:\nstats.list["Name"],
-    stats.list["Name"]
-
-'
+  m_text: "You have <b>20</b> points.\n\nRemaining players:\\nstats.list[\"Name\"],
+    stats.list[\"Name\"]\n\n\n\n\n\u044B\u0432\u0430\n\u0432\u044B\u0430\n\u044B\u0432\n\u0430\n\u0432\u044B\u0430\n\u0432\n\u0430\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 560711e6e36b24559814319f79430121, type: 2}
   m_sharedMaterial: {fileID: 1312604092644190217, guid: 560711e6e36b24559814319f79430121, type: 2}
@@ -24282,8 +24277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: -35}
-  m_SizeDelta: {x: 20, y: -85}
+  m_AnchoredPosition: {x: -40, y: -35}
+  m_SizeDelta: {x: 20, y: -75}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1932538121
 MonoBehaviour:
@@ -24328,8 +24323,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 162033697}
   m_HandleRect: {fileID: 162033696}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 0.99999905
+  m_Size: 0.42307633
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24347,14 +24342,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8588236, g: 0.7294118, b: 0.5529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 780f83a7477374c8c99ffcf8730d370f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6469c34aafae4a1cbe5584740f579ec, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24363,7 +24358,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 30
+  m_PixelsPerUnitMultiplier: 1.5
 --- !u!222 &1932538123
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27567,7 +27562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsController
   statPrefab: {fileID: 3248651069268839890, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
-  showedColor: {r: 1, g: 1, b: 1, a: 1}
   showedSprite: {fileID: 1369466101, guid: 501ee91c4f6390a4b97a0747b0203305, type: 3}
 --- !u!95 &2023503670
 Animator:

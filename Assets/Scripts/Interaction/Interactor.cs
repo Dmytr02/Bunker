@@ -15,12 +15,7 @@ public class Interactor : MonoBehaviour
         if(TutorialUIController.instance && !(TutorialUIController.instance.CurrentState is TutorialUIGameState)) return;
         if(UIController.instance && !(UIController.instance.CurrentState is UIGameState)) return;
         //if(asyncRTFilter != null && asyncRTFilter.IsRaycastLocationValid(Input.mousePosition, Camera.main)) return;
-        if (Input.GetMouseButtonUp(0))
-        {
-            Debug.Log("End IIIIIIIIIIIIIIIInteraction - " + interactable);
-            onEndInteraction?.Invoke(this, default, true);
-            this.interactable = null;
-        }
+        
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, ~mask))
         {
             IInteractable[] interactables = hit.collider.gameObject.GetComponents<IInteractable>().Where(n =>
@@ -54,13 +49,24 @@ public class Interactor : MonoBehaviour
                 
                 this.interactable = interactable;
             }
+            if (Input.GetMouseButtonUp(0))
+            {
+                Debug.Log("End IIIIIIIIIIIIIIIInteraction - " + interactable);
+                onEndInteraction?.Invoke(this, hit, true);
+                this.interactable = null;
+            }
         }
         else
         {
             interactable?.OnPointerExit(this, hit);
             interactable = null;
         }
-        
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("End IIIIIIIIIIIIIIIInteraction - " + interactable);
+            onEndInteraction?.Invoke(this, default, true);
+            this.interactable = null;
+        }
     }
 }
 

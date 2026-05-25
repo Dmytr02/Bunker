@@ -206,16 +206,17 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     }
     */
 
-    public void SendStat(string stat)
+    public bool SendStat(string stat)
     {
         Debug.Log(stat + " - TrySend");
         Debug.Log(stats.isShowed[stat] + " || " + (stats.isShowed.Count(pair => pair.Value) < GameManager.roundNumber+2));
-        if(stats.isShowed[stat] || stats.isShowed.Count(pair => pair.Value) > GameManager.roundNumber+2) return;
+        if(stats.isShowed[stat] || stats.isShowed.Count(pair => pair.Value) > GameManager.roundNumber) return false;
         GameManager.Instance.StopCoroutine("ShowAssistentToShowStat");
         photonView.RPC("RPC_Stat", RpcTarget.All, stat, stats.list[stat], true);
         stats.isShowed[stat] = true;
         
         Debug.Log(stat + " - Sended");
+        return true;
     }
 
 
@@ -384,14 +385,14 @@ public class PlayerStats
         Phobias Phobia = (Phobias)list["Phobias"];
         Hobby Hobby =  (Hobby)list["Hobby"] ;
         Personality personality = (Personality)list["Personality"];
-        return (stats.Contains("Name") ? (string.IsNullOrEmpty(Name)? "Name: - \n" : $"Name: {Name}\n"):"") + 
-               (stats.Contains("Age") ? (Age==-1?"Age: - \n": $"Age: {Age}\n"):"") + 
-               (stats.Contains("Profession") ? (Profession==Professions.unknown?"Profession: - \n": $"Profession: {Profession}\n"): "") +
-               (stats.Contains("Experience") ? (experience==-1?"Experience: - \n":$"Experience: {experience} years\n"): "") + 
-               (stats.Contains("Healthe") ? (Healthe==Healthe.unknown?"Health: - \n":$"Health: {Healthe}\n"):"") + 
-               (stats.Contains("Phobias") ? (Phobia==Phobias.unknown?"Phobia: - \n":$"Phobia: {Phobia}\n"):"") +
-               (stats.Contains("Hobby") ?Hobby==Hobby.unknown?"Hobby: - \n":$"Hobby: {Hobby}\n":"")+
-               (stats.Contains("Personality") ? personality==Personality.unknown?"Personality: - \n":$"Personality: {personality}\n":"");
+        return (stats.Contains("Name") ? (string.IsNullOrEmpty(Name)? "Name: - \n" : $"Name: {Name.StatToString()}\n"):"") + 
+               (stats.Contains("Age") ? (Age==-1?"Age: - \n": $"Age: {Age.StatToString()}\n"):"") + 
+               (stats.Contains("Profession") ? (Profession==Professions.unknown?"Profession: - \n": $"Profession: {Profession.StatToString()}\n"): "") +
+               (stats.Contains("Experience") ? (experience==-1?"Experience: - \n":$"Experience: {experience.StatToString()} years\n"): "") + 
+               (stats.Contains("Healthe") ? (Healthe==Healthe.unknown?"Health: - \n":$"Health: {Healthe.StatToString()}\n"):"") + 
+               (stats.Contains("Phobias") ? (Phobia==Phobias.unknown?"Phobia: - \n":$"Phobia: {Phobia.StatToString()}\n"):"") +
+               (stats.Contains("Hobby") ?Hobby==Hobby.unknown?"Hobby: - \n":$"Hobby: {Hobby.StatToString()}\n":"")+
+               (stats.Contains("Personality") ? personality==Personality.unknown?"Personality: - \n":$"Personality: {personality.StatToString()}\n":"");
     }
 }
 

@@ -16,6 +16,11 @@ public class TutorialUIGameState : StateMachine.State<TutorialUIController>
         {
             stateMachine.SetState(new TutorialUIChatState(stateMachine));
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.isFollowCursore = !stateMachine.isFollowCursore;
+        }
     }
     override public void Enter()
     {

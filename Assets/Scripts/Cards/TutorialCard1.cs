@@ -9,7 +9,7 @@ public class TutorialCard1 : Card
     protected override bool OnUse(RaycastHit hit)
     {
         
-        if(hit.collider == null) return false;
+        if (hit.collider == null) return false;
         if (hit.collider.transform.parent == null) return false;
         if (hit.collider.transform.parent.TryGetComponent(out TutorialNotepad notepad))
         {

@@ -12,6 +12,7 @@ public class TutorialUIController : StateMachine.StateMachine<TutorialUIControll
     public TutorialCommandManager commandManager;
     public Animator loadingScreenAnimator;
     public SavedKey chatKey;
+    public bool isFollowCursore = true;
     
     public static TutorialUIController instance;
 

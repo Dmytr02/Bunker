@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialCard2
   audioSource: {fileID: 24435289}
-  audioClip: {fileID: 8300000, guid: 5b9017bba2138124292b081cd52b55f9, type: 3}
+  audioClip: {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
 --- !u!1 &28408981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7848847334809383051, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
@@ -21533,6 +21533,7 @@ MonoBehaviour:
   chatKey:
     key: 0
     actionName: chat
+  isFollowCursore: 1
 --- !u!114 &1524486097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30662,7 +30663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsController
   statPrefab: {fileID: 3248651069268839890, guid: 1fb734f2b85d9204b851755f78da3015, type: 3}
-  showedColor: {r: 1, g: 0, b: 0, a: 1}
   showedSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!95 &2023503670
 Animator:

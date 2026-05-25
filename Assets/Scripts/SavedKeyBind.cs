@@ -18,6 +18,11 @@ public class SavedKeyBind : MonoBehaviour
             ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
         }
     }
+    
+    private void OnDestroy()
+    {
+        key.OnDestroy();
+    }
 }
 
 [Serializable]
@@ -33,7 +38,7 @@ public class SavedKey
         BindKey.OnChanged += OnChanged;
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         BindKey.OnChanged -= OnChanged;
     }

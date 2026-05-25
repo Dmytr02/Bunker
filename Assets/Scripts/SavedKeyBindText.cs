@@ -11,7 +11,7 @@ public class SavedKeyBindText : MonoBehaviour
     {
         if(text == null) text = GetComponent<TMP_Text>();
         if (text == null) return;
-        text.text = ((KeyCode)PlayerPrefs.GetInt(actionName)).ToString();
+        text.text = ((KeyCode)PlayerPrefs.GetInt(actionName)).KeyCodeString();
         BindKey.OnChanged += OnChanged;
     }
 
@@ -22,6 +22,6 @@ public class SavedKeyBindText : MonoBehaviour
 
     private void OnChanged(string s, KeyCode code)
     {
-        if(actionName == s) text.text = code.ToString();;
+        if(actionName == s) text.text = code.KeyCodeString();
     }
 }
