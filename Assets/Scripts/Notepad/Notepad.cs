@@ -6,7 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
+public class Notepad : MonoBehaviour
 {
     /*[SerializeField] public TMP_Text text;
     [SerializeField] public ManualCameraRender cameraRender;
@@ -33,7 +33,7 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
             StatsDrawer.pages[i.index].Draw(i.stats);
         }
 
-        book.pages = Mathf.CeilToInt(PlayerMovmant.players.Count/2.0f);
+        book.pages = Mathf.Max(Mathf.CeilToInt(PlayerMovmant.players.Count/2.0f),1);
         SetIndex(0);
         print("Start");
         PlayerMovmant.onStatOpened.AddListener((p) =>
@@ -81,9 +81,10 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
 
     private object[] data;
 
-    public void OnPhotonInstantiate(PhotonMessageInfo info)
+    public void OnPhotonInstantiate(object[] info)
     {
-        data = info.photonView.InstantiationData;
+        //data = info.photonView.InstantiationData;
+        data = info;
         PlayerMovmant.onPlayersSelected.AddListener(tryDestroy);
     }
 
@@ -99,4 +100,5 @@ public class Notepad : MonoBehaviour, IPunInstantiateMagicCallback
             Destroy(gameObject);
         }
     }
+
 }

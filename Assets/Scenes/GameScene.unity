@@ -4118,6 +4118,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341512811}
   m_CullTransparentMesh: 1
+--- !u!1001 &355806726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6969262262021827229, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515555550078120580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775367534388074152, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972900180596733506, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857017673403017772, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030325363096392764, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418668691731936738, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Name
+      value: Notepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554343107740000236, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819116910846609662, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+--- !u!114 &355806727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  m_PrefabInstance: {fileID: 355806726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a5fa02d29b9a469edcec533d2fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notepad
 --- !u!1 &362595139
 GameObject:
   m_ObjectHideFlags: 0
@@ -17586,6 +17694,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381532879}
   m_CullTransparentMesh: 1
+--- !u!1001 &1391395491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6969262262021827229, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515555550078120580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775367534388074152, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972900180596733506, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857017673403017772, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030325363096392764, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418668691731936738, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Name
+      value: Notepad (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554343107740000236, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819116910846609662, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+--- !u!114 &1391395492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  m_PrefabInstance: {fileID: 1391395491}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a5fa02d29b9a469edcec533d2fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notepad
 --- !u!1 &1401110204
 GameObject:
   m_ObjectHideFlags: 0
@@ -17722,6 +17938,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401110204}
   m_CullTransparentMesh: 1
+--- !u!1001 &1404571705
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6969262262021827229, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515555550078120580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775367534388074152, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972900180596733506, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857017673403017772, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030325363096392764, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418668691731936738, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Name
+      value: Notepad (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554343107740000236, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819116910846609662, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+--- !u!114 &1404571706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  m_PrefabInstance: {fileID: 1404571705}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a5fa02d29b9a469edcec533d2fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notepad
 --- !u!1 &1414983791
 GameObject:
   m_ObjectHideFlags: 0
@@ -18153,6 +18477,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459182699}
   m_CullTransparentMesh: 1
+--- !u!1001 &1463885892
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6969262262021827229, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515555550078120580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775367534388074152, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972900180596733506, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857017673403017772, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030325363096392764, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418668691731936738, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Name
+      value: Notepad (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554343107740000236, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819116910846609662, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+--- !u!114 &1463885893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  m_PrefabInstance: {fileID: 1463885892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a5fa02d29b9a469edcec533d2fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notepad
 --- !u!1 &1477217188
 GameObject:
   m_ObjectHideFlags: 0
@@ -19611,7 +20043,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4c0fe428617dc45afed88e5b1bae44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  notepad: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  notepad: {fileID: 355806727}
+  notepadesPull:
+  - {fileID: 355806727}
+  - {fileID: 2036923128}
+  - {fileID: 1404571706}
+  - {fileID: 1463885893}
+  - {fileID: 1772654394}
+  - {fileID: 1391395492}
   notepadPosition: {x: 0, y: -0.6, z: 0.66}
   notepadRotation: {x: 0.25881904, y: 0, z: 0, w: 0.9659258}
   vote: {fileID: 4556406821315803780, guid: 8fb824b8431f5434facb332153b61221, type: 3}
@@ -21805,6 +22244,114 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762721805}
   m_CullTransparentMesh: 1
+--- !u!1001 &1772654393
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6969262262021827229, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: sceneViewId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515555550078120580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775367534388074152, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972900180596733506, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857017673403017772, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030325363096392764, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418668691731936738, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Name
+      value: Notepad (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554343107740000236, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819116910846609662, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+--- !u!114 &1772654394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  m_PrefabInstance: {fileID: 1772654393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a5fa02d29b9a469edcec533d2fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notepad
 --- !u!1 &1782964263
 GameObject:
   m_ObjectHideFlags: 0
@@ -28104,6 +28651,114 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2036923127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6969262262021827229, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515555550078120580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775367534388074152, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374758091942599580, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972900180596733506, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857017673403017772, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030325363096392764, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418668691731936738, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Name
+      value: Notepad (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068922784597723513, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554343107740000236, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819116910846609662, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+--- !u!114 &2036923128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819989298393974263, guid: c7f773215e157094bad8c0948be89bf2, type: 3}
+  m_PrefabInstance: {fileID: 2036923127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759a5fa02d29b9a469edcec533d2fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Notepad
 --- !u!1 &2037294140
 GameObject:
   m_ObjectHideFlags: 0
@@ -30390,3 +31045,9 @@ SceneRoots:
   - {fileID: 1186151926}
   - {fileID: 2031204735}
   - {fileID: 5624224845362115682}
+  - {fileID: 355806726}
+  - {fileID: 2036923127}
+  - {fileID: 1404571705}
+  - {fileID: 1463885892}
+  - {fileID: 1772654393}
+  - {fileID: 1391395491}

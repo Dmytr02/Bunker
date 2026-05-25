@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public static DateTime NextRound = DateTime.MaxValue;
     [SerializeField] Notepad notepad;
+    [SerializeField] Notepad[] notepadesPull;
     [SerializeField] Vector3 notepadPosition;
     [SerializeField] Quaternion notepadRotation =  Quaternion.identity;
     [SerializeField] Vote vote;
@@ -165,10 +166,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         //TimeToEndRound(5);
         StartCoroutine(ShowStartVoting());
 
-        PhotonNetwork.Instantiate(notepad.name,
+        /*PhotonNetwork.Instantiate(notepad.name,
             PlayerMovmant.player.transform.position + PlayerMovmant.player.transform.rotation * notepadPosition,
             PlayerMovmant.player.transform.rotation * notepadRotation, 0,
-            new object[] { PlayerMovmant.player.photonView.ViewID });
+            new object[] { PlayerMovmant.player.photonView.ViewID });*/
+        for (var i = 0; i < PlayerMovmant.players.Count; i++)
+        {
+            var player = PlayerMovmant.players[i];
+            notepadesPull[i].gameObject.SetActive(true);
+            notepadesPull[i].transform.position = player.transform.position + player.transform.rotation * notepadPosition;  
+            notepadesPull[i].transform.rotation = player.transform.rotation * notepadRotation;
+            notepadesPull[i].OnPhotonInstantiate(new object[] { player.photonView.ViewID });
+        }
+
+        //go.SetActive(true);
         //Instantiate(vote);
         PlayerMovmant.player.SendStat("Name");
         //PlayerMovmant.player.SendStat("Age");
