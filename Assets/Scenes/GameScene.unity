@@ -5744,7 +5744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardsController
   radialLayautGroup: {fileID: 489675150}
-  distanceRange: {x: 1000, y: 1200}
+  distanceRange: {x: 1050, y: 1250}
   isOpend: 0
 --- !u!114 &489675152
 MonoBehaviour:
@@ -20391,7 +20391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1519687802
 RectTransform:
   m_ObjectHideFlags: 0
