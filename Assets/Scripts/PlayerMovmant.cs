@@ -35,7 +35,8 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     [SerializeField] private Renderer bini;
     [SerializeField] private Material[] biniMaterials;
     [SerializeField] public Color[] colors;
-
+    [SerializeField] private Canvas Name; 
+    
     public VoiceController voiceController;
     
     public static List<PlayerMovmant> players = new List<PlayerMovmant>();
@@ -47,6 +48,8 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public static UnityEvent onPlayersSelected =  new UnityEvent();
     
     public static UnityEvent<PlayerMovmant> onStatOpened =  new UnityEvent<PlayerMovmant>();
+    
+    
     
     
     float yForce = 0;
@@ -189,6 +192,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         {
             i.enabled = false;
         }
+        Name.gameObject.SetActive(false);
 
         
         //GetComponent<Renderer>().enabled = false;

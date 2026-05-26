@@ -11,6 +11,12 @@ public class CutScene : MonoBehaviour
     private void Start()
     {
         audioSource.clip = audioClip;
+        Invoke("PlayAudio", 2);
+    }
+
+    void PlayAudio()
+    {
+        
         audioSource.Play();
     }
     
