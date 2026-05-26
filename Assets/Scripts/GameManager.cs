@@ -636,11 +636,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 
-    [PunRPC]
     public void StartNewRound()
     {
         photonView.RPC(nameof(StartNewRound_RPC), RpcTarget.MasterClient);
     }
+    [PunRPC]
     public void StartNewRound_RPC()
     {
         Debug.Log("Start New Round");

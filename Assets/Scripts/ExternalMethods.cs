@@ -53,7 +53,7 @@ public static class ExternalMethods
     private static  Dictionary<object, string> stats = new()
     {
         {Professions.Doctor, "Doctor"},
-        {Professions.engineer, "Enginee"},
+        {Professions.engineer, "Engineer"},
         {Professions.scientist, "Scientist"},
         {Professions.biologistChemist, "Biologist Chemist"},
         {Professions.psychologist, "Psychologist"},

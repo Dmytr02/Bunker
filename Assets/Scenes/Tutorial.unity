@@ -233,7 +233,6 @@ GameObject:
   - component: {fileID: 24435287}
   - component: {fileID: 24435286}
   - component: {fileID: 24435290}
-  - component: {fileID: 24435289}
   m_Layer: 5
   m_Name: Card (1)
   m_TagString: Untagged
@@ -320,103 +319,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24435283}
   m_CullTransparentMesh: 1
---- !u!82 &24435289
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24435283}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -9131015078853687674, guid: 2e0e49c100a54bc4793d8b35e06a088e, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &24435290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad419ca4452e00498476c3d15ac3e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialCard2
-  audioSource: {fileID: 24435289}
+  audioSource: {fileID: 1847178974}
   audioClip: {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
 --- !u!1 &28408981 stripped
 GameObject:
@@ -20934,6 +20836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccebee5ed1976f459a3486d8998cff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NickName
+  player: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &1490765498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22125,6 +22029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccebee5ed1976f459a3486d8998cff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NickName
+  player: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &1585361014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24180,6 +24086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccebee5ed1976f459a3486d8998cff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NickName
+  player: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &1721119895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25945,6 +25853,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ccebee5ed1976f459a3486d8998cff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NickName
+  player: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &1808099264
 MonoBehaviour:
   m_ObjectHideFlags: 0
