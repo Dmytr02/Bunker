@@ -43,6 +43,7 @@ public class StatsController : MonoBehaviour
         
         PlayerMovmant.player.onStatChanged.AddListener((arg0 =>
         {
+            if(arg0 == "Name") return;
             stats[arg0].text.text = $"{arg0}: {PlayerMovmant.player.stats.list[arg0].StatToString()}";
         }));
     }
