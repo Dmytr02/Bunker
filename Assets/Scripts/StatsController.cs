@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ public class StatsController : MonoBehaviour
     
     public static StatsController Instance;
 
-    
+    Dictionary<string, (EventTrigger trigger, TMP_Text text)> stats = new ();
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class StatsController : MonoBehaviour
             if(i.Key == "Name") continue;
             EventTrigger trigger = Instantiate(statPrefab, transform);
             TMP_Text text = trigger.GetComponent<TMP_Text>();
+            stats.Add(i.Key, (trigger, text));
             text.text = $"{i.Key}: {i.Value.StatToString()}";
             
             EventTrigger.Entry e = new EventTrigger.Entry();
@@ -38,6 +40,11 @@ public class StatsController : MonoBehaviour
             
             trigger.triggers.Add(e);
         }
+        
+        PlayerMovmant.player.onStatChanged.AddListener((arg0 =>
+        {
+            stats[arg0].text.text = $"{arg0}: {PlayerMovmant.player.stats.list[arg0].StatToString()}";
+        }));
     }
 
     // Update is called once per frame

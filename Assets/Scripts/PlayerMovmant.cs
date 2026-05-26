@@ -50,6 +50,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     
     public static UnityEvent<PlayerMovmant> onStatOpened =  new UnityEvent<PlayerMovmant>();
     
+    public UnityEvent<string> onStatChanged =  new UnityEvent<string>();
     
     
     
@@ -235,6 +236,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     private void RPC_Stat(string stat, object value, bool isShowed = true)
     {
         stats.list[stat] = value;
+        onStatChanged?.Invoke(stat);
         if(isShowed) {onStatOpened?.Invoke(this); stats.isShowed[stat] = true; }
         if(photonView.IsMine && stats.isShowed[stat]) photonView.RPC("RPC_Stat", RpcTarget.Others, stat, stats.list[stat], true);
     }

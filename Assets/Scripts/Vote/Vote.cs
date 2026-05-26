@@ -36,7 +36,7 @@ public class Vote : MonoBehaviourPunCallbacks
     {
         //if(votes.Count >= count) return;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
-        voteImageButtons[index].gameObject.SetActive(true);
+        voteImageButtons[PlayerMovmant.players[index].index].gameObject.SetActive(true);
         selectedIndex = index;
     }
 
@@ -49,24 +49,21 @@ public class Vote : MonoBehaviourPunCallbacks
         
         selectedIndex = -1;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
+        for (int i = 0; i < voteButtons.Length; i++) voteButtons[i].gameObject.SetActive(false);
         for (int i = 0; i < voteButtons.Length; i++)
         {
             if (PlayerMovmant.players.Count > i)
             {
-                voteButtons[i].gameObject.SetActive(true);
-                voteTextButtons[i].text = PlayerMovmant.players[i].stats.list["Name"].ToString();
+                voteButtons[PlayerMovmant.players[i].index].gameObject.SetActive(true);
+                voteTextButtons[PlayerMovmant.players[i].index].text = PlayerMovmant.players[i].stats.list["Name"].ToString();
                 int i0 = i;
                 
-                voteButtons[i].triggers.Clear(); 
+                voteButtons[PlayerMovmant.players[i].index].triggers.Clear(); 
                 EventTrigger.Entry onPointerDown = new EventTrigger.Entry();
                 onPointerDown.eventID = EventTriggerType.PointerDown;
                 onPointerDown.callback.AddListener((e) => { SetSelected(i0); });
       
-                voteButtons[i].triggers.Add(onPointerDown);
-            }
-            else
-            {   
-                voteButtons[i].gameObject.SetActive(false);
+                voteButtons[PlayerMovmant.players[i].index].triggers.Add(onPointerDown);
             }
         }
         animator.SetBool("isShowPanel", true);
