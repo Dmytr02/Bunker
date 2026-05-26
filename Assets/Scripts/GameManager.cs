@@ -563,13 +563,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         triggerStartVoting.gameObject.SetActive(true);
         OnEndRound.Invoke();
-        if (PlayerMovmant.players.Count <= 2)
-        {
-            PlayerMovmant.player.SendAllStats();
-            CalculatePoints();
-            showTimer = false;
-        }
-        else StartCoroutine(ShowStartVoting());
+        
+        StartCoroutine(ShowStartVoting());
     }
 
 
@@ -616,30 +611,43 @@ public class GameManager : MonoBehaviourPunCallbacks
     private IEnumerator ShowStartVoting()
     {
         roundNumber++;
-        //StartCoroutine(ShowAssistentToShowStat());
-        triggerStartVoting.gameObject.SetActive(true);
-        triggerStartVoting.enabled = false;
-        for (int i = timeBeforeVoting; i > 0; i--)
+        yield return new WaitForSeconds(2);
+        Debug.Log("PlayerMovmant.players.Count " + PlayerMovmant.players.Count);
+        if (PlayerMovmant.players.Count <= 2)
         {
-            yield return new WaitForSeconds(1); 
-            textStartVoting.text = i.ToString();
+            PlayerMovmant.player.SendAllStats();
+            CalculatePoints();
+            showTimer = false;
+            yield break;
         }
-
-        textStartVoting.text = "Everyone must reveal one stat before voting";
-        yield return new WaitUntil(() =>
+        else
         {
-            foreach (PlayerMovmant i in PlayerMovmant.players)
-                if (i.stats.isShowed.Count(pair => pair.Value) < roundNumber)
-                {
-                    print($"player {i.index} have {i.stats.isShowed.Count(pair => pair.Value)}, need {roundNumber}");
-                    return false;
-                }
+            //StartCoroutine(ShowAssistentToShowStat());
+            triggerStartVoting.gameObject.SetActive(true);
+            triggerStartVoting.enabled = false;
+            for (int i = timeBeforeVoting; i > 0; i--)
+            {
+                yield return new WaitForSeconds(1);
+                textStartVoting.text = i.ToString();
+            }
 
-            return true;
-        });
-        
-        triggerStartVoting.enabled = true;
-        textStartVoting.text = "Click to start voting";
+            textStartVoting.text = "Everyone must reveal one stat before voting";
+            yield return new WaitUntil(() =>
+            {
+                foreach (PlayerMovmant i in PlayerMovmant.players)
+                    if (i.stats.isShowed.Count(pair => pair.Value) < roundNumber)
+                    {
+                        print(
+                            $"player {i.index} have {i.stats.isShowed.Count(pair => pair.Value)}, need {roundNumber}");
+                        return false;
+                    }
+
+                return true;
+            });
+
+            triggerStartVoting.enabled = true;
+            textStartVoting.text = "Click to start voting";
+        }
     }
 
     IEnumerator ShowAssistentToShowStat()
