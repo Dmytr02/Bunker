@@ -5562,7 +5562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1000.00006}
+  m_AnchoredPosition: {x: 0, y: -1000}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489675150
@@ -15733,7 +15733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutScene
   audioSource: {fileID: 1247233990}
-  audioClip: {fileID: 8300000, guid: 0f75ce1c914950a4b87c6994ac0cfa03, type: 3}
+  audioClip: {fileID: 8300000, guid: 2ab6d5e5c780ad446931d2bf4c9370af, type: 3}
   decayTime: 1
 --- !u!114 &1247233987
 MonoBehaviour:
@@ -24181,8 +24181,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -836696537869915019, guid: 2e0e49c100a54bc4793d8b35e06a088e, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 38e0b94a6aa47e94ca54f77805c01f38, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
