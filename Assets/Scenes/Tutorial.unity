@@ -18629,7 +18629,7 @@ MonoBehaviour:
     - rid: 2808812633631228024
       type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
       data:
-        time: 4
+        time: 1
     - rid: 2808812633631228025
       type: {class: TutorialGameManager/Wait, ns: , asm: Assembly-CSharp}
       data:

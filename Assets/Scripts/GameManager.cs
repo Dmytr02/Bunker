@@ -256,7 +256,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         resultText.text = "Remaining players:\n<b>" + PlayerMovmant.players[0].stats.list["Name"] + "</b>, <b>" + PlayerMovmant.players[1].stats.list["Name"]+"</b>\n" + resultText.text;
         resultText.text = "You have <b>" + points + "</b> points.\n" + resultText.text;
         resultImage.sprite = points > 15 ? resultSprites[0] : points > 10 ? resultSprites[1] : resultSprites[2];
-        resultText.transform.parent.gameObject.SetActive(true);
+        resultImage.gameObject.SetActive(true);
+        //resultText.transform.parent.gameObject.SetActive(true);
     }
 
     private void AddSinergyText(object stat1, object stat2, int points)
