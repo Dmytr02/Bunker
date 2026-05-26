@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void AddPointsByStat(string type, object stat, ref int points)
     {
         points += costs[(type, stat)];
-        resultText.text += $"{type}: {stat} {costs[(type, stat)]} {(costs[(type, stat)]<0?"-":costs[(type, stat)]>0?"+":"")}{(Mathf.Abs(costs[(type, stat)])>1?"points":"point")}\n";
+        resultText.text += $"{type}: {stat} | {(costs[(type, stat)]>0?"+":"")}{costs[(type, stat)]} {(Mathf.Abs(costs[(type, stat)])>1?"points":"point")}\n";
     }
     
     void CalculatePoints()
@@ -222,15 +222,17 @@ public class GameManager : MonoBehaviourPunCallbacks
         points += BunkerStats.Instance.TimeInside < 5 ? 4 : BunkerStats.Instance.TimeInside < 15 ? 2 : BunkerStats.Instance.TimeInside < 30 ? 0 : -1;
         points += BunkerStats.Instance.Supplies == Supplies.Critical ? -4 : BunkerStats.Instance.Supplies == Supplies.Low ? -2 : BunkerStats.Instance.Supplies == Supplies.Stable ? 2 : 4;
 
-        resultText.text += "More Information:\n";
+        resultText.text += "\nMore Information:\n";
         
         foreach (var player in PlayerMovmant.players)
         {
             AddPointsByStat("Profession", (Professions)player.stats.list["Profession"], ref points);
-            points += (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
-            resultText.text += $"Experience: {(int)player.stats.list["Experience"]} {((int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1)}\n";
-            points += (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
-            resultText.text += $"Age: {(int)player.stats.list["Age"]} {((int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0)}\n";
+            int p = (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
+            points += p;
+            resultText.text += $"Experience: {(int)player.stats.list["Experience"]} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
+            p = (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
+            points += p;
+            resultText.text += $"Age: {(int)player.stats.list["Age"]} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
             AddPointsByStat("Healthe", (Healthe)player.stats.list["Healthe"], ref points);
             AddPointsByStat("Phobias", (Phobias)player.stats.list["Phobias"], ref points);
             AddPointsByStat("Hobby", (Hobby)player.stats.list["Hobby"], ref points);
@@ -240,7 +242,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         List<int> sinergies = new List<int>();
         List<int> antiSinergies = new List<int>();
 
-        resultText.text += "Synergies:\n";
+        resultText.text += "\nSynergies:\n";
         checkSinergies(PlayerMovmant.players[0].stats.list, PlayerMovmant.players[1].stats.list, ref sinergies, ref antiSinergies);
         checkSinergies(PlayerMovmant.players[1].stats.list, PlayerMovmant.players[0].stats.list, ref sinergies, ref antiSinergies);
         
@@ -262,7 +264,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void AddSinergyText(object stat1, object stat2, int points)
     {
-        resultText.text += $"Synergies: {stat1.StatToString()} & {stat2.StatToString()} {(points<0?"-":points>0?"+":"")}{(Mathf.Abs(points)>1?"points":"point")}\n";
+        resultText.text += $"Synergies: {stat1.StatToString()} & {stat2.StatToString()} {(points>0?"+":"")}{points} {(Mathf.Abs(points)>1?"points":"point")}\n";
     }
     void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, ref List<int> sinergies, ref List<int> antiSinergies)
     {
