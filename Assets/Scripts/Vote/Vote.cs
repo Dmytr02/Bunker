@@ -74,7 +74,7 @@ public class Vote : MonoBehaviourPunCallbacks
 
     public void Submit()
     {
-        //if(votes.Count == count) return;
+        //bbif(votes.Count == count) return;
         if (selectedIndex != -1)
         {
             photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[selectedIndex].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");

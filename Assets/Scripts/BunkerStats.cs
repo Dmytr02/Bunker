@@ -85,7 +85,7 @@ public class BunkerStats : MonoBehaviour
     {
         foreach (var text in textList)
         {
-            text.text = $"<sprite=0>Size: {_Size}\n<sprite=1>TimeInside: {_TimeInside}\n<sprite=2>Supplies: {_Supplies}\n<sprite=3>Capacity: 2";;
+            text.text = $"<sprite=0>Size: {_Size} m²\n<sprite=1>TimeInside: {_TimeInside} years\n<sprite=2>Supplies: {_Supplies}\n<sprite=3>Capacity: 2";;
         }
     }
 }
