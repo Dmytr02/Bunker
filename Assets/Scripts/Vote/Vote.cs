@@ -21,7 +21,6 @@ public class Vote : MonoBehaviourPunCallbacks
     public static Vote Instance;
     
     private int selectedIndex = -1;
-    private int count = 0;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -35,7 +34,7 @@ public class Vote : MonoBehaviourPunCallbacks
     
     private void SetSelected(int index)
     {
-        if(votes.Count >= count) return;
+        //if(votes.Count >= count) return;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
         voteImageButtons[index].gameObject.SetActive(true);
         selectedIndex = index;
@@ -48,7 +47,6 @@ public class Vote : MonoBehaviourPunCallbacks
             return;
         }
         
-        this.count = 1;
         selectedIndex = -1;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
         for (int i = 0; i < voteButtons.Length; i++)
@@ -76,7 +74,7 @@ public class Vote : MonoBehaviourPunCallbacks
 
     public void Submit()
     {
-        if(votes.Count == count) return;
+        //if(votes.Count == count) return;
         if (selectedIndex != -1)
         {
             photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[selectedIndex].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");
