@@ -64,13 +64,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         {("Profession", Professions.Soldier), 3},
         {("Profession", Professions.Student), 0},
         {("Profession", Professions.Teacher), 2},
-        {("Healthe", Healthe.excellent), 3},
-        {("Healthe", Healthe.average), 1},
-        {("Healthe", Healthe.poor), -2},
-        {("Healthe", Healthe.critical), -3},
-        {("Healthe", Healthe.colorBlindness), -2},
-        {("Healthe", Healthe.psychosis), -4},
-        {("Healthe", Healthe.withdrawal), -3},
+        {("Health", Healthe.excellent), 3},
+        {("Health", Healthe.average), 1},
+        {("Health", Healthe.poor), -2},
+        {("Health", Healthe.critical), -3},
+        {("Health", Healthe.colorBlindness), -2},
+        {("Health", Healthe.psychosis), -4},
+        {("Health", Healthe.withdrawal), -3},
         {("Phobias", Phobias.Claustrophobia), -4},
         {("Phobias", Phobias.Anxiety), -1},
         {("Phobias", Phobias.FearOfBlood), -2},
@@ -195,22 +195,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void StartRound()
     {
         triggerStartVoting.gameObject.SetActive(false);
-        if (PlayerMovmant.players.Count <= 2)
-        {
-            PlayerMovmant.player.SendAllStats();
-            Invoke("CalculatePoints", 5);
-            showTimer = false;
-        }
-        else
-        {
-            OnStartRound.Invoke();
-        }
+        
+        OnStartRound.Invoke();
     }
 
     private void AddPointsByStat(string type, object stat, ref int points)
     {
         points += costs[(type, stat)];
-        resultText.text += $"{type}: {stat} | {(costs[(type, stat)]>0?"+":"")}{costs[(type, stat)]} {(Mathf.Abs(costs[(type, stat)])>1?"points":"point")}\n";
+        resultText.text += $"{type}: {stat.StatToString()} | {(costs[(type, stat)]>0?"+":"")}{costs[(type, stat)]} {(Mathf.Abs(costs[(type, stat)])>1?"points":"point")}\n";
     }
     
     void CalculatePoints()
@@ -233,7 +225,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             p = (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
             points += p;
             resultText.text += $"Age: {(int)player.stats.list["Age"]} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
-            AddPointsByStat("Healthe", (Healthe)player.stats.list["Healthe"], ref points);
+            AddPointsByStat("Health", (Healthe)player.stats.list["Healthe"], ref points);
             AddPointsByStat("Phobias", (Phobias)player.stats.list["Phobias"], ref points);
             AddPointsByStat("Hobby", (Hobby)player.stats.list["Hobby"], ref points);
             AddPointsByStat("Personality", (Personality)player.stats.list["Personality"], ref points);
@@ -243,8 +235,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         List<int> antiSinergies = new List<int>();
 
         resultText.text += "\nSynergies:\n";
-        checkSinergies(PlayerMovmant.players[0].stats.list, PlayerMovmant.players[1].stats.list, ref sinergies, ref antiSinergies);
-        checkSinergies(PlayerMovmant.players[1].stats.list, PlayerMovmant.players[0].stats.list, ref sinergies, ref antiSinergies);
+        checkSinergies(PlayerMovmant.players[0].stats.list, PlayerMovmant.players[1].stats.list, true, ref sinergies, ref antiSinergies);
+        checkSinergies(PlayerMovmant.players[1].stats.list, PlayerMovmant.players[0].stats.list, false, ref sinergies, ref antiSinergies);
         
         sinergies.Sort();
         antiSinergies.Sort();
@@ -266,7 +258,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         resultText.text += $"Synergies: {stat1.StatToString()} & {stat2.StatToString()} {(points>0?"+":"")}{points} {(Mathf.Abs(points)>1?"points":"point")}\n";
     }
-    void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, ref List<int> sinergies, ref List<int> antiSinergies)
+    void checkSinergies(Dictionary<string, object>  player1, Dictionary<string, object> player2, bool isFirst, ref List<int> sinergies, ref List<int> antiSinergies)
     {
         switch (player1["Profession"])
         {
@@ -510,47 +502,59 @@ public class GameManager : MonoBehaviourPunCallbacks
                 break;
         }
 
-        if ((int)player1["Age"] >= 41 &&
-            (int)player1["Age"] <= 60 &&
-            (int)player2["Age"] >= 18 &&
-            (int)player2["Age"] <= 25)
+        if (isFirst)
         {
-            sinergies.Add(1);
-            AddSinergyText($"Age({(int)player1["Age"]})", $"Age({(int)player2["Age"]})", 1);
-        }
-        if ((int)player1["Age"] >= 26 &&
-            (int)player1["Age"] <= 40 &&
-            (int)player2["Age"] >= 26 &&
-            (int)player2["Age"] <= 40)
-        {
-            sinergies.Add(1);
-            AddSinergyText($"Age({(int)player1["Age"]})", $"Age({(int)player2["Age"]})", 1);
-        }
-        if ((int)player1["Age"] >= 61 &&
-            (int)player2["Age"] >= 61)
-        {
-            antiSinergies.Add(-1);
-            AddSinergyText($"Age({(int)player1["Age"]})", $"Age({(int)player2["Age"]})", -1);
-        }if ((int)player1["Experience"] >= 1 &&
-            (int)player1["Experience"] <= 3 &&
-            (int)player2["Experience"] >= 9 &&
-            (int)player2["Experience"] <= 15)
-        {
-            sinergies.Add(1);
-            AddSinergyText($"Experience({(int)player1["Experience"]})", $"Experience({(int)player2["Experience"]})", 1);
-        }
-        if ((int)player1["Experience"] >= 4 &&
-            (int)player1["Experience"] <= 8 &&
-            (int)player2["Experience"] >= 16)
-        {
-            sinergies.Add(1);
-            AddSinergyText($"Experience({(int)player1["Experience"]})", $"Experience({(int)player2["Experience"]})", 1);
-        }
-        if ((int)player1["Experience"] >= 16 &&
-            (int)player2["Experience"] >= 16)
-        {
-            antiSinergies.Add(-1);
-            AddSinergyText($"Experience({(int)player1["Experience"]})", $"Experience({(int)player2["Experience"]})", -1);
+            if ((int)player1["Age"] >= 41 &&
+                (int)player1["Age"] <= 60 &&
+                (int)player2["Age"] >= 18 &&
+                (int)player2["Age"] <= 25)
+            {
+                sinergies.Add(1);
+                AddSinergyText($"Age({(int)player1["Age"]})", $"Age({(int)player2["Age"]})", 1);
+            }
+
+            if ((int)player1["Age"] >= 26 &&
+                (int)player1["Age"] <= 40 &&
+                (int)player2["Age"] >= 26 &&
+                (int)player2["Age"] <= 40)
+            {
+                sinergies.Add(1);
+                AddSinergyText($"Age({(int)player1["Age"]})", $"Age({(int)player2["Age"]})", 1);
+            }
+
+            if ((int)player1["Age"] >= 61 &&
+                (int)player2["Age"] >= 61)
+            {
+                antiSinergies.Add(-1);
+                AddSinergyText($"Age({(int)player1["Age"]})", $"Age({(int)player2["Age"]})", -1);
+            }
+
+            if ((int)player1["Experience"] >= 1 &&
+                (int)player1["Experience"] <= 3 &&
+                (int)player2["Experience"] >= 9 &&
+                (int)player2["Experience"] <= 15)
+            {
+                sinergies.Add(1);
+                AddSinergyText($"Experience({(int)player1["Experience"]})", $"Experience({(int)player2["Experience"]})",
+                    1);
+            }
+
+            if ((int)player1["Experience"] >= 4 &&
+                (int)player1["Experience"] <= 8 &&
+                (int)player2["Experience"] >= 16)
+            {
+                sinergies.Add(1);
+                AddSinergyText($"Experience({(int)player1["Experience"]})", $"Experience({(int)player2["Experience"]})",
+                    1);
+            }
+
+            if ((int)player1["Experience"] >= 16 &&
+                (int)player2["Experience"] >= 16)
+            {
+                antiSinergies.Add(-1);
+                AddSinergyText($"Experience({(int)player1["Experience"]})", $"Experience({(int)player2["Experience"]})",
+                    -1);
+            }
         }
     }
     
@@ -559,7 +563,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         triggerStartVoting.gameObject.SetActive(true);
         OnEndRound.Invoke();
-        StartCoroutine(ShowStartVoting());
+        if (PlayerMovmant.players.Count <= 2)
+        {
+            PlayerMovmant.player.SendAllStats();
+            CalculatePoints();
+            showTimer = false;
+        }
+        else StartCoroutine(ShowStartVoting());
     }
 
 
