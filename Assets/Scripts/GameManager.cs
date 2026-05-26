@@ -618,7 +618,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             Debug.Log("End Game");
             triggerStartVoting.gameObject.SetActive(false);
             PlayerMovmant.player.SendAllStats();
-            CalculatePoints();
+            Invoke(nameof(CalculatePoints), 3);
             showTimer = false;
             yield break;
         }
