@@ -33,10 +33,18 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] Material inactiveMaterial;
     
     [SerializeField] EventTrigger triggerStartVoting;
+    [SerializeField] Image imageTriggerStartVoting;
+    [SerializeField] Color activImageTriggerStartVoting;
+    [SerializeField] Color unactivImageTriggerStartVoting;
     [SerializeField] TMP_Text textStartVoting;
     [SerializeField] int timeBeforeVoting = 20;
     
     [SerializeField] Helper helper;
+    
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip surviveClip;
+    [SerializeField] AudioClip surviveHardClip;
+    [SerializeField] AudioClip deadClip;
     
     public static GameManager Instance;
     
@@ -250,6 +258,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         resultText.text = "Remaining players:\n<b>" + PlayerMovmant.players[0].stats.list["Name"] + "</b>, <b>" + PlayerMovmant.players[1].stats.list["Name"]+"</b>\n" + resultText.text;
         resultText.text = "You have <b>" + points + "</b> points.\n" + resultText.text;
         resultImage.sprite = points > 15 ? resultSprites[0] : points > 10 ? resultSprites[1] : resultSprites[2];
+        audioSource.PlayOneShot(points > 15 ? surviveClip : points > 10 ? surviveHardClip : deadClip);
         resultImage.gameObject.SetActive(true);
         //resultText.transform.parent.gameObject.SetActive(true);
     }
@@ -627,6 +636,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             //StartCoroutine(ShowAssistentToShowStat());
             triggerStartVoting.gameObject.SetActive(true);
             triggerStartVoting.enabled = false;
+            imageTriggerStartVoting.color = unactivImageTriggerStartVoting;
             for (int i = timeBeforeVoting; i > 0; i--)
             {
                 yield return new WaitForSeconds(1);
@@ -648,6 +658,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             });
 
             triggerStartVoting.enabled = true;
+            imageTriggerStartVoting.color = activImageTriggerStartVoting;
             textStartVoting.text = "Click to start voting";
         }
     }
