@@ -561,7 +561,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void EndRound()
     {
-        triggerStartVoting.gameObject.SetActive(true);
+        //triggerStartVoting.gameObject.SetActive(true);
         OnEndRound.Invoke();
         
         StartCoroutine(ShowStartVoting());
@@ -616,7 +616,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (PlayerMovmant.players.Count <= 2)
         {
             Debug.Log("End Game");
-            triggerStartVoting.gameObject.SetActive(false);
             PlayerMovmant.player.SendAllStats();
             Invoke(nameof(CalculatePoints), 3);
             showTimer = false;
@@ -667,6 +666,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartNewRound_RPC()
     {
+        
         Debug.Log("Start New Round");
 
         NextRound = DateTime.Now.AddSeconds(60);
