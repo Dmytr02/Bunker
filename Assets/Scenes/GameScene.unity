@@ -7250,6 +7250,7 @@ MonoBehaviour:
   audioSource: {fileID: 625797062}
   audioClip: {fileID: 8300000, guid: 3c04eee5a009f1d448b007518e7fd411, type: 3}
   decayTime: 1
+  musicAudioSource: {fileID: 0}
 --- !u!82 &625797062
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13037,6 +13038,7 @@ MonoBehaviour:
   audioSource: {fileID: 1140424291}
   audioClip: {fileID: 8300000, guid: 42414a8ed4ac33149bb95849a82fe557, type: 3}
   decayTime: 1
+  musicAudioSource: {fileID: 0}
 --- !u!82 &1140424291
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15900,6 +15902,7 @@ MonoBehaviour:
   audioSource: {fileID: 1247233990}
   audioClip: {fileID: 8300000, guid: 2ab6d5e5c780ad446931d2bf4c9370af, type: 3}
   decayTime: 1
+  musicAudioSource: {fileID: 0}
 --- !u!114 &1247233987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17086,7 +17089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acff3dc831596541be37c3775de7e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundCard
-  idSound: 0
+  idSound: 1
 --- !u!65 &1327690740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20429,6 +20432,9 @@ MonoBehaviour:
   chatKey:
     key: 0
     actionName: chat
+  cameraKey:
+    key: 0
+    actionName: camera
   isFollowCursore: 1
 --- !u!1 &1536243956
 GameObject:
@@ -29741,7 +29747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acff3dc831596541be37c3775de7e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundCard
-  idSound: 0
+  idSound: 2
 --- !u!65 &2049933653
 BoxCollider:
   m_ObjectHideFlags: 0

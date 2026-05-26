@@ -12,6 +12,7 @@ public class UIController : StateMachine.StateMachine<UIController>
     public CommandManager commandManager;
     public Animator loadingScreenAnimator;
     public SavedKey chatKey;
+    public SavedKey cameraKey;
     public bool isFollowCursore = true;
     
     public static UIController instance;
@@ -25,6 +26,7 @@ public class UIController : StateMachine.StateMachine<UIController>
     private void Start()
     {
         chatKey.Init();
+        cameraKey.Init();
         Begin(new UIGameState(this));
     }
     

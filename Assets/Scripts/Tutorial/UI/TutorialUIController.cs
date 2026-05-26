@@ -12,6 +12,7 @@ public class TutorialUIController : StateMachine.StateMachine<TutorialUIControll
     public TutorialCommandManager commandManager;
     public Animator loadingScreenAnimator;
     public SavedKey chatKey;
+    public SavedKey cameraKey;
     public bool isFollowCursore = true;
     
     public static TutorialUIController instance;
@@ -25,6 +26,7 @@ public class TutorialUIController : StateMachine.StateMachine<TutorialUIControll
     private void Start()
     {
         chatKey.Init();
+        cameraKey.Init();
         Begin(new TutorialUIGameState(this));
     }
     

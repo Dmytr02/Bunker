@@ -6212,7 +6212,9 @@ MonoBehaviour:
   lookAngelRangeY: {x: -30, y: 60}
   audioSource: {fileID: 8566341651060777691}
   audioClip:
-  - {fileID: 8300000, guid: 5b9017bba2138124292b081cd52b55f9, type: 3}
+  - {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
+  - {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
+  - {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
   index: 0
   cursoreMuves: {fileID: 7391436154243513142}
   bini: {fileID: 3735406426936159493}

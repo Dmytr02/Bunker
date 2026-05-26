@@ -137,6 +137,7 @@ public class TutorialGameManager : MonoBehaviour
         {
             public string name;
             public int votes;
+            public Sprite voteSprite;
         } 
         public int playersVotes;
         [SerializeField] List<NameVotes> votes = new List<NameVotes>();
@@ -147,9 +148,10 @@ public class TutorialGameManager : MonoBehaviour
             TutorialVote.Instance.voteTextButtons[0].text = $"{PlayerPrefs.GetString("name", "Name")}"; 
             for (int i = 1; i < TutorialVote.Instance.voteTextButtons.Length; i++)
             {
-                if (i <= votes.Count)
+                if (i <= votes.Count) 
                 {
                     TutorialVote.Instance.voteButtons[i].gameObject.SetActive(true);
+                    TutorialVote.Instance.voteBGButtons[i].sprite = votes[i-1].voteSprite;
                     TutorialVote.Instance.voteTextButtons[i].text = votes[i-1].name;
                 }
                 else
@@ -166,6 +168,7 @@ public class TutorialGameManager : MonoBehaviour
                 if (i <= votes.Count)
                 {
                     TutorialVote.Instance.voteButtons[i].gameObject.SetActive(true);
+                    TutorialVote.Instance.voteBGButtons[i].sprite = votes[i-1].voteSprite;
                     TutorialVote.Instance.voteTextButtons[i].text = $"{votes[i-1].name}\nvotes: {(TutorialVote.votes.Contains(i) ? 1 : 0) + votes[i-1].votes}";
                 }
                 else

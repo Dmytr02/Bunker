@@ -12,6 +12,7 @@ public class TutorialVote : MonoBehaviour
 {
     
     public EventTrigger[] voteButtons;
+    public Image[] voteBGButtons;
     public TMP_Text[] voteTextButtons;
     public Image[] voteImageButtons;
     public Animator animator;

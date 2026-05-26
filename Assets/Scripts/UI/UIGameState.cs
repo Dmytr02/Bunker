@@ -17,7 +17,7 @@ public class UIGameState : StateMachine.State<UIController>
             stateMachine.SetState(new UIChatState(stateMachine));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(stateMachine.cameraKey.key))
         {
             stateMachine.isFollowCursore = !stateMachine.isFollowCursore;
         }

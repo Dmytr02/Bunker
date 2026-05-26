@@ -17,7 +17,7 @@ public class TutorialUIGameState : StateMachine.State<TutorialUIController>
             stateMachine.SetState(new TutorialUIChatState(stateMachine));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(stateMachine.cameraKey.key))
         {
             stateMachine.isFollowCursore = !stateMachine.isFollowCursore;
         }
