@@ -63,7 +63,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         {
             { EStats.Name, "Mike" },
             { EStats.Age, 36 },
-            { EStats.Profession, Professions.Psychologist },
+            { EStats.Profession, Professions.psychologist },
             { EStats.Experience, 10},
             { EStats.Healthe, Healthe.unknown},
             { EStats.Phobias, Phobias.unknown},
