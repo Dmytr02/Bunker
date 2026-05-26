@@ -40,9 +40,9 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         playerStats.list =  new Dictionary<EStats, object>()
         {
             { EStats.Name, PlayerPrefs.GetString("name") },
-            { EStats.Age, 73 },
-            { EStats.Profession, Professions.Student },
-            { EStats.Experience, 5},
+            { EStats.Age, 31 },
+            { EStats.Profession, Professions.Teacher },
+            { EStats.Experience, 2},
             { EStats.Healthe, Healthe.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
@@ -63,7 +63,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
         {
             { EStats.Name, "Mike" },
             { EStats.Age, 36 },
-            { EStats.Profession, Professions.psychologist },
+            { EStats.Profession, Professions.Psychologist },
             { EStats.Experience, 10},
             { EStats.Healthe, Healthe.unknown},
             { EStats.Phobias, Phobias.unknown},
