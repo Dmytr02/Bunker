@@ -19,9 +19,9 @@ public class BunkerStatCard : Card
     protected override bool OnUse(RaycastHit hit)
     {
         if (hit.collider.transform.parent == null) return false;
-        if (hit.collider.transform.parent.parent == null) return false;
-        if (hit.collider.transform.parent.parent.parent == null) return false;
-        if (!hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad)) return false;
+        //if (hit.collider.transform.parent.parent == null) return false;
+        //if (hit.collider.transform.parent.parent.parent == null) return false;
+        if (!hit.collider.transform.parent.TryGetComponent(out Notepad notepad)) return false;
         if(BunkerStats.Instance.SetStat(Stat, value)) return true;
         return false;
     }

@@ -9,9 +9,9 @@ public class SoundCard : Card
     {
         if(hit.collider.tag != "bookLeft" && hit.collider.tag != "bookRight" ) return false;
         if (hit.collider.transform.parent == null) return false;
-        if (hit.collider.transform.parent.parent == null) return false;
-        if (hit.collider.transform.parent.parent.parent == null) return false;
-        if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad)) return false;
+        //if (hit.collider.transform.parent.parent == null) return false;
+        //if (hit.collider.transform.parent.parent.parent == null) return false;
+        if (hit.collider.transform.parent.TryGetComponent(out Notepad notepad)) return false;
         {
             PlayerMovmant.player.photonView.RPC("PlaySound", RpcTarget.All, idSound);
             return true;

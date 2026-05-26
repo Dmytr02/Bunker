@@ -40,6 +40,7 @@ public abstract class Card : MonoBehaviour, IInteractable, IRadialLayautGroupWei
     {
         if (isEnd)
         {
+            Debug.Log("End Card " + hit.collider);
             interactor.onEndInteraction.RemoveListener(EndInteract);
             if(hit.collider && OnUse(hit)) Destroy(gameObject);
             else transform.SetParent(parentTransform);
