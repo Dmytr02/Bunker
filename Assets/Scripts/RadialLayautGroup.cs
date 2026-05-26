@@ -17,12 +17,14 @@ public class RadialLayautGroup : MonoBehaviour
         float actualWeighted = 0;
         for (int i = 0; i < rectTransform.childCount; i++)
         {
+            if(!rectTransform.GetChild(i).gameObject.activeSelf) continue;
             if (rectTransform.GetChild(i).TryGetComponent(out IRadialLayautGroupWeighted weighted))
                 allWeighted += weighted.Weight;
             else allWeighted += 1;
         }
         for (int i = 0; i < rectTransform.childCount; i++)
         {
+            if(!rectTransform.GetChild(i).gameObject.activeSelf) continue;
             RectTransform child = rectTransform.GetChild(i) as RectTransform;
             rectTransform.GetChild(i).TryGetComponent(out IRadialLayautGroupWeighted weighted);
             

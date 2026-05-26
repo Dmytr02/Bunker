@@ -15,6 +15,7 @@ public class Notepad : MonoBehaviour
     [SerializeField] public int index = 0;
     [SerializeField] public Animator animator;*/
     //[SerializeField] private StatsDrawer[] cameras;
+    [SerializeField] public int index => book.selectedPage.Value*2;
     [SerializeField] private Book book;
     [SerializeField] public AudioSource audioSource;
     [SerializeField] public AudioClip audioClip;
@@ -77,6 +78,19 @@ public class Notepad : MonoBehaviour
         /*SetIndex(index - 2);
         animator.SetTrigger("previus");
         audioSource.PlayOneShot(audioClip);*/
+    }
+    
+    public void DrawAll()
+    {
+        for (int i = 0; i < StatsDrawer.pages.Count; i++)
+        {
+            DrawPlayer(PlayerMovmant.players[i]);
+        }
+    }
+    public void DrawPlayer(PlayerMovmant player)
+    {
+        StatsDrawer.pages[player.index].Draw(player.stats);
+        
     }
 
     private object[] data;

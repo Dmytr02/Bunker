@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,9 +20,23 @@ public class StatCard : Card
 
     protected override bool OnUse(RaycastHit hit)
     {
+        if(hit.collider.tag != "bookLeft" && hit.collider.tag != "bookRight" ) return false;
         if (hit.collider.transform.parent == null) return false;
         if (hit.collider.transform.parent.parent == null) return false;
         if (hit.collider.transform.parent.parent.parent == null) return false;
+        if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
+        {
+            PlayerMovmant player = PlayerMovmant.players.FirstOrDefault(p => p.index == notepad.index + (hit.collider.CompareTag("bookLeft") ? 0 : 1));
+            if (player != null)
+            {
+                if (player.stats.SetStat(Stat, value))
+                {
+                    return true;
+                }
+                notepad.DrawPlayer(player);
+            }
+        }
+
         /*if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
         {
             if (hit.collider.tag == "bookLeft")

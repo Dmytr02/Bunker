@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,11 +18,19 @@ public class RandomizeStatCard : Card
 
     protected override bool OnUse(RaycastHit hit)
     {
+        if(hit.collider.tag != "bookLeft" && hit.collider.tag != "bookRight" ) return false;
         if (hit.collider.transform.parent == null) return false;
         if (hit.collider.transform.parent.parent == null) return false;
         if (hit.collider.transform.parent.parent.parent == null) return false;
         if (hit.collider.transform.parent.parent.parent.TryGetComponent(out Notepad notepad))
         {
+            PlayerMovmant player = PlayerMovmant.players.FirstOrDefault(p => p.index == notepad.index + (hit.collider.CompareTag("bookLeft")?0:1));
+            if (player != null)
+            {
+                player.stats.SetRandomStat(Stat);
+                notepad.DrawPlayer(player);
+                return true;
+            }
             /*if (hit.collider.tag == "bookLeft")
             {
                 if (notepad.playersStats.Count - 1 > notepad.index)
