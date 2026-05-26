@@ -194,6 +194,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void StartRound()
     {
+        triggerStartVoting.gameObject.SetActive(false);
         if (PlayerMovmant.players.Count <= 2)
         {
             PlayerMovmant.player.SendAllStats();
@@ -635,10 +636,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 
+    [PunRPC]
     public void StartNewRound()
     {
+        photonView.RPC(nameof(StartNewRound_RPC), RpcTarget.MasterClient);
+    }
+    public void StartNewRound_RPC()
+    {
         Debug.Log("Start New Round");
-        triggerStartVoting.gameObject.SetActive(false);
 
         NextRound = DateTime.Now.AddSeconds(60);
         photonView.RPC(nameof(StartRound), RpcTarget.All);
