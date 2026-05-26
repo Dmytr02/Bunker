@@ -30,6 +30,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public PlayerStats stats;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] audioClip;
+    [SerializeField] AudioClip psihosisClip;
     public int index;
     [SerializeField] CursoreMuves cursoreMuves;
     [SerializeField] private Renderer bini;
@@ -69,7 +70,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public void RPC_ChangeColorsEffect()
     {
         ChangeColors();
-        Invoke("ChangeColors", 300);
+        Invoke("ChangeColors", 120);
         stats.SetStat("Healthe", Healthe.colorBlindness);
     }
     
@@ -77,8 +78,15 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     public void RPC_CursoreEffect()
     {
         CursoreMuves();
-        Invoke("CursoreMuves", 300);
+        Invoke("CursoreMuves", 120);
         stats.SetStat("Healthe", Healthe.withdrawal);
+    }
+    
+    [PunRPC]
+    public void RPC_PsichosisEffect()
+    {
+        audioSource.PlayOneShot(psihosisClip);
+        stats.SetStat("Healthe", Healthe.psychosis);
     }
     
     [Button]

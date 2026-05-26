@@ -6213,8 +6213,9 @@ MonoBehaviour:
   audioSource: {fileID: 8566341651060777691}
   audioClip:
   - {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
-  - {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
-  - {fileID: 8300000, guid: cab6fcd6824ccb748b822de444a6fbe3, type: 3}
+  - {fileID: 8300000, guid: fc883d964de6e7548a5e96f5262f414b, type: 3}
+  - {fileID: 8300000, guid: 38a208346a04a71439ae0a37941615fc, type: 3}
+  psihosisClip: {fileID: 8300000, guid: 56b18578c3af15947b079877fb246932, type: 3}
   index: 0
   cursoreMuves: {fileID: 7391436154243513142}
   bini: {fileID: 3735406426936159493}

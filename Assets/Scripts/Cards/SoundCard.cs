@@ -7,7 +7,8 @@ public class SoundCard : Card
     public int idSound;
     protected override bool OnUse(RaycastHit hit)
     {
-        if(hit.collider.tag != "bookLeft" && hit.collider.tag != "bookRight" ) return false;
+        
+        if (hit.collider.tag != "bookLeft" && hit.collider.tag != "bookRight" ) return false;
         if (hit.collider.transform.parent == null) return false;
         //if (hit.collider.transform.parent.parent == null) return false;
         //if (hit.collider.transform.parent.parent.parent == null) return false;

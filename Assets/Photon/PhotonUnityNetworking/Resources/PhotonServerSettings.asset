@@ -67,6 +67,7 @@ MonoBehaviour:
   - StartNewRound
   - StartNewRound_RPC
   - UpdateStats_RPC
+  - RPC_PsichosisEffect
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

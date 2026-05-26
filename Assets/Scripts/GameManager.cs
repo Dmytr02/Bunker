@@ -615,6 +615,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log("PlayerMovmant.players.Count " + PlayerMovmant.players.Count);
         if (PlayerMovmant.players.Count <= 2)
         {
+            Debug.Log("End Game");
+            triggerStartVoting.gameObject.SetActive(false);
             PlayerMovmant.player.SendAllStats();
             CalculatePoints();
             showTimer = false;
@@ -622,6 +624,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
+            Debug.Log("Continue Game");
             //StartCoroutine(ShowAssistentToShowStat());
             triggerStartVoting.gameObject.SetActive(true);
             triggerStartVoting.enabled = false;
