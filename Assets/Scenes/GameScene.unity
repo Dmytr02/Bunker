@@ -6901,7 +6901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutScene
   audioSource: {fileID: 625797062}
-  audioClip: {fileID: 8300000, guid: 0f75ce1c914950a4b87c6994ac0cfa03, type: 3}
+  audioClip: {fileID: 8300000, guid: 3c04eee5a009f1d448b007518e7fd411, type: 3}
   decayTime: 1
 --- !u!82 &625797062
 AudioSource:
@@ -14974,7 +14974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutSceneSelector
   cutscenes:
+  - {fileID: 625797055}
   - {fileID: 1140424283}
+  - {fileID: 1247233983}
 --- !u!114 &1223988312
 MonoBehaviour:
   m_ObjectHideFlags: 0
