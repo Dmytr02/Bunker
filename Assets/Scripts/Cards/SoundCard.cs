@@ -12,7 +12,7 @@ public class SoundCard : Card
         if (hit.collider.transform.parent == null) return false;
         //if (hit.collider.transform.parent.parent == null) return false;
         //if (hit.collider.transform.parent.parent.parent == null) return false;
-        if (hit.collider.transform.parent.TryGetComponent(out Notepad notepad)) return false;
+        if (hit.collider.transform.parent.TryGetComponent(out Notepad notepad))
         {
             PlayerMovmant.player.photonView.RPC("PlaySound", RpcTarget.All, idSound);
             return true;
