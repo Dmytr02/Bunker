@@ -36,7 +36,7 @@ public class Vote : MonoBehaviourPunCallbacks
     {
         //if(votes.Count >= count) return;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
-        voteImageButtons[index].gameObject.SetActive(true);
+        voteImageButtons[PlayerMovmant.players[index].index].gameObject.SetActive(true);
         selectedIndex = index;
     }
 
