@@ -233,14 +233,14 @@ public class TutorialPlayerStats
         Phobias Phobia = (Phobias)list[EStats.Phobias];
         Hobby Hobby = (Hobby)list[EStats.Hobby];
         Personality personality = (Personality)list[EStats.Personality];
-        return (stats.Contains(EStats.Name) ? string.IsNullOrEmpty(Name)||!showed[EStats.Name]? "Name: -\n" : $"Name: {Name}\n\n":"") + 
-               (stats.Contains(EStats.Age) ?Age==-1||!showed[EStats.Age]?"Age: -\n": $"Age: {Age}\n":"") + 
-               (stats.Contains(EStats.Profession) ?Profession==Professions.unknown|| !showed[EStats.Profession] ?"Profession: -\n": $"Profession: {Profession}\n":"") +
-               (stats.Contains(EStats.Experience) ?experience==-1 || !showed[EStats.Experience]?"Experience: -\n":$"Experience: {experience} years\n":"") + 
-               (stats.Contains(EStats.Healthe) ?Healthe==Healthe.unknown|| !showed[EStats.Healthe]?"Health: -\n":$"Health: {Healthe}\n":"") + 
-               (stats.Contains(EStats.Phobias) ?Phobia==Phobias.unknown|| !showed[EStats.Phobias]?"Phobia: -\n":$"Phobia: {Phobia}\n":"") +
-               (stats.Contains(EStats.Hobby) ?Hobby==Hobby.unknown|| !showed[EStats.Hobby]?"Hobby: -\n":$"Hobby: {Hobby}\n":"")+
-               (stats.Contains(EStats.Personality) ?personality==Personality.unknown|| !showed[EStats.Personality]?"Personality: -\n":$"Personality: {personality}\n":"");
+        return (stats.Contains(EStats.Name) ? string.IsNullOrEmpty(Name)||!showed[EStats.Name]? "Name: -\n" : $"Name: {Name.StatToString()}\n\n":"") + 
+               (stats.Contains(EStats.Age) ?Age==-1||!showed[EStats.Age]?"Age: -\n": $"Age: {Age.StatToString()}\n":"") + 
+               (stats.Contains(EStats.Profession) ?Profession==Professions.unknown|| !showed[EStats.Profession] ?"Profession: -\n": $"Profession: {Profession.StatToString()}\n":"") +
+               (stats.Contains(EStats.Experience) ?experience==-1 || !showed[EStats.Experience]?"Experience: -\n":$"Experience: {experience.StatToString()} years\n":"") + 
+               (stats.Contains(EStats.Healthe) ?Healthe==Healthe.unknown|| !showed[EStats.Healthe]?"Health: -\n":$"Health: {Healthe.StatToString()}\n":"") + 
+               (stats.Contains(EStats.Phobias) ?Phobia==Phobias.unknown|| !showed[EStats.Phobias]?"Phobia: -\n":$"Phobia: {Phobia.StatToString()}\n":"") +
+               (stats.Contains(EStats.Hobby) ?Hobby==Hobby.unknown|| !showed[EStats.Hobby]?"Hobby: -\n":$"Hobby: {Hobby.StatToString()}\n":"")+
+               (stats.Contains(EStats.Personality) ?personality==Personality.unknown|| !showed[EStats.Personality]?"Personality: -\n":$"Personality: {personality.StatToString()}\n":"");
     }
 }
 
