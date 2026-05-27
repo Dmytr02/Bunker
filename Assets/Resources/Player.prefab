@@ -6376,6 +6376,7 @@ GameObject:
   - component: {fileID: 2591903214867792064}
   - component: {fileID: 7391436154243513142}
   - component: {fileID: 1244086366768594429}
+  - component: {fileID: 3157835391301704318}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6738,6 +6739,27 @@ MonoBehaviour:
   volumeSensitivity: 200
   treshold: 0
   voiceIndicatorTransform: {fileID: 4165584682294301256}
+--- !u!114 &3157835391301704318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029092944813150332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddec46cf6a4c4addbf21b6be8442124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: PhotonVoice::Photon.Voice.Unity.WebRtcAudioDsp
+  aec: 1
+  aecHighPass: 0
+  agc: 1
+  agcCompressionGain: 40
+  agcTargetLevel: 3
+  vad: 1
+  highPass: 0
+  noiseSuppression: 1
+  reverseStreamDelayMs: 120
 --- !u!1 &9035112119574331463
 GameObject:
   m_ObjectHideFlags: 0
