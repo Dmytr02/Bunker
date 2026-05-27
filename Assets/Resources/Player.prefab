@@ -6644,7 +6644,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RemoteVoiceIndicator
   speaker: {fileID: 8814160341181556128}
-  audioSource: {fileID: 5268963455262111958}
   volumeSensitivity: 2
   voiceIndicatorTransform: {fileID: 4165584682294301256}
 --- !u!1 &9035112119574331463

@@ -646,8 +646,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             imageTriggerStartVoting.color = unactivImageTriggerStartVoting;
             for (int i = timeBeforeVoting; i > 0; i--)
             {
-                yield return new WaitForSeconds(1);
                 textStartVoting.text = i.ToString();
+                yield return new WaitForSeconds(1);
             }
 
             textStartVoting.text = "Everyone must reveal one stat before voting";
