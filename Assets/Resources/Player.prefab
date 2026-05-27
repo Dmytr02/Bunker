@@ -3919,7 +3919,7 @@ Transform:
   m_GameObject: {fileID: 5230500900055954245}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02806, y: -0.132, z: 0.02061}
+  m_LocalPosition: {x: 0, y: 0.58904004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5535,7 +5535,7 @@ Transform:
   m_GameObject: {fileID: 7851922751707009044}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02806, y: 0.72104, z: -0.02061}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6644,7 +6644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RemoteVoiceIndicator
   speaker: {fileID: 8814160341181556128}
-  volumeSensitivity: 2
+  volumeSensitivity: 200
   voiceIndicatorTransform: {fileID: 4165584682294301256}
 --- !u!1 &9035112119574331463
 GameObject:
