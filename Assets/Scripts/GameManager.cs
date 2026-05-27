@@ -132,12 +132,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (count >= 3 && count == PlayerMovmant.players.Count)
         {
             if(PhotonNetwork.IsMasterClient) startButton.enabled = true;
-            startButton.GetComponent<Renderer>().material = activeMaterial;
+            startButton.GetComponent<Renderer>().sharedMaterial = activeMaterial;
         }
         else
         {
             startButton.enabled = false;
-            startButton.GetComponent<Renderer>().material = inactiveMaterial;
+            startButton.GetComponent<Renderer>().sharedMaterial = inactiveMaterial;
         }
     }
     
