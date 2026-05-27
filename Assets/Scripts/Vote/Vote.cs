@@ -15,6 +15,8 @@ public class Vote : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Text[] voteTextButtons;
     public Image[] voteImageButtons;
     [SerializeField] Animator animator;
+    [SerializeField] Animator startVoteAnimator;
+    [SerializeField] Animator endVoteAnimator;
     
     public static List<int> votes = new List<int>();
 
@@ -46,6 +48,8 @@ public class Vote : MonoBehaviourPunCallbacks
         {
             return;
         }
+        startVoteAnimator.SetTrigger("trigger");
+        
         
         selectedIndex = -1;
         foreach (var image in voteImageButtons) image.gameObject.SetActive(false);
@@ -74,7 +78,7 @@ public class Vote : MonoBehaviourPunCallbacks
         //bbif(votes.Count == count) return;
         if (selectedIndex != -1)
         {
-            photonView.RPC("AddVote", RpcTarget.All, PlayerMovmant.players[selectedIndex].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");
+            photonView.RPC(nameof(AddVote), RpcTarget.All, PlayerMovmant.players[selectedIndex].photonView.ViewID); animator.SetBool("isShowPanel", false); Debug.Log("vote");
         }
     }
     
@@ -82,6 +86,10 @@ public class Vote : MonoBehaviourPunCallbacks
     public void AddVote(int player)
     {
         votes.Add(player);
-        if(votes.Count == PlayerMovmant.players.Count) GameManager.NextRound = DateTime.Now.AddSeconds(1);
+        if (votes.Count == PlayerMovmant.players.Count)
+        {
+            endVoteAnimator.SetTrigger("trigger");
+            GameManager.NextRound = DateTime.Now.AddSeconds(1);
+        }
     }
 }
