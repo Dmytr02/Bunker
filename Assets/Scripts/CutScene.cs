@@ -22,12 +22,12 @@ public class CutScene : MonoBehaviour
         float time = decayTime;
         while (time > 0)
         {
-            musicAudioSource.volume = time / decayTime;
+            if(musicAudioSource) musicAudioSource.volume = time / decayTime;
             yield return null;
             time -= Time.deltaTime;
         }
 
-        musicAudioSource.volume = 0;
+        if(musicAudioSource) musicAudioSource.volume = 0;
     }
 
     void PlayAudio()
@@ -52,12 +52,12 @@ public class CutScene : MonoBehaviour
         while (time > 0)
         {
             audioSource.volume = time / decayTime;
-            musicAudioSource.volume = 1 - time / decayTime;
+            if(musicAudioSource) musicAudioSource.volume = 1 - time / decayTime;
             yield return null;
             time -= Time.deltaTime;
         }
 
         audioSource.volume = 0;
-        musicAudioSource.volume = 1;
+        if(musicAudioSource) musicAudioSource.volume = 1;
     }
 }

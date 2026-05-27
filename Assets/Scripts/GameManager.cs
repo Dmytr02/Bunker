@@ -218,16 +218,23 @@ public class GameManager : MonoBehaviourPunCallbacks
         int points = 0;
         resultText.text = "";
         
-        points += BunkerStats.Instance.Size < 20 ? 0 : BunkerStats.Instance.Size < 50 ? 1 : BunkerStats.Instance.Size < 100 ? 2 : BunkerStats.Instance.Size < 150 ? 0 : -1;
-        points += BunkerStats.Instance.TimeInside < 5 ? 4 : BunkerStats.Instance.TimeInside < 15 ? 2 : BunkerStats.Instance.TimeInside < 30 ? 0 : -1;
-        points += BunkerStats.Instance.Supplies == Supplies.Critical ? -4 : BunkerStats.Instance.Supplies == Supplies.Low ? -2 : BunkerStats.Instance.Supplies == Supplies.Stable ? 2 : 4;
-
         resultText.text += "\nMore Information:\n";
+
+        int p = BunkerStats.Instance.Size < 20 ? 0 : BunkerStats.Instance.Size < 50 ? 1 : BunkerStats.Instance.Size < 100 ? 2 : BunkerStats.Instance.Size < 150 ? 0 : -1;
+        points += p;
+        resultText.text += $"Shelter Size: {BunkerStats.Instance.Size} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
+        p = BunkerStats.Instance.TimeInside < 5 ? 4 : BunkerStats.Instance.TimeInside < 15 ? 2 : BunkerStats.Instance.TimeInside < 30 ? 0 : -1;
+        points += p;
+        resultText.text += $"Time Inside Shelter: {BunkerStats.Instance.TimeInside} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
+        p = BunkerStats.Instance.Supplies == Supplies.Critical ? -4 : BunkerStats.Instance.Supplies == Supplies.Low ? -2 : BunkerStats.Instance.Supplies == Supplies.Stable ? 2 : 4;
+        points += p;
+        resultText.text += $"Shelter Supplies: {BunkerStats.Instance.Supplies} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
+
         
         foreach (var player in PlayerMovmant.players)
         {
             AddPointsByStat("Profession", (Professions)player.stats.list["Profession"], ref points);
-            int p = (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
+            p = (int)player.stats.list["Experience"] > 15 ? 4 : (int)player.stats.list["Experience"] > 8 ? 3 : (int)player.stats.list["Experience"] > 3 ? 2 : 1;
             points += p;
             resultText.text += $"Experience: {(int)player.stats.list["Experience"]} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
             p = (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
