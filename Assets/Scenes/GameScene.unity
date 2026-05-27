@@ -9379,6 +9379,7 @@ MonoBehaviour:
   key:
     key: 0
     actionName: inventory
+  isOnlyGame: 1
 --- !u!1 &710726272
 GameObject:
   m_ObjectHideFlags: 0
@@ -9673,6 +9674,7 @@ MonoBehaviour:
   key:
     key: 0
     actionName: stats
+  isOnlyGame: 1
 --- !u!1 &716949407
 GameObject:
   m_ObjectHideFlags: 0
@@ -32994,6 +32996,7 @@ MonoBehaviour:
   key:
     key: 0
     actionName: notepad
+  isOnlyGame: 1
 --- !u!224 &2142480537 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1114783509992219649, guid: da7d026f92037b74ea4a41bb75b05035, type: 3}

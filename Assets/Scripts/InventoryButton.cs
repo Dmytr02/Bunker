@@ -6,6 +6,5 @@ public class InventoryButton : MonoBehaviour
     public void Click()
     {
         CardsController.isOpend = !CardsController.isOpend;
-        
     }
 }

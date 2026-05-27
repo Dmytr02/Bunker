@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class SavedKeyBind : MonoBehaviour
 {
     [SerializeField] private SavedKey key;
+    [SerializeField] private bool isOnlyGame;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class SavedKeyBind : MonoBehaviour
     {
         if (Input.GetKeyDown(key.key))
         {
-            ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+            if(!isOnlyGame || (UIController.instance.CurrentState is UIGameState)) ExecuteEvents.Execute(gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
         }
     }
     

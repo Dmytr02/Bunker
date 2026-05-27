@@ -43,7 +43,7 @@ public class VoiceController : MonoBehaviour
     private void Update()
     {
         if(!GetComponent<PhotonView>().IsMine) return;
-        if (Input.GetKeyDown(key.key))
+        if (Input.GetKeyDown(key.key) && UIController.instance.CurrentState is UIGameState)
         {
             recorder.TransmitEnabled = !recorder.TransmitEnabled;
             microphoneImg.sprite = recorder.TransmitEnabled ? microphoneOn : microphoneOff;
