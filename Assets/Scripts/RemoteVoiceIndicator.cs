@@ -7,6 +7,7 @@ public class RemoteVoiceIndicator : MonoBehaviourPun
 {
     [SerializeField] private Speaker speaker;
     [SerializeField] float volumeSensitivity = 5f; 
+    [SerializeField] float treshold = 0.05f; 
     [SerializeField] Transform voiceIndicatorTransform;
 
     private float latestLoudness = 0f;
@@ -39,18 +40,16 @@ public class RemoteVoiceIndicator : MonoBehaviourPun
         }
 
         // Анимация масштаба
-        if (latestLoudness > 0.005f && speaker != null && speaker.IsPlaying)
+        if (latestLoudness > treshold && speaker != null && speaker.IsPlaying)
         {
             float currentScale = voiceIndicatorTransform.localScale.x;
             float targetScale = Mathf.Lerp(currentScale, latestLoudness, Time.deltaTime * 15f);
-            Debug.Log("targetScale - " + targetScale);
             voiceIndicatorTransform.localScale = new Vector3(targetScale, targetScale, targetScale);
             
             latestLoudness = Mathf.Lerp(latestLoudness, 0f, Time.deltaTime * 5f);
         }
         else
         {
-            Debug.Log("000");
             voiceIndicatorTransform.localScale = Vector3.Lerp(voiceIndicatorTransform.localScale, Vector3.zero, Time.deltaTime * 10f);
         }
     }
@@ -71,7 +70,7 @@ public class RemoteVoiceIndicator : MonoBehaviourPun
         }
         float rms = Mathf.Sqrt(sum / buffer.Length);
 
-        latestLoudness = Mathf.Clamp01(rms * volumeSensitivity);
+        latestLoudness = Mathf.Clamp01(rms * volumeSensitivity-.2f);
     }
 
     private void Unsubscribe()
