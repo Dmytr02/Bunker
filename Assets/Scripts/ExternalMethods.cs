@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -107,6 +109,62 @@ public static class ExternalMethods
     public static string StatToString(this object stat)
     {
         return (stats.ContainsKey(stat) ? stats[stat] : stat).ToString();
+    }
+    
+    public static object CastToType(this object value, Type targetType)
+    {
+        if (targetType == null) throw new ArgumentNullException(nameof(targetType));
+
+        // 1. Obsługa wartości null (zwraca null lub domyślną wartość dla structów)
+        if (value == null || value == DBNull.Value)
+        {
+            return targetType.IsValueType && Nullable.GetUnderlyingType(targetType) == null
+                ? Activator.CreateInstance(targetType)
+                : null;
+        }
+
+        // 2. Obsługa typów Nullable (wyciągamy typ bazowy, np. z int? robimy int)
+        Type underlyingType = Nullable.GetUnderlyingType(targetType) ?? targetType;
+        Type valueType = value.GetType();
+
+        // 3. Jeśli wartość jest już właściwego typu, po prostu ją zwróć
+        if (underlyingType.IsAssignableFrom(valueType))
+        {
+            return value;
+        }
+
+        // 4. SPECJALNA OBSŁUGA ENUMÓW (To, czego brakowało w Convert.ChangeType)
+        if (underlyingType.IsEnum)
+        {
+            if (value is string stringValue)
+            {
+                // Jeśli to string (np. "1" lub "Active"), parsujemy tekstowo
+                return Enum.Parse(underlyingType, stringValue, ignoreCase: true);
+            }
+            // Jeśli to liczba (int, byte itp.), rzutujemy ją bezpośrednio na enum
+            return Enum.ToObject(underlyingType, value);
+        }
+
+        // 5. Obsługa konwersji ze stringa za pomocą TypeDescriptor (dla niestandardowych klas/struktur)
+        if (value is string str)
+        {
+            var converter = TypeDescriptor.GetConverter(underlyingType);
+            if (converter != null && converter.CanConvertFrom(typeof(string)))
+            {
+                return converter.ConvertFrom(str);
+            }
+        }
+
+        // 6. Standardowa konwersja (dla int, string, double, bool, DateTime itp.)
+        try
+        {
+            return Convert.ChangeType(value, underlyingType);
+        }
+        catch
+        {
+            // Ostateczność: Próba wymuszenia rzutowania referencyjnego (jak tradycyjne rzutowanie)
+            return value; 
+        }
     }
     
     // accelerating from zero velocity

@@ -235,7 +235,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     [PunRPC]
     private void RPC_Stat(string stat, object value, bool isShowed = true)
     {
-        stats.list[stat] = Convert.ChangeType(value, PlayerStats.statType[stat]);
+        stats.list[stat] = value.CastToType(PlayerStats.statType[stat]);
         onStatChanged?.Invoke(stat);
         if(isShowed) {onStatOpened?.Invoke(this); stats.isShowed[stat] = true; }
         if(photonView.IsMine && stats.isShowed[stat]) photonView.RPC("RPC_Stat", RpcTarget.Others, stat, stats.list[stat], true);

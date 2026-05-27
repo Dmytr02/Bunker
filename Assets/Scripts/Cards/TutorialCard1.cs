@@ -28,7 +28,8 @@ public class TutorialCard1 : Card
                     }
                     else
                     {
-                        notepad.playersStats[notepad.index].list[EStats.Experience] = 3;
+                        Debug.Log(notepad.index);
+                        notepad.playersStats[notepad.index-1].list[EStats.Experience] = 3;
                         notepad.DrawAll();
                         TutorialGameManager.assistentLast = 1;
                         if(notepad.index == 1) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Hey, less experience now, but the knowledge is still there.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[2]);
@@ -44,7 +45,7 @@ public class TutorialCard1 : Card
                 if (notepad.playersStats.Count - 1 > notepad.index + 1)
                 {
                     if(isTirigger) TutorialGameManager.Instance.Trigger = true;
-                    notepad.playersStats[notepad.index+1].list[EStats.Experience] = 3;
+                    notepad.playersStats[notepad.index].list[EStats.Experience] = 3;
                     notepad.DrawAll();
                     TutorialGameManager.assistentLast = 1;
                     if(notepad.index+1 == 1) TutorialGameManager.Instance.tutorialCommandManager.SendMassage("Hey, less experience now, but the knowledge is still there.", notepad.playersStats[notepad.index].list[EStats.Name].ToString(), TutorialGameManager.Instance.notepad.botColors[2]);
