@@ -32,6 +32,7 @@ public class Vote : MonoBehaviourPunCallbacks
     private void Start()
     {
         GameManager.Instance.OnStartRound.AddListener(StartRound);
+        GameManager.Instance.OnEndRound.AddListener((() => animator.SetBool("isShowPanel", false)));
     }
     
     private void SetSelected(int index)

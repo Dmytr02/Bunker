@@ -13,7 +13,7 @@ public class BunkerStatCard : Card
         base.Start();
         Stat = ststsList[Random.Range(0, ststsList.Length)];
         value = BunkerStats.GetRandomStat(Stat);
-        cardName.text = $"Set {Stat}, for bunker, to {value}";
+        cardName.text = $"Set {Stat}, for bunker, to {value.StatToString()}";
     }
     
     protected override bool OnUse(RaycastHit hit)

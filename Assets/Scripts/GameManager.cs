@@ -578,7 +578,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void EndRound()
     {
         //triggerStartVoting.gameObject.SetActive(true);
-        OnEndRound.Invoke();
+        OnEndRound?.Invoke();
         
         StartCoroutine(ShowStartVoting());
     }

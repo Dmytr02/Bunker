@@ -15,7 +15,7 @@ public class StatCard : Card
         base.Start();
         Stat = ststsList[Random.Range(0, ststsList.Length)];
         value = PlayerStats.RandomizeStat(Stat);
-        cardName.text = $"Set {Stat}, for selected player, to {value}";
+        cardName.text = $"Set {Stat}, for selected player, to {value.StatToString()}";
     }
 
     protected override bool OnUse(RaycastHit hit)
