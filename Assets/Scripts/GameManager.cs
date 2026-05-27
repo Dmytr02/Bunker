@@ -616,11 +616,14 @@ public class GameManager : MonoBehaviourPunCallbacks
                 //NextRound = DateTime.Now.AddSeconds(5);
                 isVoting = false;
                 photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { "" });
-            }/*
+            }
             else
             {
-                StartNewRound();
-            }*/
+                isVoting = false;
+                photonView.RPC("EndRound", RpcTarget.All);
+                photonView.RPC("UpdateTimer", RpcTarget.All, new object[] { "" });
+                //StartNewRound();
+            }
         }
     }
 
@@ -653,13 +656,16 @@ public class GameManager : MonoBehaviourPunCallbacks
             textStartVoting.text = "Everyone must reveal one stat before voting";
             yield return new WaitUntil(() =>
             {
+                if(roundNumber > 7) return true;
                 foreach (PlayerMovmant i in PlayerMovmant.players)
+                {
                     if (i.stats.isShowed.Count(pair => pair.Value) < roundNumber)
                     {
                         print(
                             $"player {i.index} have {i.stats.isShowed.Count(pair => pair.Value)}, need {roundNumber}");
                         return false;
                     }
+                }
 
                 return true;
             });

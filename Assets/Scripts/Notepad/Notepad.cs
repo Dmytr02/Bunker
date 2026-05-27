@@ -37,12 +37,20 @@ public class Notepad : MonoBehaviour
         book.pages = Mathf.Max(Mathf.CeilToInt(PlayerMovmant.players.Count/2.0f),1);
         SetIndex(0);
         print("Start");
-        PlayerMovmant.onStatOpened.AddListener((p) =>
+        foreach (var p in PlayerMovmant.players)
+        {
+            p.onStatChanged.AddListener((stat =>
+            {
+                print("Draw for " + p.index);
+                StatsDrawer.pages[p.index].Draw(p.stats);
+            }));
+        }
+        /*PlayerMovmant.onStatOpened.AddListener((p) =>
         {
             print("Draw for " + p.index);
             StatsDrawer.pages[p.index].Draw(p.stats);
             //if (p.stats == playersStats[index]) SetIndex(index);
-        });
+        });*/
     }
 
     public void SetIndex(int index)

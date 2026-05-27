@@ -22114,8 +22114,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6154bb7d6d42e8d4397c8cdbb6a01b53, type: 3}
   playerCountText: {fileID: 1379261305}
   startButton: {fileID: 6385852743541322017}
-  activeMaterial: {fileID: 2100000, guid: 0d519208f930347a6b113c0fa5d2194a, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: e11c0eae822de434b80422065ef1fba7, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 77bf968672bc9da4f99be93aadd3c6f4, type: 2}
+  inactiveMaterial: {fileID: 2100000, guid: 78ba8ab98e9b7a9489cd8171091cfe6e, type: 2}
   triggerStartVoting: {fileID: 1519687805}
   imageTriggerStartVoting: {fileID: 1519687803}
   activImageTriggerStartVoting: {r: 1, g: 0.21960784, b: 0.14117648, a: 1}
@@ -33450,6 +33450,10 @@ PrefabInstance:
       propertyPath: 'spawnPoints.Array.data[2]'
       value: 
       objectReference: {fileID: 4119827575044915112}
+    - target: {fileID: 6340491160444135751, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78ba8ab98e9b7a9489cd8171091cfe6e, type: 2}
     - target: {fileID: 6660024409722254271, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
       propertyPath: m_Name
       value: Bunker
@@ -33482,7 +33486,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7682901322454160485, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5437463680289505223, guid: bf8815ef6437f9a40a7d9c67ed96d4cb, type: 3}
