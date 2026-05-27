@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Photon.Pun;
 using Photon.Voice.Unity;
@@ -18,6 +19,11 @@ public class VoiceController : MonoBehaviour
     [SerializeField] SavedKey key;
     private void Start()
     {
+        PlayerMovmant.onPlayersRemoved.AddListener((() =>
+        {
+            if(PlayerMovmant.players.Contains(GetComponent<PlayerMovmant>())) audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}", 1f);
+            else audioSource.volume = 0f;
+        }));
         key.Init();
         setVolume();
         onVolumeChange.AddListener(setVolume);
@@ -50,7 +56,8 @@ public class VoiceController : MonoBehaviour
         Debug.Log(PlayerMovmant.player);
         if (PlayerPrefs.HasKey($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}"))
         {
-            audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}", 1f);
+            if(PlayerMovmant.players.Contains(GetComponent<PlayerMovmant>())) audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}", 1f);
+            else audioSource.volume = 0f;
         }
     }
 }

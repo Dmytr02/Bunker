@@ -28,10 +28,10 @@ public class Settings : MonoBehaviour
     async private void LateAwake()
     {
         await Task.Delay(10);
-        AudioMixer.SetFloat("VoiceVolume", Mathf.Log10(PlayerPrefs.GetFloat("VoiceVolume", 1)) * 20);
-        AudioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume", 1)) * 20);
-        AudioMixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume", 1)) * 20);
-        AudioMixer.SetFloat("GlobalVolume", Mathf.Log10(PlayerPrefs.GetFloat("GlobalVolume", 1)) * 20);
+        AudioMixer.SetFloat("VoiceVolume", Mathf.Log10(PlayerPrefs.GetFloat("VoiceVolume", 0.5f)) * 20);
+        AudioMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume", 0.5f)) * 20);
+        AudioMixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume", 0.5f)) * 20);
+        AudioMixer.SetFloat("GlobalVolume", Mathf.Log10(PlayerPrefs.GetFloat("GlobalVolume", 0.5f)) * 20);
     }
 
     private void LoadSettings()
