@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     [SerializeField] TMP_Text playerCountText;
     [SerializeField] Button startButton;
+    [SerializeField] Animator startButtonAnimator;
     [SerializeField] Material activeMaterial;
     [SerializeField] Material inactiveMaterial;
     
@@ -132,12 +133,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (count >= 3 && count == PlayerMovmant.players.Count)
         {
             if(PhotonNetwork.IsMasterClient) startButton.enabled = true;
-            startButton.GetComponent<Renderer>().sharedMaterial = activeMaterial;
+            //startButton.GetComponent<Renderer>().material = activeMaterial;
+            startButtonAnimator.SetBool("isActive", true);
         }
         else
         {
             startButton.enabled = false;
-            startButton.GetComponent<Renderer>().sharedMaterial = inactiveMaterial;
+            //startButton.GetComponent<Renderer>().material = inactiveMaterial;
+            startButtonAnimator.SetBool("isActive", false);
         }
     }
     
