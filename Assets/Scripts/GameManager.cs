@@ -73,13 +73,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         {("Profession", Professions.Soldier), 3},
         {("Profession", Professions.Student), 0},
         {("Profession", Professions.Teacher), 2},
-        {("Health", Healthe.excellent), 3},
-        {("Health", Healthe.average), 1},
-        {("Health", Healthe.poor), -2},
-        {("Health", Healthe.critical), -3},
-        {("Health", Healthe.colorBlindness), -2},
-        {("Health", Healthe.psychosis), -4},
-        {("Health", Healthe.withdrawal), -3},
+        {("Health", Health.excellent), 3},
+        {("Health", Health.average), 1},
+        {("Health", Health.poor), -2},
+        {("Health", Health.critical), -3},
+        {("Health", Health.colorBlindness), -2},
+        {("Health", Health.psychosis), -4},
+        {("Health", Health.withdrawal), -3},
         {("Phobias", Phobias.Claustrophobia), -4},
         {("Phobias", Phobias.Anxiety), -1},
         {("Phobias", Phobias.FearOfBlood), -2},
@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             p = (int)player.stats.list["Age"] > 60 ? -1 : (int)player.stats.list["Age"] > 40 ? 1 : (int)player.stats.list["Age"] > 25 ? 2 : 0;
             points += p;
             resultText.text += $"Age: {(int)player.stats.list["Age"]} | {(p>0?"+":"")}{p} {(Mathf.Abs(p)>1?"points":"point")}\n";
-            AddPointsByStat("Health", (Healthe)player.stats.list["Healthe"], ref points);
+            AddPointsByStat("Health", (Health)player.stats.list["Health"], ref points);
             AddPointsByStat("Phobias", (Phobias)player.stats.list["Phobias"], ref points);
             AddPointsByStat("Hobby", (Hobby)player.stats.list["Hobby"], ref points);
             AddPointsByStat("Personality", (Personality)player.stats.list["Personality"], ref points);

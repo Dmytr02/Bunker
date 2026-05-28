@@ -43,7 +43,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             { EStats.Age, 31 },
             { EStats.Profession, Professions.Teacher },
             { EStats.Experience, 2},
-            { EStats.Healthe, Healthe.unknown},
+            { EStats.Health, Health.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
             { EStats.Personality, Personality.unknown}
@@ -54,7 +54,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             { EStats.Age, 98 },
             { EStats.Profession, Professions.unknown },
             { EStats.Experience, -1},
-            { EStats.Healthe, Healthe.unknown},
+            { EStats.Health, Health.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
             { EStats.Personality, Personality.unknown}
@@ -65,7 +65,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             { EStats.Age, 36 },
             { EStats.Profession, Professions.psychologist },
             { EStats.Experience, 10},
-            { EStats.Healthe, Healthe.unknown},
+            { EStats.Health, Health.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
             { EStats.Personality, Personality.unknown}
@@ -76,7 +76,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             { EStats.Age, 45 },
             { EStats.Profession, Professions.Student },
             { EStats.Experience, -1},
-            { EStats.Healthe, Healthe.unknown},
+            { EStats.Health, Health.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
             { EStats.Personality, Personality.unknown}
@@ -87,7 +87,7 @@ public class TutorialNotepad : MonoBehaviour, IPunInstantiateMagicCallback
             { EStats.Age, 28 },
             { EStats.Profession, Professions.Soldier },
             { EStats.Experience, 5},
-            { EStats.Healthe, Healthe.unknown},
+            { EStats.Health, Health.unknown},
             { EStats.Phobias, Phobias.unknown},
             { EStats.Hobby, Hobby.unknown },
             { EStats.Personality, Personality.unknown}
@@ -184,7 +184,7 @@ public class TutorialPlayerStats
         { EStats.Age, -1 },
         { EStats.Profession, Professions.unknown },
         { EStats.Experience, -1},
-        { EStats.Healthe, Healthe.unknown},
+        { EStats.Health, Health.unknown},
         { EStats.Phobias, Phobias.unknown},
         { EStats.Hobby, Hobby.unknown },
         { EStats.Personality, Personality.unknown}
@@ -196,7 +196,7 @@ public class TutorialPlayerStats
         { EStats.Age, false },
         { EStats.Profession, false },
         { EStats.Experience, false },
-        { EStats.Healthe, false },
+        { EStats.Health, false },
         { EStats.Phobias, false },
         { EStats.Hobby, false },
         { EStats.Personality, false }
@@ -209,7 +209,7 @@ public class TutorialPlayerStats
         int Age = list[EStats.Age] is int ? (int)list[EStats.Age] : -1;
         Professions Profession = (Professions)list[EStats.Profession];
         int experience = list[EStats.Experience] is int ? (int)list[EStats.Experience] : -1;
-        Healthe Healthe = (Healthe)list[EStats.Healthe];
+        Health Health = (Health)list[EStats.Health];
         Phobias Phobia = (Phobias)list[EStats.Phobias];
         Hobby Hobby = (Hobby)list[EStats.Hobby];
         Personality personality = (Personality)list[EStats.Personality];
@@ -217,7 +217,7 @@ public class TutorialPlayerStats
                (Age==-1||!showed[EStats.Age]?"": $"Age - {Age}\n") + 
                (Profession==Professions.unknown|| !showed[EStats.Profession] ?"": $"Profession - {Profession}\n") +
                (experience==-1 || !showed[EStats.Experience]?"":$"Experience - {experience} years\n") + 
-               (Healthe==Healthe.unknown|| !showed[EStats.Healthe]?"":$"Healthe - {Healthe}\n") + 
+               (Health==Health.unknown|| !showed[EStats.Health]?"":$"Health - {Health}\n") + 
                (Phobia==Phobias.unknown|| !showed[EStats.Phobias]?"":$"Phobia - {Phobia}\n") +
                (Hobby==Hobby.unknown|| !showed[EStats.Hobby]?"":$"Hobby - {Hobby}\n")+
                (personality==Personality.unknown|| !showed[EStats.Personality]?"":$"Personality - {personality}\n");
@@ -229,7 +229,7 @@ public class TutorialPlayerStats
         int Age = list[EStats.Age] is int ? (int)list[EStats.Age] : -1;
         Professions Profession = (Professions)list[EStats.Profession];
         int experience = list[EStats.Experience] is int ? (int)list[EStats.Experience] : -1;
-        Healthe Healthe = (Healthe)list[EStats.Healthe];
+        Health Health = (Health)list[EStats.Health];
         Phobias Phobia = (Phobias)list[EStats.Phobias];
         Hobby Hobby = (Hobby)list[EStats.Hobby];
         Personality personality = (Personality)list[EStats.Personality];
@@ -237,7 +237,7 @@ public class TutorialPlayerStats
                (stats.Contains(EStats.Age) ?Age==-1||!showed[EStats.Age]?"Age: -\n": $"Age: {Age.StatToString()}\n":"") + 
                (stats.Contains(EStats.Profession) ?Profession==Professions.unknown|| !showed[EStats.Profession] ?"Profession: -\n": $"Profession: {Profession.StatToString()}\n":"") +
                (stats.Contains(EStats.Experience) ?experience==-1 || !showed[EStats.Experience]?"Experience: -\n":$"Experience: {experience.StatToString()} years\n":"") + 
-               (stats.Contains(EStats.Healthe) ?Healthe==Healthe.unknown|| !showed[EStats.Healthe]?"Health: -\n":$"Health: {Healthe.StatToString()}\n":"") + 
+               (stats.Contains(EStats.Health) ?Health==Health.unknown|| !showed[EStats.Health]?"Health: -\n":$"Health: {Health.StatToString()}\n":"") + 
                (stats.Contains(EStats.Phobias) ?Phobia==Phobias.unknown|| !showed[EStats.Phobias]?"Phobia: -\n":$"Phobia: {Phobia.StatToString()}\n":"") +
                (stats.Contains(EStats.Hobby) ?Hobby==Hobby.unknown|| !showed[EStats.Hobby]?"Hobby: -\n":$"Hobby: {Hobby.StatToString()}\n":"")+
                (stats.Contains(EStats.Personality) ?personality==Personality.unknown|| !showed[EStats.Personality]?"Personality: -\n":$"Personality: {personality.StatToString()}\n":"");
@@ -250,7 +250,7 @@ public enum EStats
     Age,
     Profession,
     Experience,
-    Healthe,
+    Health,
     Phobias,
     Hobby,
     Personality

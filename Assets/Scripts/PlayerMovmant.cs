@@ -72,7 +72,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     {
         ChangeColors();
         Invoke("ChangeColors", 120);
-        stats.SetStat("Healthe", Healthe.colorBlindness);
+        stats.SetStat("Health", Health.colorBlindness);
     }
     
     [PunRPC]
@@ -80,14 +80,14 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
     {
         CursoreMuves();
         Invoke("CursoreMuves", 120);
-        stats.SetStat("Healthe", Healthe.withdrawal);
+        stats.SetStat("Health", Health.withdrawal);
     }
     
     [PunRPC]
     public void RPC_PsichosisEffect()
     {
         audioSource.PlayOneShot(psihosisClip);
-        stats.SetStat("Healthe", Healthe.psychosis);
+        stats.SetStat("Health", Health.psychosis);
     }
     
     [Button]
@@ -273,7 +273,7 @@ public class PlayerStats
         { "Age", -1 },
         { "Profession", Professions.unknown },
         { "Experience", -1},
-        { "Healthe", Healthe.unknown},
+        { "Health", Health.unknown},
         { "Phobias", Phobias.unknown},
         { "Hobby", Hobby.unknown },
         { "Personality", Personality.unknown}
@@ -285,7 +285,7 @@ public class PlayerStats
         { "Age", typeof(int) },
         { "Profession", typeof(Professions) },
         { "Experience", typeof(int) },
-        { "Healthe", typeof(Healthe) },
+        { "Health", typeof(Health) },
         { "Phobias", typeof(Phobias)},
         { "Hobby", typeof(Hobby) },
         { "Personality", typeof(Personality)}
@@ -310,8 +310,8 @@ public class PlayerStats
                 return Random.Range(18, 100);
             case "Experience":
                 return Random.Range(1, 30);
-            case "Healthe":
-                return (Healthe)Random.Range(1, 5);
+            case "Health":
+                return (Health)Random.Range(1, 5);
             case "Phobias":
                 return (Phobias)Random.Range(1, 7);
             case "Hobby":
@@ -345,8 +345,8 @@ public class PlayerStats
             case "Experience":
                 list["Experience"] =  Random.Range(1, Mathf.Min((int)list["Age"]-18, 30));
                 break;
-            case "Healthe":
-                list["Healthe"] =  (Healthe)Random.Range(1, 5);
+            case "Health":
+                list["Health"] =  (Health)Random.Range(1, 5);
                 break;
             case "Phobias":
                 list["Phobias"] =  (Phobias)Random.Range(1, 7);
@@ -368,7 +368,7 @@ public class PlayerStats
             SetRandomStat("Profession", true);
             SetRandomStat("Age", true);
             SetRandomStat("Experience", true);
-            SetRandomStat("Healthe", true);
+            SetRandomStat("Health", true);
             SetRandomStat("Phobias", true);
             SetRandomStat("Hobby", true);
             SetRandomStat("Personality", true);
@@ -392,12 +392,12 @@ public class PlayerStats
         int Age = list["Age"] is int ? (int)list["Age"] : -1;
         Professions Profession = (Professions)list["Profession"];
         int experience = list["Experience"] is int ? (int)list["Experience"] : -1;
-        Healthe Healthe = (Healthe)list["Healthe"];
+        Health Health = (Health)list["Health"];
         Phobias Phobia = (Phobias)list["Phobias"];
         Hobby Hobby = (Hobby)list["Hobby"];
         Personality personality = (Personality)list["Personality"];
         return (string.IsNullOrEmpty(Name)? "" : $"Name - {Name}\n") + (Age==-1?"": $"Age - {Age}\n") + (Profession==Professions.unknown?"": $"Profession - {Profession}\n") +
-               (experience==-1?"":$"Experience - {experience} years\n") + (Healthe==Healthe.unknown?"":$"Healthe - {Healthe}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
+               (experience==-1?"":$"Experience - {experience} years\n") + (Health==Health.unknown?"":$"Health - {Health}\n") + (Phobia==Phobias.unknown?"":$"Phobia - {Phobia}\n") +
                (Hobby==Hobby.unknown?"":$"Hobby - {Hobby}\n")+(personality==Personality.unknown?"":$"Personality - {personality}\n");
     }
     public string ToString(HashSet<string> stats)
@@ -406,7 +406,7 @@ public class PlayerStats
         int Age = list["Age"] is int ? (int)list["Age"] : -1;
         Professions Profession = (Professions)list["Profession"];
         int experience = list["Experience"] is int ? (int)list["Experience"] : -1;
-        Healthe Healthe = (Healthe)list["Healthe"];
+        Health Health = (Health)list["Health"];
         Phobias Phobia = (Phobias)list["Phobias"];
         Hobby Hobby =  (Hobby)list["Hobby"] ;
         Personality personality = (Personality)list["Personality"];
@@ -414,7 +414,7 @@ public class PlayerStats
                (stats.Contains("Age") ? (Age==-1?"Age: - \n": $"Age: {Age.StatToString()}\n"):"") + 
                (stats.Contains("Profession") ? (Profession==Professions.unknown?"Profession: - \n": $"Profession: {Profession.StatToString()}\n"): "") +
                (stats.Contains("Experience") ? (experience==-1?"Experience: - \n":$"Experience: {experience.StatToString()} years\n"): "") + 
-               (stats.Contains("Healthe") ? (Healthe==Healthe.unknown?"Health: - \n":$"Health: {Healthe.StatToString()}\n"):"") + 
+               (stats.Contains("Health") ? (Health==Health.unknown?"Health: - \n":$"Health: {Health.StatToString()}\n"):"") + 
                (stats.Contains("Phobias") ? (Phobia==Phobias.unknown?"Phobia: - \n":$"Phobia: {Phobia.StatToString()}\n"):"") +
                (stats.Contains("Hobby") ?Hobby==Hobby.unknown?"Hobby: - \n":$"Hobby: {Hobby.StatToString()}\n":"")+
                (stats.Contains("Personality") ? personality==Personality.unknown?"Personality: - \n":$"Personality: {personality.StatToString()}\n":"");
@@ -441,7 +441,7 @@ public enum Professions
     Student
 }
 
-public enum Healthe
+public enum Health
 {
     unknown,
     excellent,

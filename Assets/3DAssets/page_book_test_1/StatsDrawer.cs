@@ -40,7 +40,7 @@ public class StatsDrawer : MonoBehaviour
         print("Draw");
         TextName.text = stats.list["Name"].ToString();
         TextAge.text = "Age: " + (stats.list["Age"] is int ? ((int)stats.list["Age"]==-1?"-":stats.list["Age"]) : "-");
-        Text.text = stats.ToString(new HashSet<string>{"Profession", "Experience", "Healthe", "Phobias", "Hobby", "Personality"});   
+        Text.text = stats.ToString(new HashSet<string>{"Profession", "Experience", "Health", "Phobias", "Hobby", "Personality"});   
         cameraRender.RenderCameraNow();
     }
     public void Draw(TutorialPlayerStats stats)
@@ -52,7 +52,7 @@ public class StatsDrawer : MonoBehaviour
         print("Draw");
         TextName.text = stats.list[EStats.Name].ToString();
         TextAge.text = "Age: " + (stats.list[EStats.Age] is int && stats.showed[EStats.Age] ? ((int)stats.list[EStats.Age]==-1?"-":stats.list[EStats.Age]) : "-");
-        Text.text = stats.ToString(new HashSet<EStats>{EStats.Profession, EStats.Experience, EStats.Healthe, EStats.Phobias, EStats.Hobby, EStats.Personality});   
+        Text.text = stats.ToString(new HashSet<EStats>{EStats.Profession, EStats.Experience, EStats.Health, EStats.Phobias, EStats.Hobby, EStats.Personality});   
         cameraRender.RenderCameraNow();
     }
 }

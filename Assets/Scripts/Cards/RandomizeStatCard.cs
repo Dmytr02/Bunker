@@ -8,7 +8,7 @@ public class RandomizeStatCard : Card
 {
     [SerializeField] TMP_Text cardName;
     public string Stat = "";
-    private static readonly string[] ststsList = {"Profession", "Age", "Experience", "Healthe", "Phobias", "Hobby", "Personality"};
+    private static readonly string[] ststsList = {"Profession", "Age", "Experience", "Health", "Phobias", "Hobby", "Personality"};
     protected override void Start()
     {
         base.Start();

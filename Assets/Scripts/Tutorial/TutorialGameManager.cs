@@ -346,7 +346,7 @@ public class TutorialGameManager : MonoBehaviour
         yield return new WaitForSeconds(7.6f);
         massages[3].showMassage("Average health. Still holding up.");
         tutorialCommandManager.SendMassage("Average health. Still holding up.", "3");
-        notepad.playersStats[3].showed["Healthe"] = true;
+        notepad.playersStats[3].showed["Health"] = true;
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(4.8f);
         massages[4].showMassage("Engineer. If something breaks, that’s my problem.");
@@ -377,7 +377,7 @@ public class TutorialGameManager : MonoBehaviour
         yield return new WaitUntil(() => opened || openedCount == 7);
         massages[1].showMassage("Health’s pretty bad… but I’ve got experience.");
         tutorialCommandManager.SendMassage("Health’s pretty bad… but I’ve got experience.", "1");
-        notepad.playersStats[1].showed["Healthe"] = true;
+        notepad.playersStats[1].showed["Health"] = true;
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(6);
         massages[3].showMassage("36. Old enough to be smart, not old enough to be useless.");
@@ -416,7 +416,7 @@ public class TutorialGameManager : MonoBehaviour
         yield return new WaitForSeconds(7.3f);
         massages[4].showMassage("Excellent health. I can work longer than most.");
         tutorialCommandManager.SendMassage("Excellent health. I can work longer than most.", "4");
-        notepad.playersStats[4].showed["Healthe"] = true;
+        notepad.playersStats[4].showed["Health"] = true;
         notepad.SetIndex(notepad.index);
         yield return new WaitForSeconds(6.1f);
         
