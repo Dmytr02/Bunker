@@ -83,7 +83,7 @@ public class PlayerMovmant : MonoBehaviourPunCallbacks, IPunInstantiateMagicCall
         stats.SetStat("Health", Health.withdrawal);
     }
     
-    [PunRPC]
+    [PunRPC, Button]
     public void RPC_PsichosisEffect()
     {
         audioSource.PlayOneShot(psihosisClip);
