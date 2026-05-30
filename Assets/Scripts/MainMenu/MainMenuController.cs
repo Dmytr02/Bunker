@@ -28,6 +28,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     private TypedLobby customLobby = new TypedLobby("customLobby", LobbyType.Default);
     [SerializeField] private Animator loadingScreenAnimator;
+    [SerializeField] private LoadScene loadingScreen;
 
     void Start()
     {
@@ -94,7 +95,9 @@ public class MainMenuController : MonoBehaviourPunCallbacks
     
     public void Tutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        loadingScreen.sceneIndex = 2;
+        loadingScreenAnimator.SetTrigger("loadScene"); 
+        //SceneManager.LoadScene("Tutorial");
     }
 
     /*public void JoinGame()
@@ -119,6 +122,7 @@ public class MainMenuController : MonoBehaviourPunCallbacks
 
     public void OnCreateRoom()
     {
+        loadingScreen.sceneIndex = 1;
         PhotonNetwork.CreateRoom(createRoomName.text);
     }
 

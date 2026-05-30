@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] TMP_Text text;
-    [SerializeField] int sceneIndex;
+    [SerializeField] public int sceneIndex;
     
     AsyncOperation async;
     

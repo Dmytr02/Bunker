@@ -53,10 +53,9 @@ public class VoiceController : MonoBehaviour
     async void setVolume()
     {
         while (PlayerMovmant.player == null) await Task.Delay(500);
-        Debug.Log(PlayerMovmant.player);
-        if (PlayerPrefs.HasKey($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}"))
+        if (PlayerPrefs.HasKey($"VoiceVolume{GetComponent<PlayerMovmant>().index}")) //  + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)
         {
-            if(PlayerMovmant.players.Contains(GetComponent<PlayerMovmant>())) audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)}", 1f);
+            if(PlayerMovmant.players.Contains(GetComponent<PlayerMovmant>())) audioSource.volume = PlayerPrefs.GetFloat($"VoiceVolume{GetComponent<PlayerMovmant>().index}", 1f); //  + (PlayerMovmant.player.index <= GetComponent<PlayerMovmant>().index ? 0 : -1)
             else audioSource.volume = 0f;
         }
     }

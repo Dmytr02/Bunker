@@ -12,7 +12,7 @@ public class RandomizeBunkerStatCard : Card
     {
         base.Start();
         Stat = ststsList[Random.Range(0, ststsList.Length)];
-        cardName.text = $"Randomize {Stat}, for bunker";
+        cardName.text = $"Randomize {Stat.StatToString()}, for bunker";
     }
     
     protected override bool OnUse(RaycastHit hit)

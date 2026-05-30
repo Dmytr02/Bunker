@@ -103,7 +103,8 @@ public static class ExternalMethods
         {Personality.Unstable, "Unstable"},
         {Personality.Egoist, "Egoist"},
         {Personality.Impulsive, "Impulsive"},
-        {Personality.Withdrawn, "Withdrawn"}
+        {Personality.Withdrawn, "Withdrawn"},
+        {"TimeInside", "Time Inside"}
     };
 
     public static string StatToString(this object stat)
