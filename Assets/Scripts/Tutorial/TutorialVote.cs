@@ -31,6 +31,11 @@ public class TutorialVote : MonoBehaviour
         else Destroy(this);
     }
 
+    private void Start()
+    {
+        votes.Clear();
+    }
+
 
     private void SetSelected(int index)
     {

@@ -32,6 +32,7 @@ public class NetworkControler : MonoBehaviourPunCallbacks
             Debug.Log("OnSceneLoadedTarget - " + targetSceneName);
             if (!string.IsNullOrEmpty(roomName)) PhotonNetwork.JoinRoom(roomName);
             else PhotonNetwork.JoinRandomRoom();
+            roomName = "";
         }
     }
 

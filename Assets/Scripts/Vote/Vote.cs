@@ -31,6 +31,7 @@ public class Vote : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        votes.Clear();
         GameManager.Instance.OnStartRound.AddListener(StartRound);
         GameManager.Instance.OnEndRound.AddListener((() => animator.SetBool("isShowPanel", false)));
     }
