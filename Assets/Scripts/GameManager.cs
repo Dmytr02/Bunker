@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        roundNumber = 1;
         CommandManager.Instance.AddInstance(this);
     }
 

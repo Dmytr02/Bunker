@@ -33559,8 +33559,6 @@ MonoBehaviour:
   - {fileID: 2104117844}
   - {fileID: 1186005168}
   - {fileID: 1516061807}
-  - {fileID: 752973975}
-  - {fileID: 1280962782}
   voteTextButtons:
   - {fileID: 1892037239}
   - {fileID: 1312828331}
@@ -33568,8 +33566,6 @@ MonoBehaviour:
   - {fileID: 1987308089}
   - {fileID: 1068926105}
   - {fileID: 1720970676}
-  - {fileID: 2026407772}
-  - {fileID: 1247008221}
   voteImageButtons:
   - {fileID: 1566505041}
   - {fileID: 1786886405}
